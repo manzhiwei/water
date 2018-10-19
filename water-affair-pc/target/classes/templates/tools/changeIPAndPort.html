@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>威尔泰智慧水务</title>
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
+
+    <link href="css/jquery.dataTables.css" rel="stylesheet"/>
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet"/>
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet"/>
+
+    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/common.css" rel="stylesheet"/>
+
+</head>
+
+<body class="">
+<div id="wrapper">
+    <!--菜单模块-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse"  th:replace="menu :: side" />
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <!--header模块-->
+        <div class="row border-bottom" th:replace="menu :: top" />
+
+        <!--内容模块-->
+        <div class="row content-main">
+            <div class="slimScroll-default">
+                <!--这里是不同页面变更的部分-->
+                <div class="wrapper wrapper-content animated ">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                    <h5>IP和端口号信息</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+
+                                                <input type="text" placeholder="请输入仪表名称" id="search-content"
+                                                       class="form-control input-lg button"/>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="input-group">
+                                                <button id="query1" name="query1" type="button" class="btn btn-sm btn-success" >查 询</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive table-relative">
+                                        <table id="changeIPAndPort" class="table table-striped dataTables-meter" >
+                                            <thead>
+                                            <tr>
+                                                <th>仪表名称</th>
+                                                <th>读IP</th>
+                                                <th>读端口</th>
+                                                <th>写IP</th>
+                                                <th>写端口</th>
+                                                <th>操作写</th>
+                                                <th>上次连接时间</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--footer模块-->
+        <div class="footer" th:replace="menu :: bottom" />
+
+        <!--查看详情-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"  aria-hidden="true" >
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" >
+
+                    <div class="modal-header" style="width:100%;">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h1 class="modal-title" ><input readOnly="true" id="model_title" type="text" value="测试数据" style="border:0; width:100%;" /></h1>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="detail-content" >
+                            <form id="myform">
+                            <div class="form-group">
+                                <label for="shortName">仪表名称</label>
+                                <input type="text" readOnly="true"  class="form-control" id="shortName" value ="测试数据" />
+                                </div>
+                            <div class="form-group"><label for="ip">IP</label>
+                                <input type="text"  class="form-control" id="ip" aria-describedby="ipHelp" placeholder="Enter IP：106.14.4.240"/>
+                                <small id="ipHelp" class="form-text text-muted">修改IP和端口成功以后，下一次连接将指向新的IP和端口</small>
+                                </div>
+                            <div class="form-group">
+                                <label for="port">Port</label>
+                                <input type="text"  class="form-control" id="port" placeholder="端口:4632"/>
+                            </div>
+                             <button type="submit" class="btn btn-primary" id="button1">Submit</button>
+                             </form>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 全局 js -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+<!-- 插件 js -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+<script src="js/plugins/layer/laydate/laydate.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+<!-- Jquery Validate -->
+<script src="js/plugins/validate/jquery.validate.min.js"></script>
+<script src="js/plugins/validate/messages_zh.min.js"></script>
+<script src="js/validate-setDefault.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+<!-- 自定义 js -->
+<script src="js/common.js"></script>
+<script src="js/tools/changeIPAndPort.js" type="text/javascript"></script>
+
+
+</body>
+
+</html>

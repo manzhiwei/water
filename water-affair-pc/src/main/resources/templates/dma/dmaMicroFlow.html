@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head th:replace="menu :: head"/>
+
+<body class="">
+<div id="wrapper">
+    <!--菜单模块-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse"  th:replace="menu :: side" />
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <!--header模块-->
+        <div class="row border-bottom" th:replace="menu :: top" />
+
+
+        <!--内容模块-->
+        <div class="row content-main">
+            <div class="slimScroll-default">
+                <!--这里是不同页面变更的部分-->
+                <div class="wrapper wrapper-content height-full">
+                    <div class="row height-full">
+
+                        <div class="col-md-12 height-full client-list">
+                            <div class="ibox float-e-margins height-full">
+                                <div class="ibox-title">
+                                    <h5>DMA小流量监控</h5>
+                                </div>
+                                <div class="ibox-content" >
+                                    <div class="slimScroll-default">
+                                        <form name="searchForm" id="searchForm" method="post" action="/dmaMicroFlow">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <div class="form-group">
+                                                        <select name="dma-name" id='staions1' data-placeholder="选择DMA区域"
+                                                                class="form-control chosen-select-normal" onchange="javascript:location.href=this.value;">
+                                                            <option   th:each="prod : ${dmaList}" th:selected="${prod.select}" th:value="${prod.value}" th:text="${prod.name}">
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="form-group">
+                                                        <select name="staions" id='staions' data-placeholder="选择站点"
+                                                                class="form-control chosen-select-normal" multiple="multiple">
+                                                            <option th:selected="${prod.select}" th:each="prod : ${stationList}" th:value="${prod.name}"
+                                                                    th:text="${prod.name}">
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-1">
+                                                        <button id="query2" type="button" onclick="searchForm.submit()"  class="btn btn-sm btn-success">查询
+                                                        </button>
+                                                </div>
+
+                                                <div class="col-sm-5">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon new-addon">时间从：</span>
+                                                        <input name="startTime" id="startTime"
+                                                               class="form-control layer-date input-todayM laydate-icon"
+                                                               th:placeholder="${startTime}" th:value="${startTime}"/>
+                                                        <span class="input-group-addon new-addon">至</span>
+                                                        <input name="endTime" id="endTime"
+                                                               class="form-control layer-date input-todayN laydate-icon"
+                                                               th:placeholder="${endTime}" th:value="${endTime}"/>
+                                                        <input name="meterIdList" hidden="hidden"
+                                                               th:value="${meterIdList}"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2 text-right">
+                                                    <input readOnly="true" id="night_range"  name="night_range" type="text" value="夜间时段：00:00-03:00" class="input-group-addon new-addon" style="border:0; width:100%;" />
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div id="range_slider" ></div>
+                                                </div>
+
+                                            </div>
+                                        </form>
+
+                                        <div class="row" style="overflow-x: auto;margin-top: 20px;">
+                                            <table class="table table-bordered mytable">
+                                                <thead class="mytable">
+
+                                                <tr>
+                                                    <th style="white-space: nowrap;vertical-align: middle!important;" rowspan="3" class="mytablehead">序号</th>
+                                                    <th style="width:100px;  white-space: nowrap; vertical-align: middle!important;" rowspan="3" class="mytablehead">时间</th>
+
+                                                    <th style="white-space: nowrap;" th:each="prod,iterStat:${title}" colspan="7" th:text="${prod.shortName}"></th>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <l th:each="prod,iterStat:${title}">
+                                                        <th style="white-space: nowrap;" colspan="7">瞬时流量</th>
+                                                    </l>
+                                                </tr>
+                                                <l th:each="prod,iterStat:${title}">
+                                                    <th style="white-space: nowrap;">最小值</th>
+                                                    <th style="white-space: nowrap;">最小值出现时间</th>
+                                                    <th style="white-space: nowrap;">最大值</th>
+                                                    <th style="white-space: nowrap;">最大值出现时间</th>
+                                                    <th style="white-space: nowrap;">平均值</th>
+                                                    <th style="white-space: nowrap;">夜间最小值</th>
+                                                    <th style="white-space: nowrap;">夜间最小流量占比</th>
+                                                </l>
+                                                <tr>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                <tr style="white-space: nowrap;text-align: center" th:each="prod,iterStat:${result}">
+                                                    <td  style="white-space: nowrap;" th:text="${iterStat.count}"></td>
+                                                    <l th:each="arrayS:${prod}">
+                                                        <td style="white-space: nowrap;" th:text="${arrayS}">1</td>
+                                                    </l>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--footer模块-->
+        <div class="footer" th:replace="menu :: bottom" />
+    </div>
+</div>
+
+<!-- 全局 js -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+
+<!-- 插件 js -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+<script src="js/plugins/layer/laydate/laydate.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<!-- Jquery Validate -->
+<script src="js/plugins/validate/jquery.validate.min.js"></script>
+<script src="js/plugins/validate/messages_zh.min.js"></script>
+<script src="js/validate-setDefault.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+<!-- IonRangeSlider -->
+<link href="css/plugins/ionRangeSlider/ion.rangeSlider.css" rel="stylesheet"/>
+<link href="css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css" rel="stylesheet"/>
+<script src="js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
+<!-- NouSlider -->
+<link href="css/plugins/nouslider/jquery.nouislider.css" rel="stylesheet"/>
+<script src="js/plugins/nouslider/jquery.nouislider.min.js"></script>
+<script th:inline="javascript">
+    var nightRange = [[${nightRange}]];
+    document.getElementById("night_range").value=nightRange;
+</script>
+<!-- 自定义 js -->
+<script src="js/common.js"></script>
+<script src="js/dma/dma4mf1.js" type="text/javascript"></script>
+<script src="js/dma/dma4mf2.js" type="text/javascript"></script>
+
+
+
+
+
+</body>
+
+</html>

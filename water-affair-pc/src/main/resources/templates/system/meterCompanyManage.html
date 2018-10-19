@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head th:replace="menu :: head"/>
+
+<body class="">
+<div id="wrapper">
+    <!--菜单模块-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse"  th:replace="menu :: side" />
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <!--header模块-->
+        <div class="row border-bottom" th:replace="menu :: top" />
+
+        <!--内容模块-->
+        <div class="row content-main">
+            <div class="slimScroll-default">
+                <!--这里是不同页面变更的部分-->
+                <div class="wrapper wrapper-content height-full">
+                    <div class="row height-full">
+                        <div class="col-md-6 height-full client-list">
+                            <div class="ibox float-e-margins height-full">
+                                <div class="ibox-title">
+                                    <h5>公司列表</h5>
+                                    <div class="ibox-tools">
+                                        <button class="btn btn-success btn-xs btn-add-company hide" data-toggle="modal"
+                                                data-target=".add-company">添加公司
+                                        </button>
+                                        <button class="btn btn-success btn-xs btn-add-branch-company hide"
+                                                data-toggle="modal" data-target=".add-branch-company">添加分公司
+                                        </button>
+                                        <button class="btn btn-success btn-xs btn-add-area hide" data-toggle="modal"
+                                                data-target=".add-area">添加区域
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="slimScroll-default">
+                                        <div class="jsTree companyListTree"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 height-full client-meter-list">
+                            <div class="ibox float-e-margins height-full">
+                                <div class="ibox-title">
+                                    <h5>客户水表列表</h5>
+                                    <div class="ibox-tools">
+                                        <button class="btn btn-success btn-xs btn-add-meter">添加仪表</button>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="slimScroll-default">
+                                        <div class="jsTree companyMeterListTree"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="height-full all-meter-list hide">
+                            <div class="ibox float-e-margins height-full">
+                                <div class="ibox-title">
+                                    <h5>所有仪表列表</h5>
+                                    <div class="ibox-tools">
+                                        <input id="searchMeter" class="form-control search-input" placeholder="搜索仪表"/>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="slimScroll-default">
+                                        <div class="jsTree allMeterListTree"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--footer模块-->
+        <div class="footer" th:replace="menu :: bottom" />
+    </div>
+</div>
+<!--弹出层-->
+<!--添加公司-->
+<div class="modal inmodal add-company" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <form class="cmxform" id="commentForm" method="post" action="/addCompany" content="text/html; charset=UTF-8">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">添加公司</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="excel-list excel-modal">
+                        <div class="excel-item">
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <div class="form-label clearfix">
+                                        <label class="title">公司名称 <span class="require-star">*</span></label>
+                                        <div class="validate-tip"></div>
+                                    </div>
+                                    <div class="form-area">
+                                        <input name="name" type="text" class="form-control" required="required"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-add-company">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--添加分公司-->
+<div class="modal inmodal add-branch-company" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <form class="cmxform" id="commentForm" method="post" action="/addCompany">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">添加分公司</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="excel-list excel-modal">
+                        <div class="excel-item">
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <div class="form-label clearfix">
+                                        <label class="title">分公司名称 <span class="require-star">*</span></label>
+                                        <div class="validate-tip"></div>
+                                    </div>
+                                    <div class="form-area">
+                                        <input name="name" type="text" class="form-control" required="required"/>
+                                        <input id="branch-cid" name="cid" type="text" class="form-control hidden"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-success">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--添加区域-->
+<div class="modal inmodal add-area" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <form class="cmxform" id="commentForm" method="post" action="/addCompany">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">添加区域</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="excel-list excel-modal">
+                        <div class="excel-item">
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <div class="form-label clearfix">
+                                        <label class="title">区域名称 <span class="require-star">*</span></label>
+                                        <div class="validate-tip"></div>
+                                    </div>
+                                    <div class="form-area">
+                                        <input name="name" type="text" class="form-control" required="required"/>
+                                        <input id="area-cid" name="cid" type="text" class="form-control hidden"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-success">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--弹出层-->
+
+<!-- 全局 js -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="js/plugins/dataTables/datatables.min.js"></script>
+<script src="js/plugins/jsTree/jstree.min.js"></script>
+<script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+
+<!-- 插件 js -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/validate/jquery.validate.min.js"></script>
+<script src="js/plugins/validate/messages_zh.min.js"></script>
+<script src="js/validate-setDefault.js"></script>
+
+<!-- 自定义 js -->
+<script src="js/common.js"></script>
+<script src="js/system/company_manage.js"></script>
+
+</body>
+
+</html>

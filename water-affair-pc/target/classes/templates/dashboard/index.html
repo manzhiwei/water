@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head th:replace="menu :: head"/>
+<script src="js/addToolbar.js"></script>
+
+<body class="index">
+<div id="wrapper">
+    <!--菜单模块-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse"  th:replace="menu :: side" />
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <!--header模块-->
+        <div class="row border-bottom" th:replace="menu :: top4dashboard" />
+
+        <!--内容模块-->
+        <div class="row content-main">
+            <div class="slimScroll-default">
+                <!--这里面是不同页面变更的内容-->
+                <div class="wrapper height-full">
+
+                    <div class="row height-full">
+                        <div class="map-area height-full">
+                            <div id="index-map" class="map-area height-full"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="test-index tree-area height-full">
+
+                <div class="ibox height-full">
+
+                    <div class="ibox-title ">
+
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <select id="Select" class="form-control chosen-select-normal meterListSelector"
+                                        name="listType" onchange="javascript:location.href=this.value;">
+                                    <option list="all" value="/index" th:selected="${raw}">全部站点</option>
+                                    <option list="vip" value="/index?type=vip" th:selected="${vip}">VIP站点</option>
+                                    <option list="alarm" value="/index?type=alarm" th:selected="${alarm}">告警站点</option>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-4">
+
+                                <div class="switch">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" class="onoffswitch-checkbox showAllInfo"
+                                               id="showAllInfo"/>
+                                        <label class="onoffswitch-label" for="showAllInfo">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="index-select">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="ibox-content" style="height:400px">
+                        <div class="slimScroll-default">
+                            <div id="index_tree"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--footer模块-->
+        <div class="footer" th:replace="menu :: bottom" />
+
+    </div>
+</div>
+
+<div class="modal inmodal" id="alertModel" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header">
+               <i class="fa fa-laptop modal-icon"></i>
+                <input readOnly="true" id="aid" type="text" hidden="hidden"/>
+                <h4 id="model_title1"><input readOnly="true" id="model_title" type="text" value="测试数据" style="border:0; width:100%;" /></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group"><h4><input readOnly="true" id="alarm_type" type="text" value="测试数据" style="border:0; width:100%;" /></h4></div>
+                <div class="form-group"><h4><input readOnly="true" id="alarm_content" type="text" value="测试数据" style="border:0; width:100%;" /></h4></div>
+                <div class="form-group"><h4><input readOnly="true" id="alarm_time" type="text" value="测试数据" style="border:0; width:100%;" /></h4></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="javascript:readAlarmMessage();">已读</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="http://webapi.amap.com/maps?v=1.3&amp;key=adaee8723d6ba8783b8b1d4d6f6d1397"></script>
+<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+
+<script>
+    var map = new AMap.Map("index-map", {
+        resizeEnable: true,
+        center: [116.397428, 39.90923],
+        zoom: 13
+    });
+    var markers = [];
+
+
+
+</script>
+
+<script  th:if="${type=='raw'}" src="js/dashboard/index.js" />
+<script  th:if="${type=='vip'}" src="js/dashboard/index4vip.js" />
+<script  th:if="${type=='alarm'}" src="js/dashboard/index4alarm.js" />
+
+
+</body>
+
+</html>

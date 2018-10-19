@@ -1,0 +1,17 @@
+com\welltech\controller\page\DashboardPageController.class
+com\welltech\controller\rest\SystemManageRestController.class
+com\welltech\controller\page\AlarmPageController.class
+com\welltech\controller\rest\BasicManageRestController.class
+com\welltech\controller\rest\DmaRestController.class
+com\welltech\controller\rest\StaticsRestController.class
+com\welltech\controller\page\StaticsPageController.class
+com\welltech\controller\MenuController.class
+com\welltech\controller\rest\ReportRestController.class
+com\welltech\controller\rest\AlarmRestController.class
+com\welltech\controller\rest\SystemToolsController.class
+com\welltech\controller\page\DmaPageController.class
+com\welltech\controller\rest\ExcelController.class
+com\welltech\controller\rest\DashboardRestController.class
+com\welltech\controller\RootController.class
+com\welltech\controller\page\BasicManagePageController.class
+com\welltech\WaterAffairApplication.class

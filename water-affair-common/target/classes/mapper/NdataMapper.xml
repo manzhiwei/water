@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.welltech.waterAffair.repository.NdataMapper">
+  <resultMap id="BaseResultMap" type="Ndata">
+    <result column="temp" jdbcType="REAL" property="temp" />
+    <result column="totalflow" jdbcType="REAL" property="totalflow" />
+    <result column="ftotalflow" jdbcType="REAL" property="ftotalflow" />
+    <result column="flow" jdbcType="REAL" property="flow" />
+    <result column="flowerror" jdbcType="INTEGER" property="flowerror" />
+    <result column="esignal" jdbcType="INTEGER" property="esignal" />
+    <result column="depdata" jdbcType="INTEGER" property="depdata" />
+    <result column="ME" jdbcType="REAL" property="me" />
+    <result column="Signal_strength" jdbcType="INTEGER" property="signalStrength" />
+    <result column="I_time" jdbcType="TIMESTAMP" property="iTime" />
+    <result column="press" jdbcType="REAL" property="press" />
+    <result column="currentV" jdbcType="REAL" property="currentv" />
+    <result column="currentI" jdbcType="REAL" property="currenti" />
+    <result column="pressError" jdbcType="INTEGER" property="presserror" />
+    <result column="ntotalflow" jdbcType="REAL" property="ntotalflow" />
+    <result column="lastConnecting" jdbcType="INTEGER" property="lastconnecting" />
+  </resultMap>
+	<!--
+		modify by manzhiwei
+		time 17-11-29
+	-->
+  <sql id="Base_Column_List">
+  	temp, totalflow, ABS(ftotalflow) ftotalflow,
+      flow, flowerror, esignal, 
+      depdata, ME, Signal_strength, 
+      I_time, press, currentV, 
+      currentI, pressError, ntotalflow, 
+      lastConnecting
+  </sql>
+  <select id="findOneByNum" resultMap="BaseResultMap">
+  	select
+  		<include refid="Base_Column_List"/>
+ 	from
+ 		ndata${num}
+	order by I_time desc limit 1
+  </select>
+  
+  <select id="findByCriteria" resultMap="BaseResultMap">
+  	select
+  		<include refid="Base_Column_List"/>
+ 	from
+ 		ndata${criteria.meterId}
+ 	<where>
+ 		<if test="criteria.startDate != null">
+ 			and I_time &gt;= #{criteria.startDate}
+ 		</if>
+ 		<if test="criteria.endDate != null">
+ 			and I_time &lt;= #{criteria.endDate}
+ 		</if>
+ 	</where>
+  </select>
+  
+   <select id="findNdataByCriteriaLastConnecting" resultMap="BaseResultMap">
+  	select
+  		<include refid="Base_Column_List"/>
+ 	from
+ 		ndata${criteria.meterId}
+ 	<where>
+ 		<if test="criteria.endDate != null">
+ 			and I_time &lt;= #{criteria.endDate}
+ 		</if>
+ 		order by I_time desc
+ 		limit 1
+ 	</where>
+  </select>
+
+  <select id="findHourData" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List" />
+      from ndata${criteria.meterId}
+      where date(I_time) = date(#{criteria.currentTime})
+        and hour(I_time) = hour(#{criteria.currentTime})
+        order by I_time desc
+      limit 1
+  </select>
+
+    <select id="findDayData" resultType="java.util.LinkedHashMap">
+    <!-- 原本的月报表查询每日的sql脚本，跟下面最新的区别就在totalflow
+    	select date_format(I_time,'%d') I_time,avg(press),max(press),min(press),avg(flow),max(flow),min(flow),avg(totalflow),max(totalflow),min(totalflow)
+        from ndata${criteria.meterId}
+        where date(I_time) = #{criteria.currentDate}
+     -->
+	        select I_time,b,c,d,e,f,g,firstTotalflow,ifnull(firstTotalflow2,lastTotalflow),
+				case when firstTotalflow is null then null
+					when firstTotalflow2 is null then lastTotalflow-firstTotalflow
+				    else firstTotalflow2-firstTotalflow
+				    end increaseTotalflow from(
+		        select date_format(I_time,'%d') I_time,avg(press) b,max(press) c,min(press) d,avg(flow) e,max(flow) f,min(flow) g,
+			        (select totalflow from ndata${criteria.meterId}
+			        where date(I_time) = #{criteria.currentDate} order by I_time limit 1) firstTotalflow,
+			        (select totalflow from ndata${criteria.meterId}
+			        where date(I_time) = #{criteria.currentDate} order by I_time desc limit 1) lastTotalflow,
+			        (select totalflow from ndata${criteria.meterId}
+					        where date(I_time) = date_add(#{criteria.currentDate}, INTERVAL 1 day) order by I_time limit 1) firstTotalflow2
+					        from ndata${criteria.meterId}
+		        where date(I_time) = #{criteria.currentDate}) t
+    </select>
+
+
+   
+	<select id="findPageByWaterHourCriteria" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" />
+      	from ndata${criteria.meterId}
+     	where I_time &gt;= #{criteria.startDate} and I_time &lt;= #{criteria.endDate}
+     	order by I_time desc
+	</select>
+
+	<select id="findYearByYear" resultType="string">
+		select press
+      	from ndata${num}
+		where date_format(i_time,'%Y%m%d%H')=date_format(DATE_ADD(#{date},INTERVAL -1 YEAR),'%Y%m%d%H')
+		limit 1
+	</select>
+	
+	<select id="findMonthByMonth" resultType="string">
+		select press
+      	from ndata${num}
+      	where date_format(i_time,'%Y%m%d%H')=date_format(DATE_ADD(#{date},INTERVAL -1 MONTH),'%Y%m%d%H')
+      	limit 1
+	</select>
+	
+	<select id="findSeasonData" parameterType="map" resultType="java.util.LinkedHashMap">
+		select avg(press),max(press),min(press),avg(flow),max(flow),min(flow),avg(totalflow),max(totalflow),min(totalflow)
+		from ndata${num}
+        where I_time &gt;= #{startTime} and I_time &lt; #{endTime}
+	</select>
+	
+	<select id="findYearData" parameterType="map" resultType="java.util.LinkedHashMap">
+			select convert(date_format(I_time,'%m'),signed)-1 month,avg(press),max(press),min(press),avg(flow),max(flow),min(flow),avg(totalflow),max(totalflow),min(totalflow)
+			from ndata${num}
+	        where I_time &gt;= #{startTime} and I_time &lt; #{endTime}
+	</select>
+	
+	<!--<select id="findDiffTotalFlow" parameterType="map" resultType="java.util.LinkedHashMap">-->
+		<!--select  b.data - a.data as dif, a.data as sta, b.data as enda from  -->
+		<!--((select totalflow as data from ndata${num} where I_time &gt;= #{startTime} and I_time &lt;= #{endTime} order by I_time asc limit 1) union (select 0.0 as data) limit 1) as a,-->
+	    <!--((select totalflow as data from ndata${num} where I_time &gt;= #{startTime} and I_time &lt;= #{endTime} order by I_time desc limit 1) union (select 0.0 as data) limit 1) as b-->
+	<!--</select>-->
+
+	<select id="findDiffTotalFlow" parameterType="map" resultType="java.util.LinkedHashMap">
+		select  b.data - a.data as dif, a.data as sta, b.data as enda from
+		((select totalflow as data from ndata${num} where I_time &gt;= #{beforeStartTime} and I_time &lt;= #{startTime} order by I_time desc limit 1) union (select 0.0 as data) limit 1) as a,
+		((select totalflow as data from ndata${num} where I_time &gt;= #{startTime} and I_time &lt;= #{endTime} order by I_time desc limit 1) union (select 0.0 as data) limit 1) as b
+	</select>
+	
+	<select id="findDaysData" parameterType="map" resultType="java.util.LinkedHashMap">
+		SELECT date_format(i_time,'%H') dh, ${column} FROM ndata${num}
+		where i_time &gt;= #{start} and i_time &lt;= #{end}
+		group by date_format(i_time,'%y-%m-%d %H')
+		order by dh asc
+	</select>
+	
+	<select id="queryTotalflow" parameterType="map" resultType="java.lang.Float">
+		select totalflow jrll FROM ndata${num}
+		where i_time &gt;= #{currentStart} and i_time &lt;= #{currentEnd} order by i_time ${sort}
+		limit 1
+	</select>
+	
+	<select id="findOneYesterdayByNum" resultMap="BaseResultMap">
+  	select
+  		<include refid="Base_Column_List"/>
+ 	FROM ndata${num} WHERE date_format(I_time , '%Y%m%d%H') = 
+ 		( SELECT date_format( date_add(I_time , INTERVAL - 1 DAY) , '%Y%m%d%H') FROM ndata${num}
+ 		 ORDER BY I_time DESC LIMIT 1) LIMIT 1
+  </select>
+  
+  	<select id="findOneByNumAndOffset" resultMap="BaseResultMap">
+	  	select
+	  		<include refid="Base_Column_List"/>
+	 	from
+	 		ndata${num}
+		order by I_time desc limit ${startIndex},1
+  	</select>
+	<!--查找时间间隔-->
+	<select id="findConnectIntervalTime" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from
+		ndata${num}
+		where I_time &lt; #{currentStart} ORDER BY I_time desc limit 1;
+	</select>
+	<!--查找月累计流量-->
+	<select id="findMonthTotalflowData" resultType="java.util.LinkedHashMap">
+		select I_time,IFNULL(lastMonthTotalflow,0),IFNULL(currentMonthTotalflow,lastMonthTotalflow),currentMonthTotalflow-lastMonthTotalflow increaseMonthTotalflow FROM
+		( SELECT  I_time ,
+		(SELECT totalflow FROM ndata${num} WHERE EXTRACT(YEAR FROM I_time)=#{year} AND EXTRACT(MONTH FROM I_time) = #{month } ORDER BY I_time DESC LIMIT 1) currentMonthTotalflow,
+		(SELECT totalflow FROM ndata${num} WHERE EXTRACT(YEAR FROM I_time) = #{year}  AND EXTRACT(MONTH FROM I_time) = #{lastmonth} ORDER BY I_time DESC LIMIT 1) lastMonthTotalflow
+		FROM ndata${num} ORDER BY I_time DESC LIMIT 1) t
+	</select>
+</mapper>

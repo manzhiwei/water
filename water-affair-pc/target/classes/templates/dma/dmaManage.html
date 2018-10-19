@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>威尔泰智慧水务</title>
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/plugins/jsTree/style.min.css"/>
+    <link href="css/jquery.dataTables.css" rel="stylesheet"/>
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet"/>
+    <link href="css/plugins/iCheck/blue.css" rel="stylesheet"/>
+
+
+    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/common4multiselect.css" rel="stylesheet"/>
+
+</head>
+
+<body class="">
+<div id="wrapper">
+    <!--菜单模块-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse"  th:replace="menu :: side" />
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <!--header模块-->
+        <div class="row border-bottom" th:replace="menu :: top" />
+
+        <!--内容模块-->
+        <div class="row content-main">
+            <div class="slimScroll-default">
+                <!--这里是不同页面变更的部分-->
+                <div class="wrapper wrapper-content animated height-full">
+                    <div class="row height-full">
+
+                        <div class="col-lg-4 height-full">
+
+                            <div class="ibox float-e-margins height-full">
+                                <div class="ibox-title" style="height: 6%;">
+                                    <h5>DMA分区管理</h5>
+                                    <div class="ibox-tools">
+                                        <button class="btn btn-success btn-xs" data-toggle="modal"
+                                                data-target=".add-dma-area">添加DMA区域
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="ibox-content" style=" height: calc(100% - 6%);">
+                                    <div class="slimScroll-default">
+                                        <div class="jsTree dmaListTree"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-8 height-full">
+
+                            <div class="ibox" style="height: 50%;">
+                                <div class="ibox-title">
+                                    <h5>入水表配置</h5>
+                                </div>
+                                <div class="ibox-content" style="height: 90%;">
+
+                                    <div class="row " style="height: 100%;">
+                                        <div class="col-xs-5" style="height: 100%;">
+                                            <select name="from" id="from" class="form-control" size="13"
+                                                    multiple="multiple" style="height: 100%;"></select>
+                                        </div>
+
+                                        <div class="col-xs-2 meterselectorbutton">
+                                            <button type="button" id="removeOne4InMeter"
+                                                    class="btn btn-default btn-block"><i
+                                                    class="glyphicon glyphicon-chevron-right"></i></button>
+                                            <button type="button" id="addOne4InMeter" class="btn btn-default btn-block">
+                                                <i class="glyphicon glyphicon-chevron-left"></i></button>
+                                        </div>
+
+                                        <div class="col-xs-5" style="height: 100%;">
+                                            <select name="to" id="to" class="form-control" size="13"
+                                                    multiple="multiple" style="height: 100%;"></select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="ibox" style="height: 50%;">
+                                <div class="ibox-title">
+                                    <h5>出水表配置</h5>
+                                </div>
+                                <div class="ibox-content" style="height: 90%;">
+
+                                    <div class="row" style="height: 100%;">
+                                        <div class="col-xs-5" style="height: 100%;">
+                                            <select name="from2" id="from2" class="form-control" size="13"
+                                                    multiple="multiple" style="height: 100%;">
+
+                                            </select>
+                                        </div>
+
+                                        <div class="col-xs-2 meterselectorbutton">
+                                            <button type="button" id="removeOne4OutMeter" class="btn btn-default btn-block"><i
+                                                    class="glyphicon glyphicon-chevron-right"></i></button>
+                                            <button type="button" id="addOne4OutMeter" class="btn btn-default btn-block"><i
+                                                    class="glyphicon glyphicon-chevron-left"></i></button>
+                                        </div>
+
+                                        <div class="col-xs-5" style="height: 100%;">
+                                            <select name="to2" id="to2" class="form-control" size="13"
+                                                    multiple="multiple" style="height: 100%;"></select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--footer模块-->
+        <div class="footer" th:replace="menu :: bottom" />
+    </div>
+</div>
+
+<div class="modal inmodal add-dma-area" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="cmxform" method="post" action="/addDmaArea" enctype="multipart/form-data">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h5 class="modal-title">添加DMA分区</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="excel-list excel-modal">
+                        <div class="excel-item">
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <div class="form-label clearfix">
+                                        <label class="title">DMA分区名称 <span class="require-star">*</span></label>
+                                        <div class="validate-tip"></div>
+                                    </div>
+                                    <div class="form-area">
+                                        <input id="id" name="id" type="hidden" class="form-control"
+                                               required="required"/>
+                                        <input id="num" name="num" type="hidden" class="form-control"
+                                               required="required"/>
+                                        <input id="dmaName" maxlength="15" name="dmaName" type="text"
+                                               class="form-control" required="required"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-success">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 全局 js -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+
+<!-- 插件 js -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+<script src="js/plugins/layer/laydate/laydate.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script src="js/plugins/jsTree/jstree.min.js"></script>
+<!-- Jquery Validate -->
+<script src="js/plugins/validate/jquery.validate.min.js"></script>
+<script src="js/plugins/validate/messages_zh.min.js"></script>
+<script src="js/validate-setDefault.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+<!-- 自定义 js -->
+<script src="js/common.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+<script type="text/javascript" src="js/multiselect.min.js"></script>
+
+<script type="text/javascript" src="js/dma/dma.js"></script>
+<link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"/>
+<script src="js/plugins/toastr/toastr.min.js"></script>
+</body>
+
+</html>

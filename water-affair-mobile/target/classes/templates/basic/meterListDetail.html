@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+
+    <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+
+    <title>威尔泰智慧水务</title>
+    <link href="favicon.ico" rel="icon" type="image/x-icon"></link>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"></link>
+    
+    <link href="css/jquery.dataTables.css" rel="stylesheet"/>
+    <link href="css/bootstrapValidator.css" rel="stylesheet"></link>
+
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet"></link>
+
+    <link href="css/animate.css" rel="stylesheet"></link>
+    <link href="css/style.css" rel="stylesheet"></link>
+    <link href="css/common.css" rel="stylesheet"></link>
+
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <script src="http://cache.amap.com/lbs/static/es5.min.js"></script>
+    <script src="http://webapi.amap.com/maps?v=1.3&amp;key=adaee8723d6ba8783b8b1d4d6f6d1397" ></script>
+
+</head>
+
+<body class="">
+    <div id="amap"></div>
+    <div id="wrapper">
+        <!--菜单模块-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                            </span>
+                            <span class="clear user">
+                                <span class="block m-t-xs"> <strong class="font-bold" th:text="${session.userName}"></strong></span>
+                                <span class="text-muted text-xs block" th:text="${session.company}"></span>
+                            </span>
+                        </div>
+                        <div class="logo-element">威尔泰</div>
+                    </li>
+                    <li>
+                        <a href="/index4raw"><i class="fa fa-home"></i> <span class="nav-label">仪表板</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="javascript:;"><i class="fa fa-tint"></i>
+                            <span class="nav-label">基础供水管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="active"><a href="/meterList">仪表基础信息</a></li>
+
+                            <li><a href="/meterDevicesMonitoring">仪表设备监控</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">水务统计分析</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/realtimeStatistics">实时数据分析</a></li><li><a href="/oneMeterStatistic">单点数据分析</a></li>
+                            <li><a href="/dataStatisticsByHour">时用水统计</a></li>
+                            <li><a href="/trendChart">流量、压力趋势图</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="fa fa-sitemap"></i> <span class="nav-label">DMA分区管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/dmaManage">DMA基础管理</a></li>
+                            <li><a href="/dmaMapMonitor">DMA区域监控</a></li>
+                            <li><a href="/dmaMicroFlow">DMA小流量监控</a></li>
+                        </ul>
+                    </li>
+                    <li>                         <a href="/alarm"><i class="fa fa-warning "></i>                             <span class="nav-label">告警管理</span><span class="fa arrow"></span>                                                      </a>                     </li>  <li class="active1">                         <a href="javascript:">                             <i class="fa fa-gears"></i> <span class="nav-label">报表统计</span>                             <span class="fa arrow"></span>                         </a>                         <ul class="nav nav-second-level collapse">                             <li ><a href="/dayReport">日报表</a></li>                             <li><a href="/monthReport">月报表</a></li>                             <li><a href="/seasonReport">季报表</a></li>                             <li><a href="/yearReport">年报表</a></li>                         </ul>                     </li>
+                    <li>
+                        <a href="javascript:;"><i class="fa fa-gears"></i> <span class="nav-label">系统管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+	                        <li th:if="${session.userName eq 'admin'}"><a href="/clientManage">公司水表管理</a></li>
+	                        <li th:if="${session.userName eq 'admin'}"><a href="/userManage">公司用户管理</a></li>
+	                        <li th:if="${session.userName eq 'admin'}"><a href="/userMeterManage">用户水表管理</a></li>
+	                        <li><a href="/logManage">日志管理</a></li>
+	                        <li th:if="${session.userName eq 'admin'}"><a href="/replaceMeterRecord">仪表更换记录</a></li>
+	                    </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+
+            <!--header模块-->
+            <div class="row border-bottom" th:replace="menu :: top" />
+
+            <!--内容模块-->
+            <div class="row content-main" style="padding-bottom: 40px;">
+                <div class="slimScroll-default">
+                    <!--这里是不同页面变更的部分-->
+                    <div class="wrapper wrapper-content animated">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5 th:text="${'编号：'+data.machineInfo2.num}"></h5>
+                                        <div class="ibox-tools">
+                                            <div class="checkboxs-inline checkboxs-sm">
+                                                <div class="i-checks">
+                                                    <label class="i-checks-label">
+                                                        <input id="changeGPS" class="changeGPS" name="changeGPS" type="checkbox" /><i></i>
+                                                        <span>GPS修正</span>
+                                                    </label>
+
+                                                </div>
+                                                <div class="i-checks">
+                                                    <label class="i-checks-label">
+                                                        <input id="changeVip" name="changeVip" type="checkbox" th:checked="${data.machineInfo2.isVipAccount}"/><i></i>
+                                                        <span>VIP</span>
+                                                    </label>
+                                                </div>
+                                                <button class="btn btn-success btn-xs" data-toggle="modal" data-target=".change-meter-modal">修改</button>
+                                                <button class="btn btn-success btn-xs" data-toggle="modal" onclick="javascrtpt:window.location.href='/meterList'">返回</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <table class="table table-underLine">
+                                                    <tr>
+                                                        <td class="text-left">仪表类型</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.metertype}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">位号</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.positionNo}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">用户名称</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.subUserName}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">口径</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.meterSizeStr}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">电源类型</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.powerType}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">输出信号类型</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.outputSignalType}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">联系人</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.linkPeople}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">联系地址</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.linkAddress}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">测量板编号</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.machineid}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">通讯板编号</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.gprsid}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">仪表编号</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.instrNo}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">安装图</td>
+                                                        <td class="text-right">
+                                                            <div th:each="files : ${data.resourceImg}">
+                                                            <a th:if="${files.fileType eq '1'}"
+                                                            	th:href="@{'/download/'+'/'+${files.id}}" class="option-icon download-icon" target="_blank">
+                                                                <i class="fa fa-download"></i>
+                                                                <span>下载</span>
+                                                            </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <table class="table table-underLine">
+                                                    <tr>
+                                                        <td class="text-left">仪表型号</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.metertype}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">仪表制造商</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.meterManufacturer}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">CCID</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.ccid}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">安装经纬度</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.longitude}" id="longitude"></span>&nbsp;&nbsp;&nbsp;<span id="latitude" th:text="${data.machineInfo2.latitude}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">安装地点</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.address}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">井号</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.wellNumber}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">联系方式</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.linkWay}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">转换器编号</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.convertNo}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">位号</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.positionNo}"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left">电缆走向图</td>
+                                                        <td class="text-right">
+                                                            <div th:each="files : ${data.resourceImg}">
+                                                            <a th:if="${files.fileType eq '2'}"
+                                                            	th:href="@{'/download/'+'/'+${files.id}}"  class="option-icon download-icon" target="_blank">
+                                                                <i class="fa fa-download"></i>
+                                                                <span>下载</span>
+                                                            </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div id="container" style="width:100%;height:300px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="tabs-container">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a data-toggle="tab" href="#tab-1">档案记录</a></li>
+                                        <li class="tab-top-btn">
+                                            <button id='addArchi' name='addArchi' class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target=".add-check-record">添加记录</button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div id="tab-1" class="tab-pane active">
+                                            <div class="panel-body">
+                                                <div class="table-responsive">
+                                                    <table id="meterListTable" class="table table-striped dataTables-meter">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>序号</th>
+                                                                <th>检修人</th>
+                                                                <th>检修时间</th>
+                                                                <th>附件</th>
+                                                                <th>类型</th>
+                                                                <th>操作</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>电磁流量计</td>
+                                                                <td>709992228887</td>
+                                                                <td>
+                                                                    <a href="./uploadfiles/ExampleFile.pdf" download="w3logo" class="under-link" target="_blank">example.pdf</a>
+                                                                </td>
+                                                                <td>检查</td>
+                                                                <td>
+                                                                    <a href="javascript:;" class="under-link">编辑</a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--footer模块-->
+            <div class="footer" th:replace="menu :: bottom" />
+        </div>
+    </div>
+
+    <!--添加检定记录-->
+    <div class="modal inmodal add-check-record" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="cmxform" method="post" action="/saveArchivesRecord" enctype="multipart/form-data">
+                <div class="modal-content animated bounceInRight">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h5 class="modal-title">添加仪表记录</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="excel-list excel-modal">
+                            <div class="excel-item">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <div class="form-label clearfix">
+                                            <label class="title">检定人 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                        	<input id="id" name="id" type="hidden" class="form-control" required="required" />
+                                        	<input id="num" name="num" type="hidden" th:value="${data.machineInfo2.num}" class="form-control" required="required" />
+                                            <input id="checkPeople" maxlength="15" name="checkPeople" type="text" class="form-control" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="form-label clearfix">
+                                            <label class="title">检定时间 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <input id="checkTime" name="checkTime" class="form-control layer-date laydate-icon" placeholder="" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="excel-item">
+                                <div class="row">
+
+                                    <div class="form-group col-md-6">
+                                        <div class="form-label clearfix">
+                                            <label class="title">操作类型 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <select id="checkTypeValue" name="checkTypeValue" class="form-control chosen-select-normal" tabindex="2" >
+                                            <option value="">请选择</option>
+                                            <option value="3">检查</option>
+                                            <option value="4">检定</option>
+                                            <option value="5">更换电池</option>
+                                            <option value="6">更换仪表</option>
+                                        </select>
+                                    </div>
+
+
+                                    <div class="form-group col-md-6">
+                                        <div class="form-label clearfix">
+                                            <label class="title">添加附件 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area clearfix">
+                                            <div class="file-pretty">
+                                                <input name="checkImg" type="file" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-success">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--修改-->
+    <div class="modal inmodal change-meter-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <form class="cmxform" id="commentForm" method="post" action="/updateMeterInfo" enctype="multipart/form-data">
+                <div class="modal-content animated bounceInRight">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h5 class="modal-title">修改仪表信息</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="excel-list excel-modal">
+                            <div class="excel-item">
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">仪表编号 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <input name="num" type="text" readonly="readonly" class="form-control" th:value="${data.machineInfo2.num}" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">仪表类型 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <select id="meterTypeId" name="meterTypeId" class="form-control chosen-select-normal" tabindex="2" >
+                                                <option value="">请选择</option>
+                                                <option value="1">电磁流量计</option>
+                                                <option value="2">电磁水表</option>
+                                            </select>
+                                            <input id="metertype" name="metertype" type="hidden" class="form-control" th:value="${data.machineInfo2.metertype}" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">位号 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <input name="positionNo" type="text" class="form-control" th:value="${data.machineInfo2.positionNo}" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">用户名称 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <input name="subUserName" type="text" class="form-control"  required="required" th:value="${data.machineInfo2.subUserName}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="excel-item">
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">安装地点 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <input name="address" type="text" class="form-control" th:value="${data.machineInfo2.address}" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">CCID <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <input name="ccid" type="text" class="form-control"  required="required" th:value="${data.machineInfo2.ccid}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">口径 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area clearfix">
+                                            <input name="meterSize" type="text" class="form-control" th:value="${data.machineInfo2.meterSize}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">电源类型 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area clearfix">
+                                            <select id="powerTypeId" name="powerTypeId" class="form-control chosen-select-normal" tabindex="2" >
+                                                <option value="">请选择</option>
+                                                <option value="1">24VDC</option>
+                                                <option value="2">220VAC</option>
+                                                <option value="3">电池供电</option>
+                                                <option value="4">太阳能</option>
+                                                <option value="5">其他</option>
+                                            </select>
+                                            <input id="powerType" name="powerType" type="hidden" class="form-control" th:value="${data.machineInfo2.powerType}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">联系人 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area clearfix">
+                                            <input name="linkPeople" type="text" class="form-control" th:value="${data.machineInfo2.linkPeople}" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">联系方式 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area clearfix">
+                                            <input name="linkWay" type="text" class="form-control" th:value="${data.machineInfo2.linkWay}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="form-label clearfix">
+                                            <label class="title">联系地址 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area clearfix">
+                                            <input name="linkAddress" type="text" class="form-control" th:value="${data.machineInfo2.linkAddress}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="excel-item">
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">输出信号类型，复选 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area clearfix">
+                                            <select id="outputSignalTypeId" name="outputSignalTypeId" class="form-control chosen-select-normal" tabindex="2" >
+                                                <option value="">请选择</option>
+                                                <option value="1">Modbus</option>
+                                                <option value="2">GPRS</option>
+                                                <option value="3">4~20mA</option>
+                                                <option value="4">脉冲</option>
+                                            </select>
+                                            <input id="outputSignalType" name="outputSignalType" type="hidden" class="form-control" th:value="${data.machineInfo2.outputSignalType}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">仪表型号 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <input name="meterNum" type="text" class="form-control" th:value="${data.machineInfo2.meterNum}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">仪表制造商 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area clearfix">
+                                            <input name="meterManufacturer" type="text" class="form-control" th:value="${data.machineInfo2.meterManufacturer}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">井号 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area clearfix">
+                                            <input name="wellNumber" type="text" class="form-control" th:value="${data.machineInfo2.wellNumber}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="excel-item">
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">仪表安装位置的经度 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area clearfix">
+                                            <input name="longitude" type="text" class="form-control" th:value="${data.machineInfo2.longitude}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">仪表安装位置的纬度 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area clearfix">
+                                            <input name="latitude" type="text" class="form-control" th:value="${data.machineInfo2.latitude}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">安装图 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area clearfix">
+                                            <div class="file-pretty">
+                                                <input name="installImg" type="file" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <div class="form-label clearfix">
+                                            <label class="title">电缆走向图 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area clearfix">
+                                            <div class="file-pretty">
+                                                <input name="runImg" type="file" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="excel-item">
+                                <div class="row">
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                        <button id="save" type="button" onclick="submitMeter()" class="btn btn-success">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 全局 js -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="js/plugins/dataTables/datatables.min.js"></script>
+    <script src="js/bootstrapValidator.js"></script>
+
+    <!-- 插件 js -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+    <script src="js/plugins/layer/laydate/laydate.js"></script>
+    
+    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+
+
+    <!-- Jquery Validate -->
+    <script src="js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="js/plugins/validate/messages_zh.min.js"></script>
+    <script src="js/validate-setDefault.js"></script>
+    <script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+    <!-- Jvectormap -->
+    <script src="js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- 自定义 js -->
+    <script src="js/common.js"></script>
+    <script src="js/demo/meterListDetail.js" type="text/javascript"></script>
+
+
+
+    <script th:inline="javascript">
+        $(document).ready(function(){
+            var lo=[[${data.machineInfo2.longitude}]];
+            var la=[[${data.machineInfo2.latitude}]];
+            var current_mid=[[${data.machineInfo2.num}]];
+            //初始化地图对象，加载地图
+            var map = new AMap.Map("container", {
+                resizeEnable: true,
+                center:[lo,la],
+                zoom:13
+            });
+
+            //添加点标记，并使用自己的icon
+            var marker=new AMap.Marker({
+                map: map,
+		        position: [lo, la],
+                draggable: false,
+                cursor: 'move'
+            });
+
+            //marker.setMap(map);
+            //标注点移动事件
+           AMap.event.addListener(marker,'dragend',function(e){
+              var obj = document.getElementById("changeGPS");
+　　          var lat=e.lnglat.lat;
+　　          var lng=e.lnglat.lng;
+              if(obj.checked){
+                console.log(obj.checked+"-----------"+lat+"--------------"+lng);
+                //将最新的经纬度更新后台
+                var lalo=la+"_"+lng+"_"+current_mid;
+                $.ajax({
+                    url: "/updateMeterGPSInfo?lalo="+lalo,
+                    dataType: "json",
+                    async: false
+                }).done(function(res, textStatus){
+                    console.log("GPS更新成功！");
+                    var latitude = document.getElementById("latitude");
+                    var longitude = document.getElementById("longitude");
+                    latitude.innerHTML = lat;
+                    longitude.innerHTML = lng;
+                }).fail(function(){
+                    console.log("GPS更新失败！");
+                });
+
+              }
+　　
+　　      });
+
+          $('.changeGPS').click(function(){
+            var obj = document.getElementById("changeGPS");
+            var value = obj.checked;
+            if(value){
+                //允许marker被移动
+                marker.setDraggable(true);
+            }else{
+                //不允许marker被移动
+                marker.setDraggable(false);
+            }
+          });
+
+
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

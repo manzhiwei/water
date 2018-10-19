@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>智慧水务微信监控平台</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>
+	<meta name="HandheldFriendly" content="true"/>
+	<!-- windows phone 点击无高光 -->
+	<meta name="msapplication-tap-highlight" content="no"/>
+	<link rel="stylesheet" type="text/css" href="css/m-base.css" />
+	<script type="text/javascript" src="js/m-jquery.min.js"></script>
+</head>
+<body>
+	<div class="main">
+		<!-- 历史数据及曲线 -->
+		<div class="header header-history">
+			<a class="back_box" th:href="${backUrl}"><div class="back_btn"></div></a>
+			<span class="header-t" th:text="${machine.subUserName}"></span>
+		</div>
+		<div class="tabel_history content-nav" id="tabel_history_details">
+			<ul class="sp">
+				<li>
+					<ul>
+						<ol>站点名称</ol>
+						<ol th:text="${machine.subUserName}"></ol>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<ol>序列号</ol>
+						<ol th:text="${machine.machineid}"></ol>
+					</ul>
+				</li>
+				
+				<li>
+					<ul>
+						<ol>设备卡号</ol>
+						<ol th:text="${machine.ccid}"></ol>
+					</ul>
+				</li>
+				
+				<li>
+					<ul>
+						<ol>仪表编号</ol>
+						<ol th:text="${machine.instrNo}"></ol>
+					</ul>
+				</li>
+				
+				<li>
+					<ul>
+						<li>站点编号</li>
+						<li th:text="${machine.num}"></li>
+						<li>设备分组</li>
+						<li th:text="${machine.package_}"></li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>超时设定</li>
+						<li th:text="${machine.lastConnecting}+秒"></li>
+						<li>安装人员</li>
+						<li>暂无</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>安装日期</li>
+						<li th:text="${installDate}"></li>
+						<li>设备型号</li>
+						<li class="sp-model" th:text="${machine.metertype}"></li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>设备状态</li>
+						<li>暂无</li>
+						<li>上传周期</li>
+						<li th:text="${machine.diffHour}+小时"></li>
+					</ul>
+				</li>
+				 <li>
+					<ul>
+						<ol>安装地址</ol>
+						<ol th:text="${machine.address}"></ol>
+					</ul>
+				</li> 
+				
+			</ul>
+		</div>
+	</div>
+	<!-- 
+	<script type="text/javascript">
+		$(function(){
+			//模拟数据  可通过ajax 一次加载
+			// $.getJSON("定义的接口"，function(msg){
+			// 		msg  返回的数据
+			// })
+			//站点名称 name 安装地址 adress 设备型号 model 序列号 snumber 站点编号 number  定义的几个参数 没有的话  就可以为空就好了
+			var data = {
+				"1": {
+					"name":"莆田市第二水厂",
+					"adress": "静安区华山路1083号",
+					"snumber": "4659",
+					"number": "4659",
+					"model": "AE85"
+				},
+				"2": {
+					"name":"莆田市第二水厂",
+					"adress": "静安区华山路1083号",
+					"snumber": "4659",
+					"number": "4659",
+					"model": "AE85"
+				},
+				"3": {
+					"name":"莆田市第二水厂",
+					"adress": "静安区华山路1083号",
+					"snumber": "4659",
+					"number": "4659",
+					"model": "AE85"
+				},
+				"4": {
+					"name":"莆田市第二水厂",
+					"adress": "静安区华山路1083号",
+					"snumber": "4659",
+					"number": "4659",
+					"model": "AE85"
+				}
+			};
+			//判断要加载数据的 id值
+			var idType = location.search.split("=")[1] || "";
+			function spTemplate(data,callback){
+				var html = '<li><ul><ol>站点名称</ol><ol class="sp-adress">'+data['name']+'</ol></ul></li>';
+				html += '<li><ul><li>序列号</li><li class="sp-snumber">'+data['snumber']+'</li><li>站点编号</li><li class="sp-number">'+data['number']+'</li></ul></li>';
+				//没有定义数据的直接为空
+				html += '<li><ul><li>设备卡号</li><li></li><li>设备分组</li><li></li></ul></li>';
+				html += '<li><ul><li>超时设定</li><li></li><li>安装人员</li><li></li></ul></li>';
+				html += '<li><ul><li>安装日期</li><li></li><li>设备型号</li><li>'+data['model']+'</li></ul></li>';
+				html += '<li><ul><li>设备状态</li><li></li><li>上传周期</li><li></li></ul></li>';
+				html = '<li><ul><ol>安装地址</ol><ol class="sp-adress">'+data['adress']+'</ol></ul></li>';
+
+			}
+			// spTemplate(data['1']);
+			// console.log(location.search);
+			spTemplate(data[idType],function(msg){
+				//获取模板成功之后的dosomething
+				// console.log(msg);
+				$('.sp').html('').append(msg);
+			})
+		})
+	</script>
+	 -->
+</body>
+</html>

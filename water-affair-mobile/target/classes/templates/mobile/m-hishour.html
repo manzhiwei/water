@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>智慧水务微信监控平台</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>
+	<meta name="HandheldFriendly" content="true"/>
+	<!-- windows phone 点击无高光 -->
+	<meta name="msapplication-tap-highlight" content="no"/>
+	<link rel="stylesheet" type="text/css" href="css/m-base.css" />
+	<script type="text/javascript" src="js/m-jquery.min.js"></script>
+</head>
+<body>
+	<div class="main">
+		<div class="header header-history">
+			<a class="back_box" th:href="${backUrl}"><div class="back_btn"></div></a>
+			<span class="header-t" th:text="${meterName}"></span>
+		</div>
+		<div class="show-type show-type-history show-mintus-data" style="bottom: 0;overflow-y: auto;">
+			<div class="history-list history-data">
+				<span class="history-list-t">时间</span>
+				<span class="history-list-t history-list-value" id="typeName" th:text="${type}"></span>
+			</div>
+			<div class="history-list history-data" th:each="obj,iterStat:${result}">
+				<span class="history-list-t" th:text="${#dates.format(obj[0],'yyyy-MM-dd HH:mm:ss')}"></span>
+				<span class="history-list-t history-list-value" th:text="${obj[1]}"></span>
+			</div>
+		</div>
+		<div class="content-lists content-lists-history">	
+			<ul class="lists-ul lists-history-data">
+				<li class="content-list">
+					<span class="content-list-t" th:text="${date}"></span>
+					<span class="content-list-t" th:text="${typeName}"></span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+	</script>
+</body>
+</html>

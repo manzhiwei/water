@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>智慧水务微信监控平台</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>
+	<meta name="HandheldFriendly" content="true"/>
+	<!-- windows phone 点击无高光 -->
+	<meta name="msapplication-tap-highlight" content="no"/>
+	<link rel="stylesheet" type="text/css" href="css/m-base.css" />
+	<script type="text/javascript" src="js/m-jquery.min.js"></script>
+</head>
+<body>
+	<div class="main">
+		<!-- 历史数据及曲线 -->
+		<div class="header header-history">
+			<a class="back_box" th:href="${backUrl}"><div class="back_btn"></div></a>
+			<span class="header-t" th:text="${meterName}"></span>
+			<a class="header-para" >详情</a>
+		</div>
+		<div class="content-nav content-nav-history">
+
+			<span class="nav-list active" data-type="sheet">
+				<span class="nav-t nav-t-sheet">历史曲线</span>
+			</span>
+
+			<span class="nav-list" data-type="data">
+				<span class="nav-t nav-t-data">历史报表</span>
+			</span>
+
+		</div>
+
+		<div class="show-type show-type-history">
+			<div class="history-list history-sheet" >
+				<!--<span class="timer-type-t">时间类型切换</span>
+				<span class="timer-type">日报</span>-->
+			</div>
+			<div class="history-list history-data hide">
+				<div class="select-date" style="margin-top: 12px;border-bottom: 1px solid #E5E5E5;">
+					<span class="select-date-l select-pre" data-type="pre">上一天</span>
+					<span class="select-timer" id="sheet-date1" th:text="${currentDate}"></span>
+					<span class="select-date-l select-next" data-type="next">下一天</span>
+				</div>
+				<span class="history-list-t">时间</span>
+				<span class="history-list-t history-list-value" id="typeName" th:text="${typeName}" th:value="${typeName}"></span>
+			</div>
+		</div>
+		
+		
+		<div class="content-lists-history">	
+			<div class="content-lists">
+				<ul class="lists-history-data history-left-p">
+					<!--<li class="content-list">
+						<span class="content-list-t">时间</span>
+						<span class="content-list-t">值</span>
+					</li>-->
+				</ul>
+				<div class="content-sheet-box lists-history-sheet">
+					<div class="content-sheet">
+						<div id="main" style="width: 100%;height:300px;"></div>
+					</div>
+	
+					<div class="select-date">
+						<span class="select-date-l select-pre" data-type="pre">上一天</span>
+						<span class="select-timer" id="sheet-date" th:text="${currentDate}"></span>
+						<span class="select-date-l select-next" data-type="next">下一天</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="fixed-nav nav-history">
+		<div class="fixed-nav-box">
+			<!--<span class="fixed-nav-list active" data-type="current">
+				实时
+				<span class="nav-list-icon icon-current"></span>
+			</span>-->
+			<span class="fixed-nav-list" data-type="para" data-show="false">
+				<span class="nav-list-icon icon-para"></span>
+				<div class="para-lists">
+					<span th:class="(${type} eq 'flow')?'para-list active':'para-list'" data-type="flow">瞬时流量(m³/h)</span>
+					<span th:class="(${type} eq 'ntotalflow')?'para-list active':'para-list'" data-type="ntotalflow">净累计</span>
+					<span th:class="(${type} eq 'totalflow')?'para-list active':'para-list'" data-type="totalflow">正向累计流量(m³)</span>
+					<span th:class="(${type} eq 'ftotalflow')?'para-list active':'para-list'" data-type="ftotalflow">反向累计用水量(m³)</span>
+					<span th:class="(${type} eq 'press')?'para-list active':'para-list'" data-type="press">瞬时压力(kPa)</span>
+					<span th:class="(${type} eq 'signal_strength')?'para-list active':'para-list'" data-type="signal_strength">信号强度</span>
+				</div>
+				<input id="num" type="hidden" name="num" th:value="${num}"/>
+			</span>
+		</div>
+	</div>
+	<!--<div id="mcover" onclick="document.getElementById('mcover').style.display='';" style="display: block;">
+        <img src="images/guide.png">
+    </div>-->
+	<script type="text/javascript" src="js/mobile/m-echarts.js"></script>
+	<script type="text/javascript" src="js/mobile/m-tap.js"></script>
+	<script type="text/javascript" src="js/mobile/m-history1.js"></script>
+	<!-- <script type="text/javascript">
+		$(function(){
+			var idType = location.search.split("=")[1] || "";
+			$(".header-para").on("tap",function(){
+				window.location.href = "./history_details.html?id="+idType;
+			});
+			$(".nav-list").on("tap",function(){
+				var _type = $(this).attr("data-type");
+				if($(this).hasClass("active")) return false;
+				$(this).addClass("active").siblings().removeClass("active");
+				$(".history-"+_type).fadeIn().siblings().hide();
+				$(".lists-history-"+_type).fadeIn().siblings().hide();
+			});
+			$(".timer-type").on("tap",function(){
+				$(this).hasClass("active") ? $(this).removeClass("active") : $(this).addClass("active");
+			});
+			/**
+		     * 监测概况折线图
+		     */
+		    var xAxisdata = [];
+		    //判断时间是否是今天
+		    function isTody(){
+		    	var _currtime = $("#sheet-date").html().split("-");
+		    	var _tody = [];
+		    	_tody.push((new Date).getFullYear()); 
+		    	_tody.push((new Date).getMonth()+1); 
+		    	_tody.push((new Date).getDate());
+		    	for(var i = 0; i<_tody.length;i++){
+		    		if (_tody[i] != parseInt(_currtime[i])) {
+		    			return false;
+		    		}
+		    	}
+		    	return true;
+		    }
+		    // 时间设置 每隔五分钟
+		    var nullarr = [],daraarr = [];
+		    //nullarr为横坐标 这里全部设置为空
+		    function dateT(count,date,callback){
+		    	var hour = 0, minute = 0;
+		    	for(var i = 0; i < count; i++){
+		    		//从 00：00开始的数据
+		    		if (minute == 60) {
+		    			hour++;
+		    			minute = 0;
+		    		}
+		    		// (minute == 60) ? (hour++ && minute = 0) : '';
+		    		xAxisdata.push(date+" "+(hour < 10 ? ("0"+hour) : hour)+ ":" + (minute < 10 ? ("0"+minute) : minute));
+		    		//伪造的时间表 过多设为空  实际得通过ajax调取
+		    		nullarr.push('');
+		    		//伪造的数据  实际得通过ajax调取
+		    		daraarr.push(minute);
+		    		minute += 5;
+		    	}
+		    	// console.log(daraarr);
+		    	callback&&callback(xAxisdata);
+		    	// console.log(xAxisdata);
+		    }
+
+		     //ajax 获取数据的通道
+		    function ajaxDate(timer,type,callback){
+		    	var mydata = {
+		    		timer: timer || '',
+		    		type: type || ''
+		    	}
+		    	$.ajax({
+		            type:'POST',
+		            url:"数据接口",
+		            data:mydata,
+		            dataType:"json",
+		            success: function(msg){
+		                callback && callback(msg);
+		            }
+		        })
+		    }
+
+		    //html template
+		    function htmlTemplate(arr,callback){
+		    	var html = '';
+		    	$(".lists-history-data").html("")
+		    	for(var i = 0; i<arr.length;i++){
+		    		html = '<li class="content-list"><span class="content-list-t">'+arr[i]+'</span><span class="content-list-t">2.4</span></li>';
+		    		//历史报表数据 默认为当天的流量 type =  flux  这里写死的2.4  可以通过$.ajax()请求成功之后再进行渲染
+		    		$(".lists-history-data").append(html);
+		    	}
+		    	callback&&callback();
+		    }
+		    //判断 时间 是否是 今天然后加载数据
+		    function getAxisdata(callback){
+		    	if (isTody()) {
+		    		var _currt = new Date();
+		    		var _year = _currt.getFullYear(),_mon = (_currt.getMonth()<10 ? "0"+(_currt.getMonth()+1) : _currt.getMonth()),_day = (_currt.getDate()<10 ? "0"+(_currt.getDate()) : _currt.getDate()),_hour = _currt.getHours(),_min = _currt.getMinutes();
+		    		console.log(_hour)
+		    		console.log(_year+_mon+_day+_hour+_min);
+		    		//计算时间 5分钟一次
+		    		//总的分钟数次数
+		    		var totalMinT = parseInt((_hour*60 + _min)/5);
+		    		dateT(totalMinT,_mon+"-"+_day,function(data,callback){
+		    			htmlTemplate(data,callback);
+		    		});
+		    		// console.log(totalMin,_mon+"-"+_day);
+		    	}else {
+		    		var _currtime = $("#sheet-date").html().split("-");
+		    		var totalMinT = parseInt(24*60/5);
+		    		dateT(totalMinT,_currtime[1]+"-"+_currtime[2],function(data,callback){
+		    			htmlTemplate(data,callback);
+		    		});
+		    	}
+		    }
+		    getAxisdata();//历史报表数据
+		    //加载页面时候 加载一次表格 这个是通过首页点击进来时候 我们这里默认选择一个参数  后面可以自己切换参数
+			function lineImg(_data,callback){
+				var data = {
+				    title: {
+				        text: '',
+				        subtext: ''
+				    },
+				    tooltip: {
+				        trigger: 'axis'
+				    },
+				    legend: {
+				        data:_data.legendata
+				    },
+				    toolbox: {
+				        show: false,
+				        feature: {
+				            dataZoom: {
+				                yAxisIndex: 'none'
+				            },
+				            dataView: {readOnly: false},
+				            magicType: {type: ['line', 'bar']},
+				            restore: {},
+				            saveAsImage: {}
+				        }
+				    },
+				    xAxis:  {
+				        type: 'category',
+				        boundaryGap: false,
+				        data: _data.xAxisdata
+				    },
+				    yAxis: {
+				        type: 'value',
+				        axisLabel: {
+				            formatter: '{value}'
+				        }
+				    },
+				    series: [
+				        {
+				            name:_data.maxname,
+				            type:'line',
+				            data:_data.maxdata,
+				            markPoint: {
+				                data: [
+				                    {type: 'max', name: '最大值'},
+				                    {type: 'min', name: '最小值'}
+				                ]
+				            },
+				            markLine: {
+				                data: [
+				                    {type: 'average', name: '平均值'}
+				                ]
+				            }
+				        }
+				    ]
+			        };
+			    callback&&callback(data);
+		    }
+		    try{
+		    	var myChart = echarts.init(document.getElementById("main"));
+				var chartData = echarts.init(main);
+				var app = {};
+				//请求的数据 _data
+				var _data = {
+			    	legendata: ['瞬时流量','***'],
+			    	xAxisdata: nullarr,
+			    	maxname: "瞬时流量",
+			    	maxdata: daraarr,//这里的数据是伪造的  这里的取数据
+			    };
+				lineImg(_data,function(option){
+					chartData.setOption(option,true);
+				});
+		    }catch(e){
+
+		    }
+		    //点击上一天 和下一天时候 刷新数据
+
+		    $(".select-date-l").on("tap",function(){
+				var _type = $(this).attr("data-type");
+				var _curTime = $("#sheet-date").html().split("-");
+				var _mon = _curTime[1],_day = _curTime[2],_year = _curTime[0];
+				if (_type == "pre") {
+					_mon = _curTime[1],_day = (parseInt(_curTime[2])-1) < 10 ? "0"+(parseInt(_curTime[2]) - 1) : (parseInt(_curTime[2]) - 1);
+					// console.log(_day);
+					if (_day == 0) {
+						_mon = (parseInt(_curTime[1]) - 1) < 10 ? "0"+(parseInt(_curTime[1]) - 1) : (parseInt(_curTime[1]) - 1);
+						if (parseInt(_mon) == 0) {
+							_year = parseInt(_curTime[0])-1;
+							_mon = 12;
+						}
+						// console.log(_mon);
+						if (/^[01|03|05|07|08|10|12]/.test(_mon)) {
+							_day = 31;
+						}else {
+							_day = 30;
+						}
+						// console.log(_day);
+					}
+					$("#sheet-date").html(_year+"-"+_mon+"-"+_day);
+				}else if (_type == "next") {
+					console.log(isTody());
+					if(isTody()) return false;
+					_mon = _curTime[1],_day = (parseInt(_curTime[2])+1) < 10 ? "0"+(parseInt(_curTime[2]) + 1) : (parseInt(_curTime[2]) + 1);
+					console.log(_day);
+					if (_day == 32) {
+						_day = "01";
+						_mon = (parseInt(_curTime[1]) + 1) < 10 ? "0"+(parseInt(_curTime[1]) + 1) : (parseInt(_curTime[1]) + 1);
+						if (parseInt(_mon) == 13) {
+							_mon = "01";
+							_year = parseInt(_curTime[0])+1;
+						}
+						console.log(_mon);
+					}
+					$("#sheet-date").html(_year+"-"+_mon+"-"+_day);
+				}
+				//重置数据
+				nullarr = [];
+				daraarr = [];
+				getAxisdata(function(){
+					console.log('www');
+				});
+				$("#main").remove();
+				$(".content-sheet").append('<div id="main" style="width: 100%;height:300px;"></div>');
+
+				var myChart = echarts.init(document.getElementById("main"));
+				var chartData = echarts.init(main);
+				var app = {};
+				//请求的数据 _data
+				var _data = {
+			    	legendata: ['瞬时流量','***'],
+			    	xAxisdata: nullarr,
+			    	maxname: "瞬时流量",
+			    	maxdata: daraarr,
+			    	minname: "***",
+			    	mindata: [1, 2, 2, 5, 3, 2, 0,1, 2, 2, 5, 3]
+			    };
+				lineImg(_data,function(option){
+					chartData.setOption(option,true);
+				});
+			})
+
+			//点击参数 重置表格
+			// var _oncep = true;
+			$(".fixed-nav-list").on("tap",function(){
+				var _type = $(this).attr("data-type");
+				if($(this).hasClass("active") && _type != "para") return false;
+				$(this).addClass("active").siblings().removeClass("active");
+				switch (_type) {
+					case "para":
+						var _show = $(this).attr("data-show");
+						_show == "false" ? $(this).attr("data-show","true").children(".para-lists").fadeIn() : $(this).attr("data-show","false").children(".para-lists").hide();
+						break;
+					case "current":
+						$(this).siblings().attr("data-show","false").children(".para-lists").hide();
+						break;
+					default:
+						// statements_def
+						break;
+				}
+			})
+
+			$(".para-list").on("tap",function(){
+				var _type = $(this).attr("data-type");
+				$(this).parents(".fixed-nav-list").attr("data-show","false");
+				$(this).parent().hide();
+
+				console.log(_type);
+				if ($(".nav-list.active").attr("data-type") == "data") {
+					return false;
+				}
+				//重置数据
+				nullarr = [];
+				daraarr = [];
+				getAxisdata(function(){
+					console.log('www');
+				});
+				$("#main").remove();
+				$(".content-sheet").append('<div id="main" style="width: 100%;height:300px;"></div>');
+
+				var myChart = echarts.init(document.getElementById("main"));
+				var chartData = echarts.init(main);
+				var app = {};
+				//请求的数据 _data
+				var _data = {
+			    	legendata: ['瞬时流量','***'],
+			    	xAxisdata: nullarr,
+			    	maxname: "瞬时流量",
+			    	maxdata: daraarr,
+			    	minname: "***",
+			    	mindata: [1, 2, 2, 5, 3, 2, 0,1, 2, 2, 5, 3]
+			    };
+				lineImg(_data,function(option){
+					chartData.setOption(option,true);
+				});
+				return false;
+			});
+		})
+	</script> -->
+</body>
+</html>

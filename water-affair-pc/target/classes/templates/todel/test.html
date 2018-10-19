@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>分页表格</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+li{float:left;list-style:none;}
+</style>
+</head>
+<body>
+
+	<h1>食品列表</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>名称</th>
+				<th>价格</th>
+				<th>是否有库存</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="prod : ${prods.entity}">
+				<td th:text="${prod.name}"></td>
+				<td th:text="${prod.price}"></td>
+				<td th:swich="${prod.inStock?'是':'否'}"></td>
+			</tr>
+			<tr>
+				<td>
+					<div>
+						<ul>
+							<li th:class="${prods.currentPage eq 0} ? 'disabled' : ''">
+								<a th:if="${not (prods.currentPage eq 0)}"
+								th:href="@{${'/test1'}(page=${prods.currentPage-1},size=${prods.currentSize})}">前一页</a>
+								<a th:if="${prods.currentPage eq 0}" href="javascript:void(0);">前一页</a>
+							</li>
+
+							<li
+								th:each="pageNo : ${#numbers.sequence(0, prods.countPage-1)}">
+								<a th:if="${prods.currentPage eq pageNo}"
+								href="javascript:void(0);"> <span th:text="${pageNo + 1}"></span>
+							</a> <a th:if="${not (prods.currentPage  eq pageNo)}"
+								th:href="@{${'/test1'}(page=${pageNo},size=${prods.currentSize})}">
+									<span th:text="${pageNo + 1}"></span>
+							</a>
+
+							</li>
+							<li
+								th:class="${prods.currentPage + 1 eq prods.countPage} ? 'disabled' : ''">
+								<a th:if="${not (prods.currentPage + 1 eq prods.countPage)}"
+								th:href="@{${'/test1'}(page=${prods.currentPage+1},size=${prods.currentSize})}">下一页</a>
+								<a th:if="${prods.currentPage + 1 eq prods.countPage}" href="javascript:void(0);">下一页</a>
+							</li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>
+

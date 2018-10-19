@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head th:replace="menu :: head"/>
+
+<body class="">
+    <div id="wrapper">
+        <!--菜单模块-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse slimScroll-default">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                            </span>
+                            <span class="clear user">
+                                <span class="block m-t-xs"> <strong class="font-bold" th:text="${session.userName}"></strong></span>
+                                <span class="text-muted text-xs block" th:text="${session.company}"></span>
+                            </span>
+                        </div>
+                        <div class="logo-element">威尔泰</div>
+                    </li>
+                    <li>
+                        <a href="/index4raw"><i class="fa fa-home"></i> <span class="nav-label">仪表板</span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="fa fa-tint"></i>
+                            <span class="nav-label">基础供水管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li ><a href="/meterList">仪表基础信息</a></li>
+
+                            <li><a href="/meterDevicesMonitoring">仪表设备监控</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">水务统计分析</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/realtimeStatistics">实时数据分析</a></li><li><a href="/oneMeterStatistic">单点数据分析</a></li>
+                            <li><a href="/dataStatisticsByHour">时用水统计</a></li>
+                            <li><a href="/trendChart">流量、压力趋势图</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="fa fa-sitemap"></i> <span class="nav-label">DMA分区管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/dmaManage">DMA基础管理</a></li>
+                            <li><a href="/dmaMapMonitor">DMA区域监控</a></li>
+                            <li><a href="/dmaMicroFlow">DMA小流量监控</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a><i class="fa fa-warning "></i> <span class="nav-label">告警管理</span><span class="fa arrow"></span>
+                    </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/alarm">告警查询</a></li>
+                            <li><a href="/alarmSingleSetting">单点告警配置</a></li>
+                            <li><a href="/alarmMultiSetting">多点告警配置</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="active1"><a href="javascript:"> <i class="fa fa-table"></i> <span
+                            class="nav-label">报表统计</span> <span class="fa arrow"></span> </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/dayReport">日报表</a></li>
+                            <li><a href="/monthReport">月报表</a></li>
+                            <li><a href="/seasonReport">季报表</a></li>
+                            <li><a href="/yearReport">年报表</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="active">
+                        <a href="javascript:;"><i class="fa fa-gears"></i> <span class="nav-label">系统管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                         <ul class="nav nav-second-level collapse">
+                              <li th:if="${session.userName eq 'admin'}"><a href="/clientManage">公司水表管理</a></li>
+                              <li th:if="${session.userName eq 'admin'}"><a href="/userManage">公司用户管理</a></li>
+                              <li th:if="${session.userName eq 'admin'}"><a href="/userMeterManage">用户水表管理</a></li>
+                              <li><a href="/logManage">日志管理</a></li>
+                              <li th:if="${session.userName eq 'admin'}" class="active"><a href="">仪表更换记录</a></li>
+                         </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+
+            <!--header模块-->
+            <div class="row border-bottom" th:replace="menu :: top" />
+
+            <!--内容模块-->
+            <div class="row content-main">
+                <div class="slimScroll-default">
+                    <!--这里是不同页面变更的部分-->
+                    <div class="wrapper wrapper-content animated ">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="ibox">
+                                    <div class="ibox-title">
+                                        <h5>仪表更换记录</h5>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="row">
+                                            <div class="col-sm-6 m-b-sm">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon new-addon">时间从：</span>
+                                                    <input id="startTime" class="form-control layer-date laydate-icon" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})" th:placeholder="${startAt}" th:value="${startAt}"/>
+                                                    <span class="input-group-addon new-addon">至</span>
+                                                    <input id="endTime" class="form-control layer-date laydate-icon" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})" th:placeholder="${endAt}" th:value="${endAt}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <select id='stations' data-placeholder="选择站点"
+                                                            class="form-control chosen-select-normal" multiple="multiple">
+                                                        <option th:each="prod : ${stations}" th:value="${prod.num}" th:selected="${prod.select}"
+                                                                th:text="${prod.name}">
+                                                        </option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="input-group">
+                                                    <button id="query1" name="query1" type="button" class="btn btn-sm btn-success">查 询</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive table-relative">
+                                            <table id="meterChangeList" class="table table-striped dataTables-meter" >
+                                                <thead>
+                                                <tr>
+                                                    <th>序号</th>
+                                                    <th>操作人</th>
+                                                    <th>仪表序号</th>
+                                                    <th>仪表名称</th>
+                                                    <th>操作时间</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--footer模块-->
+            <div class="footer" th:replace="menu :: bottom" />
+        </div>
+    </div>
+
+    <!-- 全局 js -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+    <!-- 插件 js -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+    <script src="js/plugins/layer/laydate/laydate.js"></script>
+    <script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+    <!-- Jquery Validate -->
+    <script src="js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="js/plugins/validate/messages_zh.min.js"></script>
+    <script src="js/validate-setDefault.js"></script>
+    <script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+    <!-- 自定义 js -->
+    <script src="js/common.js"></script>
+    <script src="js/system/replace_meter_record.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function(){
+
+        });
+        $(function(){
+        	$(".chosen-choices").css("max-height","250px");
+        });
+    </script>
+
+</body>
+
+</html>

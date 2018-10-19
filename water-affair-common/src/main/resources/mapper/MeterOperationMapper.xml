@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.welltech.waterAffair.repository.MeterOperationMapper">
+  <resultMap id="BaseResultMap" type="com.welltech.waterAffair.domain.entity.MeterOperation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="meter_id" jdbcType="INTEGER" property="meterId" />
+    <result column="check_people" jdbcType="VARCHAR" property="checkPeople" />
+    <result column="check_time" jdbcType="TIMESTAMP" property="checkTime" />
+    <result column="check_type" jdbcType="CHAR" property="checkType" />
+    <result column="check_description" jdbcType="VARCHAR" property="checkDescription" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, meter_id, check_people, check_time, check_type, check_description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wt_meter_operation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wt_meter_operation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.welltech.waterAffair.domain.entity.MeterOperation">
+    insert into wt_meter_operation (id, meter_id, check_people, 
+      check_time, check_type, check_description
+      )
+    values (#{id,jdbcType=INTEGER}, #{meterId,jdbcType=INTEGER}, #{checkPeople,jdbcType=VARCHAR}, 
+      #{checkTime,jdbcType=TIMESTAMP}, #{checkType,jdbcType=CHAR}, #{checkDescription,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.welltech.waterAffair.domain.entity.MeterOperation">
+  	<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+  		select last_insert_id() as id
+  	</selectKey>
+    insert into wt_meter_operation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="meterId != null">
+        meter_id,
+      </if>
+      <if test="checkPeople != null">
+        check_people,
+      </if>
+      <if test="checkTime != null">
+        check_time,
+      </if>
+      <if test="checkType != null">
+        check_type,
+      </if>
+      <if test="checkDescription != null">
+        check_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="meterId != null">
+        #{meterId,jdbcType=INTEGER},
+      </if>
+      <if test="checkPeople != null">
+        #{checkPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTime != null">
+        #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkType != null">
+        #{checkType,jdbcType=CHAR},
+      </if>
+      <if test="checkDescription != null">
+        #{checkDescription,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.welltech.waterAffair.domain.entity.MeterOperation">
+    update wt_meter_operation
+    <set>
+      <if test="meterId != null">
+        meter_id = #{meterId,jdbcType=INTEGER},
+      </if>
+      <if test="checkPeople != null">
+        check_people = #{checkPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="checkTime != null">
+        check_time = #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkType != null">
+        check_type = #{checkType,jdbcType=CHAR},
+      </if>
+      <if test="checkDescription != null">
+        check_description = #{checkDescription,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.welltech.waterAffair.domain.entity.MeterOperation">
+    update wt_meter_operation
+    set meter_id = #{meterId,jdbcType=INTEGER},
+      check_people = #{checkPeople,jdbcType=VARCHAR},
+      check_time = #{checkTime,jdbcType=TIMESTAMP},
+      check_type = #{checkType,jdbcType=CHAR},
+      check_description = #{checkDescription,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="findPageReplaceMeterRecordDTOByCriteria" resultType="ReplaceMeterRecordDTO">
+  	select
+  		mo.id id,
+  		mo.meter_id num,
+		mo.check_people checkPeople,
+		mo.check_time checkTime,
+		mo.check_type checkTypeValue,
+		mo.check_description checkType,
+		mi.shortName shortName
+  	from wt_meter_operation mo left join Machine_Info2 mi
+  	on mo.meter_id = mi.num
+  	<where>
+  		<if test="criteria.startTime != null">
+  			and mo.check_time &gt;= #{criteria.startTime}
+  		</if>
+  		<if test="criteria.endTime != null">
+  			and mo.check_time &lt;= #{criteria.endTime}
+  		</if>
+  		<if test="criteria.stations != null and criteria.stations != ''">
+  			and mo.meter_id in (${criteria.stations})
+  		</if>
+  		<if test="criteria.checkType != null and criteria.checkType != ''">
+  			and mo.check_type = #{criteria.checkType}
+  		</if>
+  	</where>
+  	order by mo.check_time desc
+  </select>
+  
+  <select id="findByMeterId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wt_meter_operation
+    where meter_id = #{num,jdbcType=INTEGER}
+  	order by check_time desc
+  </select>
+</mapper>

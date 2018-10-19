@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.welltech.waterAffair.repository.NdataSsMapper">
+  <resultMap id="BaseResultMap" type="NdataSs">
+    <result column="ntime" jdbcType="TIMESTAMP" property="time" />
+    <result column="totalflow" jdbcType="REAL" property="totalflow" />
+    <result column="ftotalflow" jdbcType="REAL" property="ftotalflow" />
+    <result column="flow" jdbcType="REAL" property="flow" />
+    <result column="I_time" jdbcType="TIMESTAMP" property="iTime" />
+    <result column="press" jdbcType="REAL" property="press" />
+    <result column="totalflowN" jdbcType="REAL" property="totalflown" />
+  </resultMap>
+  <sql id="Base_Column_List">
+  	from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) ntime, totalflow, ftotalflow, flow, I_time, press, totalflowN
+  </sql>
+  
+  <select id="findOneByNum" resultMap="BaseResultMap">
+  	select
+  		<include refid="Base_Column_List"/>
+ 	from
+ 		ndatass${num}
+	order by time desc limit 1
+  </select>
+  
+  <select id="findByCriteria" resultMap="BaseResultMap">
+  	select
+  		<include refid="Base_Column_List"/>
+ 	from
+ 		ndatass${criteria.meterId}
+	<where>
+		<if test="criteria.startDate != null">
+			and from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) &gt;= #{criteria.startDate} 
+		</if>
+		<if test="criteria.endDate != null">
+			and from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) &lt; #{criteria.endDate} 
+		</if>
+	</where>
+	order by time desc
+  </select>
+	<select id="findByCriteria1" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from
+		ndatass${criteria.meterId}
+		<where>
+			<if test="criteria.startDate != null">
+				and from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) &gt;= #{criteria.startDate}
+			</if>
+			<if test="criteria.endDate != null">
+				and from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) &lt; #{criteria.endDate}
+			</if>
+		</where>
+		order by time desc limit ${pageNo},12;
+	</select>
+  <select id="queryDmaMicor" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
+  	select mindata.ndate,mindata.m mindata,mindata.mindate,maxdata.m maxdata,maxdata.maxdate,avgdata.m avgdata,darkdata.microflow,darkdata.compare from
+  		(select distinct b.ndate,b.m,min(a.I_time) mindate from ndatass${num} as a inner join
+  			(SELECT DATE_FORMAT( I_time, '%Y-%m-%d' ) as ndate , min(flow) m from ndatass${num} where I_time &gt;= concat(#{currentTimeStart},' 00:00:00') and I_time &lt;= concat(#{currentTimeEnd},' 23:59:59')
+  				GROUP BY DATE_FORMAT( I_time, '%Y-%m-%d' )) as b on a.flow=b.m and DATE_FORMAT( a.I_time, '%Y-%m-%d' )= b.ndate group by DATE_FORMAT( I_time, '%Y-%m-%d' )) mindata 
+  			inner join (select distinct b.ndate,b.m,max(a.I_time) maxdate from ndatass${num} as a inner JOIN (SELECT DATE_FORMAT( I_time, '%Y-%m-%d' ) as ndate , max(flow) m from ndatass${num} 
+  				where I_time &gt;= concat(#{currentTimeStart},' 00:00:00') and I_time&lt;= concat(#{currentTimeEnd},' 23:59:59')
+  				GROUP BY DATE_FORMAT( I_time, '%Y-%m-%d' ) ) as b on a.flow=b.m and DATE_FORMAT( a.I_time, '%Y-%m-%d' )=b.ndate 
+  				group by DATE_FORMAT( I_time, '%Y-%m-%d' )) maxdata on mindata.ndate=maxdata.ndate inner join (SELECT DATE_FORMAT( I_time, '%Y-%m-%d' ) as ndate , avg(flow) m from ndatass${num}
+  				where I_time &gt;= concat(#{currentTimeStart},' 00:00:00') and I_time&lt;= concat(#{currentTimeEnd},' 23:59:59')
+  				GROUP BY DATE_FORMAT( I_time, '%Y-%m-%d' )) avgdata on maxdata.ndate=avgdata.ndate left join (select distinct a.ndate,IFNULL(b.minflow, 0) microflow,IFNULL(IFNULL(b.microflow, 0) / a.microflow, 0 ) compare 
+  				FROM (SELECT min(flow) as minflow, max(totalflow) - min(totalflow) AS microflow,DATE_FORMAT(I_time, '%Y-%m-%d') AS ndate FROM ndatass${num} WHERE HOUR (I_time) &lt; 24 AND HOUR (I_time) &gt;= 0 and I_time &gt;= concat(#{currentTimeStart},' 00:00:00') and I_time &lt;= concat(#{currentTimeEnd},' 23:59:59')
+  			GROUP BY DATE_FORMAT(I_time, '%Y-%m-%d')) AS a  LEFT JOIN ( SELECT min(flow) as minflow, max(totalflow) - min(totalflow) AS microflow, DATE_FORMAT(I_time, '%Y-%m-%d') AS ndate FROM ndatass${num}
+  			WHERE HOUR (I_time) &gt;= #{darkStar}  AND HOUR (I_time) &lt; #{darkEnd} and I_time &gt;= concat(#{currentTimeStart},' 00:00:00') and I_time&lt;= concat(#{currentTimeEnd},' 23:59:59')
+  			GROUP BY DATE_FORMAT(I_time, '%Y-%m-%d')) AS b ON a.ndate = b.ndate) darkdata on mindata.ndate=darkdata.ndate
+  </select>
+  
+  <select id="queryValue" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
+  	select *,${num},(t2.todaymaxval-t3.todayminval)/t2.todaymaxval todayswing from
+  		(SELECT ${num} hismaxnum,i_time hismaxi_time,${column} hismaxval from ndatass${num} group by ${column} desc limit 1) t
+  		left join
+  		(SELECT ${num} hisminnum,i_time hismini_time,${column} hisinval from ndatass${num} group by ${column} asc limit 1) t1 on t.hismaxnum=t1.hisminnum
+  		left join
+  		(SELECT ${num} todaymaxnum,i_time todaymaxi_time,${column} todaymaxval from ndatass${num} where i_time &gt;= #{start} and I_time &lt;= #{end} group by ${column} desc limit 1) t2 on t1.hisminnum=t2.todaymaxnum
+  		left join
+  		(SELECT ${num} todayminnum,i_time todaymini_time,${column} todayminval from ndatass${num} where i_time &gt;= #{start} and I_time &lt;= #{end} group by ${column} asc limit 1) t3 on t2.todaymaxnum=t3.todayminnum
+ 	limit 1
+  </select>
+  
+  <select id="queryValueCompareDay" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
+  	select ${num}, x.ntime xtime, x.${column} xval, x1.ntime x1time, x1.${column} x1val, t.ntime ttime, t.${column} tval, date_add(t.ntime,interval -1 day) ntime2 from 
+  		(select from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) ntime,x.${column} from ndatass${num} x,(SELECT from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) ntime,${column} from ndatass${num} group by time desc limit 1) t where from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) &gt; date_add(t.ntime,interval -1 day) order by time asc limit 1) x,
+  		((select from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) ntime,x.${column} from ndatass${num} x,(SELECT from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) ntime,${column} from ndatass${num} group by time desc limit 1) t where from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) &lt; date_add(t.ntime,interval -1 day) order by time desc limit 1) union all (select now() ntime, 0.0 ${column}) limit 1) x1,
+  		(SELECT from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) ntime,${column} from ndatass${num} order by time desc limit 1) t
+  	limit 1
+  </select>
+  
+  <select id="queryValueCompareMonth" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
+  	select ${num}, x.ntime xtime, x.${column} xval, x1.ntime x1time, x1.${column} x1val, t.ntime ttime, t.${column} tval, date_add(t.ntime,interval -1 month) ntime2 from 
+  		(select from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) ntime,x.${column} from ndatass${num} x,(SELECT from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) ntime,${column} from ndatass${num} order by time desc limit 1) t where from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) &gt; date_add(t.ntime,interval -1 month) order by time asc limit 1) x,
+  		((select from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) ntime,x.${column} from ndatass${num} x,(SELECT from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) ntime,${column} from ndatass${num} order by time desc limit 1) t where from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) &lt; date_add(t.ntime,interval -1 month) order by time desc limit 1) union all (select now() ntime, 0.0 ${column})  limit 1) x1,
+  		(SELECT from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) ntime,${column} from ndatass${num} order by time desc limit 1) t
+  	limit 1
+  </select>
+  
+  <select id="queryValueCompareWeek" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
+  	select ${num}, x.ntime xtime, x.${column} xval, x1.ntime x1time, x1.${column} x1val, t.ntime ttime, t.${column} tval, date_add(t.ntime,interval -7 day) ntime2 from 
+  		(select from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) ntime,x.${column} from ndatass${num} x,(SELECT from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) ntime,${column} from ndatass${num} order by time desc limit 1) t where from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) &gt; date_add(t.ntime,interval -7 day) order by time asc limit 1) x,
+  		((select from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) ntime,x.${column} from ndatass${num} x,(SELECT from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) ntime,${column} from ndatass${num} order by time desc limit 1) t where from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) &lt; date_add(t.ntime,interval -7 day) order by time desc limit 1) union all (select now() ntime, 0.0 ${column}) limit 1) x1,
+  		(SELECT from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) ntime,${column} from ndatass${num} order by time desc limit 1) t
+  	limit 1
+  </select>
+  
+  <select id="queryValueCompareYear" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
+  	select ${num}, x.ntime xtime, x.${column} xval, x1.ntime x1time, x1.${column} x1val, t.ntime ttime, t.${column} tval, date_add(t.ntime,interval -1 year) ntime2 from 
+  		(select from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) ntime,x.${column} from ndatass${num} x,(SELECT from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) ntime,${column} from ndatass${num} order by time desc limit 1) t where from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) &gt; date_add(t.ntime,interval -1 year) order by time asc limit 1) x,
+  		((select from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) ntime,x.${column} from ndatass${num} x,(SELECT from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) ntime,${column} from ndatass${num} order by time desc limit 1) t where from_unixtime(x.time+unix_timestamp('2010-01-01 00:00:00')) &lt; date_add(t.ntime,interval -1 year) order by time desc limit 1) union all (select now() ntime, 0.0 ${column}) limit 1) x1,
+  		(SELECT from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) ntime,${column} from ndatass${num} order by time desc limit 1) t
+  	limit 1
+  </select>
+  
+  <select id="findDaysData"  parameterType="java.util.Map" resultType="java.lang.Float">
+  	SELECT AVG(a.b) FROM(
+		(SELECT ${column} b FROM ndatass${num} WHERE from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) &gt;= #{start} AND DATE(from_unixtime(time+unix_timestamp('2010-01-01 00:00:00'))) = DATE(#{start}) ORDER BY time ASC LIMIT 1)
+		UNION ALL
+		(SELECT ${column} b FROM ndatass${num} WHERE from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) &lt;= #{start} AND DATE(from_unixtime(time+unix_timestamp('2010-01-01 00:00:00'))) = DATE(#{start}) ORDER BY time DESC LIMIT 1)
+	) a
+  </select>
+
+  <select id="findDayTotalFlowDiff" resultType="float">
+	  select end.totalflow - start.totalflow from
+		(select totalflow from ndatass${num} where date(from_unixtime(time+unix_timestamp('2010-01-01 00:00:00'))) = date(now()) order by from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) asc limit 1) start,
+		(select totalflow from ndatass${num} where date(from_unixtime(time+unix_timestamp('2010-01-01 00:00:00'))) = date(now()) order by from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) desc limit 1) end
+  </select>
+
+</mapper>

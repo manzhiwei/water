@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>威尔泰智慧水务</title>
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="css/plugins/switchery/switchery.css" rel="stylesheet"/>
+    <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet"/>
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/plugins/jsTree/style.min.css"/>
+
+    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/common.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+
+    <script src="js/es5.min.js"></script>
+    <script src="http://webapi.amap.com/maps?v=1.3&key=adaee8723d6ba8783b8b1d4d6f6d1397"></script>
+    <script type="js/addToolbar.js"></script>
+    <style>
+            .marker {
+                color: #ffffff;
+                padding: 4px 4px;
+                border: 0px solid #fff;
+                white-space: nowrap;
+                font-size: 13px;
+                font-family: "fantasy";
+                background-color: rgb(0,0,0,0.5);
+                position:absolute;top:30px;left:45px;
+            }
+
+            .markerlnglat{
+                position:absolute;top:0px;left:0px;
+            }
+        </style>
+</head>
+
+<body class="index">
+    <div id="wrapper">
+        <!--菜单模块-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" src="img/profile_small.jpg"/>
+                            </span>
+                            <span class="clear user">
+                                <span class="block m-t-xs"> <strong class="font-bold">张三</strong></span>
+                                <span class="text-muted text-xs block">超级管理员</span>
+                            </span>
+                        </div>
+                        <div class="logo-element">威尔泰</div>
+                    </li>
+                    <li class="active">
+                        <a href="/index4raw"><i class="fa fa-home"></i> <span class="nav-label">仪表板</span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:"><i class="fa fa-tint"></i>
+                            <span class="nav-label">基础供水管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/meterList">仪表基础信息</a></li>
+
+                            <li><a href="/meterDevicesMonitoring">仪表设备监控</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">水务统计分析</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/realtimeStatistics">实时数据分析</a></li><li><a href="/oneMeterStatistic">单点数据分析</a></li>
+                            <li><a href="/dataStatisticsByHour">时用水统计</a></li>
+                            <li><a href="/trendChart">流量、压力趋势图</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:"><i class="fa fa-sitemap"></i> <span class="nav-label">DMA分区管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/dmaManage">DMA基础管理</a></li>
+                            <li><a href="/dmaMapMonitor">DMA区域监控</a></li>
+                            <li><a href="/dmaMicroFlow">DMA小流量监控</a></li>
+                        </ul>
+                    </li>
+                    <li>                         <a href="/alarm"><i class="fa fa-warning "></i>                             <span class="nav-label">告警管理</span><span class="fa arrow"></span>                                                      </a>                     </li>  <li class="active1">                         <a href="javascript:">                             <i class="fa fa-gears"></i> <span class="nav-label">报表统计</span>                             <span class="fa arrow"></span>                         </a>                         <ul class="nav nav-second-level collapse">                             <li ><a href="/dayReport">日报表</a></li>                             <li><a href="/monthReport">月报表</a></li>                             <li><a href="/seasonReport">季报表</a></li>                             <li><a href="/yearReport">年报表</a></li>                         </ul>                     </li>
+                    <li>
+                        <a href="javascript:"><i class="fa fa-gears"></i> <span class="nav-label">系统管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/clientManage">公司水表管理</a></li>
+                            <li><a href="/userManage">公司用户管理</a></li> <li><a href="/userMeterManage">用户水表管理</a></li>
+                            <li><a href="/logManage">日志管理</a></li><li><a href="">仪表更换记录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+
+            <!--header模块-->
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-success " href="javascript:"><i class="fa fa-bars"></i> </a>
+                        <form role="search" class="navbar-form-custom" action="search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="输入仪表名称" class="form-control" name="top-search" id="top-search"/>
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <!--message-->
+
+                        <li>
+                            <a href="/logout">
+                                <i class="fa fa-sign-out"></i> 退出
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!--内容模块-->
+                        <div class="row content-main">
+                            <div class="content-scroll">
+                                <!--这里面是不同页面变更的内容-->
+                                <div class="wrapper height-full">
+                                    <div class="row height-full">
+                                        <div class="map-area height-full">
+                                            <div id="index-map" class="map-area height-full"></div>
+                                            <div class="tree-area tree-index">
+                                                <div class="ibox float-e-margins height-full">
+                                                    <div class="ibox-title">
+                                                        <h5>站点列表</h5>
+                                                        <div class="ibox-tools">
+                                                            <input type="checkbox" id="showAllInfo" class="showAllInfo">详情</input>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ibox-content">
+                                                        <div class="tree-box">
+                                                            <div id="index_tree" class="map"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            <!--footer模块-->
+            <div class="footer" th:replace="menu :: bottom" />
+        </div>
+    </div>
+
+     <!-- 全局 js -->
+        <script src="js/jquery-2.1.1.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+        <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+        <script src="js/plugins/dataTables/datatables.min.js"></script>
+
+        <!-- 插件 js -->
+        <script src="js/inspinia.js"></script>
+        <script src="js/plugins/pace/pace.min.js"></script>
+        <script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+        <script src="js/plugins/jsTree/jstree.min.js"></script>
+
+        <!-- Jquery Validate -->
+        <script src="js/plugins/validate/jquery.validate.min.js"></script>
+        <script src="js/plugins/validate/messages_zh.min.js"></script>
+        <script src="js/validate-setDefault.js"></script>
+        <script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+        <!-- 自定义 js -->
+        <script src="js/common.js"></script>
+
+        <script>
+            var map = new AMap.Map("index-map", {
+                resizeEnable: true,
+                center: [116.397428, 39.90923],
+                zoom: 13
+            });
+            var markers = [];
+
+
+
+
+        </script>
+
+
+        <script>
+                $(document).ready(function () {
+                     $('.ibox-content').slimScroll({
+                                            height: '100%',
+                                            railOpacity: 0.9,
+                                            alwaysVisible: false
+                                        });
+
+                    $('.tree-box').slimScroll({
+                        height: '100%',
+                        railOpacity: 0.9,
+                        alwaysVisible: false
+                    });
+
+                    $('.showAllInfo').click(function(){
+                        var obj = document.getElementById("showAllInfo");
+                        var value = obj.checked;
+                        if(obj.checked==true){
+                            //不改变地图视图，仅将所有地图点的详情打开
+                            $.each(markers, function(i, marker){   
+                                if(marker.state==1){
+                                    marker.setLabel({
+                                        offset: new AMap.Pixel(-30, -78),
+                                        content: marker.dcontent
+                                    });
+                                    marker.state=3;
+                                }
+
+                            });
+                        }else{
+                            $.each(markers, function(i, marker){   
+                                 if(marker.state==3){
+                                     marker.setLabel({
+                                         offset: new AMap.Pixel(0, -22),
+                                         content: marker.content
+                                     });
+                                     marker.state=1;
+                                 }
+                             });
+                        }
+                    });
+
+                    function getData (url) { // 获取节点数据
+                                    var data = '';
+                                    $.ajax({
+                                        url: url,
+                                        dataType: "json",
+                                        async: false
+                                    }).done(function(res, textStatus){
+                                        data = res;
+                                    }).fail(function(){
+                                        console.log("出错啦！");
+                                    });
+                                    return data;
+                                }
+
+                    var companyList = getData('/querydashboard');
+
+                    var meterList = '';
+                    showMeterList4Company(-1);
+
+                    var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
+
+                    function markerClick(e) {
+                       if(e.target.state==1){
+                            console.log(e.target.getPosition().lat);
+
+                            map.remove(e.target);
+                            marker = new AMap.Marker({
+                                map: map,
+                                icon:"http://webapi.amap.com/theme/v1.3/markers/n/mark_r.png",
+                                position:e.target.getPosition()
+                            });
+                            marker.content=e.target.content;
+                            marker.dcontent=e.target.dcontent;
+                            marker.on('mouseover', mouseOver);
+                            marker.on('mouseout', mouseOut);
+                            marker.on('click', markerClick);
+
+                            marker.setLabel({
+                                offset: new AMap.Pixel(-30, -78),
+                                content: e.target.dcontent
+                            });
+
+                            infoWindow.setContent(e.target.dcontent);
+                            infoWindow.close(map, e.target.getPosition());
+
+                            marker.state=2;
+                            markers.push(marker);
+                       }else if(e.target.state==2){
+                            map.remove(e.target);
+                            marker = new AMap.Marker({
+                                map: map,
+                                position:e.target.getPosition()
+                            });
+                            marker.content=e.target.content;
+                            marker.dcontent=e.target.dcontent;
+                            marker.on('mouseover', mouseOver);
+                            marker.on('mouseout', mouseOut);
+                            marker.on('click', markerClick);
+
+                            marker.setLabel({
+                                offset: new AMap.Pixel(0, -22),
+                                content: e.target.content
+                            });
+                            marker.state=1;
+                            markers.push(marker);
+                       }
+                       console.log(e.target.state);
+                    }
+
+                    function mouseOver(e) {
+                         if(e.target.state==1){
+                              infoWindow.setContent(e.target.dcontent);
+                              infoWindow.open(map, e.target.getPosition());
+                              e.target.setLabel({
+                                  offset: new AMap.Pixel(-30, -78),
+                                  content: ''
+                              });
+                         }
+                      }
+
+                    function mouseOut(e) {
+
+                         if(e.target.state==1){
+                            infoWindow.setContent(e.target.dcontent);
+                            infoWindow.close(map, e.target.getPosition());
+                            e.target.setLabel({
+                                offset: new AMap.Pixel(0, -22),
+                                content: e.target.content
+                            });
+                         }
+                    }
+
+
+
+                    //展示某个公司全部水表信息
+                    function showMeterList4Company (cid) { // 获取节点数据
+                        var obj = document.getElementById("showAllInfo");
+                        obj.checked=false;
+                        markers.splice(0,markers.length);
+                        map.clearMap();  // 清除地图覆盖物
+                        meterList = getData('/queryMeterList?cid='+cid);
+
+                        $.each(meterList, function(i, meter){   
+
+                                    if(meter.longitude>0){
+                                        var marker = new AMap.Marker({
+                                            map: map,
+                                            position:[meter.longitude,meter.latitude]
+                                        });
+                                        marker.setLabel({
+                                            offset: new AMap.Pixel(0, -22),
+                                            content: meter.subUserName
+                                        });
+                                        marker.on('click', markerClick);
+                                        marker.content=meter.subUserName;
+                                        marker.dcontent='站点：'+meter.subUserName+'<br/>瞬时压力：999999<br/>瞬时流量：77777<br/>累积流量：88888<br/>抄表时间：16-12-31 10:43';
+                                        marker.state=1;
+
+                                        markers.push(marker);
+                                    }
+
+                        }); 
+
+                        map.setFitView();
+                    }
+
+
+
+                    $('#index_tree').jstree({
+                        'core': {
+                            'data': companyList
+                        },
+                        'plugins': [ 'types', 'dnd' ],
+                        'types': {
+                            'default': {
+                                'icon': 'fa fa-folder'
+                            },
+                            'html' : {
+                                'icon': 'fa fa-file-code-o'
+                            },
+                            'svg' : {
+                                'icon': 'fa fa-file-picture-o'
+                            },
+                            'css': {
+                                'icon': 'fa fa-file-code-o'
+                            },
+                            'img': {
+                                'icon': 'fa fa-file-image-o'
+                            },
+                            'js' : {
+                                'icon': 'fa fa-file-text-o'
+                            }
+                        }
+                    }).bind('click.jstree',function(event){
+
+                    }).on('changed.jstree', function (e, data) {
+
+                          var nodeDepth=data.instance.get_path(data.selected[0]).length;
+                          var nodeName=data.instance.get_node(data.selected[0]).text;
+                          var selectedNode=data.instance.get_node(data.selected[0]);
+                          //var parentNode=data.instance.get_parent(selectedNode);
+
+                          if(nodeDepth<4){
+                                showMeterList4Company(selectedNode.original.id);
+                          }else{
+                                map.setZoomAndCenter(16, [selectedNode.original.longitude, selectedNode.original.latitude]);
+                          }
+
+                    });
+                })
+            </script>
+</body>
+
+</html>

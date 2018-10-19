@@ -1,0 +1,530 @@
+/*
+ * by wuchong
+ */
+
+/* 阻止浏览器用户选中 */
+body{ -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; }
+
+/* 分页按钮点击高亮 */
+button:focus,
+button:active,
+a:focus,
+a:active{ outline: none; }
+
+/* common */
+body { font-family: "Microsoft YaHei UI", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
+/*body { font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif; }*/
+.content-main { height: calc(100% - 10px); overflow: hidden; }
+#page-wrapper { height: 100%; overflow: hidden; }
+.form-control:focus,
+.single-line:focus{ border-color: #1C84C6 !important; }
+.nav > li > a { font-weight: normal; }
+.height-full { height: 100%; overflow: hidden; }
+.content-main > .slimScroll-default { height: 100%; }
+.ibox-tools .btn { margin-bottom: 0; }
+
+/* login */
+.login-bg { width: 100% !important; height: 100%; }
+.loginscreen .btn { margin-bottom: 30px; }
+.loginscreen.logo-area { position: relative; width: 100%; height: 45%; background: url("../images/map.png") no-repeat center; background-size: cover; background-color: #1C84C6; }
+.logo-area .logo-img { position: absolute; width: 403px; height: 144px; top: 0; bottom: 0; left: 0; right: 0; margin: auto; }
+.logo-area .logo-img img { width: 100%; height: 100%; }
+
+/*
+ * 公共部分样式：
+ * 菜单
+ * header
+ * footer
+ */
+.logo-element { font-size: 16px; }
+.nav-header { padding: 30px 20px; }
+.nav-header { text-align: center; }
+.nav-header .user { color: #DFE4ED; }
+.navbar-static-top { background-color: #ffffff; }
+.nav > li.active { border-color: #1C84C6; }
+nav.navbar-default { height: 100%; overflow: hidden; }
+nav.navbar-default .sidebar-collapse { padding-bottom: 30px; }
+
+/* 扩充按钮颜色 */
+.label { font-family: inherit; font-weight: normal; }
+.label-doing { background-color: #fbaf7e; color: #ffffff; }
+.label-done { background-color: #4aaadd; color: #ffffff; }
+
+/* table样式汇总 */
+.table-underLine > thead > tr > th,
+.table-underLine > tbody > tr > th,
+.table-underLine > thead > tr > td,
+.table-underLine > tbody > tr > td,
+.table > tfoot > tr > td { border-top: 0; border-bottom: 1px solid #e7eaec; }
+.ibox-tools > .option-icon { padding-right: 8px; }
+.ibox-tools > .option-icon > i { color: #1C84C6; }
+.ibox-tools > .option-icon > span:hover{ color: #1C84C6; }
+.tabs-container .nav-tabs > li.tab-top-btn { float: right; padding: 5px 0; }
+/*.table-nowrap { width: 100%; overflow-x: auto; }*/
+.table-nowrap .table { table-layout: auto; white-space: nowrap; }
+/*.table-nowrap .table td, .table-nowrap .table th { white-space: nowrap; }*/
+.table-fontCenter table th,
+.table-fontCenter table td { text-align: center; }
+.excelButtons { float: right; }
+.pages { float: right; }
+.table-relative { position: relative; }
+
+/* 单点监控页面 */
+.unit { margin-left: 10px; }
+
+/* 进度条 */
+.progress-bar { background-color: #1C84C6; }
+.progress-battery { display: inline-block; width: 100px; margin-top: 0; border-radius: 0; background-color: #E6E6E6; }
+
+/* 弹出层 */
+.inmodal .modal-header { padding: 20px 15px; }
+.inmodal .modal-title { font-size: 20px; }
+.modal-lg { width: 980px; }
+.modal-md { width: 800px; }
+
+/*
+ * 表单
+ */
+.form-control { padding: 5px 10px; }
+input.help-block { margin-top: 0; }
+.require-star { color: #ED5565; }
+.excel-list .form-label { margin-bottom: 5px; }
+.excel-list .form-label .title { float: left; font-weight: normal; margin-bottom: 0; }
+.excel-list .form-label .validate-tip { padding-left: 10px; overflow: hidden; text-align: right; font-size: 12px; }
+.excel-list .form-label .validate-tip span { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.excel-list .help-block { margin-top: 0; }
+/*chosen*/
+select { display: block!important; position: absolute; left: 99999px; bottom: 0; opacity: 0; }
+.chosen-container-single .chosen-single { padding: 4px 10px; border-color: #e5e6e7; border-radius: 1px; }
+.chosen-container-active.chosen-with-drop .chosen-single { background-image: none; }
+.chosen-container-single .chosen-single div b { background-position: 0 7px; }
+.chosen-container-active.chosen-with-drop .chosen-single div b { background-position: -18px 7px; }
+.chosen-container-multi .chosen-choices { border-radius: 1px; }
+.chosen-container-active .chosen-choices { box-shadow: none; }
+/*iCheck*/
+.i-checks-label { margin-bottom: 0; font-weight: normal; line-height: 22px; cursor: pointer; }
+.i-checks-label div { margin-right: 5px; }
+.i-checks-label span { vertical-align: middle; }
+.checkboxs-inline .i-checks { display: inline-block; margin-right: 10px; }
+.checkboxs-padding5 { padding: 5px 0; }
+
+/*
+ * jsTree
+ */
+.tree-area { width: 460px; }
+.search-area { left:30px; width: 500px; }
+.search-area .button{ left:5px; }
+/*仪表详情*/
+.option-icon { padding-right: 5px; }
+.option-icon span { color: #666666; }
+.option-icon:hover { color: #1C84C6; }
+.option-icon:hover span { color: #1C84C6; }
+.under-link { text-decoration: underline; }
+
+.new-addon { border: 0; }
+
+/* 表格配置*/
+.mytable tr th {
+    padding: 20px;
+    text-align: center;
+    valign:middle;
+}
+.mytablehead{
+    vertical-align:middle;
+}
+
+/* index */
+
+.showAllInfo{ margin-left:30px;}
+.map-area { position: relative; }
+.test-index {  position: absolute; top: 200px; right: 25px;}
+.tree-height {  height: 20px;}
+.tree-index {  position: absolute; top: 15px; right: 15px; height: calc(100% - 48px); border: 1px solid #e7eaec; border-top: 0; box-shadow: 3px 3px 6px #888; background: #fff; overflow: hidden; }
+.height-full .ibox .ibox-content { padding: 15px 20px 20px 20px; height: calc(100% - 348px); }
+.height-full .ibox-content .slimScroll-default { padding: 15px 20px 20px 20px; }
+.height-full .ibox { margin-bottom: 300; }
+
+.height-max .ibox-content { padding: 0; max-height: calc(100% - 48px);}
+.height-max .ibox-content .slimScroll-default { padding: 15px 20px 20px 20px; }
+.height-max .ibox { margin-bottom: 0; }
+
+
+
+/*图标按钮*/
+.btn-sm i.fa { font-size: 18px; }
+
+/*穿梭按钮*/
+.relative-box { position: relative; }
+.cs-btn { position: absolute; top: 50%; width: 100%; margin-top: -50%; }
+.cs-btn .btn { width: 50px; margin: 15px auto; }
+
+/*文件上传*/
+#container {
+    color: #838383;
+    font-size: 12px;
+}
+
+#uploader .queueList {
+    margin: 20px;
+    border: 3px dashed #e6e6e6;
+}
+#uploader .queueList.filled {
+    padding: 17px;
+    margin: 0;
+    border: 3px dashed transparent;
+}
+#uploader .queueList.webuploader-dnd-over {
+    border: 3px dashed #999999;
+}
+
+#uploader p {margin: 0;}
+
+.element-invisible {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px,1px,1px,1px);
+}
+
+#uploader .placeholder {
+    min-height: 350px;
+    padding-top: 178px;
+    text-align: center;
+    background: url(../images/webuploader.png) center 93px no-repeat;
+    color: #cccccc;
+    font-size: 18px;
+    position: relative;
+}
+
+#uploader .placeholder .webuploader-pick {
+    font-size: 18px;
+    background: #00b7ee;
+    border-radius: 3px;
+    line-height: 44px;
+    padding: 0 30px;
+    *width: 120px;
+    color: #fff;
+    display: inline-block;
+    margin: 0 auto 20px auto;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+#uploader .placeholder .webuploader-pick-hover {
+    background: #00a2d4;
+}
+
+#uploader .placeholder .flashTip {
+    color: #666666;
+    font-size: 12px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 20px;
+}
+#uploader .placeholder .flashTip a {
+    color: #0785d1;
+    text-decoration: none;
+}
+#uploader .placeholder .flashTip a:hover {
+    text-decoration: underline;
+}
+
+#uploader .filelist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#uploader .filelist:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+}
+
+#uploader .filelist li {
+    width: 110px;
+    height: 110px;
+    background: url(../images/bg.png) no-repeat;
+    text-align: center;
+    margin: 0 8px 20px 0;
+    position: relative;
+    display: inline;
+    float: left;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+#uploader .filelist li p.log {
+    position: relative;
+    top: -45px;
+}
+
+#uploader .filelist li p.title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow : ellipsis;
+    top: 5px;
+    text-indent: 5px;
+    text-align: left;
+}
+
+#uploader .filelist li p.progress {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 8px;
+    overflow: hidden;
+    z-index: 50;
+    margin: 0;
+    border-radius: 0;
+    background: none;
+    -webkit-box-shadow: 0 0 0;
+}
+#uploader .filelist li p.progress span {
+    display: none;
+    overflow: hidden;
+    width: 0;
+    height: 100%;
+    background: #1483d8 url(../images/progress.png) repeat-x;
+
+    -webit-transition: width 200ms linear;
+    -moz-transition: width 200ms linear;
+    -o-transition: width 200ms linear;
+    -ms-transition: width 200ms linear;
+    transition: width 200ms linear;
+
+    -webkit-animation: progressmove 2s linear infinite;
+    -moz-animation: progressmove 2s linear infinite;
+    -o-animation: progressmove 2s linear infinite;
+    -ms-animation: progressmove 2s linear infinite;
+    animation: progressmove 2s linear infinite;
+
+    -webkit-transform: translateZ(0);
+}
+
+@-webkit-keyframes progressmove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 17px 0;
+    }
+}
+@-moz-keyframes progressmove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 17px 0;
+    }
+}
+@keyframes progressmove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 17px 0;
+    }
+}
+
+#uploader .filelist li p.imgWrap {
+    position: relative;
+    z-index: 2;
+    line-height: 110px;
+    vertical-align: middle;
+    overflow: hidden;
+    width: 110px;
+    height: 110px;
+
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    -o-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+
+    -webit-transition: 200ms ease-out;
+    -moz-transition: 200ms ease-out;
+    -o-transition: 200ms ease-out;
+    -ms-transition: 200ms ease-out;
+    transition: 200ms ease-out;
+}
+
+#uploader .filelist li img {
+    width: 100%;
+}
+
+#uploader .filelist li p.error {
+    background: #f43838;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 28px;
+    line-height: 28px;
+    width: 100%;
+    z-index: 100;
+}
+
+#uploader .filelist li .success {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    z-index: 200;
+    background: url(../images/success.png) no-repeat right bottom;
+}
+
+#uploader .filelist div.file-panel {
+    position: absolute;
+    height: 0;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#80000000', endColorstr='#80000000')\0;
+    background: rgba( 0, 0, 0, 0.5 );
+    width: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 300;
+}
+
+#uploader .filelist div.file-panel span {
+    width: 24px;
+    height: 24px;
+    display: inline;
+    float: right;
+    text-indent: -9999px;
+    overflow: hidden;
+    background: url(../images/icons.png) no-repeat;
+    margin: 5px 1px 1px;
+    cursor: pointer;
+}
+
+#uploader .filelist div.file-panel span.rotateLeft {
+    background-position: 0 -24px;
+}
+#uploader .filelist div.file-panel span.rotateLeft:hover {
+    background-position: 0 0;
+}
+
+#uploader .filelist div.file-panel span.rotateRight {
+    background-position: -24px -24px;
+}
+#uploader .filelist div.file-panel span.rotateRight:hover {
+    background-position: -24px 0;
+}
+
+#uploader .filelist div.file-panel span.cancel {
+    background-position: -48px -24px;
+}
+#uploader .filelist div.file-panel span.cancel:hover {
+    background-position: -48px 0;
+}
+
+#uploader .statusBar {
+    height: 50px;
+    border-top: 1px solid #dadada;
+    padding: 0 20px;
+    line-height: 50px;
+    vertical-align: middle;
+    position: relative;
+}
+
+#uploader .statusBar .progress {
+    border: 1px solid #1483d8;
+    width: 198px;
+    background: #fff;
+    height: 18px;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    margin: auto 10px;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    color: #6dbfff;
+    vertical-align: middle;
+}
+#uploader .statusBar .progress span.percentage {
+    width: 0;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #1483d8;
+    position: absolute;
+}
+#uploader .statusBar .progress span.text {
+    position: relative;
+    z-index: 10;
+}
+
+#uploader .statusBar .info {
+    display: inline-block;
+    font-size: 14px;
+    color: #666666;
+}
+
+#uploader .statusBar .btns {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    line-height: 32px;
+}
+
+#filePicker2 {
+    display: inline-block;
+    float: left;
+}
+
+#uploader .statusBar .btns .webuploader-pick,
+#uploader .statusBar .btns .uploadBtn,
+#uploader .statusBar .btns .uploadBtn.state-uploading,
+#uploader .statusBar .btns .uploadBtn.state-paused {
+    background: #ffffff;
+    border: 1px solid #cfcfcf;
+    color: #565656;
+    padding: 0 18px;
+    display: inline-block;
+    border-radius: 3px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    float: left;
+}
+#uploader .statusBar .btns .webuploader-pick-hover,
+#uploader .statusBar .btns .uploadBtn:hover,
+#uploader .statusBar .btns .uploadBtn.state-uploading:hover,
+#uploader .statusBar .btns .uploadBtn.state-paused:hover {
+    background: #f0f0f0;
+}
+
+#uploader .statusBar .btns .uploadBtn {
+    background: #00b7ee;
+    color: #fff;
+    border-color: transparent;
+}
+#uploader .statusBar .btns .uploadBtn:hover {
+    background: #00a2d4;
+}
+
+#uploader .statusBar .btns .uploadBtn.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.td-icon { font-size: 16px; padding-left: 5px; }
+.laydate-icon { border-color: #e5e6e7; }
+
+/*popover*/
+.popover-parent { position: relative; }
+.popover-parent:hover .popover { display: block; }
+.popover-time .popover { width: 220px; }
+.popover { position: absolute; top: 0; left: 0; display: none; margin-left: 50%; margin-top: -100%; transform: translate(-50%, -100%); }

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.welltech.ServiceTest" time="0" tests="1" errors="0" skipped="1" failures="0">
+  <properties>
+    <property name="idea.version" value="2017.2.5"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="D:\Java\jre\bin"/>
+    <property name="java.vm.version" value="25.121-b13"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="D:\姘磋〃鍘熷浠ｇ爜\water-affair-v3.1.1\water-affair-mobile"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\姘磋〃鍘熷浠ｇ爜\water-affair-v3.1.1\water-affair-mobile"/>
+    <property name="java.runtime.version" value="1.8.0_121-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="D:\Java\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\zxl\AppData\Local\Temp\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="F:\IntelliJ IDEA Community Edition 2017.2.5\plugins\maven\lib\maven3\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\Java\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Java\jdk1.8.0_101\bin;D:\Python27\;D:\Python27\Scripts;c:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\MATLAB\R2012a\runtime\win64;C:\Program Files\MATLAB\R2012a\bin;d:\Cadence\SPB_16.3\tools\bin;d:\Cadence\SPB_16.3\tools\libutil\bin;d:\Cadence\SPB_16.3\tools\fet\bin;d:\Cadence\SPB_16.3\tools\pcb\bin;d:\Cadence\SPB_16.3\tools\specctra\bin;d:\Cadence\SPB_16.3\tools\PSpice;d:\Cadence\SPB_16.3\tools\PSpice\Library;d:\Cadence\SPB_16.3\tools\Capture;d:\Cadence\SPB_16.3\OpenAccess\bin\win32\opt;d:\Program Files (x86)\T58KTV\9158VirtualCamera\Package\bpl;d:\Program Files (x86)\T58KTV\9158VirtualCamera\bin;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Java\jdk1.8.0_101\jre\bin;D:\Maven\apache-maven-3.3.9\bin;D:\Git\cmd;C:\Program Files (x86)\Microsoft Visual Studio\VC98\bin;c:\VC++6.0\bin;C:\Program Files (x86)\Microsoft Visual Studio\Common\Tools\WinNT;C:\Program Files (x86)\Microsoft Visual Studio\Common\MSDev98\Bin;C:\Program Files (x86)\Microsoft Visual Studio\Common\Tools;e:\vc6.0\bin;C:\Users\zxl\AppData\Roaming\Python\Scripts;C:\Users\zxl\Downloads\鏂板缓鏂囦欢澶筡UltraEdit\;C:\Program Files (x86)\Java\jdk1.8.0_101/bin;C:\Program Files (x86)\Java\jdk1.8.0_101/jre/bin ;C:\Users\zxl\AppData\Local\Microsoft\WindowsApps;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="maven.repo.local" value="D:\Maven\LocalWarehouse"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\zxl"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="zxl"/>
+    <property name="java.class.path" value="F:\IntelliJ IDEA Community Edition 2017.2.5\plugins\maven\lib\maven3\boot\plexus-classworlds-2.5.2.jar;F:\IntelliJ IDEA Community Edition 2017.2.5\lib\idea_rt.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="D:\Java\jre"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2017.2.5 -s D:\Maven\apache-maven-3.3.9\conf\settings.xml -Dmaven.repo.local=D:\Maven\LocalWarehouse install"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_121"/>
+    <property name="java.ext.dirs" value="D:\Java\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="D:\Java\jre\lib\resources.jar;D:\Java\jre\lib\rt.jar;D:\Java\jre\lib\sunrsasign.jar;D:\Java\jre\lib\jsse.jar;D:\Java\jre\lib\jce.jar;D:\Java\jre\lib\charsets.jar;D:\Java\jre\lib\jfr.jar;D:\Java\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="F:\IntelliJ IDEA Community Edition 2017.2.5\plugins\maven\lib\maven3"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase name="test" classname="com.welltech.ServiceTest" time="0">
+    <skipped/>
+    <system-out><![CDATA[17:37:13.976 [main] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.welltech.ServiceTest]
+17:37:13.988 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+17:37:14.000 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+17:37:14.022 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.welltech.ServiceTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+17:37:14.043 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.welltech.ServiceTest], using SpringBootContextLoader
+17:37:14.048 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.welltech.ServiceTest]: class path resource [com/welltech/ServiceTest-context.xml] does not exist
+17:37:14.049 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.welltech.ServiceTest]: class path resource [com/welltech/ServiceTestContext.groovy] does not exist
+17:37:14.049 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.welltech.ServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+17:37:14.050 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.welltech.ServiceTest]: ServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:37:14.104 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.welltech.ServiceTest]
+17:37:14.118 [main] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+17:37:14.119 [main] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+17:37:14.119 [main] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+17:37:14.133 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Resolved classpath location [com/welltech/] to resources [URL [file:/D:/%e6%b0%b4%e8%a1%a8%e5%8e%9f%e5%a7%8b%e4%bb%a3%e7%a0%81/water-affair-v3.1.1/water-affair-mobile/target/test-classes/com/welltech/], URL [file:/D:/%e6%b0%b4%e8%a1%a8%e5%8e%9f%e5%a7%8b%e4%bb%a3%e7%a0%81/water-affair-v3.1.1/water-affair-mobile/target/classes/com/welltech/], URL [jar:file:/D:/Maven/LocalWarehouse/com/welltech/water-affair-common/0.0.1-SNAPSHOT/water-affair-common-0.0.1-SNAPSHOT.jar!/com/welltech/]]
+17:37:14.133 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [D:\水表原始代码\water-affair-v3.1.1\water-affair-mobile\target\test-classes\com\welltech]
+17:37:14.134 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Searching directory [D:\水表原始代码\water-affair-v3.1.1\water-affair-mobile\target\test-classes\com\welltech] for files matching pattern [D:/水表原始代码/water-affair-v3.1.1/water-affair-mobile/target/test-classes/com/welltech/*.class]
+17:37:14.138 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [D:\水表原始代码\water-affair-v3.1.1\water-affair-mobile\target\classes\com\welltech]
+17:37:14.138 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Searching directory [D:\水表原始代码\water-affair-v3.1.1\water-affair-mobile\target\classes\com\welltech] for files matching pattern [D:/水表原始代码/water-affair-v3.1.1/water-affair-mobile/target/classes/com/welltech/*.class]
+17:37:14.140 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in jar file [file:/D:/Maven/LocalWarehouse/com/welltech/water-affair-common/0.0.1-SNAPSHOT/water-affair-common-0.0.1-SNAPSHOT.jar]
+17:37:14.144 [main] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Resolved location pattern [classpath*:com/welltech/*.class] to resources [file [D:\水表原始代码\water-affair-v3.1.1\water-affair-mobile\target\test-classes\com\welltech\ServiceTest.class], file [D:\水表原始代码\water-affair-v3.1.1\water-affair-mobile\target\classes\com\welltech\WaterAffairApplication.class]]
+17:37:14.199 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [D:\水表原始代码\water-affair-v3.1.1\water-affair-mobile\target\classes\com\welltech\WaterAffairApplication.class]
+17:37:14.200 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.welltech.WaterAffairApplication for test class com.welltech.ServiceTest
+17:37:14.210 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.welltech.ServiceTest]: using defaults.
+17:37:14.216 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+17:37:14.238 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@28c4711c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@59717824, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@146044d7, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1e9e725a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@15d9bc04, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@473b46c3, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@516be40f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3c0a50da, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@646be2c3, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@797badd3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@77be656f, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@19dc67c2]
+17:37:14.241 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.welltech.ServiceTest]
+17:37:14.241 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.welltech.ServiceTest]
+17:37:14.244 [main] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.welltech.ServiceTest]
+17:37:14.244 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+17:37:14.244 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+17:37:14.245 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.welltech.ServiceTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+17:37:14.245 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.welltech.ServiceTest], using SpringBootContextLoader
+17:37:14.246 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.welltech.ServiceTest]: class path resource [com/welltech/ServiceTest-context.xml] does not exist
+17:37:14.247 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.welltech.ServiceTest]: class path resource [com/welltech/ServiceTestContext.groovy] does not exist
+17:37:14.247 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.welltech.ServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+17:37:14.247 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.welltech.ServiceTest]: ServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:37:14.253 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.welltech.ServiceTest]
+17:37:14.253 [main] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+17:37:14.253 [main] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+17:37:14.253 [main] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+17:37:14.253 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.welltech.WaterAffairApplication for test class com.welltech.ServiceTest
+17:37:14.255 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.welltech.ServiceTest]: using defaults.
+17:37:14.259 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+17:37:14.265 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3bbc39f8, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4ae3c1cd, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@29f69090, org.springframework.test.context.support.DirtiesContextTestExecutionListener@568bf312, org.springframework.test.context.transaction.TransactionalTestExecutionListener@ca263c2, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@589b3632, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@45f45fa1, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4c6e276e, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@534df152, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@52e677af, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@35083305, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@8e0379d]
+17:37:14.266 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.welltech.ServiceTest]
+17:37:14.266 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.welltech.ServiceTest]
+17:37:14.267 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.welltech.ServiceTest]
+17:37:14.267 [main] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.welltech.ServiceTest]
+]]></system-out>
+    <system-err><![CDATA[SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/D:/Maven/LocalWarehouse/ch/qos/logback/logback-classic/1.1.11/logback-classic-1.1.11.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/D:/Maven/LocalWarehouse/org/slf4j/slf4j-log4j12/1.7.24/slf4j-log4j12-1.7.24.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+]]></system-err>
+  </testcase>
+</testsuite>

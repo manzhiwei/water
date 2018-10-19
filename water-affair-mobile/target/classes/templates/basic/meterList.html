@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>威尔泰智慧水务</title>
+    <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
+
+    <link href="css/jquery.dataTables.css" rel="stylesheet"/>
+    <link href="css/bootstrapValidator.css" rel="stylesheet"></link>
+
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet"/>
+
+    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/common.css" rel="stylesheet"/>
+
+</head>
+
+<body class="">
+<div id="wrapper">
+    <!--菜单模块-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" src="img/profile_small.jpg"/>
+                            </span>
+                        <span class="clear user">
+                                <span class="block m-t-xs"> <strong class="font-bold"
+                                                                    th:text="${session.userName}"></strong></span>
+                                <span class="text-muted text-xs block" th:text="${session.company}"></span>
+                            </span>
+                    </div>
+                    <div class="logo-element">威尔泰</div>
+                </li>
+                <li>
+                    <a href="/index4raw"><i class="fa fa-home"></i> <span class="nav-label">仪表板</span></a>
+                </li>
+                <li class="active">
+                    <a href="javascript:"><i class="fa fa-tint"></i>
+                        <span class="nav-label">基础供水管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="active"><a href="/meterList">仪表基础信息</a></li>
+
+                        <li><a href="/meterDevicesMonitoring">仪表设备监控</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">水务统计分析</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/realtimeStatistics">实时数据分析</a></li><li><a href="/oneMeterStatistic">单点数据分析</a></li>
+                        <li><a href="/dataStatisticsByHour">时用水统计</a></li>
+                        <li><a href="/trendChart">流量、压力趋势图</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="fa fa-sitemap"></i> <span class="nav-label">DMA分区管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/dmaManage">DMA基础管理</a></li>
+                        <li><a href="/dmaMapMonitor">DMA区域监控</a></li>
+                        <li><a href="/dmaMicroFlow">DMA小流量监控</a></li>
+                    </ul>
+                </li>
+                <li href="javascript:;" >                         <a ><i class="fa fa-warning "></i>                             <span class="nav-label">告警管理</span><span class="fa arrow"></span>                         </a>                         <ul class="nav nav-second-level collapse">                             <li ><a href="/alarm">告警查询</a></li>                             <li><a href="/alarmSingleSetting">单点告警配置</a></li>                             <li><a href="/alarmMultiSetting">多点告警配置</a></li>                         </ul>                     </li>
+                <li class="active1"><a href="javascript:"> <i class="fa fa-table"></i> <span
+                        class="nav-label">报表统计</span> <span class="fa arrow"></span> </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/dayReport">日报表</a></li>
+                        <li><a href="/monthReport">月报表</a></li>
+                        <li><a href="/seasonReport">季报表</a></li>
+                        <li><a href="/yearReport">年报表</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="fa fa-gears"></i> <span class="nav-label">系统管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li th:if="${session.userName eq 'admin'}"><a href="/clientManage">公司水表管理</a></li>
+                        <li th:if="${session.userName eq 'admin'}"><a href="/userManage">公司用户管理</a></li>
+                        <li th:if="${session.userName eq 'admin'}"><a href="/userMeterManage">用户水表管理</a></li>
+                        <li><a href="/logManage">日志管理</a></li>
+                        <li th:if="${session.userName eq 'admin'}"><a href="/replaceMeterRecord">仪表更换记录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <!--header模块-->
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+
+                <ul class="nav navbar-top-links navbar-right">
+                    <!--message-->
+
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-sign-out"></i> 退出
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!--内容模块-->
+        <div class="row content-main">
+            <div class="slimScroll-default">
+                <!--这里是不同页面变更的部分-->
+                <div class="wrapper wrapper-content animated ">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                    <h5>仪表基础信息列表</h5>
+                                    <div class="ibox-tools">
+                                        <button class="btn btn-success btn-xs" data-toggle="modal"
+                                                data-target=".add-meter-modal">新增仪表档案
+                                        </button>
+                                        <!--新增仪表档案弹出层-->
+                                        <div class="modal inmodal add-meter-modal" tabindex="-1" role="dialog"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <form class="cmxform" id="commentForm" method="post"
+                                                      action="/saveMeterInfo" enctype="multipart/form-data">
+                                                    <div class="modal-content animated bounceInRight">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">
+                                                                <span aria-hidden="true">&times;</span><span
+                                                                    class="sr-only">Close</span></button>
+                                                            <h5 class="modal-title">新增仪表档案</h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="excel-list excel-modal">
+                                                                <div class="excel-item">
+                                                                    <div class="row">
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">仪表编号 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area">
+                                                                                <input name="num" type="text"
+                                                                                       class="form-control"
+                                                                                       required="required"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">仪表类型 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area">
+                                                                                <select id="meterTypeId"
+                                                                                        class="form-control chosen-select-normal"
+                                                                                        tabindex="2">
+                                                                                    <option value="">请选择</option>
+                                                                                    <option value="1">电磁流量计</option>
+                                                                                    <option value="2">电磁水表</option>
+                                                                                </select>
+                                                                                <input id="metertype" name="metertype"
+                                                                                       type="hidden"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">位号 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area">
+                                                                                <input name="positionNo" maxlength="10"
+                                                                                       type="text"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">用户名称 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area">
+                                                                                <input name="subUserName" maxlength="20"
+                                                                                       type="text" class="form-control"
+                                                                                       required="required"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="excel-item">
+                                                                    <div class="row">
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">安装地点 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area">
+                                                                                <input name="address" maxlength="10"
+                                                                                       type="text"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">CCID <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area">
+                                                                                <input name="ccid" maxlength="6"
+                                                                                       type="text" class="form-control"
+                                                                                       required="required"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">口径 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area clearfix">
+                                                                                <input name="meterSize" maxlength="3"
+                                                                                       type="text"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">电源类型 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area clearfix">
+                                                                                <select id="powerTypeId"
+                                                                                        name="powerTypeId"
+                                                                                        class="form-control chosen-select-normal"
+                                                                                        tabindex="2">
+                                                                                    <option value="">请选择</option>
+                                                                                    <option value="1">24VDC</option>
+                                                                                    <option value="2">220VAC</option>
+                                                                                    <option value="3">电池供电</option>
+                                                                                    <option value="4">太阳能</option>
+                                                                                    <option value="5">其他</option>
+                                                                                </select>
+                                                                                <input id="powerType" name="powerType"
+                                                                                       type="hidden"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">联系人 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area clearfix">
+                                                                                <input name="linkPeople" maxlength="15"
+                                                                                       type="text"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">联系方式 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area clearfix">
+                                                                                <input name="linkWay" maxlength="15"
+                                                                                       type="text"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">联系地址 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area clearfix">
+                                                                                <input name="linkAddress" maxlength="15"
+                                                                                       type="text"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="excel-item">
+                                                                    <div class="row">
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">输出信号类型，复选 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area clearfix">
+                                                                                <select id="outputSignalTypeId"
+                                                                                        name="outputSignalTypeId"
+                                                                                        class="form-control chosen-select-normal"
+                                                                                        tabindex="2">
+                                                                                    <option value="">请选择</option>
+                                                                                    <option value="1">Modbus</option>
+                                                                                    <option value="2">GPRS</option>
+                                                                                    <option value="3">4~20mA</option>
+                                                                                    <option value="4">脉冲</option>
+                                                                                </select>
+                                                                                <input id="outputSignalType"
+                                                                                       name="outputSignalType"
+                                                                                       type="hidden"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">仪表型号 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area">
+                                                                                <input name="meterNum" maxlength="15"
+                                                                                       type="text"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">仪表制造商 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area clearfix">
+                                                                                <input name="meterManufacturer"
+                                                                                       maxlength="15" type="text"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">井号 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area clearfix">
+                                                                                <input name="wellNumber" maxlength="15"
+                                                                                       type="text"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="excel-item">
+                                                                    <div class="row">
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">仪表安装位置的经度 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area clearfix">
+                                                                                <input name="longitude" type="text"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">仪表安装位置的纬度 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area clearfix">
+                                                                                <input name="latitude" type="text"
+                                                                                       class="form-control"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">安装图 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area clearfix">
+                                                                                <div class="file-pretty">
+                                                                                    <input name="installImg" type="file"
+                                                                                           class="form-control"/>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <div class="form-label clearfix">
+                                                                                <label class="title">电缆走向图 <span
+                                                                                        class="require-star">*</span></label>
+                                                                                <div class="validate-tip"></div>
+                                                                            </div>
+                                                                            <div class="form-area clearfix">
+                                                                                <div class="file-pretty">
+                                                                                    <input name="runImg" type="file"
+                                                                                           class="form-control"/>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="excel-item">
+                                                                    <div class="row">
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-white"
+                                                                    data-dismiss="modal">取消
+                                                            </button>
+                                                            <button id="save" name="save" type="submit" class="btn btn-success">保存
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="table-responsive">
+                                        <table id="meterListTable"
+                                               class="table table-striped table-bordered table-hover dataTables-default">
+                                            <thead>
+                                            <tr>
+                                                <th>仪表编号</th>
+                                                <th>所属公司</th>
+                                                <th>仪表类型</th>
+                                                <th>口径</th>
+                                                <th>仪表名称</th>
+                                                <th>安装地点</th>
+                                                <th>VIP</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--footer模块-->
+        <div class="footer">
+            <div>
+                <strong>版权所有</strong> 2018-2019 © 威尔泰WELLTECH
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 全局 js -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="js/bootstrapValidator.js"></script>
+<script src="js/language/zh_CN.js"></script>
+
+<!-- 插件 js -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+
+
+<!-- Jquery Validate -->
+<script src="js/plugins/validate/jquery.validate.min.js"></script>
+<script src="js/plugins/validate/messages_zh.min.js"></script>
+<script src="js/validate-setDefault.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+<!-- 自定义 js -->
+<script src="js/common.js"></script>
+<script src="js/demo/meterList.js" type="text/javascript"></script>
+
+<script>
+        $(document).ready(function(){
+            //$("#commentForm").validate();
+        });
+
+</script>
+
+</body>
+
+</html>

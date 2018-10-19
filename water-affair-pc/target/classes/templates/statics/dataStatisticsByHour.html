@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>威尔泰智慧水务</title>
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
+
+    <link href="css/jquery.dataTables.css" rel="stylesheet"/>
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet"/>
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet"/>
+    <link href="css/plugins/iCheck/blue.css" rel="stylesheet"/>
+
+    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/common.css" rel="stylesheet"/>
+
+</head>
+
+<body class="">
+<div id="wrapper">
+    <!--菜单模块-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse"  th:replace="menu :: side" />
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <!--header模块-->
+        <div class="row border-bottom" th:replace="menu :: top" />
+
+
+
+        <!--内容模块-->
+        <div class="row content-main">
+            <div class="slimScroll-default">
+                <!--这里是不同页面变更的部分-->
+                <div class="wrapper wrapper-content height-full">
+                    <div class="row height-full">
+
+                        <div class="col-md-12 height-full client-list">
+                            <div class="ibox float-e-margins height-full">
+                                <div class="ibox-title">
+                                    <h5>时用水统计</h5>
+                                </div>
+                                <div class="ibox-content " >
+                                    <div class="slimScroll-default ">
+                                        <div class="row">
+                                            <div class="col-sm-6 m-b-sm">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon new-addon">时间从：</span>
+                                                    <input id="startTime"
+                                                           class="form-control layer-date input-todayM laydate-icon"
+                                                           placeholder=""/>
+                                                    <span class="input-group-addon new-addon">至</span>
+                                                    <input id="endTime"
+                                                           class="form-control layer-date input-todayN laydate-icon"
+                                                           placeholder=""/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="checkboxs-inline checkboxs-sm checkboxs-padding5">
+                                                    <div class="i-checks search-checks search-checks-day">
+                                                        <label class="i-checks-label">
+                                                            <input type="radio" id="showFlow" name="a"
+                                                                   checked="checked"/><i></i>
+                                                            <span>当日</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="i-checks search-checks search-checks-month">
+                                                        <label class="i-checks-label">
+                                                            <input type="radio" id="showPress" name="a"/><i></i>
+                                                            <span>当月</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <select id='staions' data-placeholder="选择站点"
+                                                            class="form-control chosen-select-normal" multiple="multiple">
+
+                                                        <option th:each="prod : ${stations}" th:value="${prod.name}" th:selected="${prod.select}"
+                                                                th:text="${prod.name}">
+                                                        </option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="input-group">
+                                                    <button id="query1" type="button" class="btn btn-sm btn-success" >查 询
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="height:700px; overflow-x: auto;overflow-y:hidden;" >
+                                            <div class="tabs-container" id="meterTabs">
+                                                <ul id="tabes" class="nav nav-tabs">
+                                                </ul>
+                                                <div class="tab-content">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--footer模块-->
+        <div class="footer" th:replace="menu :: bottom" />
+
+    </div>
+</div>
+
+<!--查看详情-->
+<div class="modal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true" >
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" >
+
+            <div class="modal-header" style="width:100%;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h1 class="modal-title" ><input readOnly="true" id="model_title" type="text" value="测试数据" style="border:0; width:100%;" /></h1>
+            </div>
+
+            <div class="modal-body">
+                <div class="detail-content" >
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 全局 js -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+
+<!-- 插件 js -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+<script src="js/plugins/layer/laydate/laydate.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<!-- Jquery Validate -->
+<script src="js/plugins/validate/jquery.validate.min.js"></script>
+<script src="js/plugins/validate/messages_zh.min.js"></script>
+<script src="js/validate-setDefault.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+<script src="js/plugins/jqGrid/i18n/grid.locale-cn.js"></script>
+<script src="js/plugins/jqGrid/jquery.jqGrid.min.js"></script>
+<!-- 自定义 js -->
+<script src="js/common.js"></script>
+<script src="js/demo/dataStatisticsByHour.js" type="text/javascript"></script>
+<script src="js/demo/dataStatisticsByHour2.js" type="text/javascript"></script>
+
+</body>
+
+</html>

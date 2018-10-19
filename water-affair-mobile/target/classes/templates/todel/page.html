@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+ <head>
+  <meta charset="UTF-8"/>
+  <meta name="Generator" content="EditPlus®"/>
+  <meta name="Author" content=""/>
+  <meta name="Keywords" content=""/>
+  <meta name="Description" content=""/>
+  <title>Document</title>
+ <script src="js/jquery1.9.0.js" type="text/javascript"></script>
+ <script src="js/jqueryPage.js" type="text/javascript"></script>
+ <script src="js/json2.js" type="text/javascript"></script>
+ <style> 
+.pager{height:30px;line-height:30px;font-size: 12px;margin: 25px 0px;text-align: center;color: #2E6AB1;overflow: hidden;}
+.pager a{border:1px solid #9AAFE5;color:#2E6AB1;margin:0px 5px;padding:5px 8px;text-decoration: none;}
+.pager a.hover,.pager a.active{background-color:#2E6AB1;border-color:#000080;color:#FFF;}
+.pager a.disabled{color:#C8CDD2;cursor:auto;}
+</style>
+    
+
+ </head>
+ <body>
+  <table id="dataTable" border="1px">
+	<thead>
+	<tr>
+		<td>a
+		</td>
+		<td>b
+		</td>
+		<td>c
+		</td>
+		<td>d
+		</td>
+		<td>e
+		</td>
+	</tr>
+	</thead>
+	<tbody>
+	</tbody>
+	<tfoot>
+	<tr>
+	<td colspan='5'>
+  <div id="pager"></div>
+  </td>
+	</tr>
+	</tfoot>
+  </table>
+ </body>
+ <script type="text/javascript">
+ $(function(){
+	 //var parameter={amountType:"0",annualType:"0",currentPage:1,direction:"asc",pageNumber:10,periodType:"0",sortKey:"default"};
+	 var parameter="/10/1";
+	findMktList(parameter,'http://localhost:8077/findByAjaxPage');
+ });
+
+ function findMktList(parameterObj,url){
+	$.ajax({
+		//type: "post",
+		type:"get",
+		url: url+parameterObj,
+		//dataType:"json",
+		processData:false,
+		contentType:"application/json;charset=UTF-8",
+		headers:{"Accept":"application/json",
+				"Content-Type":"application/json"},
+		//data: JSON.stringify(parameterObj),
+		beforeSend: function(XMLHttpRequest){
+			//ShowLoading();
+		},
+		success: function(data, textStatus){
+			$("#dataTable tbody").html('');
+			$("#pager").html('');
+			$.each(data.data.content,function(i,n){
+				$("tbody").append("<tr>"+"<td>"+n.id+"</td>"+"<td>"+
+				n.date+"</td>"+"<td>"+n.eventName+"</td>"+"<td>"+
+				n.eventValue+"</td>"+"<td>"+n.deleteFLag+"</td>"+"</tr>");
+			});
+			initPage(data.data.totalElements,parameterObj.pageNumber,parameterObj.currentPage,3,3,3,url);
+		},
+		complete: function(XMLHttpRequest, textStatus){
+			//HideLoading();
+		},
+		error: function(){
+			//请求出错处理
+		}
+});
+ }
+
+ function initPage(countP,sizeP,indexP,lrCountP,lCountP,rCountP,url){
+	$("#pager").pagination({
+		count: countP, //总数
+		size: sizeP, //每页数量
+		index: indexP,//当前页
+		lrCount: lrCountP,//当前页左右最多显示的数量
+		lCount: lCountP,//最开始预留的数量
+		rCount: rCountP,//最后预留的数量
+		callback: function (options) {
+			//请求后台事件，然后回调渲染
+			//var parameter={amountType:"0",annualType:"0",currentPage:options.index,direction:"asc",pageNumber:10,periodType:"0",sortKey:"default"};
+			var parameter="/"+options.size+"/"+options.index;
+			findMktList(parameter,url);
+		},
+		beforeRender: function (jA) {
+			//jA.attr("href","default.php?index="+jA.text());
+		}
+	});
+ }
+
+ </script>
+</html>

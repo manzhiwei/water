@@ -1,0 +1,1476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.welltech.waterAffair.repository.MachineInfoMapper">
+  <resultMap id="BaseResultMap" type="MachineInfo">
+    <result column="machineid" jdbcType="CHAR" property="machineid" />
+    <result column="gprsid" jdbcType="CHAR" property="gprsid" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="datanum" jdbcType="INTEGER" property="datanum" />
+    <result column="package" jdbcType="INTEGER" property="package_" />
+    <result column="time" jdbcType="INTEGER" property="time" />
+    <result column="Signal_strength" jdbcType="INTEGER" property="signalStrength" />
+    <result column="upstate" jdbcType="INTEGER" property="upstate" />
+    <result column="Mversion" jdbcType="CHAR" property="mversion" />
+    <result column="Gversion" jdbcType="CHAR" property="gversion" />
+    <result column="Estate" jdbcType="INTEGER" property="estate" />
+    <result column="filename" jdbcType="VARCHAR" property="filename" />
+    <result column="CCID" jdbcType="VARCHAR" property="ccid" />
+    <result column="I_time" jdbcType="TIMESTAMP" property="iTime" />
+    <result column="userNameId" jdbcType="INTEGER" property="userNameId" />
+    <result column="longitude" jdbcType="DOUBLE" property="longitude" />
+    <result column="latitude" jdbcType="DOUBLE" property="latitude" />
+    <result column="minflow" jdbcType="REAL" property="minflow" />
+    <result column="maxflow" jdbcType="REAL" property="maxflow" />
+    <result column="mintotal" jdbcType="REAL" property="mintotal" />
+    <result column="maxtotal" jdbcType="REAL" property="maxtotal" />
+    <result column="lowPower" jdbcType="REAL" property="lowPower" />
+    <result column="lowSignal" jdbcType="INTEGER" property="lowSignal" />
+    <result column="alarmNotice" jdbcType="INTEGER" property="alarmNotice" />
+    <result column="subUserName" jdbcType="VARCHAR" property="subUserName" />
+    <result column="debugMeter" jdbcType="INTEGER" property="debugMeter" />
+    <result column="debugMeterAddr" jdbcType="INTEGER" property="debugMeterAddr" />
+    <result column="debugMeterLen" jdbcType="INTEGER" property="debugMeterLen" />
+    <result column="debugMeterRAddr" jdbcType="INTEGER" property="debugMeterRAddr" />
+    <result column="debugMeterRData" jdbcType="INTEGER" property="debugMeterRData" />
+    <result column="debugMeterRLen" jdbcType="INTEGER" property="debugmeterRlen" />
+    <result column="debugMeterR" jdbcType="INTEGER" property="debugMeterR" />
+    <result column="debugMeterData" jdbcType="INTEGER" property="debugMeterData" />
+    <result column="diameter" jdbcType="INTEGER" property="diameter" />
+    <result column="metertype" jdbcType="VARCHAR" property="metertype" />
+    <result column="connectIntervalTime" jdbcType="INTEGER" property="connectIntervalTime" />
+    <result column="connectMaintainTime" jdbcType="INTEGER" property="connectMaintainTime" />
+    <result column="sampleTime" jdbcType="INTEGER" property="sampleTime" />
+    <result column="timeState" jdbcType="INTEGER" property="timeState" />
+    <result column="highSampleTime" jdbcType="INTEGER" property="highSampleTime" />
+    <result column="highSampleMaintain" jdbcType="INTEGER" property="highSampleMaintain" />
+    <result column="highSampleMaintainDay" jdbcType="INTEGER" property="highSampleMaintainDay" />
+    <result column="dmaTimeState" jdbcType="INTEGER" property="dmaTimeState" />
+    <result column="highSampleStartTime" jdbcType="INTEGER" property="highSampleStartTime" />
+    <result column="highConnectIntervalTime" jdbcType="INTEGER" property="highConnectIntervalTime" />
+    <result column="highDMAOpenStatus" jdbcType="INTEGER" property="highDMAOpenStatus" />
+    <result column="meterParaWrite" jdbcType="INTEGER" property="meterParaWrite" />
+    <result column="meterParaRead" jdbcType="INTEGER" property="meterParaRead" />
+    <result column="workMode" jdbcType="INTEGER" property="workMode" />
+    <result column="R_workMode" jdbcType="INTEGER" property="rWorkmode" />
+    <result column="meterSize" jdbcType="INTEGER" property="meterSize" />
+    <result column="R_meterSize" jdbcType="INTEGER" property="rMetersize" />
+    <result column="excitationFreq" jdbcType="INTEGER" property="excitationFreq" />
+    <result column="R_excitationFreq" jdbcType="INTEGER" property="rExcitationfreq" />
+    <result column="excitationI" jdbcType="INTEGER" property="excitationI" />
+    <result column="R_excitationI" jdbcType="INTEGER" property="rExcitationI" />
+    <result column="ePipe" jdbcType="INTEGER" property="ePipe" />
+    <result column="R_ePipe" jdbcType="INTEGER" property="rEpipe" />
+    <result column="ePipeThreshold" jdbcType="INTEGER" property="ePipeThreshold" />
+    <result column="R_ePipeThreshold" jdbcType="INTEGER" property="rEpipethreshold" />
+    <result column="damping" jdbcType="REAL" property="damping" />
+    <result column="R_damping" jdbcType="REAL" property="rDamping" />
+    <result column="unit" jdbcType="INTEGER" property="unit" />
+    <result column="primaryCz" jdbcType="REAL" property="primaryCz" />
+    <result column="R_primaryCz" jdbcType="REAL" property="rPrimaryCz" />
+    <result column="meterSoftReset" jdbcType="INTEGER" property="meterSoftReset" />
+    <result column="R_meterSoftReset" jdbcType="INTEGER" property="rMetersoftreset" />
+    <result column="workModeFromMeter" jdbcType="INTEGER" property="workModeFromMeter" />
+    <result column="meterSizeFromMeter" jdbcType="INTEGER" property="meterSizeFromMeter" />
+    <result column="excitationFreqFromMeter" jdbcType="INTEGER" property="excitationFreqFromMeter" />
+    <result column="excitationIFromMeter" jdbcType="INTEGER" property="excitationIFromMeter" />
+    <result column="ePipeFromMeter" jdbcType="INTEGER" property="ePipeFromMeter" />
+    <result column="ePipeThresholdFromMeter" jdbcType="INTEGER" property="ePipeThresholdFromMeter" />
+    <result column="dampingFromMeter" jdbcType="REAL" property="dampingFromMeter" />
+    <result column="unitFromMeter" jdbcType="INTEGER" property="unitFromMeter" />
+    <result column="primaryCzFromMeter" jdbcType="REAL" property="primaryCzFromMeter" />
+    <result column="meterSoftResetFromMeter" jdbcType="INTEGER" property="meterSoftResetFromMeter" />
+    <result column="primaryCs" jdbcType="REAL" property="primaryCs" />
+    <result column="R_primaryCs" jdbcType="REAL" property="rPrimarycs" />
+    <result column="primaryCsFromMeter" jdbcType="REAL" property="primaryCsFromMeter" />
+    <result column="meterParaWrite2" jdbcType="INTEGER" property="meterParaWrite2" />
+    <result column="meterParaWrite3" jdbcType="INTEGER" property="meterparawrite3" />
+    <result column="transport_Permit" jdbcType="INTEGER" property="transportPermit" />
+    <result column="meterParaRead2" jdbcType="INTEGER" property="meterParaRead2" />
+    <result column="meterParaRead3" jdbcType="INTEGER" property="meterpararead3" />
+    <result column="SOFTRESET" jdbcType="INTEGER" property="softreset" />
+    <result column="WATCHDOG" jdbcType="INTEGER" property="watchdog" />
+    <result column="STANDBY" jdbcType="INTEGER" property="standby" />
+    <result column="POWERON" jdbcType="INTEGER" property="poweron" />
+    <result column="meterName" jdbcType="VARCHAR" property="meterName" />
+    <result column="meterTypeId" jdbcType="INTEGER" property="meterTypeId" />
+    <result column="shortName" jdbcType="VARCHAR" property="shortName" />
+    <result column="receiveHeartResponse" jdbcType="INTEGER" property="receiveHeartResponse" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="instrNo" jdbcType="VARCHAR" property="instrNo" />
+    <result column="phoneNo" jdbcType="VARCHAR" property="phoneNo" />
+    <result column="positionNo" jdbcType="VARCHAR" property="positionNo" />
+    <result column="connectTime" jdbcType="TIMESTAMP" property="connectTime" />
+    <result column="convertNo" jdbcType="VARCHAR" property="convertNo" />
+    <result column="ifConnecting" jdbcType="INTEGER" property="ifConnecting" />
+    <result column="minPress" jdbcType="REAL" property="minPress" />
+    <result column="maxPress" jdbcType="REAL" property="maxPress" />
+    <result column="lowFlowCut" jdbcType="REAL" property="lowFlowCut" />
+    <result column="R_lowFlowCut" jdbcType="REAL" property="rLowflowcut" />
+    <result column="analogonoff" jdbcType="INTEGER" property="analogonoff" />
+    <result column="R_analogonoff" jdbcType="INTEGER" property="rAnalogonoff" />
+    <result column="pressOnOff" jdbcType="INTEGER" property="pressOnOff" />
+    <result column="R_pressOnOff" jdbcType="INTEGER" property="rPressonoff" />
+    <result column="systemZero" jdbcType="REAL" property="systemZero" />
+    <result column="R_systemZero" jdbcType="REAL" property="rSystemzero" />
+    <result column="totalF" jdbcType="REAL" property="totalF" />
+    <result column="R_totalF" jdbcType="REAL" property="rTotalf" />
+    <result column="totalR" jdbcType="REAL" property="totalR" />
+    <result column="R_totalR" jdbcType="REAL" property="rTotalr" />
+    <result column="analogTime" jdbcType="INTEGER" property="analogTime" />
+    <result column="R_analogTime" jdbcType="INTEGER" property="rAnalogtime" />
+    <result column="press_High" jdbcType="REAL" property="pressHigh" />
+    <result column="R_press_High" jdbcType="REAL" property="rPressHigh" />
+    <result column="disConnectTime" jdbcType="TIMESTAMP" property="disConnectTime" />
+    <result column="onlyForward" jdbcType="INTEGER" property="onlyForward" />
+    <result column="onlyForwardData" jdbcType="REAL" property="onlyforwarddata" />
+    <result column="is_vip_account" jdbcType="VARCHAR" property="isVipAccount" />
+    <result column="link_people" jdbcType="VARCHAR" property="linkPeople" />
+    <result column="link_way" jdbcType="VARCHAR" property="linkWay" />
+    <result column="link_address" jdbcType="VARCHAR" property="linkAddress" />
+    <result column="power_Type_Id" jdbcType="INTEGER" property="powerTypeId" />
+    <result column="power_type" jdbcType="VARCHAR" property="powerType" />
+    <result column="output_signal_type_id" jdbcType="VARCHAR" property="outputSignalTypeId" />
+    <result column="output_signal_type" jdbcType="VARCHAR" property="outputSignalType" />
+    <result column="meter_num" jdbcType="VARCHAR" property="meterNum" />
+    <result column="meter_manufacturer" jdbcType="VARCHAR" property="meterManufacturer" />
+    <result column="well_number" jdbcType="VARCHAR" property="wellNumber" />
+    <result column="activeTime" jdbcType="TIMESTAMP" property="activeTime" />
+	<result column="displayBoardRead" jdbcType="INTEGER" property="displayBoardRead" />
+	<result column="displayBoardWrite" jdbcType="INTEGER" property="displayBoardWrite" />
+	<result column="R_ip" jdbcType="VARCHAR" property="rIp" />
+	<result column="R_ipPort" jdbcType="INTEGER" property="rIpport" />
+	<result column="ip" jdbcType="VARCHAR" property="ip" />
+	<result column="ipPort" jdbcType="INTEGER" property="ipPort" />
+  </resultMap>
+  <sql id="Base_Column_List">
+  	machineid, gprsid, num, 
+      datanum, package, time,
+      Signal_strength, upstate, Mversion, 
+      Gversion, Estate, filename, 
+      CCID, I_time, userNameId, 
+      longitude, latitude, minflow, 
+      maxflow, mintotal, maxtotal, 
+      lowPower, lowSignal, alarmNotice, 
+      subUserName, debugMeter, debugMeterAddr, 
+      debugMeterLen, debugMeterRAddr, debugMeterRData, 
+      debugMeterRLen, debugMeterR, debugMeterData, 
+      diameter, metertype, connectIntervalTime, 
+      connectMaintainTime, sampleTime, timeState, 
+      highSampleTime, highSampleMaintain, highSampleMaintainDay, 
+      dmaTimeState, highSampleStartTime, highConnectIntervalTime, 
+      highDMAOpenStatus, meterParaWrite, meterParaRead, 
+      workMode, R_workMode, meterSize, 
+      R_meterSize, excitationFreq, R_excitationFreq, 
+      excitationI, R_excitationI, ePipe, 
+      R_ePipe, ePipeThreshold, R_ePipeThreshold, 
+      damping, R_damping, unit, 
+      primaryCz, R_primaryCz, meterSoftReset, 
+      R_meterSoftReset, workModeFromMeter, meterSizeFromMeter, 
+      excitationFreqFromMeter, excitationIFromMeter, 
+      ePipeFromMeter, ePipeThresholdFromMeter, 
+      dampingFromMeter, unitFromMeter, primaryCzFromMeter, 
+      meterSoftResetFromMeter, primaryCs, R_primaryCs, 
+      primaryCsFromMeter, meterParaWrite2, meterParaWrite3, 
+      transport_Permit, meterParaRead2, meterParaRead3, 
+      SOFTRESET, WATCHDOG, STANDBY, 
+      POWERON, meterName, meterTypeId, 
+      shortName, receiveHeartResponse, remark, 
+      address, instrNo, phoneNo, 
+      positionNo, connectTime, convertNo, 
+      ifConnecting, minPress, maxPress, 
+      lowFlowCut, R_lowFlowCut, analogonoff, 
+      R_analogonoff, pressOnOff, R_pressOnOff, 
+      systemZero, R_systemZero, totalF, 
+      R_totalF, totalR, R_totalR, analogTime, 
+      R_analogTime, press_High, R_press_High, 
+      disConnectTime, onlyForward, onlyForwardData, 
+      is_vip_account, link_people, link_way, 
+      link_address, power_Type_Id, power_type, 
+      output_signal_type_id, output_signal_type, meter_num, 
+      meter_manufacturer, well_number, activeTime
+	  displayBoardRead,displayBoardWrite,R_ip,R_ipPort,ip,ipPort
+  </sql>
+  
+  <select id="findOneByNum" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  	select
+  		<include refid="Base_Column_List" />
+  	from
+  		Machine_Info2
+  	where
+  		num = #{num}
+  	limit 1
+  </select>
+  
+  <select id="findAll" resultMap="BaseResultMap">
+  	select
+  		<include refid="Base_Column_List" />
+  	from
+  		Machine_Info2
+  </select>
+  
+  <select id="findByCompanyId" resultMap="BaseResultMap">
+  	select mi.*
+  	from wt_meter_company wmc left join Machine_Info2 mi on wmc.meter_id = mi.num
+  	where wmc.company_id = #{companyId}
+  </select>
+  
+  <select id="findByUserId" resultMap="BaseResultMap">
+  	select distinct mi.*
+  	from wt_user_meter wum left join Machine_Info2 mi on wum.meter_id = mi.num
+  	where wum.user_id = #{userId}
+  </select>
+  
+  <select id="findByUserIdAndSubUserName" resultMap="BaseResultMap">
+  	select distinct mi.*
+  	from wt_user_meter wum inner join Machine_Info2 mi on wum.meter_id = mi.num
+  	where wum.user_id = #{userId} and mi.subUserName like concat(concat('%',#{subUserName}),'%')
+  </select>
+
+  <select id="findByCompanyIdAndUserId" resultMap="BaseResultMap">
+  	select mi.*
+  	from wt_user_meter wum left join wt_meter_company wmc on wum.meter_id = wmc.meter_id
+  	left join Machine_Info2 mi on wum.meter_id = mi.num
+  	where wmc.company_id = #{companyId} and wum.user_id = #{userId}
+  </select>
+
+    <select id="findPageByCriteria" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from
+        Machine_Info2
+    </select>
+
+	<select id="findBySubname" resultMap="BaseResultMap">
+		select
+        <include refid="Base_Column_List" />
+        from
+        Machine_Info2
+        where shortName in
+        <foreach collection="stations" index="index" item="item" separator="," open="(" close=")">
+        	#{item}
+        </foreach>
+	</select>
+	
+	<insert id="insertOne" parameterType="MachineInfo">
+		insert into Machine_Info2
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+	      <if test="machineid != null">
+	        machineid,
+	      </if>
+	      <if test="gprsid != null">
+	        gprsid,
+	      </if>
+	      <if test="num != null">
+	        num,
+	      </if>
+	      <if test="datanum != null">
+	        datanum,
+	      </if>
+	      <if test="package_ != null">
+	        package,
+	      </if>
+	      <if test="time != null">
+	        time,
+	      </if>
+	      <if test="signalStrength != null">
+	        Signal_strength,
+	      </if>
+	      <if test="upstate != null">
+	        upstate,
+	      </if>
+	      <if test="mversion != null">
+	        Mversion,
+	      </if>
+	      <if test="gversion != null">
+	        Gversion,
+	      </if>
+	      <if test="estate != null">
+	        Estate,
+	      </if>
+	      <if test="filename != null">
+	        filename,
+	      </if>
+	      <if test="ccid != null">
+	        CCID,
+	      </if>
+	      <if test="activeTime != null">
+	        activeTime,
+	      </if>
+	      <if test="userNameId != null">
+	        userNameId,
+	      </if>
+	      <if test="longitude != null">
+	        longitude,
+	      </if>
+	      <if test="latitude != null">
+	        latitude,
+	      </if>
+	      <if test="minflow != null">
+	        minflow,
+	      </if>
+	      <if test="maxflow != null">
+	        maxflow,
+	      </if>
+	      <if test="mintotal != null">
+	        mintotal,
+	      </if>
+	      <if test="maxtotal != null">
+	        maxtotal,
+	      </if>
+	      <if test="lowPower != null">
+	        lowPower,
+	      </if>
+	      <if test="lowSignal != null">
+	        lowSignal,
+	      </if>
+	      <if test="alarmNotice != null">
+	        alarmNotice,
+	      </if>
+	      <if test="subUserName != null">
+	        subUserName,
+	      </if>
+	      <if test="debugMeter != null">
+	        debugMeter,
+	      </if>
+	      <if test="debugMeterAddr != null">
+	        debugMeterAddr,
+	      </if>
+	      <if test="debugMeterLen != null">
+	        debugMeterLen,
+	      </if>
+	      <if test="debugMeterRAddr != null">
+	        debugMeterRAddr,
+	      </if>
+	      <if test="debugMeterRData != null">
+	        debugMeterRData,
+	      </if>
+	      <if test="debugmeterRlen != null">
+	        debugMeterRLen,
+	      </if>
+	      <if test="debugMeterR != null">
+	        debugMeterR,
+	      </if>
+	      <if test="debugMeterData != null">
+	        debugMeterData,
+	      </if>
+	      <if test="diameter != null">
+	        diameter,
+	      </if>
+	      <if test="metertype != null">
+	        metertype,
+	      </if>
+	      <if test="connectIntervalTime != null">
+	        connectIntervalTime,
+	      </if>
+	      <if test="connectMaintainTime != null">
+	        connectMaintainTime,
+	      </if>
+	      <if test="sampleTime != null">
+	        sampleTime,
+	      </if>
+	      <if test="timeState != null">
+	        timeState,
+	      </if>
+	      <if test="highSampleTime != null">
+	        highSampleTime,
+	      </if>
+	      <if test="highSampleMaintain != null">
+	        highSampleMaintain,
+	      </if>
+	      <if test="highSampleMaintainDay != null">
+	        highSampleMaintainDay,
+	      </if>
+	      <if test="dmaTimeState != null">
+	        dmaTimeState,
+	      </if>
+	      <if test="highSampleStartTime != null">
+	        highSampleStartTime,
+	      </if>
+	      <if test="highConnectIntervalTime != null">
+	        highConnectIntervalTime,
+	      </if>
+	      <if test="highDMAOpenStatus != null">
+	        highDMAOpenStatus,
+	      </if>
+	      <if test="meterParaWrite != null">
+	        meterParaWrite,
+	      </if>
+	      <if test="meterParaRead != null">
+	        meterParaRead,
+	      </if>
+	      <if test="workMode != null">
+	        workMode,
+	      </if>
+	      <if test="rWorkmode != null">
+	        R_workMode,
+	      </if>
+	      <if test="meterSize != null">
+	        meterSize,
+	      </if>
+	      <if test="rMetersize != null">
+	        R_meterSize,
+	      </if>
+	      <if test="excitationFreq != null">
+	        excitationFreq,
+	      </if>
+	      <if test="rExcitationfreq != null">
+	        R_excitationFreq,
+	      </if>
+	      <if test="excitationI != null">
+	        excitationI,
+	      </if>
+	      <if test="rExcitationI != null">
+	        R_excitationI,
+	      </if>
+	      <if test="ePipe != null">
+	        ePipe,
+	      </if>
+	      <if test="rEpipe != null">
+	        R_ePipe,
+	      </if>
+	      <if test="ePipeThreshold != null">
+	        ePipeThreshold,
+	      </if>
+	      <if test="rEpipethreshold != null">
+	        R_ePipeThreshold,
+	      </if>
+	      <if test="damping != null">
+	        damping,
+	      </if>
+	      <if test="rDamping != null">
+	        R_damping,
+	      </if>
+	      <if test="unit != null">
+	        unit,
+	      </if>
+	      <if test="primaryCz != null">
+	        primaryCz,
+	      </if>
+	      <if test="rPrimaryCz != null">
+	        R_primaryCz,
+	      </if>
+	      <if test="meterSoftReset != null">
+	        meterSoftReset,
+	      </if>
+	      <if test="rMetersoftreset != null">
+	        R_meterSoftReset,
+	      </if>
+	      <if test="workModeFromMeter != null">
+	        workModeFromMeter,
+	      </if>
+	      <if test="meterSizeFromMeter != null">
+	        meterSizeFromMeter,
+	      </if>
+	      <if test="excitationFreqFromMeter != null">
+	        excitationFreqFromMeter,
+	      </if>
+	      <if test="excitationIFromMeter != null">
+	        excitationIFromMeter,
+	      </if>
+	      <if test="ePipeFromMeter != null">
+	        ePipeFromMeter,
+	      </if>
+	      <if test="ePipeThresholdFromMeter != null">
+	        ePipeThresholdFromMeter,
+	      </if>
+	      <if test="dampingFromMeter != null">
+	        dampingFromMeter,
+	      </if>
+	      <if test="unitFromMeter != null">
+	        unitFromMeter,
+	      </if>
+	      <if test="primaryCzFromMeter != null">
+	        primaryCzFromMeter,
+	      </if>
+	      <if test="meterSoftResetFromMeter != null">
+	        meterSoftResetFromMeter,
+	      </if>
+	      <if test="primaryCs != null">
+	        primaryCs,
+	      </if>
+	      <if test="rPrimarycs != null">
+	        R_primaryCs,
+	      </if>
+	      <if test="primaryCsFromMeter != null">
+	        primaryCsFromMeter,
+	      </if>
+	      <if test="meterParaWrite2 != null">
+	        meterParaWrite2,
+	      </if>
+	      <if test="meterparawrite3 != null">
+	        meterParaWrite3,
+	      </if>
+	      <if test="transportPermit != null">
+	        transport_Permit,
+	      </if>
+	      <if test="meterParaRead2 != null">
+	        meterParaRead2,
+	      </if>
+	      <if test="meterpararead3 != null">
+	        meterParaRead3,
+	      </if>
+	      <if test="softreset != null">
+	        SOFTRESET,
+	      </if>
+	      <if test="watchdog != null">
+	        WATCHDOG,
+	      </if>
+	      <if test="standby != null">
+	        STANDBY,
+	      </if>
+	      <if test="poweron != null">
+	        POWERON,
+	      </if>
+	      <if test="meterName != null">
+	        meterName,
+	      </if>
+	      <if test="meterTypeId != null">
+	        meterTypeId,
+	      </if>
+	      <if test="shortName != null">
+	        shortName,
+	      </if>
+	      <if test="receiveHeartResponse != null">
+	        receiveHeartResponse,
+	      </if>
+	      <if test="remark != null">
+	        remark,
+	      </if>
+	      <if test="address != null">
+	        address,
+	      </if>
+	      <if test="instrNo != null">
+	        instrNo,
+	      </if>
+	      <if test="phoneNo != null">
+	        phoneNo,
+	      </if>
+	      <if test="positionNo != null">
+	        positionNo,
+	      </if>
+	      <if test="connectTime != null">
+	        connectTime,
+	      </if>
+	      <if test="convertNo != null">
+	        convertNo,
+	      </if>
+	      <if test="ifConnecting != null">
+	        ifConnecting,
+	      </if>
+	      <if test="minPress != null">
+	        minPress,
+	      </if>
+	      <if test="maxPress != null">
+	        maxPress,
+	      </if>
+	      <if test="lowFlowCut != null">
+	        lowFlowCut,
+	      </if>
+	      <if test="rLowflowcut != null">
+	        R_lowFlowCut,
+	      </if>
+	      <if test="analogonoff != null">
+	        analogonoff,
+	      </if>
+	      <if test="rAnalogonoff != null">
+	        R_analogonoff,
+	      </if>
+	      <if test="pressOnOff != null">
+	        pressOnOff,
+	      </if>
+	      <if test="rPressonoff != null">
+	        R_pressOnOff,
+	      </if>
+	      <if test="systemZero != null">
+	        systemZero,
+	      </if>
+	      <if test="rSystemzero != null">
+	        R_systemZero,
+	      </if>
+	      <if test="totalF != null">
+	        totalF,
+	      </if>
+	      <if test="rTotalf != null">
+	        R_totalF,
+	      </if>
+	      <if test="totalR != null">
+	        totalR,
+	      </if>
+	      <if test="rTotalr != null">
+	        R_totalR,
+	      </if>
+	      <if test="analogTime != null">
+	        analogTime,
+	      </if>
+	      <if test="rAnalogtime != null">
+	        R_analogTime,
+	      </if>
+	      <if test="pressHigh != null">
+	        press_High,
+	      </if>
+	      <if test="rPressHigh != null">
+	        R_press_High,
+	      </if>
+	      <if test="disConnectTime != null">
+	        disConnectTime,
+	      </if>
+	      <if test="onlyForward != null">
+	        onlyForward,
+	      </if>
+	      <if test="onlyforwarddata != null">
+	        onlyForwardData,
+	      </if>
+	      <if test="isVipAccount != null">
+	        is_vip_account,
+	      </if>
+	      <if test="linkPeople != null">
+	        link_people,
+	      </if>
+	      <if test="linkWay != null">
+	        link_way,
+	      </if>
+	      <if test="linkAddress != null">
+	        link_address,
+	      </if>
+	      <if test="powerTypeId != null">
+	        power_Type_Id,
+	      </if>
+	      <if test="powerType != null">
+	        power_type,
+	      </if>
+	      <if test="outputSignalTypeId != null">
+	        output_signal_type_id,
+	      </if>
+	      <if test="outputSignalType != null">
+	        output_signal_type,
+	      </if>
+	      <if test="meterNum != null">
+	        meter_num,
+	      </if>
+	      <if test="meterManufacturer != null">
+	        meter_manufacturer,
+	      </if>
+	      <if test="wellNumber != null">
+	        well_number,
+	      </if>
+	    </trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides=",">
+	      <if test="machineid != null">
+	        #{machineid},
+	      </if>
+	      <if test="gprsid != null">
+	        #{gprsid},
+	      </if>
+	      <if test="num != null">
+	        #{num},
+	      </if>
+	      <if test="datanum != null">
+	        #{datanum},
+	      </if>
+	      <if test="package_ != null">
+	        #{package_},
+	      </if>
+	      <if test="time != null">
+	        #{time},
+	      </if>
+	      <if test="signalStrength != null">
+	        #{signalStrength},
+	      </if>
+	      <if test="upstate != null">
+	        #{upstate},
+	      </if>
+	      <if test="mversion != null">
+	        #{mversion},
+	      </if>
+	      <if test="gversion != null">
+	        #{gversion},
+	      </if>
+	      <if test="estate != null">
+	        #{estate},
+	      </if>
+	      <if test="filename != null">
+	        #{filename},
+	      </if>
+	      <if test="ccid != null">
+	        #{ccid},
+	      </if>
+	      <if test="activeTime != null">
+	        #{activeTime},
+	      </if>
+	      <if test="userNameId != null">
+	        #{userNameId},
+	      </if>
+	      <if test="longitude != null">
+	        #{longitude},
+	      </if>
+	      <if test="latitude != null">
+	        #{latitude},
+	      </if>
+	      <if test="minflow != null">
+	        #{minflow},
+	      </if>
+	      <if test="maxflow != null">
+	        #{maxflow},
+	      </if>
+	      <if test="mintotal != null">
+	        #{mintotal},
+	      </if>
+	      <if test="maxtotal != null">
+	       	#{maxtotal},
+	      </if>
+	      <if test="lowPower != null">
+	        #{lowPower},
+	      </if>
+	      <if test="lowSignal != null">
+	        #{lowSignal},
+	      </if>
+	      <if test="alarmNotice != null">
+	        #{alarmNotice},
+	      </if>
+	      <if test="subUserName != null">
+	        #{subUserName},
+	      </if>
+	      <if test="debugMeter != null">
+	      	#{debugMeter},
+	      </if>
+	      <if test="debugMeterAddr != null">
+	      	#{debugMeterAddr},
+	      </if>
+	      <if test="debugMeterLen != null">
+	      	#{debugMeterLen},
+	      </if>
+	      <if test="debugMeterRAddr != null">
+	      	#{debugMeterRAddr},
+	      </if>
+	      <if test="debugMeterRData != null">
+	      	#{debugMeterRData},
+	      </if>
+	      <if test="debugmeterRlen != null">
+	      	#{debugmeterRlen},
+	      </if>
+	      <if test="debugMeterR != null">
+	      	#{debugMeterR},
+	      </if>
+	      <if test="debugMeterData != null">
+	      	#{debugMeterData},
+	      </if>
+	      <if test="diameter != null">
+	      	#{diameter},
+	      </if>
+	      <if test="metertype != null">
+			#{metertype},
+	      </if>
+	      <if test="connectIntervalTime != null">
+			#{connectIntervalTime},
+	      </if>
+	      <if test="connectMaintainTime != null">
+	      	#{connectMaintainTime},
+	      </if>
+	      <if test="sampleTime != null">
+			#{sampleTime},
+	      </if>
+	      <if test="timeState != null">
+	      	#{timeState},
+	      </if>
+	      <if test="highSampleTime != null">
+	      	#{highSampleTime},
+	      </if>
+	      <if test="highSampleMaintain != null">
+	      	#{highSampleMaintain},
+	      </if>
+	      <if test="highSampleMaintainDay != null">
+	      	#{highSampleMaintainDay},
+	      </if>
+	      <if test="dmaTimeState != null">
+	      	#{dmaTimeState},
+	      </if>
+	      <if test="highSampleStartTime != null">
+	      	#{highSampleStartTime},
+	      </if>
+	      <if test="highConnectIntervalTime != null">
+	      	#{highConnectIntervalTime},
+	      </if>
+	      <if test="highDMAOpenStatus != null">
+	      	#{highDMAOpenStatus},
+	      </if>
+	      <if test="meterParaWrite != null">
+	      	#{meterParaWrite},
+	      </if>
+	      <if test="meterParaRead != null">
+	      	#{meterParaRead},
+	      </if>
+	      <if test="workMode != null">
+	      	#{workMode},
+	      </if>
+	      <if test="rWorkmode != null">
+	      	#{rWorkmode},
+	      </if>
+	      <if test="meterSize != null">
+	      	#{meterSize},
+	      </if>
+	      <if test="rMetersize != null">
+	      	#{rMetersize},
+	      </if>
+	      <if test="excitationFreq != null">
+	      	#{excitationFreq},
+	      </if>
+	      <if test="rExcitationfreq != null">
+	      	#{rExcitationfreq},
+	      </if>
+	      <if test="excitationI != null">
+	      	#{excitationI},
+	      </if>
+	      <if test="rExcitationI != null">
+	      	#{rExcitationI},
+	      </if>
+	      <if test="ePipe != null">
+	      	#{ePipe},
+	      </if>
+	      <if test="rEpipe != null">
+			#{rEpipe},
+	      </if>
+	      <if test="ePipeThreshold != null">
+	      	#{ePipeThreshold},
+	      </if>
+	      <if test="rEpipethreshold != null">
+	      	#{rEpipethreshold},
+	      </if>
+	      <if test="damping != null">
+	      	#{damping},
+	      </if>
+	      <if test="rDamping != null">
+	      	#{rDamping},
+	      </if>
+	      <if test="unit != null">
+	      	#{unit},
+	      </if>
+	      <if test="primaryCz != null">
+	      	#{primaryCz},
+	      </if>
+	      <if test="rPrimaryCz != null">
+			#{rPrimaryCz},
+	      </if>
+	      <if test="meterSoftReset != null">
+			#{meterSoftReset},
+	      </if>
+	      <if test="rMetersoftreset != null">
+			#{rMetersoftreset},
+	      </if>
+	      <if test="workModeFromMeter != null">
+			#{workModeFromMeter},
+	      </if>
+	      <if test="meterSizeFromMeter != null">
+			#{meterSizeFromMeter},
+	      </if>
+	      <if test="excitationFreqFromMeter != null">
+			#{excitationFreqFromMeter},
+	      </if>
+	      <if test="excitationIFromMeter != null">
+			#{excitationIFromMeter},
+	      </if>
+	      <if test="ePipeFromMeter != null">
+			#{ePipeFromMeter},
+	      </if>
+	      <if test="ePipeThresholdFromMeter != null">
+			#{ePipeThresholdFromMeter},
+	      </if>
+	      <if test="dampingFromMeter != null">
+			#{dampingFromMeter},
+	      </if>
+	      <if test="unitFromMeter != null">
+			#{unitFromMeter},
+	      </if>
+	      <if test="primaryCzFromMeter != null">
+	      	#{primaryCzFromMeter},
+	      </if>
+	      <if test="meterSoftResetFromMeter != null">
+			#{meterSoftResetFromMeter},
+	      </if>
+	      <if test="primaryCs != null">
+			#{primaryCs},
+	      </if>
+	      <if test="rPrimarycs != null">
+			#{rPrimarycs},
+	      </if>
+	      <if test="primaryCsFromMeter != null">
+			#{primaryCsFromMeter},
+	      </if>
+	      <if test="meterParaWrite2 != null">
+			#{meterParaWrite2},
+	      </if>
+	      <if test="meterparawrite3 != null">
+			#{meterparawrite3},
+	      </if>
+	      <if test="transportPermit != null">
+			#{transportPermit},
+	      </if>
+	      <if test="meterParaRead2 != null">
+			#{meterParaRead2},
+	      </if>
+	      <if test="meterpararead3 != null">
+			#{meterpararead3},
+	      </if>
+	      <if test="softreset != null">
+			#{softreset},
+	      </if>
+	      <if test="watchdog != null">
+			#{watchdog},
+	      </if>
+	      <if test="standby != null">
+			#{standby},
+	      </if>
+	      <if test="poweron != null">
+			#{poweron},
+	      </if>
+	      <if test="meterName != null">
+			#{meterName},
+	      </if>
+	      <if test="meterTypeId != null">
+			#{meterTypeId},
+	      </if>
+	      <if test="shortName != null">
+	      	#{shortName},
+	      </if>
+	      <if test="receiveHeartResponse != null">
+			#{receiveHeartResponse},
+	      </if>
+	      <if test="remark != null">
+			#{remark},
+	      </if>
+	      <if test="address != null">
+			#{address},
+	      </if>
+	      <if test="instrNo != null">
+			#{instrNo},
+	      </if>
+	      <if test="phoneNo != null">
+			#{phoneNo},
+	      </if>
+	      <if test="positionNo != null">
+			#{positionNo},
+	      </if>
+	      <if test="connectTime != null">
+			#{connectTime},
+	      </if>
+	      <if test="convertNo != null">
+			#{convertNo},
+	      </if>
+	      <if test="ifConnecting != null">
+			#{ifConnecting},
+	      </if>
+	      <if test="minPress != null">
+			#{minPress},
+	      </if>
+	      <if test="maxPress != null">
+			#{maxPress},
+	      </if>
+	      <if test="lowFlowCut != null">
+			#{lowFlowCut},
+	      </if>
+	      <if test="rLowflowcut != null">
+			#{rLowflowcut},
+	      </if>
+	      <if test="analogonoff != null">
+			#{analogonoff},
+	      </if>
+	      <if test="rAnalogonoff != null">
+			#{rAnalogonoff},
+	      </if>
+	      <if test="pressOnOff != null">
+			#{pressOnOff},
+	      </if>
+	      <if test="rPressonoff != null">
+			#{rPressonoff},
+	      </if>
+	      <if test="systemZero != null">
+			#{systemZero},
+	      </if>
+	      <if test="rSystemzero != null">
+	      	#{rSystemzero},
+	      </if>
+	      <if test="totalF != null">
+			#{totalF},
+	      </if>
+	      <if test="rTotalf != null">
+			#{rTotalf},
+	      </if>
+	      <if test="totalR != null">
+			#{totalR},
+	      </if>
+	      <if test="rTotalr != null">
+			#{rTotalr},
+	      </if>
+	      <if test="analogTime != null">
+			#{analogTime},
+	      </if>
+	      <if test="rAnalogtime != null">
+			#{rAnalogtime},
+	      </if>
+	      <if test="pressHigh != null">
+			#{pressHigh},
+	      </if>
+	      <if test="rPressHigh != null">
+			#{rPressHigh},
+	      </if>
+	      <if test="disConnectTime != null">
+			#{disConnectTime},
+	      </if>
+	      <if test="onlyForward != null">
+			#{onlyForward},
+	      </if>
+	      <if test="onlyforwarddata != null">
+			#{onlyforwarddata},
+	      </if>
+	      <if test="isVipAccount != null">
+			#{isVipAccount},
+	      </if>
+	      <if test="linkPeople != null">
+			#{linkPeople},
+	      </if>
+	      <if test="linkWay != null">
+			#{linkWay},
+	      </if>
+	      <if test="linkAddress != null">
+			#{linkAddress},
+	      </if>
+	      <if test="powerTypeId != null">
+			#{powerTypeId},
+	      </if>
+	      <if test="powerType != null">
+			#{powerType},
+	      </if>
+	      <if test="outputSignalTypeId != null">
+			#{outputSignalTypeId},
+	      </if>
+	      <if test="outputSignalType != null">
+			#{outputSignalType},
+	      </if>
+	      <if test="meterNum != null">
+			#{meterNum},
+	      </if>
+	      <if test="meterManufacturer != null">
+			#{meterManufacturer},
+	      </if>
+	      <if test="wellNumber != null">
+			#{wellNumber}
+	      </if>
+		</trim>
+	</insert>
+	
+	<update id="updateByNum"  parameterType="MachineInfo">
+		update Machine_Info2
+		<set>
+		  <if test="machineid != null">
+	        machineid = #{machineid},
+	      </if>
+	      <if test="gprsid != null">
+	        gprsid = #{gprsid},
+	      </if>
+	      <if test="datanum != null">
+	        datanum = #{datanum},
+	      </if>
+	      <if test="package_ != null">
+	        package = #{package_},
+	      </if>
+	      <if test="time != null">
+	        time = #{time},
+	      </if>
+	      <if test="signalStrength != null">
+	        Signal_strength = #{signalStrength},
+	      </if>
+	      <if test="upstate != null">
+	        upstate = #{upstate},
+	      </if>
+	      <if test="mversion != null">
+	        Mversion = #{mversion},
+	      </if>
+	      <if test="gversion != null">
+	      	Gversion = #{gversion},
+	      </if>
+	      <if test="estate != null">
+ 			Estate=#{estate},
+	      </if>
+	      <if test="filename != null">
+			filename = #{filename},
+	      </if>
+	      <if test="ccid != null">
+	        CCID = #{ccid},
+	      </if>
+	        activeTime = #{activeTime},
+	      <if test="userNameId != null">
+	        userNameId = #{userNameId},
+	      </if>
+	      <if test="longitude != null">
+	        longitude = #{longitude},
+	      </if>
+	      <if test="latitude != null">
+	        latitude = #{latitude},
+	      </if>
+	      <if test="minflow != null">
+	        minflow = #{minflow},
+	      </if>
+	      <if test="maxflow != null">
+	        maxflow = #{maxflow},
+	      </if>
+	      <if test="mintotal != null">
+	        mintotal = #{mintotal},
+	      </if>
+	      <if test="maxtotal != null">
+	       	maxtotal = #{maxtotal},
+	      </if>
+	      <if test="lowPower != null">
+	        lowPower = #{lowPower},
+	      </if>
+	      <if test="lowSignal != null">
+	        lowSignal = #{lowSignal},
+	      </if>
+	      <if test="alarmNotice != null">
+	        alarmNotice = #{alarmNotice},
+	      </if>
+	      <if test="subUserName != null">
+	        subUserName = #{subUserName},
+	      </if>
+	      <if test="debugMeter != null">
+	      	debugMeter = #{debugMeter},
+	      </if>
+	      <if test="debugMeterAddr != null">
+	      	debugMeterAddr = #{debugMeterAddr},
+	      </if>
+	      <if test="debugMeterLen != null">
+	      	debugMeterLen = #{debugMeterLen},
+	      </if>
+	      <if test="debugMeterRAddr != null">
+	      	debugMeterRAddr = #{debugMeterRAddr},
+	      </if>
+	      <if test="debugMeterRData != null">
+	      	debugMeterRData = #{debugMeterRData},
+	      </if>
+	      <if test="debugmeterRlen != null">
+	      	debugMeterRLen = #{debugmeterRlen},
+	      </if>
+	      <if test="debugMeterR != null">
+	      	debugMeterR = #{debugMeterR},
+	      </if>
+	      <if test="debugMeterData != null">
+	      	debugMeterData = #{debugMeterData},
+	      </if>
+	      <if test="diameter != null">
+	      	diameter = #{diameter},
+	      </if>
+	      <if test="metertype != null">
+			metertype = #{metertype},
+	      </if>
+	      <if test="connectIntervalTime != null">
+			connectIntervalTime = #{connectIntervalTime},
+	      </if>
+	      <if test="connectMaintainTime != null">
+	      	connectMaintainTime = #{connectMaintainTime},
+	      </if>
+	      <if test="sampleTime != null">
+			sampleTime = #{sampleTime},
+	      </if>
+	      <if test="timeState != null">
+	      	timeState = #{timeState},
+	      </if>
+	      <if test="highSampleTime != null">
+	      	highSampleTime = #{highSampleTime},
+	      </if>
+	      <if test="highSampleMaintain != null">
+	      	highSampleMaintain = #{highSampleMaintain},
+	      </if>
+	      <if test="highSampleMaintainDay != null">
+	      	highSampleMaintainDay = #{highSampleMaintainDay},
+	      </if>
+	      <if test="dmaTimeState != null">
+	      	dmaTimeState = #{dmaTimeState},
+	      </if>
+	      <if test="highSampleStartTime != null">
+	      	highSampleStartTime = #{highSampleStartTime},
+	      </if>
+	      <if test="highConnectIntervalTime != null">
+	      	highConnectIntervalTime = #{highConnectIntervalTime},
+	      </if>
+	      <if test="highDMAOpenStatus != null">
+	      	highDMAOpenStatus = #{highDMAOpenStatus},
+	      </if>
+	      <if test="meterParaWrite != null">
+	      	meterParaWrite = #{meterParaWrite},
+	      </if>
+	      <if test="meterParaRead != null">
+	      	meterParaRead = #{meterParaRead},
+	      </if>
+	      <if test="workMode != null">
+	      	workMode = #{workMode},
+	      </if>
+	      <if test="rWorkmode != null">
+	      	R_workMode = #{rWorkmode},
+	      </if>
+	      <if test="meterSize != null">
+	      	meterSize = #{meterSize},
+	      </if>
+	      <if test="rMetersize != null">
+	      	R_meterSize = #{rMetersize},
+	      </if>
+	      <if test="excitationFreq != null">
+	      	excitationFreq = #{excitationFreq},
+	      </if>
+	      <if test="rExcitationfreq != null">
+	      	R_excitationFreq = #{rExcitationfreq},
+	      </if>
+	      <if test="excitationI != null">
+	      	excitationI = #{excitationI},
+	      </if>
+	      <if test="rExcitationI != null">
+	      	R_excitationI = #{rExcitationI},
+	      </if>
+	      <if test="ePipe != null">
+	      	ePipe = #{ePipe},
+	      </if>
+	      <if test="rEpipe != null">
+			R_ePipe = #{rEpipe},
+	      </if>
+	      <if test="ePipeThreshold != null">
+	      	ePipeThreshold = #{ePipeThreshold},
+	      </if>
+	      <if test="rEpipethreshold != null">
+	      	R_ePipeThreshold = #{rEpipethreshold},
+	      </if>
+	      <if test="damping != null">
+	      	damping = #{damping},
+	      </if>
+	      <if test="rDamping != null">
+	      	R_damping = #{rDamping},
+	      </if>
+	      <if test="unit != null">
+	      	unit = #{unit},
+	      </if>
+	      <if test="primaryCz != null">
+	      	primaryCz = #{primaryCz},
+	      </if>
+	      <if test="rPrimaryCz != null">
+			R_primaryCz = #{rPrimaryCz},
+	      </if>
+	      <if test="meterSoftReset != null">
+			meterSoftReset = #{meterSoftReset},
+	      </if>
+	      <if test="rMetersoftreset != null">
+			R_meterSoftReset = #{rMetersoftreset},
+	      </if>
+	      <if test="workModeFromMeter != null">
+			workModeFromMeter = #{workModeFromMeter},
+	      </if>
+	      <if test="meterSizeFromMeter != null">
+			meterSizeFromMeter = #{meterSizeFromMeter},
+	      </if>
+	      <if test="excitationFreqFromMeter != null">
+			excitationFreqFromMeter = #{excitationFreqFromMeter},
+	      </if>
+	      <if test="excitationIFromMeter != null">
+			excitationIFromMeter = #{excitationIFromMeter},
+	      </if>
+	      <if test="ePipeFromMeter != null">
+			ePipeFromMeter = #{ePipeFromMeter},
+	      </if>
+	      <if test="ePipeThresholdFromMeter != null">
+			ePipeThresholdFromMeter = #{ePipeThresholdFromMeter},
+	      </if>
+	      <if test="dampingFromMeter != null">
+			dampingFromMeter = #{dampingFromMeter},
+	      </if>
+	      <if test="unitFromMeter != null">
+			unitFromMeter = #{unitFromMeter},
+	      </if>
+	      <if test="primaryCzFromMeter != null">
+	      	primaryCzFromMeter = #{primaryCzFromMeter},
+	      </if>
+	      <if test="meterSoftResetFromMeter != null">
+			meterSoftResetFromMeter = #{meterSoftResetFromMeter},
+	      </if>
+	      <if test="primaryCs != null">
+			primaryCs = #{primaryCs},
+	      </if>
+	      <if test="rPrimarycs != null">
+			R_primaryCs = #{rPrimarycs},
+	      </if>
+	      <if test="primaryCsFromMeter != null">
+			primaryCsFromMeter = #{primaryCsFromMeter},
+	      </if>
+	      <if test="meterParaWrite2 != null">
+			meterParaWrite2 = #{meterParaWrite2},
+	      </if>
+	      <if test="meterparawrite3 != null">
+			meterParaWrite3 = #{meterparawrite3},
+	      </if>
+	      <if test="transportPermit != null">
+			transport_Permit = #{transportPermit},
+	      </if>
+	      <if test="meterParaRead2 != null">
+			meterParaRead2 = #{meterParaRead2},
+	      </if>
+	      <if test="meterpararead3 != null">
+			meterParaRead3 = #{meterpararead3},
+	      </if>
+	      <if test="softreset != null">
+			SOFTRESET = #{softreset},
+	      </if>
+	      <if test="watchdog != null">
+			WATCHDOG = #{watchdog},
+	      </if>
+	      <if test="standby != null">
+			STANDBY = #{standby},
+	      </if>
+	      <if test="poweron != null">
+			POWERON = #{poweron},
+	      </if>
+	      <if test="meterName != null">
+			meterName = #{meterName},
+	      </if>
+	      <if test="meterTypeId != null">
+			meterTypeId = #{meterTypeId},
+	      </if>
+	      <if test="shortName != null">
+	      	shortName = #{shortName},
+	      </if>
+	      <if test="receiveHeartResponse != null">
+			receiveHeartResponse = #{receiveHeartResponse},
+	      </if>
+	      <if test="remark != null">
+			remark = #{remark},
+	      </if>
+	      <if test="address != null">
+			address = #{address},
+	      </if>
+	      <if test="instrNo != null">
+			instrNo = #{instrNo},
+	      </if>
+	      <if test="phoneNo != null">
+			phoneNo = #{phoneNo},
+	      </if>
+	      <if test="positionNo != null">
+			positionNo = #{positionNo},
+	      </if>
+	      <if test="connectTime != null">
+			connectTime = #{connectTime},
+	      </if>
+	      <if test="convertNo != null">
+			convertNo = #{convertNo},
+	      </if>
+	      <if test="ifConnecting != null">
+			ifConnecting = #{ifConnecting},
+	      </if>
+	      <if test="minPress != null">
+			minPress = #{minPress},
+	      </if>
+	      <if test="maxPress != null">
+			maxPress = #{maxPress},
+	      </if>
+	      <if test="lowFlowCut != null">
+			lowFlowCut = #{lowFlowCut},
+	      </if>
+	      <if test="rLowflowcut != null">
+			R_lowFlowCut = #{rLowflowcut},
+	      </if>
+	      <if test="analogonoff != null">
+			analogonoff = #{analogonoff},
+	      </if>
+	      <if test="rAnalogonoff != null">
+			R_analogonoff = #{rAnalogonoff},
+	      </if>
+	      <if test="pressOnOff != null">
+			pressOnOff = #{pressOnOff},
+	      </if>
+	      <if test="rPressonoff != null">
+			R_pressOnOff = #{rPressonoff},
+	      </if>
+	      <if test="systemZero != null">
+			systemZero = #{systemZero},
+	      </if>
+	      <if test="rSystemzero != null">
+	      	R_systemZero = #{rSystemzero},
+	      </if>
+	      <if test="totalF != null">
+			totalF = #{totalF},
+	      </if>
+	      <if test="rTotalf != null">
+			R_totalF = #{rTotalf},
+	      </if>
+	      <if test="totalR != null">
+			totalR = #{totalR},
+	      </if>
+	      <if test="rTotalr != null">
+			R_totalR = #{rTotalr},
+	      </if>
+	      <if test="analogTime != null">
+			analogTime = #{analogTime},
+	      </if>
+	      <if test="rAnalogtime != null">
+			R_analogTime = #{rAnalogtime},
+	      </if>
+	      <if test="pressHigh != null">
+			press_High = #{pressHigh},
+	      </if>
+	      <if test="rPressHigh != null">
+			R_press_High = #{rPressHigh},
+	      </if>
+	      <if test="disConnectTime != null">
+			disConnectTime = #{disConnectTime},
+	      </if>
+	      <if test="onlyForward != null">
+			onlyForward = #{onlyForward},
+	      </if>
+	      <if test="onlyforwarddata != null">
+			onlyForwardData = #{onlyforwarddata},
+	      </if>
+	      <if test="isVipAccount != null">
+			is_vip_account = #{isVipAccount},
+	      </if>
+	      <if test="linkPeople != null">
+			link_people = #{linkPeople},
+	      </if>
+	      <if test="linkWay != null">
+			link_way = #{linkWay},
+	      </if>
+	      <if test="linkAddress != null">
+			link_address = #{linkAddress},
+	      </if>
+	      <if test="powerTypeId != null">
+			power_Type_Id = #{powerTypeId},
+	      </if>
+	      <if test="powerType != null">
+			power_type = #{powerType},
+	      </if>
+	      <if test="outputSignalTypeId != null">
+			output_signal_type_id = #{outputSignalTypeId},
+	      </if>
+	      <if test="outputSignalType != null">
+			output_signal_type = #{outputSignalType},
+	      </if>
+	      <if test="meterNum != null">
+			meter_num = #{meterNum},
+	      </if>
+	      <if test="meterManufacturer != null">
+			meter_manufacturer = #{meterManufacturer},
+	      </if>
+	      <if test="wellNumber != null">
+			well_number = #{wellNumber}
+	      </if>
+		</set>
+		where num = #{num}
+	</update>
+	<select id="findBySubUserName" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from Machine_Info2
+		where  subUserName like concat(concat('%',#{subUserName}),'%')
+	</select>
+	<update id="updateIpAndPortByNum" parameterType="MachineInfo">
+		update Machine_Info2
+		<set>
+			displayBoardWrite = #{displayBoardWrite},
+			ip = #{ip},
+			ipPort = #{ipPort}
+		</set>
+		where num = #{num}
+	</update>
+</mapper>

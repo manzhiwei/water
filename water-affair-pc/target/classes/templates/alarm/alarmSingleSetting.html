@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head th:replace="menu :: head"/>
+
+<body class="">
+<div id="wrapper">
+    <!--菜单模块-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse"  th:replace="menu :: side" />
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <!--header模块-->
+        <div class="row border-bottom" th:replace="menu :: top" />
+
+        <!--内容模块-->
+        <div class="row content-main">
+            <div class="slimScroll-default">
+                <!--这里是不同页面变更的部分-->
+                <div class="wrapper wrapper-content animated ">
+                    <div class="row">
+                        <form name="searchForm" id="searchForm" method="post" action="/updateAlarmSingleSetting">
+                            <div class="col-lg-12">
+
+                                <div class="ibox">
+                                <div class="ibox-title">
+                                    <h5>单点告警配置</h5>
+                                </div>
+
+                                <div class="ibox-content">
+
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <select name="mname" id='staions1' data-placeholder="选择水表"
+                                                            class="form-control chosen-select-normal"
+                                                            onchange="javascript:location.href=this.value;">
+                                                        <option th:each="prod : ${meterList}" th:selected="${prod.select}"
+                                                                th:value="${prod.value}" th:text="${prod.name}">
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <select name="tname" id='type' data-placeholder="选择类型"
+                                                            class="form-control chosen-select-normal"
+                                                            onchange="javascript:location.href=this.value;">
+                                                        <option th:each="prod : ${typeList}" th:selected="${prod.select}"
+                                                                th:value="${prod.value}" th:text="${prod.name}">
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-sm-2">
+                                                <div class="input-group">
+                                                    <button id="query2" type="button" onclick="searchForm.submit()"  class="btn btn-sm btn-success">更新配置
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </div>
+                            </div>
+                             <div class="ibox" style="padding-bottom: 100px;">
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="ibox float-e-margins">
+                                                <div class="ibox-title">
+                                                    <h5>限值告警</h5>
+                                                </div>
+                                                <div class="ibox-content">
+                                                    <div class="row form-group">
+
+
+                                                    </div>
+
+                                                    <div class="row form-group">
+                                                        <label class="col-lg-2 control-label">超高限：</label>
+
+                                                        <div class="col-lg-4"><input name="limit_hhvalue" type="text" th:value="${limit.hhvalue}"
+                                                                                     class="form-control"/></div>
+
+                                                        <label class="col-lg-2 control-label">优先级：</label>
+
+                                                        <div class="col-lg-4">
+                                                            <select class="form-control chosen-select-normal"  name="limit_hhlevel">
+                                                                <option value="0" th:selected="${limit.hhlevel0}">未设定</option>
+                                                                <option value="1" th:selected="${limit.hhlevel1}">低级报警</option>
+                                                                <option value="2" th:selected="${limit.hhlevel2}">高级报警</option>
+                                                                <option value="3" th:selected="${limit.hhlevel3}">紧急报警</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label class="col-lg-2 control-label">高高限：</label>
+
+                                                        <div class="col-lg-4"><input name="limit_hmvalue" type="text" th:value="${limit.hmvalue}"
+                                                                                     class="form-control"/></div>
+
+                                                        <label class="col-lg-2 control-label">优先级：</label>
+
+                                                        <div class="col-lg-4">
+                                                            <select class="form-control chosen-select-normal"  name="limit_hmlevel">
+                                                                <option value="0" th:selected="${limit.hmlevel0}">未设定</option>
+                                                                <option value="1" th:selected="${limit.hmlevel1}">低级报警</option>
+                                                                <option value="2" th:selected="${limit.hmlevel2}">高级报警</option>
+                                                                <option value="3" th:selected="${limit.hmlevel3}">紧急报警</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label class="col-lg-2 control-label">高限：</label>
+
+                                                        <div class="col-lg-4"><input name="limit_hlvalue" type="text" th:value="${limit.hlvalue}"
+                                                                                     class="form-control"/></div>
+
+                                                        <label class="col-lg-2 control-label">优先级：</label>
+
+                                                        <div class="col-lg-4">
+                                                            <select class="form-control chosen-select-normal"  name="limit_hllevel">
+                                                                <option value="0" th:selected="${limit.hllevel0}">未设定</option>
+                                                                <option value="1" th:selected="${limit.hllevel1}">低级报警</option>
+                                                                <option value="2" th:selected="${limit.hllevel2}">高级报警</option>
+                                                                <option value="3" th:selected="${limit.hllevel3}">紧急报警</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label class="col-lg-2 control-label">低限：</label>
+
+                                                        <div class="col-lg-4"><input name="limit_lhvalue" type="text" th:value="${limit.lhvalue}"
+                                                                                     class="form-control"/></div>
+
+                                                        <label class="col-lg-2 control-label">优先级：</label>
+
+                                                        <div class="col-lg-4">
+                                                            <select class="form-control chosen-select-normal"  name="limit_lhlevel">
+                                                                <option value="0" th:selected="${limit.lhlevel0}">未设定</option>
+                                                                <option value="1" th:selected="${limit.lhlevel1}">低级报警</option>
+                                                                <option value="2" th:selected="${limit.lhlevel2}">高级报警</option>
+                                                                <option value="3" th:selected="${limit.lhlevel3}">紧急报警</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label class="col-lg-2 control-label">低低限：</label>
+
+                                                        <div class="col-lg-4"><input name="limit_lmvalue" type="text" th:value="${limit.lmvalue}"
+                                                                                     class="form-control"/></div>
+
+                                                        <label class="col-lg-2 control-label">优先级：</label>
+
+                                                        <div class="col-lg-4">
+                                                            <select class="form-control chosen-select-normal"  name="limit_lmlevel">
+                                                                <option value="0" th:selected="${limit.lmlevel0}">未设定</option>
+                                                                <option value="1" th:selected="${limit.lmlevel1}">低级报警</option>
+                                                                <option value="2" th:selected="${limit.lmlevel2}">高级报警</option>
+                                                                <option value="3" th:selected="${limit.lmlevel3}">紧急报警</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row form-group">
+                                                        <label class="col-lg-2 control-label">超低限：</label>
+
+                                                        <div class="col-lg-4"><input name="limit_llvalue" type="text" th:value="${limit.llvalue}"
+                                                                                     class="form-control"/></div>
+
+                                                        <label class="col-lg-2 control-label">优先级：</label>
+
+                                                        <div class="col-lg-4">
+                                                            <select class="form-control chosen-select-normal"  name="limit_lllevel">
+                                                                <option value="0" th:selected="${limit.lllevel0}">未设定</option>
+                                                                <option value="1" th:selected="${limit.lllevel1}">低级报警</option>
+                                                                <option value="2" th:selected="${limit.lllevel2}">高级报警</option>
+                                                                <option value="3" th:selected="${limit.lllevel3}">紧急报警</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="ibox float-e-margins">
+                                                <div class="ibox-title">
+                                                    <h5>变化率告警</h5>
+                                                </div>
+                                                <div class="ibox-content">
+                                                    <div class="row form-group">
+
+
+                                                    </div>
+
+                                                    <div class="row form-group">
+                                                        <label class="col-lg-2 control-label">超高限：</label>
+
+                                                        <div class="col-lg-4"><input name="change_hhvalue" type="text" th:value="${change.hhvalue}"
+                                                                                     class="form-control"/></div>
+
+                                                        <label class="col-lg-2 control-label">优先级：</label>
+
+                                                        <div class="col-lg-4">
+                                                            <select class="form-control chosen-select-normal"  name="change_hhlevel">
+                                                                <option value="0" th:selected="${change.hhlevel0}">未设定</option>
+                                                                <option value="1" th:selected="${change.hhlevel1}">低级报警</option>
+                                                                <option value="2" th:selected="${change.hhlevel2}">高级报警</option>
+                                                                <option value="3" th:selected="${change.hhlevel3}">紧急报警</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label class="col-lg-2 control-label">高高限：</label>
+
+                                                        <div class="col-lg-4"><input name="change_hmvalue" type="text" th:value="${change.hmvalue}"
+                                                                                     class="form-control"/></div>
+
+                                                        <label class="col-lg-2 control-label">优先级：</label>
+
+                                                        <div class="col-lg-4">
+                                                            <select class="form-control chosen-select-normal"  name="change_hmlevel">
+                                                                <option value="0" th:selected="${change.hmlevel0}">未设定</option>
+                                                                <option value="1" th:selected="${change.hmlevel1}">低级报警</option>
+                                                                <option value="2" th:selected="${change.hmlevel2}">高级报警</option>
+                                                                <option value="3" th:selected="${change.hmlevel3}">紧急报警</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label class="col-lg-2 control-label">高限：</label>
+
+                                                        <div class="col-lg-4"><input name="change_hlvalue" type="text" th:value="${change.hlvalue}"
+                                                                                     class="form-control"/></div>
+
+                                                        <label class="col-lg-2 control-label">优先级：</label>
+
+                                                        <div class="col-lg-4">
+                                                            <select class="form-control chosen-select-normal"  name="change_hllevel">
+                                                                <option value="0" th:selected="${change.hllevel0}">未设定</option>
+                                                                <option value="1" th:selected="${change.hllevel1}">低级报警</option>
+                                                                <option value="2" th:selected="${change.hllevel2}">高级报警</option>
+                                                                <option value="3" th:selected="${change.hllevel3}">紧急报警</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label class="col-lg-2 control-label">低限：</label>
+
+                                                        <div class="col-lg-4"><input name="change_lhvalue" type="text" th:value="${change.lhvalue}"
+                                                                                     class="form-control"/></div>
+
+                                                        <label class="col-lg-2 control-label">优先级：</label>
+
+                                                        <div class="col-lg-4">
+                                                            <select class="form-control chosen-select-normal"  name="change_lhlevel">
+                                                                <option value="0" th:selected="${change.lhlevel0}">未设定</option>
+                                                                <option value="1" th:selected="${change.lhlevel1}">低级报警</option>
+                                                                <option value="2" th:selected="${change.lhlevel2}">高级报警</option>
+                                                                <option value="3" th:selected="${change.lhlevel3}">紧急报警</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <label class="col-lg-2 control-label">低低限：</label>
+
+                                                        <div class="col-lg-4"><input name="change_lmvalue" type="text" th:value="${change.lmvalue}"
+                                                                                     class="form-control"/></div>
+
+                                                        <label class="col-lg-2 control-label">优先级：</label>
+
+                                                        <div class="col-lg-4">
+                                                            <select class="form-control chosen-select-normal"  name="change_lmlevel">
+                                                                <option value="0" th:selected="${change.lmlevel0}">未设定</option>
+                                                                <option value="1" th:selected="${change.lmlevel1}">低级报警</option>
+                                                                <option value="2" th:selected="${change.lmlevel2}">高级报警</option>
+                                                                <option value="3" th:selected="${change.lmlevel3}">紧急报警</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row form-group">
+                                                        <label class="col-lg-2 control-label">超低限：</label>
+
+                                                        <div class="col-lg-4"><input name="change_llvalue" type="text" th:value="${change.llvalue}"
+                                                                                     class="form-control"/></div>
+
+                                                        <label class="col-lg-2 control-label">优先级：</label>
+
+                                                        <div class="col-lg-4">
+                                                            <select class="form-control chosen-select-normal"  name="change_lllevel">
+                                                                <option value="0" th:selected="${change.lllevel0}">未设定</option>
+                                                                <option value="1" th:selected="${change.lllevel1}">低级报警</option>
+                                                                <option value="2" th:selected="${change.lllevel2}">高级报警</option>
+                                                                <option value="3" th:selected="${change.lllevel3}">紧急报警</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--footer模块-->
+        <div class="footer" th:replace="menu :: bottom" />
+    </div>
+</div>
+
+<!-- 全局 js -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+
+<!-- 插件 js -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+<script src="js/plugins/layer/laydate/laydate.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<!-- Jquery Validate -->
+<script src="js/plugins/validate/jquery.validate.min.js"></script>
+<script src="js/plugins/validate/messages_zh.min.js"></script>
+<script src="js/validate-setDefault.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+<!-- 自定义 js -->
+<script src="js/common.js"></script>
+<script src="js/dma/dma4mf1.js" type="text/javascript"></script>
+<script src="js/dma/dma4mf2.js" type="text/javascript"></script>
+
+
+</body>
+
+</html>

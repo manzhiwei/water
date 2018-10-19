@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>威尔泰智慧水务</title>
+    <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
+
+    <link href="css/jquery.dataTables.css" rel="stylesheet"/>
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet"/>
+    <link href="css/plugins/iCheck/blue.css" rel="stylesheet"/>
+
+
+    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/common.css" rel="stylesheet"/>
+
+</head>
+
+<body class="">
+<div id="wrapper">
+    <!--菜单模块-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse slimScroll-default">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" src="img/profile_small.jpg"/>
+                            </span>
+                        <span class="clear user">
+                                <span class="block m-t-xs"> <strong class="font-bold"
+                                                                    th:text="${session.userName}"></strong></span>
+                                <span class="text-muted text-xs block" th:text="${session.company}"></span>
+                            </span>
+                    </div>
+                    <div class="logo-element">威尔泰</div>
+                </li>
+                <li>
+                    <a href="/index4raw"><i class="fa fa-home"></i> <span class="nav-label">仪表板</span></a>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="fa fa-tint"></i>
+                        <span class="nav-label">基础供水管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/meterList">仪表基础信息</a></li>
+
+                        <li><a href="/meterDevicesMonitoring">仪表设备监控</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="javascript:;"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">水务统计分析</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="active"><a href="/dataStatistics">监控数据统计</a></li>
+                        <li><a href="/dataStatisticsByHour">时用水统计</a></li>
+                        <li><a href="/trendChart">流量、压力趋势图</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="fa fa-sitemap"></i> <span class="nav-label">DMA分区管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/dmaManage">DMA基础管理</a></li>
+                        <li><a href="/dmaMapMonitor">DMA区域监控</a></li>
+                        <li><a href="/dmaMicroFlow">DMA小流量监控</a></li>
+                    </ul>
+                </li>
+                <li><a href="/alarm"><i class="fa fa-warning "></i> <span class="nav-label">告警管理</span><span
+                        class="fa arrow"></span> <span
+                        class="label label-warning"></span> </a></li>
+                <li class="active1"><a href="javascript:"> <i class="fa fa-table"></i> <span
+                        class="nav-label">报表统计</span> <span class="fa arrow"></span> </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/dayReport">日报表</a></li>
+                        <li><a href="/monthReport">月报表</a></li>
+                        <li><a href="/seasonReport">季报表</a></li>
+                        <li><a href="/yearReport">年报表</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="fa fa-gears"></i> <span class="nav-label">系统管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li th:if="${session.userName eq 'admin'}"><a href="/clientManage">公司水表管理</a></li>
+                        <li th:if="${session.userName eq 'admin'}"><a href="/userManage">公司用户管理</a></li>
+                        <li th:if="${session.userName eq 'admin'}"><a href="/userMeterManage">用户水表管理</a></li>
+                        <li><a href="/logManage">日志管理</a></li>
+                        <li th:if="${session.userName eq 'admin'}"><a href="/replaceMeterRecord">仪表更换记录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <!--header模块-->
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+
+                <ul class="nav navbar-top-links navbar-right">
+                    <!--message-->
+
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-sign-out"></i> 退出
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!--内容模块-->
+        <div class="row content-main">
+            <div class="slimScroll-default">
+                <!--这里是不同页面变更的部分-->
+                <div class="wrapper wrapper-content animated ">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                    <h5>监控数据统计</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-sm-6 m-b-sm">
+                                            <div class="input-group">
+                                                <span class="input-group-addon new-addon">时间从：</span>
+                                                <input id="startTime"
+                                                       class="form-control layer-date input-todayM laydate-icon"
+                                                       placeholder=""/>
+                                                <span class="input-group-addon new-addon">至</span>
+                                                <input id="endTime"
+                                                       class="form-control layer-date input-todayN laydate-icon"
+                                                       placeholder=""/>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="checkboxs-inline checkboxs-sm checkboxs-padding5">
+                                                <div class="i-checks search-checks search-checks-day">
+                                                    <label class="i-checks-label">
+                                                        <input type="radio" id="showFlow" name="a"
+                                                               checked="checked"/><i></i>
+                                                        <span>当日</span>
+                                                    </label>
+                                                </div>
+                                                <div class="i-checks search-checks search-checks-month">
+                                                    <label class="i-checks-label">
+                                                        <input type="radio" id="showPress" name="a"/><i></i>
+                                                        <span>当月</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--<input type="radio" id="showFlow" class="showFlow" checked="checked" >当日</input>
+                                        <input type="radio" id="showPress" class="showPress" >当月</input>-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <select id='staions' data-placeholder="选择站点"
+                                                        class="form-control chosen-select-normal" multiple="multiple">
+                                                    <option th:each="prod : ${stations}" th:value="${prod}"
+                                                            th:text="${prod}">
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="input-group">
+                                                <button id="query1" type="button" class="btn btn-sm btn-success">查 询
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div style="float:left; position:relative; z-index:9999;height:100%;">
+                                            <button class="showcol">列段显示/隐藏</button>
+                                            <ul class="showul"
+                                                style=" list-style:none;display:none; position:absolute; left:80px; top:10px; background:#FFFFFF; border:1px solid #ccc; width:200px;">
+                                                <li>
+                                                    <input type="checkbox" class="toggle-vis" data-column="2"/>
+                                                    最大流量值
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" class="toggle-vis" data-column="3"/>
+                                                    最小流量值
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" class="toggle-vis" data-column="4"/>
+                                                    正向累计流量
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" class="toggle-vis" data-column="5"/>
+                                                    反向累计流量
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" class="toggle-vis" data-column="6"/>
+                                                    平均流量值
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" class="toggle-vis" data-column="7"/>
+                                                    净累计流量
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" class="toggle-vis" data-column="8"/>
+                                                    最大压力值
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" class="toggle-vis" data-column="9"/>
+                                                    最小压力值
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" class="toggle-vis" data-column="10"/>
+                                                    平均压力值
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                    <div class="table-responsive table-nowrap table-fontCenter table-relative">
+                                        <table id='meterChangeList' class="table table-bordered dataTables-excel">
+                                            <thead>
+                                            <tr>
+                                                <th>站点名称</th>
+                                                <th>趋势图</th>
+                                                <th>最大流量值</th>
+                                                <th>最小流量值</th>
+                                                <th>正向累计流量</th>
+                                                <th>反向累计流量</th>
+                                                <th>平均流量值</th>
+                                                <th>净累计流量</th>
+                                                <th>最大压力值</th>
+                                                <th>最小压力值</th>
+                                                <th>平均压力值</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--footer模块-->
+        <div class="footer">
+            <div>
+                <strong>版权所有</strong> 2018-2019 © 威尔泰WELLTECH
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--趋势图统计-->
+<div class="modal inmodal chart-trend" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <form class="cmxform1" id="commentForm1" method="post" action="">
+
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" src="img/profile_small.jpg"/>
+                            </span>
+                        <span class="clear user">
+                                <span class="block m-t-xs"> <strong class="font-bold">admin</strong></span>
+                                <span class="text-muted text-xs block">宁德总公司</span>
+                            </span>
+                    </div>
+                    <div class="logo-element">威尔泰</div>
+                </li>
+                <li>
+                    <a href="/index4raw"><i class="fa fa-home"></i> <span class="nav-label">仪表板</span></a>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="fa fa-tint"></i>
+                        <span class="nav-label">基础供水管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/meterList">仪表基础信息</a></li>
+
+                        <li><a href="/meterDevicesMonitoring">仪表设备监控</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="javascript:;"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">水务统计分析</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="active"><a href="/dataStatistics">监控数据统计</a></li>
+                        <li><a href="/dataStatisticsByHour">时用水统计</a></li>
+                        <li><a href="/trendChart">流量、压力趋势图</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="fa fa-sitemap"></i> <span class="nav-label">DMA分区管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/dmaManage">DMA基础管理</a></li>
+                        <li><a href="/dmaMapMonitor">DMA区域监控</a></li>
+                        <li><a href="/dmaMicroFlow">DMA小流量监控</a></li>
+                    </ul>
+                </li>
+                <li><a href="/alarm"><i class="fa fa-warning "></i> <span class="nav-label">告警管理</span><span
+                        class="fa arrow"></span> <span
+                        class="label label-warning"></span> </a></li>
+                <li class="active1"><a href="javascript:"> <i class="fa fa-table"></i> <span
+                        class="nav-label">报表统计</span> <span class="fa arrow"></span> </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/dayReport">日报表</a></li>
+                        <li><a href="/monthReport">月报表</a></li>
+                        <li><a href="/seasonReport">季报表</a></li>
+                        <li><a href="/yearReport">年报表</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="fa fa-gears"></i> <span class="nav-label">系统管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/clientManage">公司水表管理</a></li>
+                        <li><a href="/userManage">公司用户管理</a></li>
+                        <li><a href="/userMeterManage">用户水表管理</a></li>
+                        <li><a href="/logManage">日志管理</a></li><li><a href="">仪表更换记录</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </form>
+    </div>
+</div>
+
+<!-- 全局 js -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+
+<!-- 插件 js -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+<script src="js/plugins/layer/laydate/laydate.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+
+<!-- Jquery Validate -->
+<script src="js/plugins/validate/jquery.validate.min.js"></script>
+<script src="js/plugins/validate/messages_zh.min.js"></script>
+<script src="js/validate-setDefault.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+<!-- 自定义 js -->
+<script src="js/common.js"></script>
+<script src="js/demo/dataStatistics.js" type="text/javascript"></script>
+
+<script src="js/demo/dataStatisticsByHour2.js" type="text/javascript"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.welltech.waterAffair.repository.GprsDataMapper">
+  <resultMap id="NdataResultMap" type="Ndata">
+    <result column="temp" jdbcType="REAL" property="temp" />
+    <result column="totalflow" jdbcType="REAL" property="totalflow" />
+    <result column="ftotalflow" jdbcType="REAL" property="ftotalflow" />
+    <result column="flow" jdbcType="REAL" property="flow" />
+    <result column="flowerror" jdbcType="INTEGER" property="flowerror" />
+    <result column="esignal" jdbcType="INTEGER" property="esignal" />
+    <result column="depdata" jdbcType="INTEGER" property="depdata" />
+    <result column="ME" jdbcType="REAL" property="me" />
+    <result column="Signal_strength" jdbcType="INTEGER" property="signalStrength" />
+    <result column="I_time" jdbcType="TIMESTAMP" property="iTime" />
+    <result column="press" jdbcType="REAL" property="press" />
+    <result column="currentV" jdbcType="REAL" property="currentv" />
+    <result column="currentI" jdbcType="REAL" property="currenti" />
+    <result column="pressError" jdbcType="INTEGER" property="presserror" />
+    <result column="ntotalflow" jdbcType="REAL" property="ntotalflow" />
+    <result column="lastConnecting" jdbcType="INTEGER" property="lastconnecting" />
+  </resultMap>
+  <sql id="Ndata_Column_List">
+  	temp, ftotal totalflow, rtotal ftotalflow, 
+    flow, 0 flowerror, 0 esignal, 
+     0 depdata, 0 ME, signal_intensity Signal_strength, 
+      time I_time, press, 0 currentV, 
+      0 currentI, 0 pressError, ftotal-rtotal ntotalflow,
+     0 lastConnecting
+  </sql>
+  <resultMap id="NdataSsResultMap" type="NdataSs">
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="totalflow" jdbcType="REAL" property="totalflow" />
+    <result column="ftotalflow" jdbcType="REAL" property="ftotalflow" />
+    <result column="flow" jdbcType="REAL" property="flow" />
+    <result column="I_time" jdbcType="TIMESTAMP" property="iTime" />
+    <result column="press" jdbcType="REAL" property="press" />
+    <result column="totalflowN" jdbcType="REAL" property="totalflown" />
+  </resultMap>
+  <sql id="NdataSs_Column_List">
+  	time, ftotal totalflow, rtotal ftotalflow, flow, time I_time, press, ftotal-rtotal totalflowN
+  </sql>
+  
+  
+  <select id="findOneNdataByNum" resultMap="NdataResultMap">
+  	select
+  		<include refid="Ndata_Column_List"/>
+ 	from
+ 		wt4300GprsData
+ 	where flowId = #{num}
+	order by time desc limit 1
+  </select>
+  
+  <select id="findOneNdataSsByNum" resultMap="NdataSsResultMap">
+  	select
+  		<include refid="NdataSs_Column_List"/>
+ 	from
+ 		wt4300GprsData
+ 	where flowId = #{num}
+	order by time desc limit 1
+  </select>
+  
+  <select id="findNdataByCriteria" resultMap="NdataResultMap">
+  	select
+  		<include refid="Ndata_Column_List"/>
+ 	from
+ 		wt4300GprsData
+ 	where 1=1
+ 		and flowId = #{criteria.meterId}
+		<if test="criteria.startDate != null">
+			and time &gt;= #{criteria.startDate}
+		</if>
+		<if test="criteria.endDate != null">
+			and time &lt;= #{criteria.endDate}
+		</if>
+  </select>
+  
+  <select id="findNdataByCriteriaLastConnecting" resultMap="NdataResultMap">
+  	select
+  		<include refid="Ndata_Column_List"/>
+ 	from
+ 		wt4300GprsData
+ 	where 1=1
+ 		and flowId = #{criteria.meterId}
+		<if test="criteria.endDate != null">
+			and time &lt;= #{criteria.endDate}
+		</if>
+		order by time desc
+		limit 1
+  </select>
+  
+  <select id="findNdataSsByCriteria" resultMap="NdataSsResultMap">
+  	select
+  		<include refid="NdataSs_Column_List"/>
+ 	from
+ 		wt4300GprsData
+ 	where
+ 		flowId = #{criteria.meterId}
+		<if test="criteria.startDate != null">
+			and time &gt;= #{criteria.startDate}
+		</if>
+		<if test="criteria.endDate != null">
+			and time &lt; #{criteria.endDate}
+		</if>
+	order by time desc
+  </select>
+
+    <select id="findNdataHourData" resultMap="NdataResultMap">
+        select <include refid="Ndata_Column_List" />
+        from wt4300GprsData
+        where flowId = #{criteria.meterId}
+          and date(time) = date(#{criteria.currentTime})
+          and hour(time) = hour(#{criteria.currentTime})
+          order by time desc
+        limit 1
+    </select>
+
+    <select id="findNdataDayData" resultType="java.util.LinkedHashMap">
+        <!-- SELECT date_format(time,'%d') I_time,0.0 aa,0.0 ab,0.0 ac,avg(flow),max(flow),min(flow),avg(ftotal),max(ftotal),min(ftotal)
+        FROM wt4300GprsData
+        where flowId = #{criteria.meterId}
+          and date(time) = #{criteria.currentDate}
+           -->
+	          
+	          select I_time,aa,ab,ac,e,f,g,firstTotalflow,ifnull(firstTotalflow2,lastTotalflow),
+				case when firstTotalflow is null then null
+					when firstTotalflow2 is null then lastTotalflow-firstTotalflow
+				    else firstTotalflow2-firstTotalflow
+				    end increaseTotalflow from(
+		        select date_format(time,'%d') I_time,avg(press) aa,max(press) ab,min(press) ac,avg(flow) e,max(flow) f,min(flow) g,
+			        (select ftotal from wt4300GprsData
+			        where flowId = #{criteria.meterId} and date(time) = #{criteria.currentDate} order by time limit 1) firstTotalflow,
+			        (select ftotal from wt4300GprsData
+			        where flowId = #{criteria.meterId} and date(time) = #{criteria.currentDate} order by time desc limit 1) lastTotalflow,
+			        (select ftotal from wt4300GprsData
+			        where flowId = #{criteria.meterId} and date(time) = date_add(#{criteria.currentDate}, INTERVAL 1 day) order by time limit 1) firstTotalflow2
+					        from wt4300GprsData
+		        where flowId = #{criteria.meterId} and date(time) = #{criteria.currentDate}) t
+    </select>
+    
+    <select id="queryDmaMicor" parameterType="java.util.Map" resultType="java.util.LinkedHashMap">
+    	select mindata.ndate,mindata.m mindata,mindata.mindate,maxdata.m maxdata,maxdata.maxdate,avgdata.m avgdata,darkdata.microflow,darkdata.compare from
+    	(select distinct b.ndate,b.m,min(a.time) mindate from wt4300GprsData as a inner JOIN  (SELECT DATE_FORMAT( time, '%Y-%m-%d' ) as ndate , min(flow) m
+    	  from wt4300GprsData where flowid = #{num} and time &gt;= concat(#{currentTimeStart},' 00:00:00') and time &lt;= concat(#{currentTimeEnd},' 23:59:59')
+    	  GROUP BY DATE_FORMAT( time, '%Y-%m-%d' ) ) as b on a.flow=b.m and DATE_FORMAT( a.time, '%Y-%m-%d' )=b.ndate
+    	   group by DATE_FORMAT( time, '%Y-%m-%d' )) mindata inner join
+    	    (select distinct b.ndate,b.m,max(a.time) maxdate from wt4300GprsData as a inner JOIN
+    	     (SELECT DATE_FORMAT( time, '%Y-%m-%d' ) as ndate , max(flow) m from wt4300GprsData where flowid= #{num} and time &gt;= concat(#{currentTimeStart},' 00:00:00') and time &lt;= concat(#{currentTimeEnd},' 23:59:59')
+    	      GROUP BY DATE_FORMAT( time, '%Y-%m-%d' ) ) as b on a.flow=b.m and DATE_FORMAT( a.time, '%Y-%m-%d' )=b.ndate
+    	       group by DATE_FORMAT( time, '%Y-%m-%d' )) maxdata on mindata.ndate=maxdata.ndate inner join
+    	       (SELECT DATE_FORMAT( time, '%Y-%m-%d' ) as ndate , avg(flow) m
+    	       from wt4300GprsData where flowid=#{num} and time &gt;= concat(#{currentTimeStart},' 00:00:00') and time &lt;= concat(#{currentTimeEnd},' 23:59:59')
+    	  		GROUP BY DATE_FORMAT( time, '%Y-%m-%d' )) avgdata on maxdata.ndate=avgdata.ndate left join
+    	  		 (select distinct a.ndate, IFNULL(b.minflow, 0) microflow, IFNULL(IFNULL(b.microflow, 0)/a.microflow, 0) compare FROM (
+    	  		   SELECT min(flow) minflow, max(ftotal+rtotal)-min(ftotal+rtotal) AS microflow,DATE_FORMAT(time, '%Y-%m-%d') AS ndate FROM wt4300GprsData where flowid=#{num} and HOUR (time) &lt; 24 AND HOUR (time) &gt;= 0 and time &gt;= concat(#{currentTimeStart},' 00:00:00') and time &lt;= concat(#{currentTimeEnd},' 23:59:59')
+    	  		   GROUP BY DATE_FORMAT(time, '%Y-%m-%d')) AS a LEFT JOIN (SELECT min(flow) minflow, max(ftotal+rtotal)-min(ftotal+rtotal) AS microflow,DATE_FORMAT(time, '%Y-%m-%d') AS ndate FROM
+    	  		    wt4300GprsData where flowid=#{num} and HOUR (time) &gt;= #{darkStar} AND HOUR (time) &lt; #{darkEnd} and time &gt;= concat(#{currentTimeStart},' 00:00:00') and time &lt;= concat(#{currentTimeEnd},' 23:59:59')
+    	  		   GROUP BY DATE_FORMAT(time, '%Y-%m-%d')) AS b ON a.ndate = b.ndate) darkdata on mindata.ndate=darkdata.ndate
+    </select>
+    
+    <select id="findPageNdataByWaterHourCriteria" resultMap="NdataResultMap">
+    	select <include refid="Ndata_Column_List" />
+        from wt4300GprsData
+        where flowId = #{criteria.meterId}
+          and time &gt;= #{criteria.startDate}
+          and time &lt;= #{criteria.endDate}
+        group by day(time),hour(time)
+		order by time desc
+
+    </select>
+    
+    <select id="findNdataSeasonData" parameterType="map" resultType="java.util.LinkedHashMap">
+		select avg(press),max(press),min(press),avg(flow),max(flow),min(flow),avg(ftotal),max(ftotal),min(ftotal)
+		from wt4300GprsData
+        where flowId = #{num} and time &gt;= #{startTime} and time &lt; #{endTime}
+	</select>
+	
+	<select id="findNdataYearData" parameterType="map" resultType="java.util.LinkedHashMap">
+		select convert(date_format(time,'%m'),signed)-1 month,avg(press),max(press),min(press),avg(flow),max(flow),min(flow),avg(ftotal),max(ftotal),min(ftotal)
+		from wt4300GprsData
+        where flowId = #{num} and time &gt;= #{startTime} and time &lt; #{endTime}
+	</select>
+	
+	<select id="findDiffTotalFlow" parameterType="map" resultType="java.util.LinkedHashMap">
+		select b.data - a.data as dif, a.data as sta, b.data as enda from
+		((select ftotal as data from wt4300GprsData where flowId = #{num} and time &gt;= #{startTime} and time &lt;= #{endTime} order by time asc limit 1) union (select 0.0 as data) limit 1) as a,
+		((select ftotal as data from wt4300GprsData where flowId = #{num} and time &gt;= #{startTime} and time &lt;= #{endTime} order by time desc limit 1) union (select 0.0 as data) limit 1) as b
+	</select>
+	
+	<select id="findDaysData" parameterType="map" resultType="java.util.LinkedHashMap">
+		SELECT date_format(time,'%H') dh,${column} FROM wt4300GprsData
+		where flowid= #{num} and time &gt;= #{start} and time &lt;= #{end}
+		group by date_format(time,'%y-%m-%d %H')
+		order by dh asc
+	</select>
+	
+	<select id="queryValue" parameterType="map" resultType="java.util.LinkedHashMap">
+		select *, ${num}, (t2.todaymaxval-t3.todayminval)/t2.todaymaxval todayswing from
+			(SELECT ${num} hismaxnum,i_time hismaxi_time, ${column} hismaxval from (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) t group by ${column} desc limit 1) t
+			left join (SELECT ${num} hisminnum,i_time hismini_time, ${column} hisinval from (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) t1 group by ${column} asc limit 1) t1 on t.hismaxnum=t1.hisminnum
+			left join (SELECT ${num} todaymaxnum,i_time todaymaxi_time, ${column} todaymaxval from (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) t2 where i_time &gt;= #{start} and I_time &lt;= #{end} group by ${column} desc limit 1) t2 on t1.hisminnum=t2.todaymaxnum
+			left join (SELECT ${num} todayminnum,i_time todaymini_time, ${column} todayminval from (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) t3 where i_time &gt;= #{start} and I_time &lt;= #{end} group by ${column} asc limit 1) t3 on t2.todaymaxnum=t3.todayminnum
+		limit 1
+	</select>
+	
+	<select id="queryValueCompareDay" parameterType="map" resultType="java.util.LinkedHashMap">
+		select ${num},x.i_time xtime,x.${column} xval,x1.i_time x1time,x1.${column} x1val,t.i_time ttime,t.${column} tval,date_add(t.I_time,interval -1 day) ntime from 
+			(select x.i_time,x.${column} from (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) x,
+				(SELECT i_time, ${column} fROM (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) t group by i_time desc limit 1) t where x.i_time &gt; date_add(t.I_time,interval -1 day) order by i_time asc limit 1) x,
+			((select x.i_time,x.${column} from (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) x,
+				(SELECT i_time, ${column} lowval fROM (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) t group by i_time desc limit 1) t where x.i_time &lt; date_add(t.I_time,interval-1 day) order by i_time desc limit 1) union all (select now() ntime, 0.0 ${column}) limit 1) x1,
+			(SELECT i_time ,${column} fROM (SELECT flow,time i_time,0.0 press FROM wt4300GprsData where flowid=#{num}) t group by i_time desc limit 1) t
+		limit 1
+	</select>
+	
+	<select id="queryValueCompareMonth" parameterType="map" resultType="java.util.LinkedHashMap">
+		select ${num},x.i_time xtime,x.${column} xval,x1.i_time x1time,x1.${column} x1val,t.i_time ttime,t.${column} tval,date_add(t.I_time,interval -1 month) ntime from 
+			(select x.i_time,x.${column} from (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) x,
+				(SELECT i_time, ${column} fROM (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) t group by i_time desc limit 1) t where x.i_time &gt; date_add(t.I_time,interval -1 month) order by i_time asc limit 1) x,
+			((select x.i_time,x.${column} from (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) x,
+				(SELECT i_time, ${column} lowval fROM (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) t group by i_time desc limit 1) t where x.i_time &lt; date_add(t.I_time,interval-1 month) order by i_time desc limit 1) union all (select now() ntime, 0.0 ${column}) limit 1) x1,
+			(SELECT i_time ,${column} fROM (SELECT flow,time i_time,0.0 press FROM wt4300GprsData where flowid=#{num}) t group by i_time desc limit 1) t
+		limit 1
+	</select>
+	
+	<select id="queryValueCompareWeek" parameterType="map" resultType="java.util.LinkedHashMap">
+		select ${num},x.i_time xtime,x.${column} xval,x1.i_time x1time,x1.${column} x1val,t.i_time ttime,t.${column} tval,date_add(t.I_time,interval -7 day) ntime from 
+			(select x.i_time,x.${column} from (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) x,
+				(SELECT i_time, ${column} fROM (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) t group by i_time desc limit 1) t where x.i_time &gt; date_add(t.I_time,interval -7 day) order by i_time asc limit 1) x,
+			((select x.i_time,x.${column} from (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) x,
+				(SELECT i_time, ${column} lowval fROM (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) t group by i_time desc limit 1) t where x.i_time &lt; date_add(t.I_time,interval-7 day) order by i_time desc limit 1) union all (select now() ntime, 0.0 ${column}) limit 1) x1,
+			(SELECT i_time ,${column} fROM (SELECT flow,time i_time,0.0 press FROM wt4300GprsData where flowid=#{num}) t group by i_time desc limit 1) t
+		limit 1
+	</select>
+	
+	<select id="queryValueCompareYear" parameterType="map" resultType="java.util.LinkedHashMap">
+		select ${num},x.i_time xtime,x.${column} xval,x1.i_time x1time,x1.${column} x1val,t.i_time ttime,t.${column} tval,date_add(t.I_time,interval -1 year) ntime from 
+			(select x.i_time,x.${column} from (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) x,
+				(SELECT i_time, ${column} fROM (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) t group by i_time desc limit 1) t where x.i_time &gt; date_add(t.I_time,interval -1 year) order by i_time asc limit 1) x,
+			((select x.i_time,x.${column} from (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) x,
+				(SELECT i_time, ${column} lowval fROM (SELECT flow,time i_time,press FROM wt4300GprsData where flowid=#{num}) t group by i_time desc limit 1) t where x.i_time &lt; date_add(t.I_time,interval-1 year) order by i_time desc limit 1) union all (select now() ntime, 0.0 ${column}) limit 1) x1,
+			(SELECT i_time ,${column} fROM (SELECT flow,time i_time,0.0 press FROM wt4300GprsData where flowid=#{num}) t group by i_time desc limit 1) t
+		limit 1
+	</select>
+	
+	<select id="queryTotalflow" parameterType="map" resultType="java.lang.Float">
+		SELECT ftotal jrll FROM wt4300GprsData
+		where flowid=#{num} and time &gt;= #{currentStart} and time &lt;= #{currentEnd} order by time ${sort}
+		limit 1
+	</select>
+	
+	<select id="findSsDaysData" parameterType="map" resultType="java.lang.Float">
+		SELECT ${column} FROM wt4300GprsData
+		where flowid= #{num} and time &gt;= #{start} and time &lt;= #{end}
+		order by time asc
+		limit 1
+	</select>
+
+	<select id="findDayTotalFlowDiff" parameterType="int" resultType="float">
+		select end.totalflow - start.totalflow from
+			(select ftotal as totalflow from wt4300GprsData where flowId = #{num} and date(time) = date(now()) order by time asc limit 1) start,
+			(select ftotal as totalflow from wt4300GprsData where flowId = #{num} and date(time) = date(now()) order by time desc limit 1) end
+	</select>
+	
+	<select id="findOneYesterdayNdataByNum" resultMap="NdataResultMap">
+	  	select
+	  		<include refid="Ndata_Column_List"/>
+		FROM wt4300GprsData WHERE flowId = #{num} AND date_format(time , '%Y%m%d%H') =
+		( SELECT date_format( date_add(time , INTERVAL - 1 DAY) , '%Y%m%d%H') FROM wt4300GprsData WHERE flowId = #{num} ORDER BY time DESC LIMIT 1)
+		 LIMIT 1
+	  </select>
+	  
+	  <select id="findOneNdataByNumAndOffset" resultMap="NdataResultMap">
+	  	select
+	  		<include refid="Ndata_Column_List"/>
+	 	from
+	 		wt4300GprsData
+	 	where flowId = #{num}
+		order by time desc limit ${startIndex},1
+	  </select>
+	<select id="find4300MonthTotalflowData" resultType="java.util.LinkedHashMap">
+		SELECT   IFNULL( lastMonthTotalflow,0),IFNULL(currentMonthTotalflow,lastMonthTotalflow), currentMonthTotalflow - lastMonthTotalflow increaseMonthTotalflow  FROM
+		( SELECT
+		(SELECT ftotal-rtotal  FROM wt4300GprsData WHERE flowId = ${num} AND EXTRACT(YEAR FROM time)=#{year} AND EXTRACT(MONTH FROM time) = #{month } ORDER BY TIME DESC LIMIT 1) currentMonthTotalflow,
+		(SELECT ftotal-rtotal  FROM wt4300GprsData WHERE flowId = ${num} AND EXTRACT(YEAR FROM time)=#{year} AND EXTRACT(MONTH FROM time) = #{lastmonth }  ORDER BY TIME DESC LIMIT 1) lastMonthTotalflow
+		FROM wt4300GprsData WHERE flowId = ${num} ORDER BY TIME DESC LIMIT 1
+		) t
+	</select>
+</mapper>

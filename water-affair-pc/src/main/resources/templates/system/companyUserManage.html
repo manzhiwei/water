@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>威尔泰智慧水务</title>
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="css/plugins/jQueryUI/jquery-ui-1.10.4.custom.min.css" rel="stylesheet"/>
+    <link href="css/plugins/jqGrid/ui.jqgrid.css" rel="stylesheet"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="css/jquery.dataTables.css" rel="stylesheet"/>
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/plugins/jsTree/style.min.css"/>
+    <link href="css/plugins/iCheck/blue.css" rel="stylesheet"/>
+    <link href="css/plugins/jqGrid/ui.jqgrid.css" rel="stylesheet"/>
+    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/common.css" rel="stylesheet"/>
+
+</head>
+
+<body class="">
+    <div id="wrapper">
+        <!--菜单模块-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse"  th:replace="menu :: side" />
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+
+            <!--header模块-->
+            <div class="row border-bottom" th:replace="menu :: top" />
+
+            <!--内容模块-->
+            <div class="row content-main">
+                <div class="slimScroll-default">
+                    <!--这里是不同页面变更的部分-->
+                    <div class="wrapper wrapper-content height-full">
+                        <div class="row height-full">
+                            <div class="col-md-3 height-full">
+                                <div class="ibox float-e-margins height-full">
+                                    <div class="ibox-title">
+                                        <h5>公司列表</h5>
+                                        <div class="ibox-tools">
+                                            <button class="btn btn-success btn-xs add-new-user" data-toggle="modal" data-target=".add-staff-modal">新增员工</button>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="slimScroll-default">
+                                            <div class="jsTree tree-company"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-9 height-full">
+
+                                <div class="ibox float-e-margins height-full">
+                                    <div class="ibox-title">
+                                        <h5>员工列表</h5>
+                                    </div>
+
+                                    <div class="ibox-content">
+                                        <div class="slimScroll-default">
+                                            <div class="table-responsive">
+
+                                                <table id="table_list_2"></table>
+                                                <div id="pager_list_2"></div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--footer模块-->
+            <div class="footer" th:replace="menu :: bottom" />
+        </div>
+    </div>
+
+    <!--弹出层-->
+    <!--新增员工-->
+    <div class="modal inmodal add-staff-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <form class="cmxform" id="commentForm" method="post" action="/addUser4Company">
+                <div class="modal-content animated bounceInRight">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h5 class="modal-title"><div id="selectedCompany"></div><input type="text" value="" name="cid" id="selectedCompanyId" style="display: none"></input></h5>
+                        <input type="text" value="" name="pid" id="selectedCompanyPId" style="display: none"></input>
+                    </div>
+                    <div class="modal-body">
+                        <div class="excel-list excel-modal">
+                            <div class="excel-item">
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <div class="form-label clearfix">
+                                            <label class="title">用户名 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <input id="userName" name="userName" type="text" class="form-control userName" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="form-label clearfix">
+                                            <label class="title">密码 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <input id="password" name="password" type="text" class="form-control password" required="required" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="form-label clearfix">
+                                            <label class="title">是否有配置权限 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <div class="checkboxs-inline checkboxs-sm checkboxs-padding5">
+                                                <div class="i-checks">
+                                                    <label class="i-checks-label">
+                                                        <input type="radio" checked="" value="yes" name="a"/><i></i>
+                                                        <span>是</span>
+                                                    </label>
+                                                </div>
+                                                <div class="i-checks">
+                                                    <label class="i-checks-label">
+                                                        <input type="radio" checked="" value="no" name="a"/><i></i>
+                                                        <span>否</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                        <button type="submit" onclick="addUser4Company()"  class="btn btn-success">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--弹出层-->
+
+    <!-- 全局 js -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="js/plugins/jsTree/jstree.min.js"></script>
+    <script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+    <script src="js/plugins/chosen/chosen.jquery.js"></script>
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+
+    <!-- 插件 js -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="js/plugins/validate/messages_zh.min.js"></script>
+    <script src="js/validate-setDefault.js"></script>
+
+    <script src="js/plugins/jqGrid/i18n/grid.locale-cn.js"></script>
+    <script src="js/plugins/jqGrid/jquery.jqGrid.min.js"></script>
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"/>
+    <script src="js/plugins/toastr/toastr.min.js"></script>
+    <!-- 自定义 js -->
+    <script src="js/common.js"></script>
+    <script src="js/system/user_manage.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.welltech.waterAffair.repository.CompanyMapper">
+  <resultMap id="BaseResultMap" type="com.welltech.waterAffair.domain.entity.Company">
+    <id column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="parent_company_id" jdbcType="INTEGER" property="parentCompanyId" />
+    <result column="company_level" jdbcType="CHAR" property="companyLevel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    company_id, company_name, parent_company_id, company_level
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wt_company
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wt_company
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.welltech.waterAffair.domain.entity.Company">
+    insert into wt_company (company_id, company_name, parent_company_id, company_level
+      )
+    values (#{companyId,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, #{parentCompanyId,jdbcType=INTEGER}, #{companyLevel,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.welltech.waterAffair.domain.entity.Company">
+  	<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="companyId">
+  		select last_insert_id() as company_id
+  	</selectKey>
+    insert into wt_company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="parentCompanyId != null">
+        parent_company_id,
+      </if>
+      <if test="companyLevel != null">
+        company_level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCompanyId != null">
+        #{parentCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyLevel != null">
+        #{companyLevel,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.welltech.waterAffair.domain.entity.Company">
+    update wt_company
+    <set>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCompanyId != null">
+        parent_company_id = #{parentCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyLevel != null">
+        company_level = #{companyLevel,jdbcType=CHAR},
+      </if>
+    </set>
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.welltech.waterAffair.domain.entity.Company">
+    update wt_company
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      parent_company_id = #{parentCompanyId,jdbcType=INTEGER},
+      company_level = #{companyLevel,jdbcType=CHAR}
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 以下为自定义查询 -->
+  <select id="findCompanyByUserId" parameterType="java.lang.Integer" resultType="Company">
+    select 
+    	wc.company_id, wc.company_name, wc.parent_company_id, wc.company_level
+    from wt_company wc, wt_user wu
+    where wu.user_id = #{userId,jdbcType=INTEGER}
+    	and wc.company_id = wu.company_id
+    limit 1
+  </select>
+  
+  <select id="findByParentCompanyId" parameterType="java.lang.Integer" resultType="Company">
+  	select 
+    	<include refid="Base_Column_List" />
+    from wt_company
+    where 1=1
+    	<if test="parentCompanyId != null">
+    	and	parent_company_id = #{parentCompanyId,jdbcType=INTEGER}
+    	</if>
+    	<if test="companyLevel != null and companyLevel != ''">
+    	and company_level = #{companyLevel, jdbcType=CHAR}
+    	</if>
+  </select>
+  
+  <select id="findByCompanyIds" resultType="Company">
+  	select 
+    	<include refid="Base_Column_List" />
+    from wt_company
+    where company_id in
+    <foreach collection="companyIds" item="item" index="index" open="(" close=")" separator=",">
+    	#{item}
+    </foreach>
+    <if test="companyLevel != null and companyLevel !=''">
+    	and company_level = #{companyLevel, jdbcType=CHAR}
+    </if>
+  </select>
+  
+  <select id="findAll" resultType="Company">
+	select
+    	<include refid="Base_Column_List" />
+    from wt_company
+  </select>
+  
+  <select id="findByMeterId" parameterType="java.lang.Integer" resultType="Company">
+  	select 
+    	wc.company_id, wc.company_name, wc.parent_company_id, wc.company_level
+    from wt_company wc, wt_meter_company mc
+    where mc.meter_id = #{meterId,jdbcType=INTEGER}
+    	and wc.company_id = mc.company_id
+    limit 1
+  </select>
+  
+  <select id="listByMeterId" parameterType="java.lang.Integer" resultType="Company">
+  	select 
+    	wc.company_id, wc.company_name, wc.parent_company_id, wc.company_level
+    from wt_company wc, wt_meter_company mc
+    where mc.meter_id = #{meterId,jdbcType=INTEGER}
+    	and wc.company_id = mc.company_id
+  </select>
+</mapper>

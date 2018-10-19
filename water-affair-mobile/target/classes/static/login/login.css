@@ -1,0 +1,80 @@
+.login-btn-form {
+    margin-top: 1.05rem;
+    margin-left: 6%;
+    width: 90%;
+}
+
+.button.button-middle {
+  font-size: 0.85rem;
+  height: 1.9rem;
+  line-height: 1.8rem;
+  border-radius: 0.15rem;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.button.button-fill.button-middle {
+  line-height: 1.9rem;
+}
+
+.login-input-form {
+    font-size: 0.8rem;
+}
+
+.login-input-form input::-webkit-input-placeholder {
+    font-size:0.8rem;
+}
+
+.label-switch input[type="checkbox"]:checked + .checkbox {
+    background: #0894ec;
+}
+
+.login-img{
+    margin-left: 2%;
+    width: 96%;
+	height: 35%;
+	max-height: 25rem;
+    margin-bottom: -1.5rem;
+    margin-top: 2.5rem;
+    border-radius: 0.1rem;
+	background: url(../images/map.png) no-repeat center;
+    background-size: cover;
+    background-color: #1C84C6
+}
+
+.login-img img{
+	margin-top: 3rem;
+	margin-left: 10%;
+	width: 80%;
+	max-width: 25rem;
+	height: auto;
+}
+
+.icon.icon-form-name {
+  width: 1.45rem;
+  height: 1.45rem;
+  background-image: url("i-form-name.png");
+}
+.icon.icon-form-password {
+  width: 1.45rem;
+  height: 1.45rem;
+  background-image: url("i-form-password.png");
+}
+
+footer.company {
+    bottom: 0.8rem;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    table-layout: absolute;
+    position: absolute;
+    font-size: 0.55rem;
+}
+
+footer.company span {
+    color: #777;
+}
+
+.no-scroll {
+    overflow: hidden;
+}

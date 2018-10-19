@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.welltech.waterAffair.repository.AlarmUserConfigMapper">
+  <resultMap id="BaseResultMap" type="com.welltech.waterAffair.domain.entity.AlarmUserConfig">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="meter_name" jdbcType="VARCHAR" property="meterName" />
+    <result column="atype" jdbcType="VARCHAR" property="atype" />
+    <result column="mtype" jdbcType="VARCHAR" property="mtype" />
+    <result column="high_high_value" jdbcType="REAL" property="highHighValue" />
+    <result column="high_middle_value" jdbcType="REAL" property="highMiddleValue" />
+    <result column="high_low_value" jdbcType="REAL" property="highLowValue" />
+    <result column="low_low_value" jdbcType="REAL" property="lowLowValue" />
+    <result column="low_middle_value" jdbcType="REAL" property="lowMiddleValue" />
+    <result column="low_high_value" jdbcType="REAL" property="lowHighValue" />
+    <result column="high_high_type" jdbcType="INTEGER" property="highHighType" />
+    <result column="high_middle_type" jdbcType="INTEGER" property="highMiddleType" />
+    <result column="high_low_type" jdbcType="INTEGER" property="highLowType" />
+    <result column="low_low_type" jdbcType="INTEGER" property="lowLowType" />
+    <result column="low_middle_type" jdbcType="INTEGER" property="lowMiddleType" />
+    <result column="low_high_type" jdbcType="INTEGER" property="lowHighType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mid, meter_name, atype, mtype, high_high_value, high_middle_value, high_low_value, 
+    low_low_value, low_middle_value, low_high_value, high_high_type, high_middle_type, 
+    high_low_type, low_low_type, low_middle_type, low_high_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wt_alarm_user_config
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from wt_alarm_user_config
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.welltech.waterAffair.domain.entity.AlarmUserConfig">
+    insert into wt_alarm_user_config (id, mid, meter_name, 
+      atype, mtype, high_high_value, 
+      high_middle_value, high_low_value, low_low_value, 
+      low_middle_value, low_high_value, high_high_type, 
+      high_middle_type, high_low_type, low_low_type, 
+      low_middle_type, low_high_type)
+    values (#{id,jdbcType=BIGINT}, #{mid,jdbcType=INTEGER}, #{meterName,jdbcType=VARCHAR}, 
+      #{atype,jdbcType=VARCHAR}, #{mtype,jdbcType=VARCHAR}, #{highHighValue,jdbcType=REAL}, 
+      #{highMiddleValue,jdbcType=REAL}, #{highLowValue,jdbcType=REAL}, #{lowLowValue,jdbcType=REAL}, 
+      #{lowMiddleValue,jdbcType=REAL}, #{lowHighValue,jdbcType=REAL}, #{highHighType,jdbcType=INTEGER}, 
+      #{highMiddleType,jdbcType=INTEGER}, #{highLowType,jdbcType=INTEGER}, #{lowLowType,jdbcType=INTEGER}, 
+      #{lowMiddleType,jdbcType=INTEGER}, #{lowHighType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.welltech.waterAffair.domain.entity.AlarmUserConfig">
+    insert into wt_alarm_user_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mid != null">
+        mid,
+      </if>
+      <if test="meterName != null">
+        meter_name,
+      </if>
+      <if test="atype != null">
+        atype,
+      </if>
+      <if test="mtype != null">
+        mtype,
+      </if>
+      <if test="highHighValue != null">
+        high_high_value,
+      </if>
+      <if test="highMiddleValue != null">
+        high_middle_value,
+      </if>
+      <if test="highLowValue != null">
+        high_low_value,
+      </if>
+      <if test="lowLowValue != null">
+        low_low_value,
+      </if>
+      <if test="lowMiddleValue != null">
+        low_middle_value,
+      </if>
+      <if test="lowHighValue != null">
+        low_high_value,
+      </if>
+      <if test="highHighType != null">
+        high_high_type,
+      </if>
+      <if test="highMiddleType != null">
+        high_middle_type,
+      </if>
+      <if test="highLowType != null">
+        high_low_type,
+      </if>
+      <if test="lowLowType != null">
+        low_low_type,
+      </if>
+      <if test="lowMiddleType != null">
+        low_middle_type,
+      </if>
+      <if test="lowHighType != null">
+        low_high_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mid != null">
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="meterName != null">
+        #{meterName,jdbcType=VARCHAR},
+      </if>
+      <if test="atype != null">
+        #{atype,jdbcType=VARCHAR},
+      </if>
+      <if test="mtype != null">
+        #{mtype,jdbcType=VARCHAR},
+      </if>
+      <if test="highHighValue != null">
+        #{highHighValue,jdbcType=REAL},
+      </if>
+      <if test="highMiddleValue != null">
+        #{highMiddleValue,jdbcType=REAL},
+      </if>
+      <if test="highLowValue != null">
+        #{highLowValue,jdbcType=REAL},
+      </if>
+      <if test="lowLowValue != null">
+        #{lowLowValue,jdbcType=REAL},
+      </if>
+      <if test="lowMiddleValue != null">
+        #{lowMiddleValue,jdbcType=REAL},
+      </if>
+      <if test="lowHighValue != null">
+        #{lowHighValue,jdbcType=REAL},
+      </if>
+      <if test="highHighType != null">
+        #{highHighType,jdbcType=INTEGER},
+      </if>
+      <if test="highMiddleType != null">
+        #{highMiddleType,jdbcType=INTEGER},
+      </if>
+      <if test="highLowType != null">
+        #{highLowType,jdbcType=INTEGER},
+      </if>
+      <if test="lowLowType != null">
+        #{lowLowType,jdbcType=INTEGER},
+      </if>
+      <if test="lowMiddleType != null">
+        #{lowMiddleType,jdbcType=INTEGER},
+      </if>
+      <if test="lowHighType != null">
+        #{lowHighType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.welltech.waterAffair.domain.entity.AlarmUserConfig">
+    update wt_alarm_user_config
+    <set>
+      <if test="mid != null">
+        mid = #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="meterName != null">
+        meter_name = #{meterName,jdbcType=VARCHAR},
+      </if>
+      <if test="atype != null">
+        atype = #{atype,jdbcType=VARCHAR},
+      </if>
+      <if test="mtype != null">
+        mtype = #{mtype,jdbcType=VARCHAR},
+      </if>
+      <if test="highHighValue != null">
+        high_high_value = #{highHighValue,jdbcType=REAL},
+      </if>
+      <if test="highMiddleValue != null">
+        high_middle_value = #{highMiddleValue,jdbcType=REAL},
+      </if>
+      <if test="highLowValue != null">
+        high_low_value = #{highLowValue,jdbcType=REAL},
+      </if>
+      <if test="lowLowValue != null">
+        low_low_value = #{lowLowValue,jdbcType=REAL},
+      </if>
+      <if test="lowMiddleValue != null">
+        low_middle_value = #{lowMiddleValue,jdbcType=REAL},
+      </if>
+      <if test="lowHighValue != null">
+        low_high_value = #{lowHighValue,jdbcType=REAL},
+      </if>
+      <if test="highHighType != null">
+        high_high_type = #{highHighType,jdbcType=INTEGER},
+      </if>
+      <if test="highMiddleType != null">
+        high_middle_type = #{highMiddleType,jdbcType=INTEGER},
+      </if>
+      <if test="highLowType != null">
+        high_low_type = #{highLowType,jdbcType=INTEGER},
+      </if>
+      <if test="lowLowType != null">
+        low_low_type = #{lowLowType,jdbcType=INTEGER},
+      </if>
+      <if test="lowMiddleType != null">
+        low_middle_type = #{lowMiddleType,jdbcType=INTEGER},
+      </if>
+      <if test="lowHighType != null">
+        low_high_type = #{lowHighType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.welltech.waterAffair.domain.entity.AlarmUserConfig">
+    update wt_alarm_user_config
+    set mid = #{mid,jdbcType=INTEGER},
+      meter_name = #{meterName,jdbcType=VARCHAR},
+      atype = #{atype,jdbcType=VARCHAR},
+      mtype = #{mtype,jdbcType=VARCHAR},
+      high_high_value = #{highHighValue,jdbcType=REAL},
+      high_middle_value = #{highMiddleValue,jdbcType=REAL},
+      high_low_value = #{highLowValue,jdbcType=REAL},
+      low_low_value = #{lowLowValue,jdbcType=REAL},
+      low_middle_value = #{lowMiddleValue,jdbcType=REAL},
+      low_high_value = #{lowHighValue,jdbcType=REAL},
+      high_high_type = #{highHighType,jdbcType=INTEGER},
+      high_middle_type = #{highMiddleType,jdbcType=INTEGER},
+      high_low_type = #{highLowType,jdbcType=INTEGER},
+      low_low_type = #{lowLowType,jdbcType=INTEGER},
+      low_middle_type = #{lowMiddleType,jdbcType=INTEGER},
+      low_high_type = #{lowHighType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="findByMidAndTypeAndAlarmType" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wt_alarm_user_config
+    where mid = #{mid,jdbcType=INTEGER}
+     and atype = #{atype,jdbcType=VARCHAR}
+     and mtype = #{mtype,jdbcType=VARCHAR}
+    limit 1
+  </select>
+</mapper>

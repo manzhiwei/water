@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>威尔泰智慧水务</title>
+    <link href="favicon.ico" rel="icon" type="image/x-icon">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/jsTree/style.min.css">
+    <link href="css/plugins/iCheck/blue.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+
+</head>
+
+<body class="">
+    <div id="wrapper">
+        <!--菜单模块-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse slimScroll-default">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                            </span>
+                            <span class="clear user">
+                                <span class="block m-t-xs"> <strong class="font-bold">张三</strong></span>
+                                <span class="text-muted text-xs block">超级管理员</span>
+                            </span>
+                        </div>
+                        <div class="logo-element">威尔泰</div>
+                    </li>
+                    <li>
+                        <a href="/index4raw"><i class="fa fa-home"></i> <span class="nav-label">仪表板</span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="fa fa-tint"></i>
+                            <span class="nav-label">基础供水管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="2.1_仪表档案管理.html">仪表档案管理</a></li>
+                            <li><a href="2.4_仪表更换记录.html">仪表更换记录</a></li>
+                            <li><a href="2.2_大客户管理.html">大客户管理</a></li>
+                            <li><a href="2.3_VIP管理.html">VIP管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">水务统计分析</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/realtimeStatistics">实时数据分析</a></li><li><a href="/oneMeterStatistic">单点数据分析</a></li>
+                            <li><a href="/dataStatisticsByHour">时用水统计</a></li>
+                            <li><a href="/trendChart">流量、压力趋势图</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="fa fa-sitemap"></i> <span class="nav-label">DMA分区管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="/dmaManage">DMA基础管理</a></li>
+                            <li><a href="/dmaMapMonitor">DMA区域监控</a></li>
+                            <li><a href="/dmaMicroFlow">DMA小流量监控</a></li>
+                        </ul>
+                    </li>
+                    <li>                         <a href="/alarm"><i class="fa fa-warning "></i>                             <span class="nav-label">告警管理</span><span class="fa arrow"></span>                                                      </a>                     </li>  <li class="active1">                         <a href="javascript:">                             <i class="fa fa-gears"></i> <span class="nav-label">报表统计</span>                             <span class="fa arrow"></span>                         </a>                         <ul class="nav nav-second-level collapse">                             <li ><a href="/dayReport">日报表</a></li>                             <li><a href="/monthReport">月报表</a></li>                             <li><a href="/seasonReport">季报表</a></li>                             <li><a href="/yearReport">年报表</a></li>                         </ul>                     </li>
+                    <li class="active">
+                        <a href="javascript:;"><i class="fa fa-gears"></i> <span class="nav-label">系统管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="6.1_用户管理.html">公司用户管理</a></li>
+                            <li class="active"><a href="6.2_客户水表管理.html">客户水表管理</a></li>
+                            <li><a href="6.3_日志管理.html">日志管理</a></li><li><a href="">仪表更换记录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+
+            <!--header模块-->
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-success " href="javascript:;"><i class="fa fa-bars"></i> </a>
+                        <form role="search" class="navbar-form-custom" action="search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="输入仪表名称" class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <!--message-->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="img/a7.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <small class="pull-right">46h ago</small>
+                                            <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="text-center link-block">
+                                        <a href="message.html">
+                                            <i class="fa fa-envelope"></i> <strong>查看所有消息</strong>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--remind-->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-bell"></i>  <span class="label label-success">8</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a href="grid_options.html">
+                                        <div>
+                                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                            <span class="pull-right text-muted small">4 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="text-center link-block">
+                                        <a href="remind.html">
+                                            <strong>查看所有提醒</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="login.html">
+                                <i class="fa fa-sign-out"></i> 退出
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!--内容模块-->
+            <div class="row content-main">
+                <div class="slimScroll-default">
+                    <!--这里是不同页面变更的部分-->
+                    <div class="wrapper wrapper-content height-full">
+                        <div class="row height-full">
+                            <div class="col-md-3 height-full">
+                                <div class="ibox float-e-margins height-full">
+                                    <div class="ibox-title">
+                                        <h5>公司列表</h5>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="slimScroll-default">
+                                            <div class="jsTree tree-company"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 height-full">
+                                <div class="ibox float-e-margins height-full">
+                                    <div class="ibox-title">
+                                        <h5>客户水表列表</h5>
+                                        <div class="ibox-tools">
+                                            <button class="btn btn-success btn-xs btn-add-meter">添加仪表</button>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="slimScroll-default">
+                                            <div class="jsTree tree-meter"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1 height-full">
+                                <div class="relative-box height-full">
+                                    <div class="cs-btn">
+                                        <button class="btn btn-success btn-block btn-sm cs-btn-remove" type="button">
+                                            <i class="fa fa-angle-right"></i>
+                                        </button>
+                                        <button class="btn btn-success btn-block btn-sm cs-btn-add" type="button">
+                                            <i class="fa fa-angle-left"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 height-full all-meter-list hide">
+                                <div class="ibox float-e-margins height-full">
+                                    <div class="ibox-title">
+                                        <h5>所有水表列表</h5>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="slimScroll-default">
+                                            <div class="jsTree tree-all-meter"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--footer模块-->
+            <div class="footer" th:replace="menu :: bottom" />
+        </div>
+    </div>
+    <!--弹出层-->
+    <!--水表-->
+    <div class="modal inmodal add-meter-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <form class="cmxform" id="commentForm" method="post" action="">
+                <div class="modal-content animated bounceInRight">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h5 class="modal-title">新增水表</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="excel-list excel-modal">
+                            <div class="excel-item">
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <div class="form-label clearfix">
+                                            <label class="title">用户名 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <input name="meter1" type="text" class="form-control" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="form-label clearfix">
+                                            <label class="title">密码 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <input name="meter1" type="text" class="form-control" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="form-label clearfix">
+                                            <label class="title">是否有配置权限 <span class="require-star">*</span></label>
+                                            <div class="validate-tip"></div>
+                                        </div>
+                                        <div class="form-area">
+                                            <div class="checkboxs-inline checkboxs-sm checkboxs-padding5">
+                                                <div class="i-checks">
+                                                    <label class="i-checks-label">
+                                                        <input type="radio" checked="" value="option2" name="a"><i></i>
+                                                        <span>是</span>
+                                                    </label>
+                                                </div>
+                                                <div class="i-checks">
+                                                    <label class="i-checks-label">
+                                                        <input type="radio" checked="" value="option2" name="a"><i></i>
+                                                        <span>否</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-success">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--弹出层-->
+
+    <!-- 全局 js -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="js/plugins/dataTables/datatables.min.js"></script>
+    <script src="js/plugins/jsTree/jstree.min.js"></script>
+    <script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+    <script src="js/plugins/chosen/chosen.jquery.js"></script>
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+
+    <!-- 插件 js -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="js/plugins/validate/messages_zh.min.js"></script>
+    <script src="js/validate-setDefault.js"></script>
+
+    <!-- 自定义 js -->
+    <script src="js/common.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue'
+            });
+
+            function getData (url) { // 获取节点数据
+                var data = '';
+                $.ajax({
+                    url: url,
+                    context: document.body,
+                    statusCode: {
+                        404: function() {
+                            window.location.href="/0_404.html";
+                        }
+                    },
+                    async: false
+                }).done(function(res, textStatus){
+                    data = res;
+                }).fail(function(){
+                    console.log("出错啦！");
+                });
+                return data;
+            }
+            var companyData = getData('/data/companyData.json');
+            var allMeterData = getData('/data/allMeterData.json');
+            var meterData = getData('/data/meterData.json');
+            var $treeCompany = $('.tree-company');
+            var $meterCompany = $('.tree-meter');
+            var $allMeterCompany = $('.tree-all-meter');
+            $treeCompany.jstree({
+                'core' : {
+                    "check_callback" : true,
+                    "multiple" : false, // 关闭多选
+                    'data' : companyData,
+                    'strings': {
+                        'Loading ...' : '加载中 ...'
+                    },
+                    'dblclick_toggle': false
+                },
+                'plugins' : [ 'types', "contextmenu" ],
+                'types' : {
+                    "default" : {
+                        "icon" : "glyphicon glyphicon-flash"
+                    },
+                    "demo" : {
+                        "icon" : "glyphicon glyphicon-ok"
+                    }
+                },
+                'contextmenu': {
+                    "select_node": false,
+                    "items": function (node) {
+                        var menuNode = {
+                            "create": {
+                                "separator_before"	: false,
+                                "separator_after"	: true,
+                                "_disabled"			: false,
+                                "label"				: "新建分公司",
+                                "action"			: function (data) {
+                                    var inst = $.jstree.reference(data.reference),
+                                        obj = inst.get_node(data.reference);
+                                    inst.create_node(obj, {}, "last", function (new_node) {
+                                        setTimeout(function () { inst.edit(new_node); },0);
+                                    });
+                                }
+                            },
+                            "remove": {
+                                "separator_before"	: false,
+                                "icon"				: false,
+                                "separator_after"	: false,
+                                "_disabled"			: false,
+                                "label"				: "删除分公司",
+                                "action"			: function (data) {
+                                    var inst = $.jstree.reference(data.reference),
+                                        obj = inst.get_node(data.reference);
+                                    if(inst.is_selected(obj)) {
+                                        inst.delete_node(inst.get_selected());
+                                    }
+                                    else {
+                                        inst.delete_node(obj);
+                                    }
+                                }
+                            }
+                        };
+                        if (this.get_path(node).length == 3) {
+                            menuNode.create['_disabled'] = true;
+                            return menuNode;
+                        } else if (this.get_path(node).length == 2) {
+                            menuNode.remove['label'] = '删除总公司';
+                            return menuNode;
+                        } else if (this.get_path(node).length == 1) {
+                            menuNode.create['label'] = '新建总公司';
+                            menuNode.remove['_disabled'] =  true;
+                            return menuNode;
+                        }
+                    }
+                }
+            });
+            $meterCompany.jstree({
+                'core' : {
+                    "check_callback" : true,
+                    "multiple" : true,
+                    'data' : meterData,
+                    'strings': {
+                        'Loading ...' : '加载中 ...'
+                    },
+                    'dblclick_toggle': false
+                },
+                'plugins' : [ 'types', "checkbox" ],
+                'types' : {
+                    "default" : {
+                        "icon" : "glyphicon glyphicon-flash"
+                    },
+                    "demo" : {
+                        "icon" : "glyphicon glyphicon-ok"
+                    }
+                },
+                'checkbox': {
+                    'three_state': false
+                }
+            });
+            $allMeterCompany.jstree({
+                'core' : {
+                    "check_callback" : true,
+                    "multiple" : true, // 所有水表列表打开多选多选
+                    'data' : allMeterData,
+                    'strings': {
+                        'Loading ...' : '加载中 ...'
+                    },
+                    'dblclick_toggle': false
+                },
+                'plugins' : [ 'types', "checkbox" ],
+                'types' : {
+                    "default" : {
+                        "icon" : "glyphicon glyphicon-flash"
+                    },
+                    "demo" : {
+                        "icon" : "glyphicon glyphicon-ok"
+                    }
+                },
+                'checkbox': {
+                    'three_state': false
+                }
+            });
+            // 公司节点的选择、重命名、新增、删除
+            $treeCompany.bind("select_node.jstree", function (e, data) { // 选中节点触发
+                console.log(data.node);
+                console.log(data.node.id); // 选择的node id
+                console.log(data.node.text); // 选择的node text
+                console.log(data.node.parent); // 选择项的父级id
+            }).bind("rename_node.jstree", function (e, data) { // 创建和重命名触发
+                var createData = {};
+                console.log(data);
+                console.log(data.node.id); // 选择的node id
+                console.log(data.node.text); // 选择的node text
+                console.log(data.node.parent); // 选择项的父级id
+            }).bind("delete_node.jstree", function (e, data) { // 创建和重命名触发
+                var deleteData = {};
+                console.log(data);
+                console.log(data.node.id); // 选择的node id
+                console.log(data.node.text); // 选择的node text
+                console.log(data.node.parent); // 选择项的父级id
+            });
+
+            // 水表穿梭框的添加和删除
+            var removeArr = [], // 要从用户水表中移除的节点数组
+                addArr = [], // 要从所有水表向用户水表中添加的节点数组
+                addData = {}, // 添加时向服务器发送的json数据
+                removeData = {}; // 移除时向服务器发送的json数据
+            var $csRemoveBtn = $('.cs-btn-remove'); // 移除按钮，触发ajax提交
+            var $csAddBtn = $('.cs-btn-add'); // 添加按钮，触发ajax提交
+            $allMeterCompany.bind("select_node.jstree", function (e, data) { // 选中节点触发
+                console.log(data);
+                console.log(data.node);
+                console.log(data.node.id); // 选择的node id
+                console.log(data.node.text); // 选择的node text
+                console.log(data.node.parent); // 选择项的父级id
+                console.log(data.selected); // 获取整个树选中的节点
+            }).bind("deselect_node.jstree", function (e, data) { // 取消选中节点触发
+                console.log(data);
+                console.log(data.node);
+                console.log(data.node.id); // 选择的node id
+                console.log(data.node.text); // 选择的node text
+                console.log(data.node.parent); // 选择项的父级id
+                console.log(data.selected); // 获取整个树选中的节点
+            });
+            $meterCompany.bind("select_node.jstree", function (e, data) { // 选中节点触发
+                console.log(data);
+                console.log(data.node);
+                console.log(data.node.id); // 选择的node id
+                console.log(data.node.text); // 选择的node text
+                console.log(data.node.parent); // 选择项的父级id
+                console.log(data.selected); // 获取整个树选中的节点
+            }).bind("deselect_node.jstree", function (e, data) { // 取消选中节点触发
+                console.log(data);
+                console.log(data.node);
+                console.log(data.node.id); // 选择的node id
+                console.log(data.node.text); // 选择的node text
+                console.log(data.node.parent); // 选择项的父级id
+                console.log(data.selected); // 获取整个树选中的节点
+            });
+
+            function postData (url, data) {
+                $.ajax({
+                    url: url,
+                    type: POST,
+                    data: data,
+                    context: document.body,
+                    statusCode: {
+                        404: function() {
+                            window.location.href="/0_404.html";
+                        }
+                    }
+                }).done(function(res, textStatus){
+
+                }).fail(function(){
+                    console.log("出错啦！");
+                });
+            }
+
+            $csRemoveBtn.on('click',function(){
+                $meterCompany.jstree({
+                    'core' : {
+                        "check_callback" : true,
+                        "multiple" : true,
+                        'data' : meterData,
+                        'strings': {
+                            'Loading ...' : '加载中 ...'
+                        },
+                        'dblclick_toggle': false
+                    },
+                    'plugins' : [ 'types', "checkbox" ],
+                    'types' : {
+                        "default" : {
+                            "icon" : "glyphicon glyphicon-flash"
+                        },
+                        "demo" : {
+                            "icon" : "glyphicon glyphicon-ok"
+                        }
+                    },
+                    'checkbox': {
+                        'three_state': false
+                    }
+                });
+            });
+
+            // 添加仪表
+            $('.btn-add-meter').on('click', function () {
+                var $allMeterList = $('.all-meter-list');
+                if ($(this).text() == '添加仪表') {
+                    $(this).text('隐藏所有仪表');
+                    $allMeterList.removeClass('hide');
+                    return false;
+                }
+                $(this).text('添加仪表');
+                $allMeterList.addClass('hide');
+            })
+        });
+    </script>
+
+</body>
+
+</html>

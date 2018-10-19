@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>威尔泰智慧水务</title>
+    <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
+
+    <link href="css/jquery.dataTables.css" rel="stylesheet"/>
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet"/>
+    <link href="css/plugins/iCheck/blue.css" rel="stylesheet"/>
+
+
+    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/common.css" rel="stylesheet"/>
+
+</head>
+
+<body class="">
+<div id="wrapper">
+    <!--菜单模块-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse slimScroll-default">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" src="img/profile_small.jpg"/>
+                            </span>
+                        <span class="clear user">
+                                <span class="block m-t-xs"> <strong class="font-bold"
+                                                                    th:text="${session.userName}"></strong></span>
+                                <span class="text-muted text-xs block" th:text="${session.company}"></span>
+                            </span>
+                    </div>
+                    <div class="logo-element">威尔泰</div>
+                </li>
+                <li>
+                    <a href="/index4raw"><i class="fa fa-home"></i> <span class="nav-label">仪表板</span></a>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="fa fa-tint"></i>
+                        <span class="nav-label">基础供水管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/meterList">仪表基础信息</a></li>
+
+                        <li><a href="/meterDevicesMonitoring">仪表设备监控</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">水务统计分析</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/realtimeStatistics">实时数据分析</a></li>
+                        <li><a href="/oneMeterStatistic">单点数据分析</a></li>
+                        <li><a href="/dataStatisticsByHour">时用水统计</a></li>
+                        <li><a href="/trendChart">流量、压力趋势图</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="fa fa-sitemap"></i> <span class="nav-label">DMA分区管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/dmaManage">DMA基础管理</a></li>
+                        <li><a href="/dmaMapMonitor">DMA区域监控</a></li>
+                        <li><a href="/dmaMicroFlow">DMA小流量监控</a></li>
+                    </ul>
+                </li>
+                <li><a><i class="fa fa-warning "></i> <span class="nav-label">告警管理</span><span class="fa arrow"></span>
+                </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/alarm">告警查询</a></li>
+                        <li><a href="/alarmSingleSetting">单点告警配置</a></li>
+                        <li><a href="/alarmMultiSetting">多点告警配置</a></li>
+                    </ul>
+                </li>
+
+                <li class="active"><a href="javascript:"> <i class="fa fa-table"></i> <span
+                        class="nav-label">报表统计</span> <span class="fa arrow"></span> </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="active"><a href="/dayReport">日报表</a></li>
+                        <li><a href="/monthReport">月报表</a></li>
+                        <li><a href="/seasonReport">季报表</a></li>
+                        <li><a href="/yearReport">年报表</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="fa fa-gears"></i> <span class="nav-label">系统管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li th:if="${session.userName eq 'admin'}"><a href="/clientManage">公司水表管理</a></li>
+                        <li th:if="${session.userName eq 'admin'}"><a href="/userManage">公司用户管理</a></li>
+                        <li th:if="${session.userName eq 'admin'}"><a href="/userMeterManage">用户水表管理</a></li>
+                        <li><a href="/logManage">日志管理</a></li>
+                        <li th:if="${session.userName eq 'admin'}"><a href="/replaceMeterRecord">仪表更换记录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <!--header模块-->
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+
+                <ul class="nav navbar-top-links navbar-right">
+                    <!--message-->
+
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-sign-out"></i> 退出
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+
+        <!--内容模块-->
+        <div class="row content-main">
+            <div class="slimScroll-default">
+                <!--这里是不同页面变更的部分-->
+                <div class="wrapper wrapper-content height-full">
+                    <div class="row height-full">
+
+                        <div class="col-md-12 height-full client-list">
+                            <div class="ibox float-e-margins height-full">
+                                <div class="ibox-title">
+                                    <h5>日报表</h5>
+                                </div>
+                                <div class="ibox-content" >
+                                    <div class="slimScroll-default">
+                                        <form name="searchForm" id="searchForm" method="post" action="/dayReport">
+                                            <div class="row form-group">
+
+                                            <div class="col-sm-8">
+                                                <select name="staions" id='staions' data-placeholder="选择站点"
+                                                        class="form-control chosen-select-normal" multiple="multiple">
+                                                    <option th:selected="${prod.select}" th:each="prod : ${stationList}" th:value="${prod.name}"
+                                                            th:text="${prod.name}">
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input name="date" id="startTime"
+                                                       class="form-control layer-date input-todayM laydate-icon"
+                                                       th:placeholder="${date}" th:value="${date}"/>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <button id="query2" type="button" onclick="searchForm.submit()"  class="btn btn-sm btn-success">查询
+                                                </button>
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" onclick="showReport();">查看报表
+                                                </button>
+                                            </div>
+                                        </div>
+                                        </form>
+                                        <div class="row" style="overflow-x: auto;">
+
+
+                                            <table class="table table-bordered mytable">
+                                            <thead class="mytable">
+
+                                            <tr>
+                                                <th rowspan="2" class="mytablehead" style="width:60px;white-space: nowrap;">序号</th>
+                                                <th rowspan="2" class="mytablehead" style="width:60px; white-space: nowrap;">时间</th>
+
+                                                <th th:each="prod,iterStat:${title}" colspan="3" th:text="${prod.subUserName}" style="width:60px; white-space: nowrap;"></th>
+
+                                            </tr>
+
+                                            <tr>
+                                                <l th:each="prod,iterStat:${title}">
+                                                    <th style="width:60px; white-space: nowrap;" >压力（Pa）</th>
+                                                    <th style="width:60px; white-space: nowrap;">瞬时流量（T/h）</th>
+                                                    <th style="width:60px;white-space: nowrap;">累计流量（T）</th>
+                                                </l>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            <tr th:each="prod,iterStat:${result}">
+                                                <td th:text="${iterStat.count}"></td>
+                                                <l th:each="arrayS:${prod}">
+                                                    <td  style="width:60px;white-space: nowrap;" th:text="${arrayS}">1</td>
+                                                </l>
+                                            </tr>
+                                            </tbody>
+
+                                        </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+						
+						<!--报表弹出层-->
+                        <div class="modal inmodal report-modal" tabindex="-1" role="dialog"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                    <div class="modal-content animated bounceInRight">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">&times;</span><span
+                                                    class="sr-only">Close</span></button>
+                                            <h5 class="modal-title">报表</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                        	<div class="col-sm-3" style="z-index: 200;">
+	                                            <select name="station" id='station' data-placeholder="选择站点" class="form-control chosen-select-normal">
+                                                    <option th:selected="${prod.select}" th:each="prod : ${stationList}" th:value="${prod.name}"
+                                                            th:text="${prod.name}">
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        	<div id="main" style="width:100%;height:550px;position: relative;"></div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button data-dismiss="modal" class="btn btn-success">关闭
+                                            </button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    
+						
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--footer模块-->
+        <div class="footer">
+            <div>
+                <strong>版权所有</strong> 2018-2019 © 威尔泰WELLTECH
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 全局 js -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+
+<!-- 插件 js -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+<script src="js/plugins/layer/laydate/laydate.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<!-- 引入 ECharts 文件 -->
+<script src="js/echarts.min.js"></script>
+
+<!-- Jquery Validate -->
+<script src="js/plugins/validate/jquery.validate.min.js"></script>
+<script src="js/plugins/validate/messages_zh.min.js"></script>
+<script src="js/validate-setDefault.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+<!-- 自定义 js -->
+<script src="js/common.js"></script>
+<script src="js/report/dayReport.js" type="text/javascript"></script>
+
+</body>
+
+</html>

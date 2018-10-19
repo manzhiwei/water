@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.welltech.waterAffair.repository.AlarmRowRecordMapper">
+  <resultMap id="BaseResultMap" type="com.welltech.waterAffair.domain.entity.AlarmRowRecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="meterType" jdbcType="INTEGER" property="metertype" />
+    <result column="flow" jdbcType="REAL" property="flow" />
+    <result column="press" jdbcType="REAL" property="press" />
+    <result column="me" jdbcType="REAL" property="me" />
+    <result column="currentv" jdbcType="REAL" property="currentv" />
+    <result column="currenti" jdbcType="REAL" property="currenti" />
+    <result column="esignal" jdbcType="INTEGER" property="esignal" />
+    <result column="depData" jdbcType="INTEGER" property="depdata" />
+    <result column="temp" jdbcType="REAL" property="temp" />
+    <result column="flowerror" jdbcType="INTEGER" property="flowerror" />
+    <result column="presserror" jdbcType="INTEGER" property="presserror" />
+    <result column="totalF" jdbcType="REAL" property="totalf" />
+    <result column="totalR" jdbcType="REAL" property="totalr" />
+    <result column="totalN" jdbcType="REAL" property="totaln" />
+    <result column="signalStrength" jdbcType="INTEGER" property="signalstrength" />
+    <result column="lastConnecting" jdbcType="INTEGER" property="lastconnecting" />
+    <result column="flowUnit" jdbcType="INTEGER" property="flowunit" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mid, meterType, flow, press, me, currentv, currenti, esignal, depData, temp, 
+    flowerror, presserror, totalF, totalR, totalN, signalStrength, lastConnecting, flowUnit, 
+    createtime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wt_alarm_raw_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from wt_alarm_raw_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.welltech.waterAffair.domain.entity.AlarmRowRecord">
+    insert into wt_alarm_raw_record (id, mid, meterType, 
+      flow, press, me, currentv, 
+      currenti, esignal, depData, 
+      temp, flowerror, presserror, 
+      totalF, totalR, totalN, signalStrength, 
+      lastConnecting, flowUnit, createtime
+      )
+    values (#{id,jdbcType=BIGINT}, #{mid,jdbcType=INTEGER}, #{metertype,jdbcType=INTEGER}, 
+      #{flow,jdbcType=REAL}, #{press,jdbcType=REAL}, #{me,jdbcType=REAL}, #{currentv,jdbcType=REAL}, 
+      #{currenti,jdbcType=REAL}, #{esignal,jdbcType=INTEGER}, #{depdata,jdbcType=INTEGER}, 
+      #{temp,jdbcType=REAL}, #{flowerror,jdbcType=INTEGER}, #{presserror,jdbcType=INTEGER}, 
+      #{totalf,jdbcType=REAL}, #{totalr,jdbcType=REAL}, #{totaln,jdbcType=REAL}, #{signalstrength,jdbcType=INTEGER}, 
+      #{lastconnecting,jdbcType=INTEGER}, #{flowunit,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.welltech.waterAffair.domain.entity.AlarmRowRecord">
+    insert into wt_alarm_raw_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mid != null">
+        mid,
+      </if>
+      <if test="metertype != null">
+        meterType,
+      </if>
+      <if test="flow != null">
+        flow,
+      </if>
+      <if test="press != null">
+        press,
+      </if>
+      <if test="me != null">
+        me,
+      </if>
+      <if test="currentv != null">
+        currentv,
+      </if>
+      <if test="currenti != null">
+        currenti,
+      </if>
+      <if test="esignal != null">
+        esignal,
+      </if>
+      <if test="depdata != null">
+        depData,
+      </if>
+      <if test="temp != null">
+        temp,
+      </if>
+      <if test="flowerror != null">
+        flowerror,
+      </if>
+      <if test="presserror != null">
+        presserror,
+      </if>
+      <if test="totalf != null">
+        totalF,
+      </if>
+      <if test="totalr != null">
+        totalR,
+      </if>
+      <if test="totaln != null">
+        totalN,
+      </if>
+      <if test="signalstrength != null">
+        signalStrength,
+      </if>
+      <if test="lastconnecting != null">
+        lastConnecting,
+      </if>
+      <if test="flowunit != null">
+        flowUnit,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mid != null">
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="metertype != null">
+        #{metertype,jdbcType=INTEGER},
+      </if>
+      <if test="flow != null">
+        #{flow,jdbcType=REAL},
+      </if>
+      <if test="press != null">
+        #{press,jdbcType=REAL},
+      </if>
+      <if test="me != null">
+        #{me,jdbcType=REAL},
+      </if>
+      <if test="currentv != null">
+        #{currentv,jdbcType=REAL},
+      </if>
+      <if test="currenti != null">
+        #{currenti,jdbcType=REAL},
+      </if>
+      <if test="esignal != null">
+        #{esignal,jdbcType=INTEGER},
+      </if>
+      <if test="depdata != null">
+        #{depdata,jdbcType=INTEGER},
+      </if>
+      <if test="temp != null">
+        #{temp,jdbcType=REAL},
+      </if>
+      <if test="flowerror != null">
+        #{flowerror,jdbcType=INTEGER},
+      </if>
+      <if test="presserror != null">
+        #{presserror,jdbcType=INTEGER},
+      </if>
+      <if test="totalf != null">
+        #{totalf,jdbcType=REAL},
+      </if>
+      <if test="totalr != null">
+        #{totalr,jdbcType=REAL},
+      </if>
+      <if test="totaln != null">
+        #{totaln,jdbcType=REAL},
+      </if>
+      <if test="signalstrength != null">
+        #{signalstrength,jdbcType=INTEGER},
+      </if>
+      <if test="lastconnecting != null">
+        #{lastconnecting,jdbcType=INTEGER},
+      </if>
+      <if test="flowunit != null">
+        #{flowunit,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.welltech.waterAffair.domain.entity.AlarmRowRecord">
+    update wt_alarm_raw_record
+    <set>
+      <if test="mid != null">
+        mid = #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="metertype != null">
+        meterType = #{metertype,jdbcType=INTEGER},
+      </if>
+      <if test="flow != null">
+        flow = #{flow,jdbcType=REAL},
+      </if>
+      <if test="press != null">
+        press = #{press,jdbcType=REAL},
+      </if>
+      <if test="me != null">
+        me = #{me,jdbcType=REAL},
+      </if>
+      <if test="currentv != null">
+        currentv = #{currentv,jdbcType=REAL},
+      </if>
+      <if test="currenti != null">
+        currenti = #{currenti,jdbcType=REAL},
+      </if>
+      <if test="esignal != null">
+        esignal = #{esignal,jdbcType=INTEGER},
+      </if>
+      <if test="depdata != null">
+        depData = #{depdata,jdbcType=INTEGER},
+      </if>
+      <if test="temp != null">
+        temp = #{temp,jdbcType=REAL},
+      </if>
+      <if test="flowerror != null">
+        flowerror = #{flowerror,jdbcType=INTEGER},
+      </if>
+      <if test="presserror != null">
+        presserror = #{presserror,jdbcType=INTEGER},
+      </if>
+      <if test="totalf != null">
+        totalF = #{totalf,jdbcType=REAL},
+      </if>
+      <if test="totalr != null">
+        totalR = #{totalr,jdbcType=REAL},
+      </if>
+      <if test="totaln != null">
+        totalN = #{totaln,jdbcType=REAL},
+      </if>
+      <if test="signalstrength != null">
+        signalStrength = #{signalstrength,jdbcType=INTEGER},
+      </if>
+      <if test="lastconnecting != null">
+        lastConnecting = #{lastconnecting,jdbcType=INTEGER},
+      </if>
+      <if test="flowunit != null">
+        flowUnit = #{flowunit,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.welltech.waterAffair.domain.entity.AlarmRowRecord">
+    update wt_alarm_raw_record
+    set mid = #{mid,jdbcType=INTEGER},
+      meterType = #{metertype,jdbcType=INTEGER},
+      flow = #{flow,jdbcType=REAL},
+      press = #{press,jdbcType=REAL},
+      me = #{me,jdbcType=REAL},
+      currentv = #{currentv,jdbcType=REAL},
+      currenti = #{currenti,jdbcType=REAL},
+      esignal = #{esignal,jdbcType=INTEGER},
+      depData = #{depdata,jdbcType=INTEGER},
+      temp = #{temp,jdbcType=REAL},
+      flowerror = #{flowerror,jdbcType=INTEGER},
+      presserror = #{presserror,jdbcType=INTEGER},
+      totalF = #{totalf,jdbcType=REAL},
+      totalR = #{totalr,jdbcType=REAL},
+      totalN = #{totaln,jdbcType=REAL},
+      signalStrength = #{signalstrength,jdbcType=INTEGER},
+      lastConnecting = #{lastconnecting,jdbcType=INTEGER},
+      flowUnit = #{flowunit,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

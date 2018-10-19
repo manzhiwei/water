@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.welltech.waterAffair.repository.UserLogMapper">
+  <resultMap id="BaseResultMap" type="com.welltech.waterAffair.domain.entity.UserLog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="event_name" jdbcType="VARCHAR" property="eventName" />
+    <result column="event_value" jdbcType="VARCHAR" property="eventValue" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="ip_address" jdbcType="VARCHAR" property="ipAddress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, date, event_name, event_value, user_id, user_name, ip_address
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wt_user_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wt_user_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.welltech.waterAffair.domain.entity.UserLog">
+    insert into wt_user_log (id, date, event_name, 
+      event_value, user_id, user_name, 
+      ip_address)
+    values (#{id,jdbcType=INTEGER}, #{date,jdbcType=TIMESTAMP}, #{eventName,jdbcType=VARCHAR}, 
+      #{eventValue,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{ipAddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.welltech.waterAffair.domain.entity.UserLog">
+    insert into wt_user_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="eventName != null">
+        event_name,
+      </if>
+      <if test="eventValue != null">
+        event_value,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="ipAddress != null">
+        ip_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eventName != null">
+        #{eventName,jdbcType=VARCHAR},
+      </if>
+      <if test="eventValue != null">
+        #{eventValue,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null">
+        #{ipAddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.welltech.waterAffair.domain.entity.UserLog">
+    update wt_user_log
+    <set>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eventName != null">
+        event_name = #{eventName,jdbcType=VARCHAR},
+      </if>
+      <if test="eventValue != null">
+        event_value = #{eventValue,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null">
+        ip_address = #{ipAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.welltech.waterAffair.domain.entity.UserLog">
+    update wt_user_log
+    set date = #{date,jdbcType=TIMESTAMP},
+      event_name = #{eventName,jdbcType=VARCHAR},
+      event_value = #{eventValue,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      ip_address = #{ipAddress,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="findPageByCriteria" resultType="com.welltech.waterAffair.domain.entity.UserLog">
+  	select 
+    <include refid="Base_Column_List" />
+    from wt_user_log
+    <where>
+    	<if test="criteria.startTime != null">
+    		and date &gt;= #{criteria.startTime}
+    	</if>
+    	<if test="criteria.endTime != null">
+    		and date &lt;= #{criteria.endTime}
+    	</if>
+    	<if test="criteria.eventValue != null and criteria.eventValue != ''">
+    		and event_value = #{criteria.eventValue}
+    	</if>
+    	<if test="criteria.userIds != null and criteria.userIds != ''">
+    		and user_id in ( #{criteria.userIds} )
+    	</if>
+    </where>
+  	order by date desc
+  </select>
+</mapper>

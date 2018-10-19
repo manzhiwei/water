@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>智慧水务微信监控平台</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>
+	<meta name="HandheldFriendly" content="true"/>
+	<!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes"/>
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true"/>
+	<!-- windows phone 点击无高光 -->
+	<meta name="msapplication-tap-highlight" content="no"/>
+	<link rel="stylesheet" type="text/css" href="css/m-base.css" />
+	<script type="text/javascript" src="js/m-jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/plugins/dropload/dropload.css" />
+	<script type="text/javascript" src="js/plugins/dropload/dropload.min.js"></script>
+</head>
+<body>
+	<div class="main">
+		<!-- 首页  实时数据 -->
+		<div class="header header-home">
+			<a class="back_box" href="/logout">退出</a>
+			<span class="header-t">实时数据</span>
+			<a class="header-para" style="margin-right:40px" href="k://yousee/">监控</a>
+			<a class="header-para" href="/map">地图</a>
+		</div>
+		<div class="content-nav content-nav-home">
+			<span class="nav-list" data-type="sarea">
+				<span class="nav-t nav-t-id" data-id="0">全部地区</span>
+				<div class="nav-ts nav-ts-sarea" data-show="false">
+					<span class="nav-t nav-t-id ts-list" data-id="0">全部地区</span>
+					<span class="ts-list" th:each="u : ${usernameIds}" th:attr="data-id=${u.companyId}" th:text="${u.companyName}">无</span>
+				</div>
+			</span>
+			<span class="nav-list" data-type="spara">
+				<span class="nav-t nav-t-type" data-type="flow">瞬时流量</span>
+				<div class="nav-ts nav-ts-spara" data-show="false">
+					<span class="ts-list" th:each="col : ${coles}" th:attr="data-type=${col.value}" th:text="${col.key}"></span>
+				</div>
+			</span>
+		</div>
+		<div class="show-type show-type-home">
+			<div class="show-type-b">
+				<span class="show-type-l">名称</span>
+				<span class="show-type-l show-type-timer"><span class="show-type-lt">时间</span></span>
+				<span class="show-type-l show-type-cdata"><span class="show-type-lt">当前值</span></span>
+				<span class="show-type-l show-type-state">状态</span>
+			</div>
+		</div>
+		<div class="content-lists content-lists-home">
+			<ul class="lists-home">
+			</ul>
+		</div>
+	</div>
+	<div id="mcover">   
+    </div>
+	<script type="text/javascript" src="js/mobile/m-tap.js"></script>
+	<script type="text/javascript" src="js/mobile/index.js"></script> 
+</body>
+</html>

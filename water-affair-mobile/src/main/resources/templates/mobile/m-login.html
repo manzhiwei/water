@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>
+    <title></title>
+    <link rel="stylesheet" href="css/m-base.css"/>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/tools.js"></script>
+</head>
+<body >
+<div class="header header-home">
+	<span class="header-t">威尔泰智慧水务</span>
+</div>
+<div class="content-nav">
+	<div class="login_logo"><img src=" images/logo.png"/></div>
+	<div class="weui_cells" id="loginForm">
+	    <div class="weui_cell">
+	        <div class="weui_cell_hd"><label class="weui_label">用户名</label></div>
+	        <div class="weui_cell_bd">
+	            <input class="weui_input" id="userId" type="text" pattern="[a-z]*[0-9]*" placeholder="请输入用户名"/>
+	        </div>
+	    </div>
+	    <div class="weui_cell">
+	        <div class="weui_cell_hd"><label class="weui_label">密码</label></div>
+	        <div class="weui_cell_bd">
+	            <input class="weui_input" id="password" type="password" placeholder="请输入密码"/>
+	        </div>
+	    </div>
+	</div>
+	<div class="weui_btn_area">
+	    <a class="weui_btn weui_btn_primary" href="javascript:" id="loginbtn">登录</a>
+	</div>
+</div>
+<script type="text/javascript">
+	//登陆验证
+	$("#loginbtn").click(function(){  
+            //输入校验  
+        var userId = $("#userId");  
+        var password = $("#password");  
+        var msg = "";  
+        if ($.trim(userId.val()) == ""){  
+            msg = "用户名不能为空！";  
+            userId.focus();  
+        }else if (!/^\w{2,20}$/.test($.trim(userId.val()))){  
+            msg = "用户名格式不正确！";  
+            userId.focus();  
+        }else if ($.trim(password.val()) == ""){  
+            msg = "密码不能为空！";  
+            password.focus();  
+        }else if (!/^\w{6,20}$/.test($.trim(password.val()))){  
+            msg = "密码格式不正确！";  
+            password.focus();  
+        }
+        if (msg != ""){  
+            alert(msg);  
+        }else{  
+            // 获取表单中的参数  
+            var params = $("#loginForm").serialize();  
+            //alert(params);  
+            // 发送登录的异步请求  
+            $.post("${ctx}/loginAjax.action", params, function(data, status){  
+                alert(data.tip);  
+            }, "json");  
+        }   
+    });  
+</script>
+
+</body>
+</html>
