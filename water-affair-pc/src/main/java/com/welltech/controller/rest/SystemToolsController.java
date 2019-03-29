@@ -7,14 +7,19 @@ import com.welltech.waterAffair.domain.entity.MachineInfo;
 import com.welltech.waterAffair.domain.vo.NdataVo;
 import com.welltech.waterAffair.domain.vo.PageVo;
 import com.welltech.waterAffair.service.BasicManageService;
+import com.welltech.waterAffair.service.SystemToolsService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import sun.misc.Request;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 @RestController
 public class SystemToolsController {
@@ -22,6 +27,9 @@ public class SystemToolsController {
             .getLogger(SystemToolsController.class);
     @Autowired
     BasicManageService basicManageService;
+
+    @Autowired
+    SystemToolsService systemToolsService;
 
 
     /**
@@ -94,4 +102,7 @@ public class SystemToolsController {
 
         return  result;
     }
+
+
+
 }

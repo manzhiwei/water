@@ -55,7 +55,9 @@ public interface NdataMapper {
 	 * @return
 	 */
 	List<Ndata> findPageByWaterHourCriteria(@Param("criteria") WaterHourCriteria criteria);
-	
+
+	List<Ndata> queryByWaterHourCriteria(@Param("criteria") WaterHourCriteria criteria);
+
 	//同比:指当前时间的1年前
 	String findYearByYear(@Param("num") Integer num, @Param("date") Date date);
 

@@ -45,7 +45,7 @@ public class NdataVo implements Serializable {
 
 	private Integer flowerror;
 
-	private Float ftotalflow;
+	private Float ftotalflow;//反向累计
 
 	private Date i_time;
 
@@ -53,7 +53,7 @@ public class NdataVo implements Serializable {
 
 	private Float me;
 
-	private Float ntotalflow;
+	private Float ntotalflow;//净累计
 
 	private Float press;
 
@@ -63,7 +63,7 @@ public class NdataVo implements Serializable {
 
 	private Float temp;
 
-	private Float totalflow;
+	private Float totalflow;//正向累计
 	
 	private String subUserName;//水表名
 	
@@ -120,6 +120,26 @@ public class NdataVo implements Serializable {
 		this.lastConnecting = 0;
 		this.me = 0f;
 		this.ntotalflow = 0f;
+		this.press = press;//初始化为null
+		this.pressError = 0;
+		this.signal_strength = 0;
+		this.temp = 0f;
+		this.totalflow = totalflow;//初始化为null
+	}
+	public NdataVo(String subUserName, Integer num, Date i_time,Float flow,Float press,Float totalflow,Float ntotalflow,Float ftotalflow) {
+		this.subUserName = subUserName;
+		this.num = num;
+		this.currentI = 0f;
+		this.currentV = 0f;
+		this.depdata = 0;
+		this.esignal = 0;
+		this.flow = flow;
+		this.flowerror = 0;
+		this.ftotalflow = ftotalflow;//初始化为null
+		this.i_time = i_time;
+		this.lastConnecting = 0;
+		this.me = 0f;
+		this.ntotalflow = ntotalflow;//初始化为null
 		this.press = press;//初始化为null
 		this.pressError = 0;
 		this.signal_strength = 0;

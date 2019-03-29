@@ -83,4 +83,16 @@ public interface MachineInfoMapper {
 	* @param machineInfo
 	*/
 	int updateIpAndPortByNum(MachineInfo machineInfo);
+	/**
+	* @Author  Man Zhiwei
+	* @Comment 查询最大的num值
+	* @Param   []
+	* @Date        2019-03-15 14:47
+	*/
+	int getMaxNum();
+
+
+	int findOneByName(@Param("name") String name);
+
+	int findOneByCCID(@Param("ccid") String ccid);
 }

@@ -50,13 +50,15 @@
 					<ul>
 						<li>站点编号</li>
 						<li th:text="${machine.num}"></li>
-						<li>设备分组</li>
-						<li th:text="${machine.package_}"></li>
+						<li>设备口径</li>
+						<li th:text="${machine.num}"></li>
+						<!--<li>设备分组</li>
+						<li th:text="${machine.package_}"></li>-->
 					</ul>
 				</li>
 				<li>
 					<ul>
-						<li>超时设定</li>
+						<li>上次连接时长</li>
 						<li th:text="${machine.lastConnecting}+秒"></li>
 						<li>安装人员</li>
 						<li>暂无</li>
@@ -81,7 +83,7 @@
 				 <li>
 					<ul>
 						<ol>安装地址</ol>
-						<ol th:text="${machine.address}"></ol>
+						<ol th:text="${machine.address != null} ? ${machine.address}: '无信息'"></ol>
 					</ul>
 				</li> 
 				

@@ -147,15 +147,42 @@
     		and alarm_type = #{criteria.alarmType}
     	</if>
     	<if test="criteria.alarmContents != null">
-    		and
-    		(alarm_type = '系统告警'
-    		or (
-    		alarm_type = '表端报警'
+    		and ( alarm_type = '系统告警' or ( alarm_type = '表端报警'
     		and alarm_content in
     		<foreach collection="criteria.alarmContents" item="item" index="index" separator="," open="(" close=")">
     			#{criteria.alarmContents[${index}]}
     		</foreach>
-    		))
+            ))
+    	</if>
+    </where>
+  </select>
+    <select id="queryByCriteria" resultMap="BaseResultMap">
+  	select
+    <include refid="Base_Column_List" />
+    from wt_alarm_process_record
+    <where>
+    	<if test="criteria.nums != null">
+    		and mid in
+    		<foreach collection="criteria.nums" item="item" index="index" separator="," open="(" close=")">
+    			#{criteria.nums[${index}]}
+    		</foreach>
+    	</if>
+    	<if test="criteria.startTime != null">
+    		and createtime &gt;= #{criteria.startTime}
+    	</if>
+    	<if test="criteria.endTime != null">
+    		and createtime &lt;= #{criteria.endTime}
+    	</if>
+    	<if test="criteria.alarmType != null and criteria.alarmType != ''">
+    		and alarm_type = #{criteria.alarmType}
+    	</if>
+    	<if test="criteria.alarmContents != null">
+    		and ( alarm_type = '系统告警' or ( alarm_type = '表端报警'
+    		and alarm_content in
+    		<foreach collection="criteria.alarmContents" item="item" index="index" separator="," open="(" close=")">
+    			#{criteria.alarmContents[${index}]}
+    		</foreach>
+            ))
     	</if>
     </where>
   </select>
@@ -183,6 +210,9 @@
     	<if test="criteria.status != null and criteria.status != ''">
     		and status = #{criteria.status}
     	</if>
+        <if test="criteria.alarmLevel != null ">
+            and alarm_level = #{criteria.alarmLevel}
+        </if>
     	<if test="criteria.alarmContents != null">
     		and alarm_content in
     		<foreach collection="criteria.alarmContents" item="item" index="index" separator="," open="(" close=")">
@@ -192,6 +222,38 @@
     </where>
       order by createtime desc limit 3;
   </select>
+
+    <select id="listByCriteria2" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from wt_alarm_process_record
+        <where>
+            <if test="criteria.nums != null">
+                and mid in
+                <foreach collection="criteria.nums" item="item" index="index" separator="," open="(" close=")">
+                    #{criteria.nums[${index}]}
+                </foreach>
+            </if>
+            <if test="criteria.startTime != null">
+                and createtime &gt;= #{criteria.startTime}
+            </if>
+            <if test="criteria.endTime != null">
+                and createtime &lt;= #{criteria.endTime}
+            </if>
+            <if test="criteria.alarmType != null and criteria.alarmType != ''">
+                and alarm_type = #{criteria.alarmType}
+            </if>
+            <if test="criteria.status != null and criteria.status != ''">
+                and status = #{criteria.status}
+            </if>
+            <if test="criteria.nums != null">
+                and alarm_content in
+                ('空管报警','励磁信号错误','电极信号错误','瞬时流量反向','正向累计流量溢出',
+                '反向累计流量溢出','工作电压过低','压力连接故障（断线报警）','压力下限报警','压力上限报警')
+            </if>
+        </where>
+        order by createtime desc limit 3;
+    </select>
 <select id="queryTotalRecord" resultType="java.lang.Integer">
         select
         count(*)

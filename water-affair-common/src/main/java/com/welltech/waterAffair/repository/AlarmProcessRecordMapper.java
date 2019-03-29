@@ -28,13 +28,21 @@ public interface AlarmProcessRecordMapper {
      * @return
      */
 	List<AlarmProcessRecord> findPageByCriteria(@Param("criteria") AlarmProcessRecordCriteria criteria);
+
+    List<AlarmProcessRecord> queryByCriteria(@Param("criteria") AlarmProcessRecordCriteria criteria);
 	
 	/**
 	 * 条件查询告警
      * 只取一个用户所有水表报警信息记录的前三条
 	 */
 	List<AlarmProcessRecord> listByCriteria(@Param("criteria") AlarmProcessRecordCriteria criteria);
-
+    /**
+    * @Author  Man Zhiwei
+    * @Comment 条件查询告警，固定条件状态
+    * @Param   [criteria]
+    * @Date        2018-12-13 16:41
+    */
+    List<AlarmProcessRecord> listByCriteria2(@Param("criteria") AlarmProcessRecordCriteria criteria);
     /**
      * 查询总的告警记录数
      * @param criteria

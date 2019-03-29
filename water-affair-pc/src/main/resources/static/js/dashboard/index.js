@@ -35,9 +35,9 @@ $(document).ready(function () {
           var nodeDepth=data.instance.get_path(data.selected[0]).length;
           var nodeName=data.instance.get_node(data.selected[0]).text;
           var selectedNode=data.instance.get_node(data.selected[0]);
-          console.log("--------------"+selectedNode.original.mid);
-          console.log("--------------"+selectedNode.original.longitude);
-          console.log("--------------"+selectedNode.original.latitude);
+//          console.log("--------------"+selectedNode.original.mid);
+//          console.log("--------------"+selectedNode.original.longitude);
+//          console.log("--------------"+selectedNode.original.latitude);
           if(selectedNode.original.mid>0&&selectedNode.original.longitude>0&&selectedNode.original.latitude>0){
             map.setZoomAndCenter(16, [selectedNode.original.longitude, selectedNode.original.latitude]);
           }else{
@@ -83,7 +83,7 @@ function alarmMonitor() {
             var showAll='<li><div class="text-center link-block"><a href="/alarmList"><strong>显示全部告警</strong><i class="fa fa-angle-right"></i></a></div></li>';
             $("#alarms").append(showAll);//追加tab
             //将告警的站点标红
-            updateMeterMap();
+//            updateMeterMap();
         }).fail(function(){
             console.log("出错啦！");
         });

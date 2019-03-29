@@ -3,16 +3,20 @@ package com.welltech.controller.page;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.welltech.waterAffair.domain.vo.NdataVo;
+import com.welltech.waterAffair.service.SystemToolsService;
 import org.apache.log4j.Logger;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.InputStreamResource;
@@ -51,6 +55,9 @@ public class BasicManagePageController {
 	private BasicManageService basicManageService;
 	@Resource
     private ConstantsUtil constantsUtil;
+
+	@Resource
+    private SystemToolsService systemToolsService;
 
     //仪表更换记录
     /*@RequestMapping(value = { "/meterChangeRecord" }, method = RequestMethod.GET)
@@ -168,7 +175,8 @@ public class BasicManagePageController {
 		   dest.setMetertype(orig.getMetertype());
 		   dest.setMeterTypeId(orig.getMeterTypeId());
 	   }
-	   dest.setPositionNo(orig.getPositionNo());
+	   //dest.setPositionNo(orig.getPositionNo());
+	   //dest.setPositionNo(orig.getPositionNo());
 	   dest.setSubUserName(orig.getSubUserName());
 	   dest.setCcid(orig.getCcid());
 	   dest.setMeterSize(orig.getMeterSize());
@@ -273,4 +281,127 @@ public class BasicManagePageController {
 
         return "tools/changeIPAndPort";
     }
+
+    //添加新水表
+    @RequestMapping(value = { "/addNewMeterCompany" },method = RequestMethod.GET)
+    public String addNewMeterCompany(HttpServletRequest request, Model model) {
+        model.addAttribute("tools","active");
+        model.addAttribute("addNewCompany","active");
+
+//        model.addAttribute("companyList",)
+
+        return "tools/addNewCompany";
+    }
+
+    //添加新水表
+    @RequestMapping(value = { "/addNewMeter" },method = RequestMethod.GET)
+    public String addNewMeter(HttpServletRequest request, Model model) {
+        model.addAttribute("tools","active");
+        model.addAttribute("addNewMeter","active");
+
+        model.addAttribute("companys",systemToolsService.findAllUserNameId());
+        model.addAttribute("areas",systemToolsService.findAllUserAreaId());
+        model.addAttribute("addresses",systemToolsService.findAllUserAddressId());
+        return "tools/addNewMeter";
+    }
+
+    @RequestMapping(value = {"/addNewDianCiMeter"})
+    public String addNewDianCiMeter(HttpServletRequest request,Model model){
+        model.addAttribute("tools","active");
+        model.addAttribute("addNewDianCiMeter","active");
+
+        return "tools/addNewDianCiMeter";
+    }
+
+    /**
+     * 添加新公司
+     * @author Man ZhiWei
+     * @Time  2018-10-29
+     * @param
+     */
+    @RequestMapping(value = "/addNewCompanyByPost",method = RequestMethod.POST)
+    public String addNewCompanyByPost(HttpServletRequest request,Integer companyId,String companyName,String version,
+                                      Integer areaId, String areaName,Integer addressId,String addressName, Model model){
+        model.addAttribute("tools","active");
+        model.addAttribute("addNewCompany","active");
+
+        if(!"001.000.000.002".equals(version) || "".equals(version)||version == null){
+            version = "001.000.000.002";
+        }
+        try{
+            systemToolsService.addNewCompany(companyId,companyName,version,areaId,areaName,addressId,addressName);
+        }catch (Exception e){
+            e.printStackTrace();
+
+            model.addAttribute("message","fail");
+            model.addAttribute("content","添加失败,返回当前界面");
+            return "tools/addNewCompany";
+        }
+        model.addAttribute("message","success");
+        model.addAttribute("content","添加成功");
+        return "tools/addNewCompany";
+    }
+    /**
+     * 添加新水表
+     * @author Man ZhiWei
+     * @Time  2018-10-29
+     * @param
+     */
+    @RequestMapping(value = "/addNewMeterByPost",method = RequestMethod.POST)
+    public String addNewMeterByPost(HttpServletRequest request, Integer companyId, Integer areaId, Integer addressId,
+                                    Integer num, String shortName, Double longitude, Double latitude, String activeTime,
+                                    Integer isPress, Model model){
+        model.addAttribute("tools","active");
+        model.addAttribute("companys",systemToolsService.findAllUserNameId());
+        model.addAttribute("areas",systemToolsService.findAllUserAreaId());
+        model.addAttribute("addresses",systemToolsService.findAllUserAddressId());
+        Date activeTime1 = null;
+        try {
+            activeTime1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(activeTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try{
+            systemToolsService.addNewMeter(companyId,areaId,addressId,num,shortName,longitude,latitude,activeTime1,isPress);
+        }catch (Exception e){
+            e.printStackTrace();
+            model.addAttribute("addNewMeter","active");
+            model.addAttribute("message","fail");
+            model.addAttribute("content","添加失败,返回当前界面");
+            return "tools/addNewMeter";
+        }
+        model.addAttribute("addNewMeter","active");
+        model.addAttribute("message","success");
+        model.addAttribute("content","添加成功");
+        return "tools/addNewMeter";
+    }
+
+    @RequestMapping(value = {"addNewDianCiMeterOnPost"})
+    public String addNewDianCiMeterOnPost(HttpServletRequest request,String ccid,String shortName,Integer meterTypeId, String meterType,
+                                                Integer sampleTime,String instrNo,Double longitude,Double latitude,String activeTime,Model model){
+
+        model.addAttribute("tools","active");
+        model.addAttribute("addNewDianCiMeter","active");
+        Date activeTime1 = null;
+        try {
+            activeTime1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(activeTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            systemToolsService.addNewDianCiMeter(ccid,shortName,meterTypeId,meterType,sampleTime,instrNo,longitude,latitude,activeTime1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("addNewDianCiMeter","active");
+            model.addAttribute("message","fail");
+            model.addAttribute("content","添加失败,返回当前界面");
+            return "tools/addNewDianCiMeter";
+        }
+        model.addAttribute("addNewDianCiMeter","active");
+        model.addAttribute("message","success");
+        model.addAttribute("content","添加成功");
+        return "tools/addNewDianCiMeter";
+    }
+
 }

@@ -90,9 +90,13 @@ public class ReportRestController {
 	
 	@RequestMapping(value="/getSeasonReport", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> getSeasonReprt(HttpServletRequest request,@RequestParam String station){
+	public Map<String, Object> getSeasonReprt(HttpServletRequest request,@RequestParam String station,@RequestParam String date){
 		Map<String, Object> map = new HashMap<String, Object>();
 		Integer userId = UserUtils.getUserId();
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy");
+		if (date == null || date.length() == 0) {
+			date = sdf1.format(new Date());
+		}
 		List<MachineInfo> machineInfo2s = meterService.findUserMeterList(userId);
 		List<MachineInfo> condition = new ArrayList<MachineInfo>();
 		for(MachineInfo info2 : machineInfo2s){
@@ -102,7 +106,7 @@ public class ReportRestController {
 			}
 		}
 		
-		String[][] result =reportService.reportSeason(userId, condition);
+		String[][] result =reportService.reportSeason(userId, condition,date);
 		map.put("result", result);
 		return map;
 	}

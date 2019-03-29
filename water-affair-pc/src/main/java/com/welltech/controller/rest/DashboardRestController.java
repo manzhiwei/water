@@ -80,15 +80,20 @@ public class DashboardRestController {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 			for (MachineInfo machineInfo : tempResult) {
+
 				try {
 				if(machineInfo.getLatitude()>10&&machineInfo.getLongitude()>10&&(type.equals("1")||(type.equals("2")&&machineInfo.getIsVipAccount()>0)||(type.equals("3")&&alarmService.isUntreatedAlarm(machineInfo.getNum()).size()>0))){
 					//查询每个水表的实时数据
-					MachineInfoVo machineInfoVo = new MachineInfoVo(machineInfo.getShortName(), machineInfo.getLongitude(), machineInfo.getLatitude(), machineInfo.getMaxtotal(), machineInfo.getMintotal());
-					machineInfoVo.setStatus(alarmService.isUntreatedAlarm(machineInfo.getNum()).size()>0?1:0);
 
+					MachineInfoVo machineInfoVo = new MachineInfoVo(machineInfo.getShortName(), machineInfo.getLongitude(), machineInfo.getLatitude(), machineInfo.getMaxtotal(), machineInfo.getMintotal());
+//					long startTime = System.currentTimeMillis();    //获取开始时间
+					machineInfoVo.setStatus(alarmService.isUntreatedAlarm(machineInfo.getNum()).size()>0?1:0);
+					/*long endTime = System.currentTimeMillis();    //获取结束时间
+					System.out.println("程序运行时间：" + (endTime - startTime) + "ms");    //输出程序运行时间*/
 					//machineInfoVo.setStatus(1);
 
-					NdataVo ndata=meterService.findMeterLastestHourInfo(machineInfo.getNum());
+					NdataVo ndata=meterService.findMeterLastestHourInfo(machineInfo.getNum()); // 10ms
+
 					//显示抄表时间，瞬时流量，正向累计流量，反向累计流量，净累计流量，电池电量，信号强度，压力，工作电压，工作电流，上传次数。
 					String detail = "站点：" + machineInfo.getShortName() +
 							(ndata.getI_time() != null ? ("<br/>抄表时间：" + dateFormat.format(ndata.getI_time())) : ("")) +
@@ -97,13 +102,12 @@ public class DashboardRestController {
 							(ndata.getFtotalflow() != null ? ("<br/>反向累计流量：" + formatNumber(""+ndata.getFtotalflow()) + ("m³")) : ("")) +
 							(ndata.getNtotalflow() != null ? ("<br/>净累计流量：" + formatNumber(""+ndata.getNtotalflow()) + ("m³") ) : (""))+
 							(ndata.getSignal_strength() != null ? ("<br/>信号强度：" + formatNumber(""+ndata.getSignal_strength()) ) : ("")) +
-							(ndata.getPress() != null ? ("<br/>压力：" + formatNumber(""+ndata.getPress()) + ("KPa") ) : ("")) +
-							(ndata.getCurrentV() != null ? ("<br/>工作电压：" + formatNumber(""+ndata.getCurrentV()) + ("V")  ) : ("")) +
+							(ndata.getPress() != null ? ("<br/>压力：" + formatNumber(""+ndata.getPress()) + ("KPa") ) : (""))
+							+(ndata.getCurrentV() != null ? ("<br/>工作电压：" + formatNumber(""+ndata.getCurrentV()) + ("V")  ) : ("")) +
 							(ndata.getCurrentI() != null ? ("<br/>工作电流：" + formatNumber(""+ndata.getCurrentI()) + ("mA") ) : (""))
 						/*(ndata.get() != null ? ("<br/>电池电量：" + formatNumber(machineDetailInfo4MapVo.getBattery()) ) : ("")) +
 						*/
 						/*(ndata.get() != null ? ("<br/>上传次数：" + machineDetailInfo4MapVo.getUpdateTimes()) : (""))*/;
-
 					machineInfoVo.setDetail(detail);
 					result.add(machineInfoVo);
 				}
@@ -111,11 +115,9 @@ public class DashboardRestController {
 				}catch (Exception e){
 					e.printStackTrace();
 				}
+
 			}
-
-
-
-		return result;
+			return result;
 	}
 
 

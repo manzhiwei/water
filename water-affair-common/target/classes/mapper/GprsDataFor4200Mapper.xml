@@ -169,6 +169,16 @@
         order by time desc
 
     </select>
+    <select id="queryNdataByWaterHourCriteria" resultMap="NdataResultMap">
+        select <include refid="Ndata_Column_List" />
+        from wt4200GprsData
+        where flowId = #{criteria.meterId}
+        and time &gt;= #{criteria.startDate}
+        and time &lt;= #{criteria.endDate}
+        group by day(time),hour(time)
+        order by time desc
+
+    </select>
 
     <select id="findNdataSeasonData" parameterType="map" resultType="java.util.LinkedHashMap">
         select 0,0,0,avg(flow),max(flow),min(flow),avg(ftotal),max(ftotal),min(ftotal)
@@ -280,7 +290,7 @@
         order by time desc limit ${startIndex},1
     </select>
     <select id="find4200MonthTotalflowData" resultType="java.util.LinkedHashMap">
-        SELECT   IFNULL( lastMonthTotalflow,0),IFNULL(currentMonthTotalflow,lastMonthTotalflow), currentMonthTotalflow - lastMonthTotalflow increaseMonthTotalflow  FROM
+        SELECT   IFNULL( lastMonthTotalflow,0),IFNULL(currentMonthTotalflow,lastMonthTotalflow), IFNULL(currentMonthTotalflow,lastMonthTotalflow) - IFNULL( lastMonthTotalflow,0) increaseMonthTotalflow  FROM
         ( SELECT
         (SELECT ftotal-rtotal  FROM wt4200GprsData WHERE flowId = ${num} AND EXTRACT(YEAR FROM time)=#{year} AND EXTRACT(MONTH FROM time) = #{month } ORDER BY TIME DESC LIMIT 1) currentMonthTotalflow,
         (SELECT ftotal-rtotal  FROM wt4200GprsData WHERE flowId = ${num} AND EXTRACT(YEAR FROM time)=#{year} AND EXTRACT(MONTH FROM time) = #{lastmonth }  ORDER BY TIME DESC LIMIT 1) lastMonthTotalflow

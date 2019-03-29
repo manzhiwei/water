@@ -22,7 +22,18 @@ public class AlarmProcessRecordCriteria {
 	private String alarmType;
 	private String status;
 	private List<String> alarmContents;
-	
+
+	//告警等级
+	private Integer alarmLevel;
+
+	public Integer getAlarmLevel() {
+		return alarmLevel;
+	}
+
+	public void setAlarmLevel(Integer alarmLevel) {
+		this.alarmLevel = alarmLevel;
+	}
+
 	public Page getPage() {
 		return page;
 	}

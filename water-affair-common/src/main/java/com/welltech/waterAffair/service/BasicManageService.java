@@ -7,6 +7,7 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 
 import com.welltech.waterAffair.domain.criteria.NdataCriteria;
+import com.welltech.waterAffair.domain.entity.*;
 import com.welltech.waterAffair.repository.*;
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
@@ -23,12 +24,6 @@ import com.welltech.waterAffair.domain.dto.MachineInfoDTO;
 import com.welltech.waterAffair.domain.dto.MeterMonitorDTO;
 import com.welltech.waterAffair.domain.dto.ResourceImgDTO;
 import com.welltech.waterAffair.domain.dto.UserMeterAuthorityDTO;
-import com.welltech.waterAffair.domain.entity.Company;
-import com.welltech.waterAffair.domain.entity.MachineInfo;
-import com.welltech.waterAffair.domain.entity.MeterOperation;
-import com.welltech.waterAffair.domain.entity.MeterType;
-import com.welltech.waterAffair.domain.entity.Ndata;
-import com.welltech.waterAffair.domain.entity.ResourceImg;
 import com.welltech.waterAffair.domain.vo.MeterDetailVo;
 import com.welltech.waterAffair.domain.vo.NdataVo;
 import com.welltech.waterAffair.domain.vo.PageVo;
@@ -71,6 +66,17 @@ public class BasicManageService {
 	//新增，添加第三类水表类型 wt4200
 	@Autowired
 	private GprsDataFor4200Mapper gprsDataFor4200Mapper;
+
+	@Autowired
+	private UserAddressIdMapper userAddressIdMapper;
+
+	@Autowired
+	private UserAreaIdMapper userAreaIdMapper;
+
+	@Autowired
+	private UserNameIdMapper userNameIdMapper;
+
+
 
     //查询用户所有水表列表
 	public List<Company> findUserMeterList(Integer userId) {
@@ -137,6 +143,35 @@ public class BasicManageService {
 		return machineInfoMapper.findOneByNum(num);
 	}
 
+
+	/**
+	 * 通过查询userNameID,得到当前仪表的详情
+	 *@Author Man ZhiWei
+	 * @Time 2018-10-29
+	 * @param id
+	 */
+	public UserNameId queryUserNameId(Integer id) {
+		return userNameIdMapper.findOneById(id);
+	}
+
+	/**
+	 * 通过查询userAreaID,得到当前仪表的详情
+	 *@Author Man ZhiWei
+	 * @Time 2018-10-29
+	 * @param id
+	 */
+	public UserAreaId queryUserAreaId(Integer id) {
+		return userAreaIdMapper.findOneById(id);
+	}
+	/**
+	 * 通过查询userAddressID,得到当前仪表的详情
+	 *@Author Man ZhiWei
+	 * @Time 2018-10-29
+	 * @param id
+	 */
+	public UserAddressId queryUserAddressId(Integer id) {
+		return userAddressIdMapper.findOneById(id);
+	}
 
 	/**
 	 *
@@ -690,20 +725,29 @@ public class BasicManageService {
 		NdataCriteria ndataCriteria = new NdataCriteria();
 		ndataCriteria.setMeterId(num);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		if(currentITime == null){
+			currentITime = new Date();
+		}
+		//如果今天没有数据上传，那么就没有今日累计量
+		if(sdf.format(currentITime).compareTo(sdf.format(new Date()))!=0){
+			return increaseTotalflow;
+		}
 		ndataCriteria.setCurrentDate(sdf.format(currentITime));
 		if(MeterUtils.isGprs4300(info)){
-				if(info.getMeterTypeId() != 3)
-					map = gprsDataMapper.findNdataDayData(ndataCriteria);
-					else
-					map = gprsDataFor4200Mapper.findNdataDayData(ndataCriteria);
+
+			if(info.getMeterTypeId() !=3)
+				return gprsDataMapper.findDayTotalFlowDiff(info.getNum());
+			else
+				return  gprsDataFor4200Mapper.findDayTotalFlowDiff(info.getNum());
 		}else {
 				map = ndataMapper.findDayData(ndataCriteria);
 		}
 		if(map == null){
 			//TODO
+			return increaseTotalflow;
 		} else{
 			testTotalflow = (Double)map.get("increaseTotalflow");
-			increaseTotalflow = (float)testTotalflow;
+			increaseTotalflow = ConstantsUtil.formateNumber((float)testTotalflow);
 
 		}
 		return increaseTotalflow;
@@ -783,6 +827,9 @@ public class BasicManageService {
 		MachineInfo info = machineInfoMapper.findOneByNum(num);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
 		Date now = new Date();
+		if(currentITime == null){
+			currentITime = now;
+		}
 		String year = sdf.format(currentITime).substring(0,4);
 		String month = sdf.format(currentITime).substring(5,7);
 		String lastmonth = "" + (Integer.parseInt(month)-1);
@@ -792,6 +839,7 @@ public class BasicManageService {
 			else
 				map = gprsDataFor4200Mapper.find4200MonthTotalflowData(num,year,month,lastmonth);//TEST
 		}else {
+
 			map = ndataMapper.findMonthTotalflowData(num,year,month,lastmonth);//TODO 如果当月是12月，TODO 如果最后一次不是当前月到达
 		}
 		if(map.get("increaseMonthTotalflow") != null){
@@ -803,7 +851,58 @@ public class BasicManageService {
 				increaseMonthTotalflow = 0.0;
 			}
 		}
-		return increaseMonthTotalflow;
+		return ConstantsUtil.formateNumber(increaseMonthTotalflow);
+	}
+	/**
+	* @Author  Man Zhiwei
+	* @Comment 重新定义本月累计
+	* @Param   [num, currentITime]
+	* @Date        2019-03-26 16:44
+	*/
+	public  Double queryIncreaseMonthTotalflow1(Integer num, Date currentITime) {
+		Map<String,Object> map = null;
+		Double increaseMonthTotalflow =0.0;
+		MachineInfo info = machineInfoMapper.findOneByNum(num);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+		Calendar calendar = Calendar.getInstance();
+		Calendar calendar1 = Calendar.getInstance();
+		Date now = new Date();
+		if(currentITime ==null){
+			currentITime=now;
+		}
+		calendar.setTime(currentITime);
+		calendar1.setTime(now);
+		int year = calendar.get(Calendar.YEAR);
+		int month = calendar.get(Calendar.MONTH)+1;
+		int lastmonth;
+		//如果最后一次不是当前月到达
+		if(calendar1.get(Calendar.YEAR)!=year&&(calendar1.get(Calendar.MONTH)+1)!=month){
+			return increaseMonthTotalflow;
+		}
+
+		//如果当前月是12月
+		if(month!=1){
+			lastmonth = month-1;
+		}else{
+			year = year-1;
+			lastmonth = 12;
+		}
+
+		if(MeterUtils.isGprs4300(info)){
+			if(info.getMeterTypeId() !=3)
+				map = gprsDataMapper.find4300MonthTotalflowData(num,year+"",month+"",lastmonth+"");//TODO 如果当月是12月，TODO 如果最后一次不是当前月到达
+			else
+				map = gprsDataFor4200Mapper.find4200MonthTotalflowData(num,year+"",month+"",lastmonth+"");//TEST
+		}else {
+				map = ndataMapper.findMonthTotalflowData(num,year+"",month+"",lastmonth+"");
+		}
+
+		if(map !=null){
+			increaseMonthTotalflow = (Double) map.get("increaseMonthTotalflow");
+		}else{
+			return increaseMonthTotalflow;
+		}
+		return ConstantsUtil.formateNumber(increaseMonthTotalflow);
 	}
 
 	/**
@@ -836,6 +935,23 @@ public class BasicManageService {
 			return "sql语句执行错误";
 		else
 			return "写入成功";
+	}
+
+	public Boolean isExistsMachineByName(String name){
+
+		if(machineInfoMapper.findOneByName(name)>0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public Boolean isExistsMachineByCCID(String ccid) {
+		if(machineInfoMapper.findOneByCCID(ccid)>0){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }
 

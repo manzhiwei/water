@@ -15,10 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.hssf.util.CellRangeAddress;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -160,19 +157,25 @@ public class ExcelController {
             sheet.addMergedRegion(new CellRangeAddress(0, 1, 1, 1));
             HSSFRow head1 = sheet.createRow((int)1);//创建一行head1
             for(int i=0;i<condition.size();i++){
-                HSSFCell cell = head.createCell(i*3+2);//创建一列  
+                HSSFCell cell = head.createCell(i*5+2);//创建一列
                 cell.setCellType(HSSFCell.CELL_TYPE_STRING);  
                 cell.setCellValue(condition.get(i).getShortName());
-                sheet.addMergedRegion(new CellRangeAddress(0, 0, i*3+2, (i+1)*3+1));
-                HSSFCell cell1 = head1.createCell(i*3+2);//创建一列  
+                sheet.addMergedRegion(new CellRangeAddress(0, 0, i*5+2, (i+1)*5+1));
+                HSSFCell cell1 = head1.createCell(i*5+2);//创建一列
                 cell1.setCellType(HSSFCell.CELL_TYPE_STRING);  
                 cell1.setCellValue("压力（kPa）");
-                HSSFCell cell2 = head1.createCell(i*3+3);//创建一列  
+                HSSFCell cell2 = head1.createCell(i*5+3);//创建一列
                 cell2.setCellType(HSSFCell.CELL_TYPE_STRING);  
                 cell2.setCellValue("瞬时流量（m³/h）");
-                HSSFCell cell3 = head1.createCell(i*3+4);//创建一列  
+                HSSFCell cell3 = head1.createCell(i*5+4);//创建一列
                 cell3.setCellType(HSSFCell.CELL_TYPE_STRING);  
-                cell3.setCellValue("累计流量（m³）");
+                cell3.setCellValue("正向累计流量（m³）");
+                HSSFCell cell4 = head1.createCell(i*5+5);//创建一列
+                cell4.setCellType(HSSFCell.CELL_TYPE_STRING);
+                cell4.setCellValue("净累计流量（m³）");
+                HSSFCell cell5 = head1.createCell(i*5+6);//创建一列
+                cell5.setCellType(HSSFCell.CELL_TYPE_STRING);
+                cell5.setCellValue("反向累计流量（m³）");
                 
             }
             //
@@ -189,6 +192,11 @@ public class ExcelController {
                     }else{
                         cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);
                         cell.setCellValue(Float.parseFloat(result[i][j]));
+                        HSSFCellStyle cellStyle = workbook.createCellStyle();
+
+                        cellStyle.setDataFormat(HSSFDataFormat.getBuiltinFormat("0.00"));
+
+                        cell.setCellStyle(cellStyle);
                     }
 
                 }
@@ -385,6 +393,13 @@ public class ExcelController {
             if(stations!=null){
             	stationList=stations.split(",");
             }
+
+            String date = request.getParameter("date");  //查询日期
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy");
+            if (date == null || date.length() == 0) {
+                date = sdf1.format(new Date());
+            }
+
             //人所对应的所有水表
             List<MachineInfo> machines = meterService.findUserMeterList(userId);
             
@@ -410,7 +425,7 @@ public class ExcelController {
                 allMeterList.add(meterList4DmaMicroFlowVo);
             }
 
-            String[][] result = reportService.reportSeason(userId,condition);
+            String[][] result = reportService.reportSeason(userId,condition,date);
         	//
 
             model.addAttribute("result", result);

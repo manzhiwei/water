@@ -108,6 +108,13 @@
      	order by I_time desc
 	</select>
 
+	<select id="queryByWaterHourCriteria" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" />
+      	from ndata${criteria.meterId}
+     	where I_time &gt;= #{criteria.startDate} and I_time &lt;= #{criteria.endDate}
+     	order by I_time desc
+	</select>
+
 	<select id="findYearByYear" resultType="string">
 		select press
       	from ndata${num}

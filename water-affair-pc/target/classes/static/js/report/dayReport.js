@@ -188,18 +188,18 @@ function exportReport(){
 }
 
 function onPost(url,data){
-	var temp = document.createElement("form");        
-    temp.action = url;        
-    temp.method = "post";        
-    temp.style.display = "none";        
-    for (var x in data) {        
-        var opt = document.createElement("textarea");        
-        opt.name = x;        
-        opt.value = data[x];        
-        // alert(opt.name)
-        temp.appendChild(opt);        
-    }        
-    document.body.appendChild(temp);        
-    temp.submit();        
-    return temp;   
-}
+ 	var temp = document.createElement("form");
+     temp.action = url;
+     temp.method = "post";
+     temp.style.display = "none";
+     for (var x in data) {
+         var opt = document.createElement("textarea");
+         opt.name = x;
+         opt.value = data[x];
+         // alert(opt.name)
+         temp.appendChild(opt);
+     }
+     document.body.appendChild(temp);
+     temp.submit();
+     return temp;
+ }

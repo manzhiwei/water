@@ -48,9 +48,9 @@ public class ReportService {
     public String[][] reportDay(Integer userId,String currentTime,List<MachineInfo> machines){
     	String[][] result=null;
 		//初始化map，将当天分成24小时
-		result=new String[29][machines.size()*3+1];//如果计算平均值那么需要y轴+5也就是24+5=29，平均值，最小值，最小值时间，最大值最大值时间
+		result=new String[29][machines.size()*5+1];//如果计算平均值那么需要y轴+5也就是24+5=29，平均值，最小值，最小值时间，最大值最大值时间
 		for(int i=0;i<24;i++){
-			result[i][0]=currentTime+" "+(i<10?"0"+i:i);
+			result[i][0]=currentTime+" "+(i<10?"0"+i:i)+":00:00";//格式化时间
 		}
 		result[24][0]="平均值";
 		result[25][0]="最小值";
@@ -107,7 +107,7 @@ public class ReportService {
 					ndata = gprsDataFor4200Mapper.findNdataHourData(criteria);
 			}
 			if(ndata == null){
-				ndataVos.add(new NdataVo(info.getSubUserName(),info.getNum(),criteria.getCurrentTime(),null,null,null));//如果没有数据那么将flow,press,totalflow默认为null
+				ndataVos.add(new NdataVo(info.getSubUserName(),info.getNum(),criteria.getCurrentTime(),null,null,null,null,null));//如果没有数据那么将flow,press,totalflow默认为null
 			}else{
 				ndataVos.add(MeterUtils.getInstance(ndata,info));
 			}
@@ -265,13 +265,15 @@ public class ReportService {
 	}
 
 	//季报 zhoupei实现
-    public String[][] reportSeason(Integer userId,List<MachineInfo> machines){
+    public String[][] reportSeason(Integer userId,List<MachineInfo> machines,String date){
         String[][] result=null;
         int dayes=4;//四季
         result=new String[4+5][machines.size()*9+1];//如果计算平均值那么需要y轴+5也就是4+5=9，平均值，最小值，最小值时间，最大值最大值时间
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy");
-        Calendar c=Calendar.getInstance();
-        String currentTime=sdf1.format(c.getTime());
+		if(date == null){
+			Calendar c=Calendar.getInstance();
+			 date=sdf1.format(c.getTime());
+		}
         result[dayes][0]="平均值";
         result[dayes+1][0]="最小值";
         result[dayes+2][0]="最小值时间";
@@ -283,7 +285,7 @@ public class ReportService {
         result[3][0]="第四季度";
         for(int i=0;i<machines.size();i++){
 			Integer num=machines.get(i).getNum();
-            List<Object[]> ndate=queryReportSeason(num, currentTime);
+            List<Object[]> ndate=queryReportSeason(num, date);
             formateArray(result, ndate,i,4);
         }
         return result;
@@ -517,42 +519,62 @@ public class ReportService {
 	 */
 	private void formateNdataVoes(String[][] result,List<NdataVo> ndate,int n){
 		for(int i=0;i<29;i++){
-			String press="--";
-			String flow="--";
-			String ntotalflow="--";
-			result[i][n*3+1]=press;//压力
-			result[i][n*3+2]=flow;//瞬时流量
-			result[i][n*3+3]=ntotalflow;//累计流量
+			String press = "--";
+			String flow  = "--";
+			String totalflow = "--";
+			String ntotalflow  = "--";
+			String ftotalflow = "--";
+			result[i][n*5+1]=press;//压力
+			result[i][n*5+2]=flow;//瞬时流量
+			result[i][n*5+3]=totalflow;//累计流量
+			result[i][n*5+4]=ntotalflow;//累计流量
+			result[i][n*5+5]=ftotalflow;//累计流量
+
 		}
 		float pressavg=0.0f;
 		float flowavg=0.0f;
 		float totalflowavg=0.0f;
+		float ntotalflowavg=0.0f;
+		float ftotalflowavg=0.0f;
 		float pressmin=0.0f;
 		float flowmin=0.0f;
 		float totalflowmin=0.0f;
+		float ntotalflowmin=0.0f;
+		float ftotalflowmin=0.0f;
 		Date pressminDate=null;
 		Date flowminDate=null;
 		Date totalflowminDate=null;
+		Date ntotalflowminDate=null;
+		Date ftotalflowminDate=null;
 		float pressmax=0.0f;
 		float flowmax=0.0f;
 		float totalflowmax=0.0f;
+		float ntotalflowmax=0.0f;
+		float ftotalflowmax=0.0f;
 		Date pressmaxDate=null;
 		Date flowmaxDate=null;
 		Date totalflowmaxDate=null;
-		
+		Date ntotalflowmaxDate=null;
+		Date ftotalflowmaxDate=null;
+
 		int pressCount=0;//压力总数
 		int flowCount=0;//瞬时流量
 		int totalflowCount=0;//累计流量
+		int ntotalflowCount=0;//正向累计流量
+		int ftotalflowCount=0;//反向累计流量
+
 		for(int i=0;i<ndate.size();i++){
 			NdataVo vo=ndate.get(i);
 			Float press=ConstantsUtil.formateNumber(vo.getPress());
 			Float flow=ConstantsUtil.formateNumber(vo.getFlow());
 			Float totalflow=ConstantsUtil.formateNumber(vo.getTotalflow());
-			
+			Float ntotalflow=ConstantsUtil.formateNumber(vo.getNtotalflow());
+			Float ftotalflow=ConstantsUtil.formateNumber(vo.getFtotalflow());
+
 			//只有当数据不等于null有数据才进行平均值计算
 			if(vo.getPress()!=null){
 				pressCount=pressCount+1;//压力
-				result[vo.getI_time().getHours()][n*3+1]=press.toString();
+				result[vo.getI_time().getHours()][n*5+1]=press.toString();
 				pressavg=pressavg+press;//平均值
 				if(press.compareTo(pressmin)<0||(press.compareTo(pressmin)>=0&&pressCount==1)){//最小值
 					pressmin=press;
@@ -565,7 +587,7 @@ public class ReportService {
 			}
 			if(vo.getFlow()!=null){
 				flowCount=flowCount+1;//瞬时流量
-				result[vo.getI_time().getHours()][n*3+2]=flow.toString();
+				result[vo.getI_time().getHours()][n*5+2]=flow.toString();
 				flowavg=flowavg+flow;//平均值
 				if(flow.compareTo(flowmin)<0||(flow.compareTo(flowmin)>=0&&flowCount==1)){//最小值
 					flowmin=flow;
@@ -578,7 +600,7 @@ public class ReportService {
 			}
 			if(vo.getTotalflow()!=null){
 				totalflowCount=totalflowCount+1;//累计流量
-				result[vo.getI_time().getHours()][n*3+3]=totalflow.toString();
+				result[vo.getI_time().getHours()][n*5+3]=totalflow.toString();
 				totalflowavg=totalflowavg+totalflow;//平均值
 				if(totalflow.compareTo(totalflowmin)<0||(totalflow.compareTo(totalflowmin)>=0&&totalflowCount==1)){//最小值
 					totalflowmin=totalflow;
@@ -587,6 +609,32 @@ public class ReportService {
 				if(totalflow.compareTo(totalflowmax)>0||(totalflow.compareTo(totalflowmax)<=0&&totalflowCount==1)){
 					totalflowmax=totalflow;
 					totalflowmaxDate=vo.getI_time();
+				}
+			}
+			if(vo.getNtotalflow()!=null){
+				ntotalflowCount=ntotalflowCount+1;//净累计流量
+				result[vo.getI_time().getHours()][n*5+4]=ntotalflow.toString();
+				ntotalflowavg=ntotalflowavg+ntotalflow;//平均值
+				if(ntotalflow.compareTo(ntotalflowmin)<0||(ntotalflow.compareTo(ntotalflowmin)>=0&&ntotalflowCount==1)){//最小值
+					ntotalflowmin=ntotalflow;
+					ntotalflowminDate=vo.getI_time();
+				}
+				if(ntotalflow.compareTo(ntotalflowmax)>0||(ntotalflow.compareTo(ntotalflowmax)<=0&&ntotalflowCount==1)){
+					ntotalflowmax=ntotalflow;
+					ntotalflowmaxDate=vo.getI_time();
+				}
+			}
+			if(vo.getFtotalflow()!=null){
+				ftotalflowCount=ftotalflowCount+1;//反向累计流量
+				result[vo.getI_time().getHours()][n*5+5]=ftotalflow.toString();
+				ftotalflowavg=ftotalflowavg+ftotalflow;//平均值
+				if(ftotalflow.compareTo(ftotalflowmin)<0||(ftotalflow.compareTo(ftotalflowmin)>=0&&ftotalflowCount==1)){//最小值
+					ftotalflowmin=ftotalflow;
+					ftotalflowminDate=vo.getI_time();
+				}
+				if(ftotalflow.compareTo(ftotalflowmax)>0||(ftotalflow.compareTo(ftotalflowmax)<=0&&ftotalflowCount==1)){
+					ftotalflowmax=ftotalflow;
+					ftotalflowmaxDate=vo.getI_time();
 				}
 			}
 			
@@ -639,36 +687,58 @@ public class ReportService {
 		
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		if(pressCount!=0){
-			result[24][n*3+1]=ConstantsUtil.formateNumber(pressavg/(pressCount==0?1:pressCount))+"";//平均压力
-			result[25][n*3+1]=pressmin+"";//最小压力
+			result[24][n*5+1]=ConstantsUtil.formateNumber(pressavg/(pressCount==0?1:pressCount))+"";//平均压力
+			result[25][n*5+1]=pressmin+"";//最小压力
 			if(pressminDate!=null){
-				result[26][n * 3 + 1] = sdf.format(pressminDate)+"";//最小压力时间
+				result[26][n * 5 + 1] = sdf.format(pressminDate)+"";//最小压力时间
 			}
-			result[27][n*3+1]=pressmax+"";//最大压力
+			result[27][n*5+1]=pressmax+"";//最大压力
 			if(pressmaxDate!=null){
-				result[28][n*3+1]=sdf.format(pressmaxDate)+"";//最大压力时间
+				result[28][n*5+1]=sdf.format(pressmaxDate)+"";//最大压力时间
 			}
 		}
 		if(flowCount!=0){
-			result[24][n*3+2]=ConstantsUtil.formateNumber(flowavg/(flowCount==0?1:flowCount))+"";//平均流量
-			result[25][n*3+2]=flowmin+"";//最小流量
+			result[24][n*5+2]=ConstantsUtil.formateNumber(flowavg/(flowCount==0?1:flowCount))+"";//平均流量
+			result[25][n*5+2]=flowmin+"";//最小流量
 			if(flowminDate!=null){
-				result[26][n*3+2]=sdf.format(flowminDate)+"";//最小流量时间
+				result[26][n*5+2]=sdf.format(flowminDate)+"";//最小流量时间
 			}
-			result[27][n*3+2]=flowmax+"";//最大流量
+			result[27][n*5+2]=flowmax+"";//最大流量
 			if(flowmaxDate!=null){
-				result[28][n*3+2]=sdf.format(flowmaxDate)+"";//最大流量时间
+				result[28][n*5+2]=sdf.format(flowmaxDate)+"";//最大流量时间
 			}
 		}
 		if(totalflowCount!=0){
-			result[24][n*3+3]=ConstantsUtil.formateNumber(totalflowavg/(totalflowCount==0?1:totalflowCount))+"";//平均瞬时
-			result[25][n*3+3]=totalflowmin+"";//最小瞬时
+			result[24][n*5+3]=ConstantsUtil.formateNumber(totalflowavg/(totalflowCount==0?1:totalflowCount))+"";//平均瞬时
+			result[25][n*5+3]=totalflowmin+"";//最小瞬时
 			if(totalflowminDate!=null){
-				result[26][n*3+3]=sdf.format(totalflowminDate)+"";//最小瞬时时间
+				result[26][n*5+3]=sdf.format(totalflowminDate)+"";//最小瞬时时间
 			}
-			result[27][n*3+3]=totalflowmax+"";//最大瞬时
+			result[27][n*5+3]=totalflowmax+"";//最大瞬时
 			if(totalflowmaxDate!=null){
-				result[28][n*3+3]=sdf.format(totalflowmaxDate)+"";//最大瞬时时间
+				result[28][n*5+3]=sdf.format(totalflowmaxDate)+"";//最大瞬时时间
+			}
+		}
+		if(ntotalflowCount!=0){
+			result[24][n*5+4]=ConstantsUtil.formateNumber(ntotalflowavg/(ntotalflowCount==0?1:ntotalflowCount))+"";//平均净累计
+			result[25][n*5+4]=ntotalflowmin+"";//最小净累计
+			if(ntotalflowminDate!=null){
+				result[26][n*5+4]=sdf.format(ntotalflowminDate)+"";//最小净累计时间
+			}
+			result[27][n*5+4]=ntotalflowmax+"";//最大净累计
+			if(ntotalflowmaxDate!=null){
+				result[28][n*5+4]=sdf.format(ntotalflowmaxDate)+"";//最大净累计时间
+			}
+		}
+		if(ftotalflowCount!=0){
+			result[24][n*5+5]=ConstantsUtil.formateNumber(ftotalflowavg/(ftotalflowCount==0?1:ftotalflowCount))+"";//平均反向累计
+			result[25][n*5+5]=ftotalflowmin+"";//最小反向累计
+			if(ftotalflowminDate!=null){
+				result[26][n*5+5]=sdf.format(ftotalflowminDate)+"";//最小反向累计时间
+			}
+			result[27][n*5+5]=ftotalflowmax+"";//最大反向累计
+			if(ftotalflowmaxDate!=null){
+				result[28][n*5+5]=sdf.format(ftotalflowmaxDate)+"";//最大反向累计时间
 			}
 		}
 	}

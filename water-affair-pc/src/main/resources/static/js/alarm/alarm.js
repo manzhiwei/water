@@ -99,12 +99,21 @@ function onsubmit1(){
 	var endTime=$('#endTime').val();
 	var staions=$('#staions').val();
 	var alarmType=$('#alarmType').val();
+	var alarmContent = $('#alarmContent').val();
+	console.log(alarmContent);
 	if(staions!=null){
 		staions=staions.join(",");
 	}
+	if(alarmContent !=null){
+	    alarmContent=alarmContent.join(",");
+	}
+	/*var table = ('#meterChangeList').dataTable();
+	if(table){
+	    table.fnDestroy();
+	}*/
 	$('#meterChangeList').dataTable().fnDestroy();
 	$('#meterChangeList').find("tbody").empty(); // empty in case the columns change
-	findMktList("/queryWarningByCondition",{'startTime':startTime,'endTime':endTime,'staions':staions,'alarmType':alarmType});
+	findMktList("/queryWarningByCondition",{'startTime':startTime,'endTime':endTime,'staions':staions,'alarmType':alarmType,'alarmContent':alarmContent});
 }
 
 /**
@@ -115,9 +124,9 @@ function onsubmit1(){
  */
 function findMktList(url,data) {
 	$('#meterChangeList').DataTable(
-			{	
+			{
 				"bPaginate":true,
-				"searching":false,
+				"searching":true,
 				"bServerSide":true,
 				"sScrollY": "400px",
 				"ajax" : {
@@ -142,9 +151,9 @@ function findMktList(url,data) {
 				aoColumnDefs : [ {
 					targets : [0],
 					mRender : function(a, b, c, d) {
-						 // 显示行号  
-	                    var startIndex = d.settings._iDisplayStart;  
-	                    return startIndex + d.row + 1;  
+						 // 显示行号
+	                    var startIndex = d.settings._iDisplayStart;
+	                    return startIndex + d.row + 1;
 					}
 				},{
 					targets : [4],

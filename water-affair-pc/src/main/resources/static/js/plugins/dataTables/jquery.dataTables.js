@@ -11580,7 +11580,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "",
+			"sLengthMenu": "显示 _MENU_条 ",
 	
 	
 			/**
@@ -14380,10 +14380,10 @@
 		"sSortColumn": "sorting_", /* Note that an int is postfixed for the sorting order */
 	
 		/* Filtering */
-		"sFilterInput": "",
+		"sFilterInput": "form-control input-sm ",
 	
 		/* Page length */
-		"sLengthSelect": "",
+		"sLengthSelect": "form-control input-sm",
 	
 		/* Scrolling */
 		"sScrollWrapper": "dataTables_scroll",

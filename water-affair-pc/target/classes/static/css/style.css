@@ -1,5 +1,115 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,300,500,700");
+/* open-sans-normal - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-300.eot'); /* IE9 Compat Modes */
+  src: local('Open Sans'), local('OpenSans-Normal'),
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-300.woff') format('woff'), /* Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-300.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+  
+/* open-sans-normal - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: regular;
+  src: url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Open Sans'), local('OpenSans-Normal'),
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+  
+/* open-sans-normal - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-600.eot'); /* IE9 Compat Modes */
+  src: local('Open Sans'), local('OpenSans-Normal'),
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-600.woff') format('woff'), /* Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-600.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+  
+/* open-sans-normal - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Open Sans'), local('OpenSans-Normal'),
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('//lib.baomitu.com/fonts/open-sans/open-sans-v14-latin-700.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+/* roboto-normal - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: regular;
+  src: url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Roboto'), local('Roboto-Normal'),
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+  
+/* roboto-normal - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-300.eot'); /* IE9 Compat Modes */
+  src: local('Roboto'), local('Roboto-Normal'),
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-300.woff') format('woff'), /* Modern Browsers */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-300.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+  
+/* roboto-normal - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-500.eot'); /* IE9 Compat Modes */
+  src: local('Roboto'), local('Roboto-Normal'),
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-500.woff') format('woff'), /* Modern Browsers */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-500.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+  
+/* roboto-normal - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Roboto'), local('Roboto-Normal'),
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('//lib.baomitu.com/fonts/roboto/roboto-v16-latin-700.svg#Roboto') format('svg'); /* Legacy iOS */
+}
 /*
  *
  *   INSPINIA - Responsive Admin Theme
@@ -1577,19 +1687,49 @@ a.list-group-item.active:focus {
 /* DATATABLES */
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc,
 table.dataTable thead .sorting_asc_disabled,
 table.dataTable thead .sorting_desc_disabled {
-  background: transparent;
-}
+   /*background: transparent;*/
+ }
 .dataTables_wrapper {
   padding-bottom: 30px;
 }
 .dataTables_length {
   float: left;
 }
+/*.dataTables_length label{
+    height:32px;
+    vertical-align:middle;
+}*/
+.dataTables_length select{
+    display:inline;
+    width:inherit;
+    position:relative;
+    left:0px;
+    opacity:1;
+}
+.dataTables_length .form-control{
+    display:inline;
+    width:inherit;
+
+}
+.dataTables_filter .form-control{
+    display:inline;
+    width:inherit;
+}
 .dataTables_filter label {
   margin-right: 5px;
 }
+/*动态行*/
+td.details-control {
+    background: url('../img/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.details td.details-control {
+    background: url('../img/details_close.png') no-repeat center center;
+}
+
 .html5buttons {
   float: right;
 }
@@ -1708,7 +1848,7 @@ div.dt-button-info {
   display: none;
 }
 .pace .pace-progress {
-  background: #1C84C6;
+  background: #1ab394;
   position: fixed;
   z-index: 2040;
   top: 0;
@@ -2992,7 +3132,7 @@ a.forum-item-title:hover {
   position: absolute;
   left: 10px;
   border-radius: 3px;
-  background: #1C84C6;
+  background: #1ab394;
   padding: 3px;
   color: white;
   cursor: pointer;

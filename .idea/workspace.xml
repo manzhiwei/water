@@ -6,7 +6,230 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee579082-efbf-40ef-833d-9c22e8b930ba" name="Default" comment="" />
+    <list default="true" id="ee579082-efbf-40ef-833d-9c22e8b930ba" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/img/details_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/img/details_open.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/plugins/data-tables/images/sort_asc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/plugins/data-tables/images/sort_both.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/plugins/data-tables/images/sort_desc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/css/jquery.stepy.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/css/table-responsive.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/dynamic_table_init.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/plugins/data-tables/DT_bootstrap.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/plugins/data-tables/DT_bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/plugins/data-tables/jquery.dataTables.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/tools/addNewDianCiMeter.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/water-affair-pc/target/water-affair-pc.jar" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/water_affair_mobile_jar/water-affair-mobile.jar" afterPath="$PROJECT_DIR$/out/artifacts/water_affair_mobile_jar/water-affair-mobile.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/domain/criteria/AlarmProcessRecordCriteria.class" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/domain/criteria/AlarmProcessRecordCriteria.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/domain/vo/NdataVo.class" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/domain/vo/NdataVo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/domain/vo/PageVo.class" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/domain/vo/PageVo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/repository/AlarmProcessRecordMapper.class" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/repository/AlarmProcessRecordMapper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/repository/GprsDataFor4200Mapper.class" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/repository/GprsDataFor4200Mapper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/repository/GprsDataMapper.class" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/repository/GprsDataMapper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/repository/MachineInfoMapper.class" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/repository/MachineInfoMapper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/repository/NdataMapper.class" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/repository/NdataMapper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/service/AlarmService.class" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/service/AlarmService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/service/BasicManageService.class" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/service/BasicManageService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/service/ReportService.class" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/service/ReportService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/service/StaticsService.class" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/com/welltech/waterAffair/service/StaticsService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/water-affair-common-0.0.1-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/water-affair-common/target/water-affair-common-0.0.1-SNAPSHOT.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/MenuController.class" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/MenuController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/RootController.class" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/RootController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/page/BasicManagePageController.class" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/page/BasicManagePageController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/rest/AlarmRestController.class" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/rest/AlarmRestController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/rest/BasicManageRestController.class" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/rest/BasicManageRestController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/rest/DashboardRestController.class" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/rest/DashboardRestController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/rest/ExcelController.class" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/rest/ExcelController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/rest/ReportRestController.class" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/rest/ReportRestController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/rest/SystemToolsController.class" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/com/welltech/controller/rest/SystemToolsController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/water-affair-pc-0.0.1-SNAPSHOT.jar.original" afterPath="$PROJECT_DIR$/water-affair-pc/target/water-affair-pc-0.0.1-SNAPSHOT.jar.original" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/common/util/UserUtils.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/common/util/UserUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/criteria/AlarmProcessRecordCriteria.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/criteria/AlarmProcessRecordCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/vo/NdataVo.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/vo/NdataVo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/vo/PageVo.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/vo/PageVo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/AlarmProcessRecordMapper.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/AlarmProcessRecordMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/GprsDataFor4200Mapper.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/GprsDataFor4200Mapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/GprsDataMapper.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/GprsDataMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/MachineInfoMapper.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/MachineInfoMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/NdataMapper.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/NdataMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/AlarmService.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/AlarmService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/MeterService.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/MeterService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/StaticsService.java" afterPath="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/StaticsService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/AlarmProcessRecordMapper.xml" afterPath="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/AlarmProcessRecordMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/GprsDataFor4200Mapper.xml" afterPath="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/GprsDataFor4200Mapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/GprsDataMapper.xml" afterPath="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/GprsDataMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/MachineInfoMapper.xml" afterPath="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/MachineInfoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/NdataMapper.xml" afterPath="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/NdataMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/mapper/AlarmProcessRecordMapper.xml" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/mapper/AlarmProcessRecordMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/mapper/GprsDataFor4200Mapper.xml" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/mapper/GprsDataFor4200Mapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/mapper/GprsDataMapper.xml" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/mapper/GprsDataMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/mapper/MachineInfoMapper.xml" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/mapper/MachineInfoMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/classes/mapper/NdataMapper.xml" afterPath="$PROJECT_DIR$/water-affair-common/target/classes/mapper/NdataMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/water-affair-common/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/water-affair-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/water-affair-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/java/com/welltech/controller/MobilePageController.java" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/java/com/welltech/controller/MobilePageController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/java/com/welltech/controller/MobileRestController.java" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/java/com/welltech/controller/MobileRestController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/static/dmaMapMonitor.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/static/dmaMapMonitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/static/login.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/static/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/alarm/alarm.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/alarm/alarm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/alarm/alarmMultiSetting.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/alarm/alarmMultiSetting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/alarm/alarmSingleSetting.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/alarm/alarmSingleSetting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/basic/main4meter.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/basic/main4meter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/basic/meterChangeRecord.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/basic/meterChangeRecord.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/basic/meterDevicesMonitoring.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/basic/meterDevicesMonitoring.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/basic/meterList.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/basic/meterList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/dashboard/index.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/dashboard/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/dashboard/index4alarm.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/dashboard/index4alarm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/dashboard/index4vip.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/dashboard/index4vip.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/dma/dmaManage.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/dma/dmaManage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/dma/dmaMapMonitor.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/dma/dmaMapMonitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/dma/dmaMicroFlow.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/dma/dmaMicroFlow.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/error.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/error.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/login.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/mobile/m-history_details.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/mobile/m-history_details.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/report/dayReport.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/report/dayReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/report/monthReport.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/report/monthReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/report/seasonReport.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/report/seasonReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/report/yearReport.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/report/yearReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/statics/dataStatistics.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/statics/dataStatistics.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/statics/dataStatisticsByHour.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/statics/dataStatisticsByHour.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/statics/oneMeterStatistic.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/statics/oneMeterStatistic.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/statics/realtimeStatistics.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/statics/realtimeStatistics.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/statics/trendChart.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/statics/trendChart.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/system/7_companyManage.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/system/7_companyManage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/system/7_userMeterManage.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/system/7_userMeterManage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/todel/dashboard.html" afterPath="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/todel/dashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/application.properties" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/static/dmaMapMonitor.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/static/dmaMapMonitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/static/login.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/static/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/alarm/alarm.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/alarm/alarm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/alarm/alarmMultiSetting.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/alarm/alarmMultiSetting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/alarm/alarmSingleSetting.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/alarm/alarmSingleSetting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/basic/main4meter.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/basic/main4meter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/basic/meterChangeRecord.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/basic/meterChangeRecord.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/basic/meterDevicesMonitoring.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/basic/meterDevicesMonitoring.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/basic/meterList.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/basic/meterList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/dashboard/index.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/dashboard/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/dashboard/index4alarm.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/dashboard/index4alarm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/dashboard/index4vip.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/dashboard/index4vip.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/dma/dmaManage.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/dma/dmaManage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/dma/dmaMapMonitor.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/dma/dmaMapMonitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/dma/dmaMicroFlow.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/dma/dmaMicroFlow.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/error.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/error.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/login.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/report/dayReport.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/report/dayReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/report/monthReport.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/report/monthReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/report/seasonReport.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/report/seasonReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/report/yearReport.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/report/yearReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/statics/dataStatistics.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/statics/dataStatistics.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/statics/dataStatisticsByHour.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/statics/dataStatisticsByHour.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/statics/oneMeterStatistic.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/statics/oneMeterStatistic.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/statics/realtimeStatistics.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/statics/realtimeStatistics.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/statics/trendChart.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/statics/trendChart.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/system/7_companyManage.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/system/7_companyManage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/system/7_userMeterManage.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/system/7_userMeterManage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/todel/dashboard.html" afterPath="$PROJECT_DIR$/water-affair-mobile/target/classes/templates/todel/dashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/MenuController.java" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/MenuController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/RootController.java" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/RootController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/page/BasicManagePageController.java" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/page/BasicManagePageController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/AlarmRestController.java" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/AlarmRestController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/BasicManageRestController.java" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/BasicManageRestController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/DashboardRestController.java" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/DashboardRestController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ExcelController.java" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ExcelController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ReportRestController.java" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ReportRestController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/SystemToolsController.java" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/SystemToolsController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/css/common.css" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/css/common.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/css/style.css" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/dmaMapMonitor.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/dmaMapMonitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/alarm/alarm.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/alarm/alarm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/common.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/common.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/dashboard/index.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/dashboard/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/dataStatistics.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/dataStatistics.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/dataStatisticsByHour.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/dataStatisticsByHour.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/meterList.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/meterList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/meterListDetail.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/meterListDetail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/todayMeterInfoList.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/todayMeterInfoList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/plugins/dataTables/jquery.dataTables.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/plugins/dataTables/jquery.dataTables.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/report/dayReport.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/report/dayReport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/report/seasonReport.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/report/seasonReport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/report/yearReport.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/report/yearReport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/statics/oneMeterStatistics.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/statics/oneMeterStatistics.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/tools/changeIPAndPort.js" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/tools/changeIPAndPort.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/alarm/alarmList.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/alarm/alarmList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/alarm/alarmMultiSetting.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/alarm/alarmMultiSetting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/alarm/alarmSingleSetting.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/alarm/alarmSingleSetting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/main4meter.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/main4meter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/meterBasicList.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/meterBasicList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/meterChangeRecord.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/meterChangeRecord.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/meterListDetail.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/meterListDetail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/todayMeterInfoList.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/todayMeterInfoList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/dashboard/index.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/dashboard/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/dashboard/index4alarm.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/dashboard/index4alarm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/dashboard/index4vip.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/dashboard/index4vip.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/dma/dmaManage.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/dma/dmaManage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/dma/dmaMicroFlow.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/dma/dmaMicroFlow.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/error.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/error.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/login.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/menu.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/menu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/report/dayReport.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/report/dayReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/report/monthReport.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/report/monthReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/report/seasonReport.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/report/seasonReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/report/yearReport.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/report/yearReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/statics/dataStatisticsByHour.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/statics/dataStatisticsByHour.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/test/dataStatistics.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/test/dataStatistics.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/todel/dashboard.html" afterPath="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/todel/dashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/application.properties" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/css/common.css" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/css/common.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/css/style.css" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/dmaMapMonitor.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/dmaMapMonitor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/alarm/alarm.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/alarm/alarm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/common.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/common.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/dashboard/index.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/dashboard/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/demo/dataStatistics.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/demo/dataStatistics.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/demo/dataStatisticsByHour.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/demo/dataStatisticsByHour.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/demo/meterList.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/demo/meterList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/demo/meterListDetail.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/demo/meterListDetail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/demo/todayMeterInfoList.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/demo/todayMeterInfoList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/plugins/dataTables/jquery.dataTables.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/plugins/dataTables/jquery.dataTables.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/report/dayReport.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/report/dayReport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/report/seasonReport.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/report/seasonReport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/report/yearReport.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/report/yearReport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/statics/oneMeterStatistics.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/statics/oneMeterStatistics.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/tools/changeIPAndPort.js" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/static/js/tools/changeIPAndPort.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/alarm/alarmList.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/alarm/alarmList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/alarm/alarmMultiSetting.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/alarm/alarmMultiSetting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/alarm/alarmSingleSetting.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/alarm/alarmSingleSetting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/basic/main4meter.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/basic/main4meter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/basic/meterBasicList.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/basic/meterBasicList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/basic/meterChangeRecord.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/basic/meterChangeRecord.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/basic/meterListDetail.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/basic/meterListDetail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/basic/todayMeterInfoList.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/basic/todayMeterInfoList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/dashboard/index.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/dashboard/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/dashboard/index4alarm.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/dashboard/index4alarm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/dashboard/index4vip.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/dashboard/index4vip.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/dma/dmaManage.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/dma/dmaManage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/dma/dmaMicroFlow.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/dma/dmaMicroFlow.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/error.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/error.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/login.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/menu.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/menu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/report/dayReport.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/report/dayReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/report/monthReport.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/report/monthReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/report/seasonReport.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/report/seasonReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/report/yearReport.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/report/yearReport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/statics/dataStatisticsByHour.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/statics/dataStatisticsByHour.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/test/dataStatistics.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/test/dataStatistics.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/todel/dashboard.html" afterPath="$PROJECT_DIR$/water-affair-pc/target/classes/templates/todel/dashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/water-affair-pc/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/surefire-reports/TEST-com.welltech.RepTest.xml" afterPath="$PROJECT_DIR$/water-affair-pc/target/surefire-reports/TEST-com.welltech.RepTest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/water-affair-pc/target/surefire-reports/com.welltech.RepTest.txt" afterPath="$PROJECT_DIR$/water-affair-pc/target/surefire-reports/com.welltech.RepTest.txt" />
+    </list>
     <ignored path="$PROJECT_DIR$/water-affair-mobile/target/" />
     <ignored path="$PROJECT_DIR$/water-affair-pc/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -19,7 +242,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/water_affair$WaterAffairApplication__1_.coverage" NAME="WaterAffairApplication (1) Coverage Results" MODIFIED="1522030413359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/water_affair$WaterAffairApplication__1_.coverage" NAME="WaterAffairApplication (1) Coverage Results" MODIFIED="1546046946487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.welltech.*</FILTER>
     </SUITE>
   </component>
@@ -28,31 +251,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BasicManagePageController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/page/BasicManagePageController.java">
+      <file leaf-file-name="MobilePageController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/water-affair-mobile/src/main/java/com/welltech/controller/MobilePageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="226" column="55" lean-forward="false" selection-start-line="226" selection-start-column="55" selection-end-line="226" selection-end-column="55" />
+            <state relative-caret-position="202">
+              <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="todayMeterInfoList.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/todayMeterInfoList.js">
+      <file leaf-file-name="MobileRestController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/water-affair-mobile/src/main/java/com/welltech/controller/MobileRestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-262">
-              <caret line="44" column="47" lean-forward="false" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
+            <state relative-caret-position="246">
+              <caret line="77" column="68" lean-forward="true" selection-start-line="77" selection-start-column="68" selection-end-line="77" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="meterList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/meterList.js">
+      <file leaf-file-name="ReportService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="182" column="86" lean-forward="true" selection-start-line="182" selection-start-column="86" selection-end-line="182" selection-end-column="86" />
+            <state relative-caret-position="233">
+              <caret line="567" column="37" lean-forward="false" selection-start-line="567" selection-start-column="24" selection-end-line="567" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MeterService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/MeterService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="202" column="78" lean-forward="false" selection-start-line="202" selection-start-column="78" selection-end-line="202" selection-end-column="78" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasicManageService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="894" column="52" lean-forward="true" selection-start-line="894" selection-start-column="52" selection-end-line="894" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -61,28 +304,28 @@
       <file leaf-file-name="BasicManageRestController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/BasicManageRestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="217" column="61" lean-forward="false" selection-start-line="217" selection-start-column="61" selection-end-line="217" selection-end-column="61" />
+            <state relative-caret-position="438">
+              <caret line="320" column="52" lean-forward="false" selection-start-line="320" selection-start-column="52" selection-end-line="320" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="todayMeterInfoList.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/todayMeterInfoList.html">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/water-affair-mobile/src/main/resources/static/js/mobile/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="56" column="59" lean-forward="true" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
+            <state relative-caret-position="88">
+              <caret line="162" column="17" lean-forward="true" selection-start-line="162" selection-start-column="17" selection-end-line="162" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="meterBasicList.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/meterBasicList.html">
+      <file leaf-file-name="NdataMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/NdataMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="387" column="60" lean-forward="true" selection-start-line="387" selection-start-column="60" selection-end-line="387" selection-end-column="60" />
+            <state relative-caret-position="314">
+              <caret line="192" column="38" lean-forward="false" selection-start-line="192" selection-start-column="16" selection-end-line="192" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -93,55 +336,59 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
         <option value="Interface" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Month</find>
-      <find>exportM</find>
-      <find>exportY</find>
-      <find>String date = request.getParameter(&quot;date&quot;);  //查询日期</find>
-      <find>getY</find>
-      <find>machineInfoList</find>
-      <find>machineInfoLis</find>
-      <find>queryWarning</find>
-      <find>list</find>
-      <find>queryWarnM</find>
-      <find>find</find>
-      <find>findA</find>
-      <find>findB</find>
-      <find>findday</find>
+      <find>wrapper</find>
+      <find>#wrapper</find>
+      <find>selectByPrimaryKey</find>
+      <find>findByUserId</find>
+      <find>listByCriteria</find>
+      <find>updateMeterMap</find>
+      <find>fin</find>
+      <find>findPageByCriteria</find>
+      <find>findPageNdataByWaterHourCriteria</find>
+      <find>findPageByWaterHourCriteria</find>
+      <find>dataTables_scrollHead</find>
+      <find>echartShow2</find>
+      <find>echartShow</find>
+      <find>queryoneSignMsg</find>
+      <find>toLocaleString</find>
+      <find>select</find>
+      <find>copied</find>
+      <find>cip</find>
+      <find>findHou</find>
+      <find>meterSi</find>
+      <find>meterSizeStr</find>
+      <find>findNdataByCriteriaLastConnecting</find>
+      <find>findOneByNumAndOffset</find>
+      <find>ajaxDate</find>
+      <find>findNdataDayData</find>
+      <find>dataTemplate</find>
+      <find>findDayTotalFlowDiff</find>
       <find>findDa</find>
-      <find>findN</find>
-      <find>findBy</find>
-      <find>listBy</find>
-      <find>listby</find>
-      <find>wt4300GprsData</find>
-      <find>MeterUtils.is</find>
-      <find>4300</find>
-      <find>isGprs4300</find>
-      <find>isGprs430</find>
-      <find>isElec</find>
-      <find>speed press</find>
-      <find>press</find>
-      <find>speed</find>
-      <find>2005-2016</find>
-      <find>仪表编号</find>
+      <find>findMonthTotalflowData</find>
+      <find>find4300MonthTotalflowData</find>
     </findStrings>
     <replaceStrings>
       <replace>wt4200GprsData</replace>
       <replace>4200</replace>
       <replace />
       <replace>2018-2019</replace>
+      <replace>2005-2022</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\水表原始代码\water-affair-v3.1.2</dir>
     </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -151,57 +398,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/machineInfoList.js" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/vo/TodayInfoVo.java" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/NdataMapper.java" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/report/monthReport.html" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ReportRestController.java" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ExcelController.java" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/report/yearReport.html" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/report/yearReport.js" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/statics/dataStatisticsByHour.html" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/MachineInfoMapper.java" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/error.html" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/login.html" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/RootController.java" />
-        <option value="$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.2.2.RELEASE/spring-security-core-4.2.2.RELEASE.jar!/org/springframework/security/authentication/ProviderManager.class" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/entity/MachineInfo.java" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/tools/changeIPAndPort.html" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/tools/changeIPAndPort.js" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/menu.html" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/AlarmProcessRecordMapper.java" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/DashboardRestController.java" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/alarm/alarmList.html" />
+        <option value="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/alarm/alarm.html" />
         <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/alarm/alarm.js" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/GprsDataMapper.xml" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/GprsDataMapper.java" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/page/BasicManagePageController.java" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/BasicManageRestController.java" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/MenuController.java" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/SystemToolsController.java" />
-        <option value="$PROJECT_DIR$/water-affair-pc/pom.xml" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/MachineInfoMapper.xml" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/AlarmService.java" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/AlarmProcessRecordMapper.java" />
         <option value="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/AlarmProcessRecordMapper.xml" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/NdataMapper.xml" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/entity/GprsDataFor4200.java" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/AlarmRestController.java" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/AlarmService.java" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/NdataMapper.java" />
         <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/GprsDataFor4200Mapper.java" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/StaticsService.java" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/MeterService.java" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/MobileService.java" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/DmaService.java" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/entity/NdataSs.java" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/GprsDataFor4200Mapper.xml" />
-        <option value="$PROJECT_DIR$/water-affair-mobile/src/main/resources/static/dmaMapMonitor.html" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/meterList.js" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/meterBasicList.html" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/vo/NdataVo.java" />
-        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/common/util/MeterUtils.java" />
-        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/todayMeterInfoList.js" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/GprsDataMapper.java" />
+        <option value="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/statics/dataStatisticsByHour.html" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/alarm/alarmList.html" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/alarm/alarmList.js" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/report/seasonReport.html" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/report/seasonReport.js" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/report/yearReport.js" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/dataStatisticsByHour.js" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/statics/dataStatisticsByHour.html" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/common.js" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/css/style.css" />
         <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/todayMeterInfoList.html" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/meterBasicList.html" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/meterList.js" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/menu.html" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/todayMeterInfoList.js" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/BasicManageRestController.java" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/MachineInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/MachineInfoMapper.java" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/tools/addNewDianCIMeter.js" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/tools/addNewDianCiMeter.html" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/SystemToolsService.java" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/page/BasicManagePageController.java" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/meterListDetail.js" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/plugins/Buttons-1.5.4/js/buttons.html5.js" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/meterListDetail.html" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/StaticsService.java" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/MenuController.java" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/NdataMapper.xml" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/report/dayReport.html" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ExcelController.java" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/report/dayReport.js" />
+        <option value="$PROJECT_DIR$/water-affair-pc/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/water-affair-mobile/src/main/java/com/welltech/controller/MobilePageController.java" />
+        <option value="$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/mobile/m-history_details.html" />
+        <option value="$PROJECT_DIR$/water-affair-mobile/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/vo/NdataVo.java" />
+        <option value="$PROJECT_DIR$/water-affair-mobile/src/main/java/com/welltech/controller/MobileRestController.java" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/MeterService.java" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/GprsDataMapper.xml" />
+        <option value="$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/GprsDataFor4200Mapper.xml" />
       </list>
     </option>
   </component>
@@ -219,6 +466,15 @@
       <expand>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="water-affair-common" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="water-affair-common" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="water-affair-pc" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
         <path>
@@ -230,11 +486,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-3" />
-    <option name="y" value="6" />
-    <option name="width" value="1460" />
-    <option name="height" value="878" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="734" />
+    <option name="height" value="907" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -258,242 +513,14 @@
               <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
               <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="waterAffair" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="waterAffair" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="waterAffair" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="waterAffair" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="vo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="waterAffair" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="waterAffair" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="welltech" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="welltech" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="welltech" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="welltech" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="water-affair" type="b2602c69:ProjectViewProjectNode" />
-              <item name="water-affair-v3.1.2" type="462c0819:PsiDirectoryNode" />
-              <item name="water-affair-pc" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="basic" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -502,16 +529,21 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="SearchEverywhereHistoryKey" value="Todo&#9;ACTION&#9;ActivateTODOToolWindow&#10;queryAlarmMessage&#9;PSI&#9;JAVA://com.welltech.controller.rest.DashboardRestController#queryAlarmMessage&#10;chang&#9;PSI&#9;JAVA://com.welltech.controller.page.BasicManagePageController#changeIPAndPort&#10;meterInfoList&#9;PSI&#9;JAVA://com.welltech.waterAffair.service.BasicManageService#findUserMeterMonitorInfoList&#10;todayMeterInfoList&#9;FILE&#9;file://D:/水表原始代码/water-affair-v3.1.2/water-affair-pc/src/main/resources/templates/basic/todayMeterInfoList.html&#10;queryMeterInfo&#9;PSI&#9;JAVA://com.welltech.controller.rest.BasicManageRestController#queryMeterInfo&#10;sorting_desc&#9;null&#9;null&#10;queryAllMeter&#9;PSI&#9;JAVA://com.welltech.controller.rest.SystemManageRestController#queryAllMeter4Company&#10;findbycom&#9;PSI&#9;JAVA://com.welltech.waterAffair.repository.MachineInfoMapper#findByCompanyId&#10;queryMeterI&#9;PSI&#9;JAVA://com.welltech.controller.rest.BasicManageRestController#queryMeterInfo" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/气体监测原始代码/归档0713 - 气体/water_affair/pom.xml" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="two.files.diff.last.used.folder" value="$PROJECT_DIR$/../water-affair-v3.1" />
     <property name="extract.method.default.visibility" value="public" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\水表原始代码\water-affair-v3.1.1\water-affair-pc\src\main\resources\static\css\plugins\dataTables" />
+      <recent name="D:\水表原始代码\water-affair-v3.1.2\water-affair-pc\src\main\resources\static\js\alarm" />
+      <recent name="D:\水表原始代码\water-affair-v3.1.2\water-affair-pc\src\main\resources\static\js\plugins" />
+      <recent name="D:\水表原始代码\water-affair-v3.1.2\water-affair-pc\src\main\resources\examples\fonts" />
+      <recent name="D:\水表原始代码\water-affair-v3.1.2\water-affair-pc\src\main\resources\static\fonts" />
+      <recent name="D:\水表原始代码\water-affair-v3.1.2\water-affair-pc\src\main\resources\static\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\水表原始代码\water-affair-v3.1.2\water-affair-pc\src\main\resources\static\js\tools" />
       <recent name="D:\水表原始代码\water-affair-v3.1.1\water-affair-pc\src\main\resources\templates\basic" />
     </key>
   </component>
@@ -527,7 +559,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.WaterAffairApplication (1)">
+  <component name="RunManager" selected="Application.WaterAffairApplication">
     <configuration name="WaterAffairApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -652,8 +684,8 @@
     </list>
     <recent_temporary>
       <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.WaterAffairApplication (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Application.WaterAffairApplication" />
+        <item index="0" class="java.lang.String" itemvalue="Application.WaterAffairApplication" />
+        <item index="1" class="java.lang.String" itemvalue="Application.WaterAffairApplication (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -683,98 +715,95 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="916" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1456" height="916" extended-state="6" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5304233" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5740741" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14255014" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.7010582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5298013" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2794702" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.046357617" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14684814" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34172186" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980132" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27148998" sideWeight="0.49470899" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27380952" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18266475" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22277936" sideWeight="0.505291" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38756615" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15830946" sideWeight="0.49470899" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18266475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30596027" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22277936" sideWeight="0.505291" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27284768" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14255014" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18266475" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38756615" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5304233" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5740741" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.046357617" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14684814" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18266475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28344372" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5298013" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.9046358" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2857143" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7642384" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980132" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27148998" sideWeight="0.49470899" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27380952" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22277936" sideWeight="0.505291" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21776505" sideWeight="0.49470899" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27284768" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22277936" sideWeight="0.505291" order="5" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="该版本还未完成工作：&#10;1.时用水统计，名称太长显示不全&#10;2.手机界面的今日累计，本月累计跳转，及图表" />
+    <option name="LAST_COMMIT_MESSAGE" value="该版本还未完成工作：&#10;1.时用水统计，名称太长显示不全&#10;2.手机界面的今日累计，本月累计跳转，及图表" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/MeterService.java</url>
-          <line>146</line>
+          <line>150</line>
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/MeterService.java</url>
-          <line>141</line>
+          <line>145</line>
           <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/MeterService.java</url>
-          <line>107</line>
+          <line>111</line>
           <properties />
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/MenuController.java</url>
-          <line>157</line>
-          <properties />
-          <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/StaticsService.java</url>
@@ -796,43 +825,37 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/AlarmRestController.java</url>
-          <line>45</line>
-          <properties />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/AlarmRestController.java</url>
-          <line>116</line>
+          <line>171</line>
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/AlarmRestController.java</url>
-          <line>108</line>
+          <line>163</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/AlarmRestController.java</url>
-          <line>126</line>
+          <line>181</line>
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/AlarmRestController.java</url>
-          <line>136</line>
+          <line>191</line>
           <properties />
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/AlarmRestController.java</url>
-          <line>144</line>
+          <line>199</line>
           <properties />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/AlarmService.java</url>
-          <line>281</line>
+          <line>287</line>
           <properties />
           <option name="timeStamp" value="27" />
         </line-breakpoint>
@@ -850,105 +873,87 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java</url>
-          <line>720</line>
+          <line>764</line>
           <properties />
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/SystemToolsController.java</url>
-          <line>54</line>
+          <line>62</line>
           <properties />
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/BasicManageRestController.java</url>
-          <line>217</line>
+          <line>320</line>
           <properties />
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ExcelController.java</url>
-          <line>579</line>
+          <line>594</line>
           <properties />
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ExcelController.java</url>
-          <line>274</line>
+          <line>282</line>
           <properties />
           <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ExcelController.java</url>
-          <line>640</line>
+          <line>655</line>
           <properties />
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java</url>
-          <line>400</line>
+          <line>402</line>
           <properties />
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ReportRestController.java</url>
-          <line>116</line>
-          <properties />
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/MenuController.java</url>
-          <line>798</line>
+          <line>838</line>
           <properties />
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java</url>
-          <line>381</line>
+          <line>383</line>
           <properties />
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/MenuController.java</url>
-          <line>832</line>
+          <line>872</line>
           <properties />
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java</url>
-          <line>816</line>
+          <line>915</line>
           <properties />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java</url>
-          <line>829</line>
+          <line>928</line>
           <properties />
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/SystemToolsController.java</url>
-          <line>84</line>
+          <line>92</line>
           <properties />
           <option name="timeStamp" value="94" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/SystemToolsController.java</url>
-          <line>82</line>
+          <line>90</line>
           <properties />
           <option name="timeStamp" value="96" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/AlarmRestController.java</url>
-          <line>81</line>
-          <properties />
-          <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/AlarmRestController.java</url>
-          <line>100</line>
-          <properties />
-          <option name="timeStamp" value="103" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/MenuController.java</url>
@@ -958,31 +963,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java</url>
-          <line>446</line>
-          <properties />
-          <option name="timeStamp" value="148" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java</url>
-          <line>692</line>
-          <properties />
-          <option name="timeStamp" value="149" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/BasicManageRestController.java</url>
-          <line>202</line>
-          <properties />
-          <option name="timeStamp" value="151" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java</url>
-          <line>788</line>
-          <properties />
-          <option name="timeStamp" value="153" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java</url>
-          <line>327</line>
+          <line>329</line>
           <properties />
           <option name="timeStamp" value="155" />
         </line-breakpoint>
@@ -1011,472 +992,586 @@
           <option name="timeStamp" value="167" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java</url>
-          <line>725</line>
-          <properties />
-          <option name="timeStamp" value="168" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/page/BasicManagePageController.java</url>
-          <line>137</line>
+          <line>144</line>
           <properties />
           <option name="timeStamp" value="169" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/BasicManageRestController.java</url>
-          <line>59</line>
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/SystemToolsService.java</url>
+          <line>122</line>
           <properties />
-          <option name="timeStamp" value="170" />
+          <option name="timeStamp" value="184" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java</url>
-          <line>101</line>
+          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/SystemToolsController.java</url>
+          <line>39</line>
           <properties />
-          <option name="timeStamp" value="171" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java</url>
-          <line>106</line>
-          <properties />
-          <option name="timeStamp" value="173" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java</url>
-          <line>124</line>
-          <properties />
-          <option name="timeStamp" value="174" />
+          <option name="timeStamp" value="187" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/BasicManageRestController.java</url>
           <line>61</line>
           <properties />
-          <option name="timeStamp" value="175" />
+          <option name="timeStamp" value="198" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/AlarmService.java</url>
+          <line>322</line>
+          <properties />
+          <option name="timeStamp" value="199" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/AlarmService.java</url>
+          <line>310</line>
+          <properties />
+          <option name="timeStamp" value="201" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/AlarmService.java</url>
+          <line>343</line>
+          <properties />
+          <option name="timeStamp" value="203" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/AlarmService.java</url>
+          <line>338</line>
+          <properties />
+          <option name="timeStamp" value="204" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/AlarmRestController.java</url>
+          <line>108</line>
+          <properties />
+          <option name="timeStamp" value="205" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ReportRestController.java</url>
+          <line>95</line>
+          <properties />
+          <option name="timeStamp" value="208" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ReportRestController.java</url>
+          <line>118</line>
+          <properties />
+          <option name="timeStamp" value="209" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java</url>
+          <line>494</line>
+          <properties />
+          <option name="timeStamp" value="212" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/MenuController.java</url>
+          <line>254</line>
+          <properties />
+          <option name="timeStamp" value="213" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/BasicManageRestController.java</url>
+          <line>221</line>
+          <properties />
+          <option name="timeStamp" value="215" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/StaticsRestController.java</url>
+          <line>311</line>
+          <properties />
+          <option name="timeStamp" value="216" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/StaticsService.java</url>
+          <line>804</line>
+          <properties />
+          <option name="timeStamp" value="217" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/StaticsService.java</url>
+          <line>872</line>
+          <properties />
+          <option name="timeStamp" value="220" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java</url>
+          <line>64</line>
+          <properties />
+          <option name="timeStamp" value="224" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ExcelController.java</url>
+          <line>136</line>
+          <properties />
+          <option name="timeStamp" value="231" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="232" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-mobile/src/main/java/com/welltech/controller/MobileRestController.java</url>
+          <line>76</line>
+          <properties />
+          <option name="timeStamp" value="240" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java</url>
+          <line>744</line>
+          <properties />
+          <option name="timeStamp" value="243" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java</url>
+          <line>844</line>
+          <properties />
+          <option name="timeStamp" value="245" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java</url>
+          <line>853</line>
+          <properties />
+          <option name="timeStamp" value="246" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java</url>
+          <line>850</line>
+          <properties />
+          <option name="timeStamp" value="247" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java</url>
+          <line>749</line>
+          <properties />
+          <option name="timeStamp" value="248" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="176" />
+      <option name="time" value="249" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="machineInfo" language="JAVA" />
-        <watch expression="dest" />
-        <watch expression="orig" />
+        <watch expression="((LinkedHashMap)map).entrySet().toArray()[9]" custom="java.util.LinkedHashMap" />
+        <watch expression="map" />
+        <watch expression="((LinkedHashMap)map).entrySet().toArray()[2]" custom="java.util.LinkedHashMap" />
+        <watch expression="result" />
+        <watch expression="result.aaData" />
+        <watch expression="res1" />
+        <watch expression="map" />
+        <watch expression="map2" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-websocket/8.5.11/tomcat-embed-websocket-8.5.11.jar!/org/apache/tomcat/websocket/server/WsFilter.class">
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/dataStatisticsByHour2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.11/tomcat-embed-core-8.5.11.jar!/org/apache/catalina/core/ApplicationFilterChain.class">
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/dataStatisticsByHour.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/4.2.2.RELEASE/spring-security-web-4.2.2.RELEASE.jar!/org/springframework/security/web/access/intercept/FilterSecurityInterceptor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/4.2.2.RELEASE/spring-security-web-4.2.2.RELEASE.jar!/org/springframework/security/web/FilterChainProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="169" column="0" lean-forward="false" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/4.2.2.RELEASE/spring-security-web-4.2.2.RELEASE.jar!/org/springframework/security/web/access/ExceptionTranslationFilter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE.jar!/org/springframework/web/servlet/FrameworkServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="402" column="0" lean-forward="false" selection-start-line="402" selection-start-column="0" selection-end-line="402" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/entity/GprsDataFor4200.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state relative-caret-position="-1075">
+          <caret line="53" column="34" lean-forward="false" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/entity/NdataSs.java">
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/SystemToolsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="162" column="40" lean-forward="true" selection-start-line="162" selection-start-column="40" selection-end-line="162" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/StaticsService.java">
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/statics/oneMeterStatistic.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="148" column="48" lean-forward="false" selection-start-line="148" selection-start-column="48" selection-end-line="148" selection-end-column="48" />
+        <state relative-caret-position="474">
+          <caret line="314" column="38" lean-forward="false" selection-start-line="314" selection-start-column="24" selection-end-line="314" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/dataStatistics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="92" column="63" lean-forward="false" selection-start-line="92" selection-start-column="63" selection-end-line="92" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.4/mybatis-3.4.4-sources.jar!/org/apache/ibatis/binding/MapperProxy.java">
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/statics/oneMeterStatistics.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/GprsDataFor4200Mapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/GprsDataMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="23" column="11" lean-forward="false" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Java/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="33" column="33" lean-forward="false" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5125">
-          <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/GprsDataFor4200Mapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="124" column="58" lean-forward="false" selection-start-line="124" selection-start-column="58" selection-end-line="124" selection-end-column="58" />
-          <folding>
-            <marker date="1537336169203" expanded="false" signature="7208:7212" ph="&gt;" />
-            <marker date="1537336169203" expanded="false" signature="7263:7267" ph="&lt;" />
-            <marker date="1537336169203" expanded="false" signature="7679:7683" ph="&gt;" />
-            <marker date="1537336169203" expanded="false" signature="7734:7738" ph="&lt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/AlarmRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-228">
-          <caret line="99" column="9" lean-forward="false" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/DashboardRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5608">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/DmaRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ExcelController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="50" column="43" lean-forward="true" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+        <state relative-caret-position="275">
+          <caret line="92" column="36" lean-forward="false" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/StaticsRestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2374">
-          <caret line="134" column="65" lean-forward="false" selection-start-line="134" selection-start-column="65" selection-end-line="134" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/SystemManageRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10458">
-          <caret line="45" column="13" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/SystemToolsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1408">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/page/StaticsPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/page/DmaPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/page/DashboardPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/MachineInfoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36450">
-          <caret line="1458" column="20" lean-forward="false" selection-start-line="1458" selection-start-column="20" selection-end-line="1458" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/MachineInfoMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="78" column="45" lean-forward="false" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.7.RELEASE/spring-web-4.3.7.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/CompanyService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/MeterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-mobile/src/main/resources/static/dmaMapMonitor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="172" column="38" lean-forward="false" selection-start-line="172" selection-start-column="38" selection-end-line="172" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/entity/MachineInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="203" column="23" lean-forward="false" selection-start-line="203" selection-start-column="23" selection-end-line="203" selection-end-column="23" />
+        <state relative-caret-position="172">
+          <caret line="314" column="0" lean-forward="false" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
           <folding>
-            <element signature="e#5419#5420#0" expanded="false" />
-            <element signature="e#5445#5446#0" expanded="false" />
+            <element signature="e#10535#10557#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/echarts.js">
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/StaticsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="313">
+          <caret line="862" column="9" lean-forward="true" selection-start-line="862" selection-start-column="9" selection-end-line="862" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/common.js">
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/menu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+        <state relative-caret-position="325">
+          <caret line="142" column="77" lean-forward="false" selection-start-line="142" selection-start-column="68" selection-end-line="142" selection-end-column="77" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/application.properties">
+    <entry file="jar://D:/Java/src.zip!/java/text/Format.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="43" lean-forward="true" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/RootController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-650">
-          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/vo/NdataVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="685">
-          <caret line="304" column="32" lean-forward="false" selection-start-line="304" selection-start-column="32" selection-end-line="304" selection-end-column="32" />
+        <state relative-caret-position="285">
+          <caret line="155" column="24" lean-forward="false" selection-start-line="155" selection-start-column="24" selection-end-line="155" selection-end-column="24" />
           <folding>
-            <element signature="e#3666#3667#0" expanded="true" />
-            <element signature="e#3686#3687#0" expanded="true" />
-            <element signature="e#5801#5802#0" expanded="true" />
-            <element signature="e#5844#5845#0" expanded="true" />
-            <element signature="e#5873#5874#0" expanded="true" />
+            <element signature="e#5542#5543#0" expanded="false" />
+            <element signature="e#5629#5630#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/NdataMapper.xml">
+    <entry file="jar://D:/Java/src.zip!/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-300">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/GprsDataMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        <state relative-caret-position="226">
+          <caret line="237" column="12" lean-forward="false" selection-start-line="237" selection-start-column="12" selection-end-line="237" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/common/util/MeterUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="46" column="48" lean-forward="false" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
+        <state relative-caret-position="550">
+          <caret line="36" column="26" lean-forward="false" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/vo/before/MeterList4DmaMicroFlowVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/report/dayReport.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2375">
+          <caret line="95" column="49" lean-forward="false" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#th#3;n#l#0;n#tr#1;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#4;n#l#0;n#tr#1;n#thead#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi/3.14/poi-3.14-sources.jar!/org/apache/poi/ss/usermodel/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="53" column="8" lean-forward="false" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Java/src.zip!/java/lang/Float.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="449" column="24" lean-forward="false" selection-start-line="449" selection-start-column="24" selection-end-line="449" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi/3.14/poi-3.14-sources.jar!/org/apache/poi/hssf/usermodel/HSSFCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1539">
+          <caret line="266" column="24" lean-forward="false" selection-start-line="266" selection-start-column="24" selection-end-line="266" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1150">
-          <caret line="163" column="30" lean-forward="true" selection-start-line="163" selection-start-column="30" selection-end-line="163" selection-end-column="30" />
+        <state relative-caret-position="17000">
+          <caret line="721" column="0" lean-forward="false" selection-start-line="721" selection-start-column="0" selection-end-line="721" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/entity/Ndata.java">
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ReportRestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="1000">
+          <caret line="60" column="49" lean-forward="false" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java">
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/statics/oneMeterChart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="754" column="42" lean-forward="true" selection-start-line="754" selection-start-column="42" selection-end-line="754" selection-end-column="42" />
-          <folding>
-            <element signature="e#3344#3360#0" expanded="true" />
-            <element signature="e#3828#3844#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="950">
+          <caret line="38" column="26" lean-forward="false" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/meterInfoList.html">
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/report/dayReport.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1749">
+        <state relative-caret-position="4025">
+          <caret line="161" column="40" lean-forward="false" selection-start-line="161" selection-start-column="40" selection-end-line="161" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="50" column="16" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-mobile/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/meterListDetail.html">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.7.RELEASE/spring-web-4.3.7.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1214">
-          <caret line="77" column="51" lean-forward="true" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
+        <state relative-caret-position="193">
+          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/page/BasicManagePageController.java">
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/machineInfoList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="226" column="55" lean-forward="false" selection-start-line="226" selection-start-column="55" selection-end-line="226" selection-end-column="55" />
+        <state relative-caret-position="362">
+          <caret line="49" column="53" lean-forward="true" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/meterBasicList.html">
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/machineInfoList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="387" column="60" lean-forward="true" selection-start-line="387" selection-start-column="60" selection-end-line="387" selection-end-column="60" />
+        <state relative-caret-position="175">
+          <caret line="22" column="31" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/templates/basic/todayMeterInfoList.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="59" column="59" lean-forward="true" selection-start-line="59" selection-start-column="59" selection-end-line="59" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/mobile/m-history_details.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
-          <caret line="56" column="59" lean-forward="true" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
+          <caret line="71" column="71" lean-forward="false" selection-start-line="71" selection-start-column="71" selection-end-line="71" selection-end-column="71" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/BasicManageRestController.java">
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/MobileService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="217" column="61" lean-forward="false" selection-start-line="217" selection-start-column="61" selection-end-line="217" selection-end-column="61" />
+        <state relative-caret-position="512">
+          <caret line="284" column="81" lean-forward="false" selection-start-line="284" selection-start-column="81" selection-end-line="284" selection-end-column="81" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/meterList.js">
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/entity/MachineInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="182" column="86" lean-forward="true" selection-start-line="182" selection-start-column="86" selection-end-line="182" selection-end-column="86" />
+        <state relative-caret-position="158">
+          <caret line="135" column="27" lean-forward="true" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/entity/Ndata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="892">
+          <caret line="91" column="35" lean-forward="true" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-mobile/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="754">
+          <caret line="31" column="325" lean-forward="false" selection-start-line="31" selection-start-column="325" selection-end-line="31" selection-end-column="325" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/resources/static/js/demo/todayMeterInfoList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-262">
-          <caret line="44" column="47" lean-forward="false" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
+        <state relative-caret-position="150">
+          <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-mobile/src/main/resources/templates/mobile/m-index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="38" column="40" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-mobile/src/main/resources/static/js/mobile/m-tap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-mobile/src/main/resources/static/js/mobile/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="162" column="17" lean-forward="true" selection-start-line="162" selection-start-column="17" selection-end-line="162" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/BasicManageRestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="320" column="52" lean-forward="false" selection-start-line="320" selection-start-column="52" selection-end-line="320" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/NdataMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="49" column="23" lean-forward="false" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/NdataSsMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2757">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/NdataMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="192" column="38" lean-forward="false" selection-start-line="192" selection-start-column="16" selection-end-line="192" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-pc/src/main/java/com/welltech/controller/rest/ExcelController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="136" column="51" lean-forward="false" selection-start-line="136" selection-start-column="51" selection-end-line="136" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/ReportService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="567" column="37" lean-forward="false" selection-start-line="567" selection-start-column="24" selection-end-line="567" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-mobile/src/main/java/com/welltech/controller/MobilePageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/domain/vo/NdataVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2903">
+          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/common/util/ConstantsUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="149" column="56" lean-forward="false" selection-start-line="149" selection-start-column="46" selection-end-line="149" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/MeterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="202" column="78" lean-forward="false" selection-start-line="202" selection-start-column="78" selection-end-line="202" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/repository/GprsDataFor4200Mapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="180" column="23" lean-forward="false" selection-start-line="180" selection-start-column="23" selection-end-line="180" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-mobile/src/main/java/com/welltech/controller/MobileRestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="77" column="68" lean-forward="true" selection-start-line="77" selection-start-column="68" selection-end-line="77" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/GprsDataMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="291" column="16" lean-forward="true" selection-start-line="291" selection-start-column="16" selection-end-line="291" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/resources/mapper/GprsDataFor4200Mapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="298" column="13" lean-forward="true" selection-start-line="298" selection-start-column="13" selection-end-line="298" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/water-affair-common/src/main/java/com/welltech/waterAffair/service/BasicManageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="894" column="52" lean-forward="true" selection-start-line="894" selection-start-column="52" selection-end-line="894" selection-end-column="52" />
           <folding />
         </state>
       </provider>

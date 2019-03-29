@@ -87,7 +87,8 @@ function showTable(mid,type) {
 					{
 						"autoWidth" : false,
 						"searching":false,
-						"aLengthMenu":[[12],["12条"]],
+						lengthChange: false,
+//						"aLengthMenu":[[12],["12条"]],
 						"ajax" : {
 							url : "/queryoneSignMsg?mid="+mid+"&type="+type,
 							type : "post",

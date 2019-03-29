@@ -74,6 +74,8 @@ public interface GprsDataMapper {
 	 */
 	List<Ndata> findPageNdataByWaterHourCriteria(@Param("criteria") WaterHourCriteria criteria);
 
+	List<Ndata> queryNdataByWaterHourCriteria(@Param("criteria") WaterHourCriteria criteria);
+
 	/**
 	 * 季度报表数据
 	 * @param param

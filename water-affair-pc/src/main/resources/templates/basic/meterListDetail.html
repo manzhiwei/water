@@ -81,8 +81,8 @@
                                                         <td class="text-right"><span th:text="${data.machineInfo2.metertype}"></span></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-left">位号</td>
-                                                        <td class="text-right"><span th:text="${data.machineInfo2.positionNo}"></span></td>
+                                                        <td class="text-left">内部编号</td>
+                                                        <td class="text-right"><span th:text="${data.machineInfo2.num}"></span></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-left">用户名称</td>
@@ -336,7 +336,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-3">
                                         <div class="form-label clearfix">
-                                            <label class="title">仪表编号 <span class="require-star">*</span></label>
+                                            <label class="title">内部编号 <span class="require-star">*</span></label>
                                             <div class="validate-tip"></div>
                                         </div>
                                         <div class="form-area">
@@ -349,20 +349,21 @@
                                             <div class="validate-tip"></div>
                                         </div>
                                         <div class="form-area">
-                                            <select id="meterTypeId" name="meterTypeId" disabled="disabled" class="form-control chosen-select-normal" tabindex="2" >
+                                            <!--<select id="meterTypeId" name="meterTypeId" disabled="disabled" class="form-control chosen-select-normal" tabindex="2" >
                                             	<option th:each="e,eStat:${meterTypeList}" th:value="${e.id}" th:text="${e.meterType}"></option>
                                             </select>
-                                            <input id="meterTypeIdTmp" name="meterTypeIdTmp" type="hidden" class="form-control" th:value="${data.machineInfo2.meterTypeId}"/>
-                                            <input id="metertype" name="metertype" type="hidden" class="form-control" th:value="${data.machineInfo2.metertype}" />
+                                            <input id="meterTypeIdTmp" name="meterTypeIdTmp" type="hidden" class="form-control" th:value="${data.machineInfo2.meterTypeId}"/>-->
+                                            <input id="meterTypeId" name="meterTypeId" type="hidden" class="form-control" th:value="${data.machineInfo2.meterTypeId}"/>
+                                            <input id="metertype" name="metertype"  type="text" readonly="readonly" class="form-control" th:value="${data.machineInfo2.metertype}" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <div class="form-label clearfix">
-                                            <label class="title">位号 <span class="require-star">*</span></label>
+                                            <label class="title">仪表编号 <span class="require-star">*</span></label>
                                             <div class="validate-tip"></div>
                                         </div>
                                         <div class="form-area">
-                                            <input name="positionNo" type="text" class="form-control" th:value="${data.machineInfo2.positionNo}" />
+                                            <input name="instrNo" type="text" class="form-control" readonly="readonly" th:value="${data.machineInfo2.instrNo}" />
                                         </div>
                                     </div>
                                     <div class="form-group col-md-3">

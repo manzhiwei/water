@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $('.layer-date').click(function(){
-        laydate({istime: true, format: 'YYYY-MM', choose: function(dates){
+        laydate({istime: true, format: 'YYYY', choose: function(dates){
             console.log(dates);
         }})
     })
@@ -19,6 +19,9 @@ function showReport(){
 		$("#type").change(function(){
 			getData();
 		});
+		/*$("#startTime1").change(function(){
+		    getData();
+		});*/
 	}
 	getData();
 }
@@ -153,12 +156,18 @@ function echartShow2(xData, tData){
 function getData(){
 	var station = $("#station").val();
 	var index = $("#type").val();
-	
+	var date = $("#startTime").val();
+	if(station!=null){
+    //		stations=stations.join(",");
+    	}else{
+    		alert("站点不能为空");
+    		return;
+    	}
 	$.ajax({
 		url:"/getSeasonReport",
 		method:"POST",
 		dataType:"json",
-		data:"station=" + station,
+		data:"station=" + station+"&date="+date,
 		success:function(data){
 			var xData = new Array();
 			var avgData = new Array();
@@ -191,7 +200,7 @@ function exportReport(){
 		return;
 	}
 //	location.href = "exportDayReportExcel?staions="+stations+"&date="+date;
-	onPost("exportSeasonReportExcel",{"staions":stations});
+	onPost("exportSeasonReportExcel",{"staions":stations,"date":date});
 }
 
 function onPost(url,data){

@@ -163,7 +163,7 @@ function formValidate(){
         console.log(port);
         return true;
 }*/
-$/*("form").on("submit", function(event) {
+/*$("form").on("submit", function(event) {
   event.preventDefault();
 });*/
  function getMyDate(time){

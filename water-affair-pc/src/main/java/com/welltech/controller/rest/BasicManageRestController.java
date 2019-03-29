@@ -7,6 +7,9 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.welltech.waterAffair.domain.entity.UserAddressId;
+import com.welltech.waterAffair.domain.entity.UserAreaId;
+import com.welltech.waterAffair.domain.entity.UserNameId;
 import com.welltech.waterAffair.domain.vo.NdataVo;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -173,7 +176,107 @@ public class BasicManageRestController {
 		}
 		return map;
 	}
+	/**
+	 * isExists
+	 * 验证水表号是否存在
+	 * @param num	水表号
+	 * @param isVip	是否是vip
+	 * @return
+	 */
+	@RequestMapping(value = { "/isNotExists" })
+	public Map<String,Boolean> isNotExists(Integer num) {
+		MachineInfo m =basicManageService.queryMachineInfo2(num);
+		Map<String, Boolean> map = new HashMap<>();
+		if(m!=null){
+			map.put("valid", true);
+		}else{
+			map.put("valid", false);
+		}
+		return map;
+	}
 	
+	/**
+	* @Author  Man Zhiwei    
+	* @Comment 
+	* @Param   [name]   
+	* @Date        2019-03-15 16:25
+	*/
+	@RequestMapping(value = {"/isExistsName"})
+	public Map<String,Boolean> isExistsName(String shortName){
+
+		Boolean result = basicManageService.isExistsMachineByName(shortName);
+		Map<String,Boolean> map = new HashMap<>();
+		map.put("valid", !result);
+
+		return map;
+	}
+	/**
+	* @Author  Man Zhiwei    
+	* @Comment 
+	* @Param   [ccid]   
+	* @Date        2019-03-18 13:53
+	*/
+	@RequestMapping(value = {"/isExistsCCID"})
+	public Map<String,Boolean> isExistsCCID(String ccid){
+
+		Boolean result = basicManageService.isExistsMachineByCCID(ccid);
+		Map<String,Boolean> map = new HashMap<>();
+		map.put("valid", !result);
+
+		return map;
+	}
+	/**
+	 * isExists
+	 * 验证公司ID是否存在
+	 * @param companyId 	公司ID
+	 * @return
+	 */
+	@RequestMapping(value = { "/isExists4Company" })
+	public Map<String,Boolean> isExists4Company(Integer companyId) {
+		UserNameId m =basicManageService.queryUserNameId(companyId);
+		Map<String, Boolean> map = new HashMap<>();
+		if(m!=null){
+			map.put("valid", false);
+		}else{
+			map.put("valid", true);
+		}
+		return map;
+	}
+	/**
+	 * isExists
+	 * 验证区域ID是否存在
+	 * @param areaId	区域ID
+	 * @return
+	 */
+	@RequestMapping(value = { "/isExists4Area" })
+	public Map<String,Boolean> isExists4Area(Integer areaId) {
+		UserAreaId m =basicManageService.queryUserAreaId(areaId);
+		Map<String, Boolean> map = new HashMap<>();
+		if(m!=null){
+			map.put("valid", false);
+		}else{
+			map.put("valid", true);
+		}
+		return map;
+	}
+	/**
+	 * isExists
+	 * 验证地址ID是否存在
+	 * @param addressId	  地址ID
+	 * @return
+	 */
+	@RequestMapping(value = { "/isExists4Address" })
+	public Map<String,Boolean> isExists4Address(Integer addressId) {
+		UserAddressId m =basicManageService.queryUserAddressId(addressId);
+		Map<String, Boolean> map = new HashMap<>();
+		if(m!=null){
+			map.put("valid", false);
+		}else{
+			map.put("valid", true);
+		}
+		return map;
+	}
+
 	/**
 	 * 
 	 * 查询水表所在公司

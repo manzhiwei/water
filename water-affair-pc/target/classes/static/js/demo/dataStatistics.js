@@ -72,9 +72,9 @@ function onsubmit1(){
  */
 function findMktList(url,data) {
 	$('#meterChangeList').DataTable(
-			{	
+			{
 				"bPaginate":true,
-				"searching":false,
+				"searching":true,
 				"bServerSide":true,
 				"sScrollY": "300px",
 				"ajax" : {

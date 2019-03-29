@@ -41,7 +41,7 @@ public class AlarmRestController {
     private CompanyService companyService;
 	
 	@RequestMapping(value = { "/queryWarningByCondition" })
-	public PageByDataTableVo<AlarmProcessRecord> queryByCondition(String draw,String start,String length,String startTime, String endTime,String staions,HttpServletRequest request){
+	public PageByDataTableVo<AlarmProcessRecord> queryByCondition(String draw,String start,String length,String startTime, String endTime,String staions,String alarmContent,HttpServletRequest request){
 		Integer userId = UserUtils.getUserId();
 		String alarmType = request.getParameter("alarmType");
 		User user = companyService.getUser(userId);
@@ -57,7 +57,7 @@ public class AlarmRestController {
 			pageSize=10;
 		}else{
 			pageSize=Integer.valueOf(length);
-		} 
+		}
 		Date start1 = null;
 		Date end1 = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -102,6 +102,61 @@ public class AlarmRestController {
 		PageByDataTableVo<AlarmProcessRecord> result=new PageByDataTableVo<AlarmProcessRecord>(draw,res1.getCountSize(),pageSize,res1.getEntity());
 		return result;
 	}
+    @RequestMapping(value = { "/queryWarningByMessage" })
+    public PageVo<AlarmProcessRecord>  queryWarningByMessage(String startTime, String endTime,String staions,String alarmContent,HttpServletRequest request){
+        Integer userId = UserUtils.getUserId();
+        String alarmType = request.getParameter("alarmType");
+        User user = companyService.getUser(userId);
+        Date start1 = null;
+        Date end1 = null;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            if (startTime != null&&startTime.length()>0) {
+                start1 = sdf.parse(startTime);
+            }else{
+                //默认当天零点开始
+                start1=sdf.parse(sdf1.format(new Date())+" 00:00");
+            }
+            if (endTime != null&&endTime.length()>0) {
+                end1 = sdf.parse(endTime);
+            }else{
+                end1=new Date();//默认当前时刻
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        List<Integer> s=new ArrayList<Integer>();;
+
+        List<MachineInfo> machines = meterService.findUserMeterList(userId);
+
+        if(staions!=null&&staions.length()>0){
+            List<String> tmp=Arrays.asList(staions.split(",",-1));
+            Map<String,Integer> temp=new HashMap<String,Integer>();
+            for(MachineInfo t:machines){
+                temp.put(t.getShortName(), t.getNum());
+            }
+            for(String t:tmp){
+                Integer num=temp.get(t);
+                if(num!=null){
+                    s.add(num);
+                }
+            }
+        }else{//如果为空则默认全部用户所属水表
+            for(MachineInfo t:machines){
+                s.add(t.getNum());
+            }
+        }
+        List<String> tmp;
+        if(alarmContent !=null && !"".equals(alarmContent)){
+           tmp=Arrays.asList(alarmContent.split(",",-1));
+        }else{
+            tmp = null;
+        }
+        PageVo<AlarmProcessRecord> result = alarmService.queryProcessRecordByMessage(start1, end1, s, alarmType, tmp, UserUtils.isAdmin(user));
+
+        return result;
+    }
 	
 	//告警查询
     @RequestMapping(value = { "/queryAlarmByAid" }, method = {RequestMethod.GET,RequestMethod.POST})

@@ -113,7 +113,8 @@ function echartShow2(xData, tData){
             }
         },
         legend: {
-            data:['平均值','最大值','最小值']
+           /* data:['平均值','最大值','最小值']*/
+            data:['累计用量']
         },
         grid: {
             left: '3%',
@@ -171,7 +172,7 @@ function getData(){
 				avgData[i]=data.result[i][Number(index) + 1];
 				maxData[i]=data.result[i][Number(index) + 2];
 				minData[i]=data.result[i][Number(index) + 3];
-                tData[i]=data.result[i][10];
+                tData[i]=data.result[i][9];
 			}
 			if( index == '6'){
 				echartShow2(xData, tData);

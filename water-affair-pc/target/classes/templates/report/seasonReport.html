@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 
-<head th:replace="menu :: head"/>
+<head th:replace="menu :: head1"/>
 
 <body class="">
 <div id="wrapper">
@@ -40,8 +40,12 @@
                                                         </option>
                                                     </select>
                                                 </div>
-
                                                 <div class="col-sm-2">
+                                                    <input name="date" id="startTime" th:value="${date}"
+                                                           class="form-control layer-date input-todayY laydate-icon"
+                                                           th:placeholder="${date}"/>
+                                                </div>
+                                                <div class="col-sm-1">
                                                     <button id="query2" type="button" onclick="searchForm.submit()"  class="btn btn-sm btn-success">查询
                                                     </button>
                                                 </div>

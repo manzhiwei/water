@@ -79,7 +79,7 @@ function createTabContent(i){
 	var content='<div id="tab-'+i+'" class="tab-pane active">'+
 		        '<div class="panel-body">'+
 			        '<div class="table-responsive table-relative">'+
-				        '<table id="meterChangeList'+i+'" class="table table-striped dataTables-meter" >'+
+				        '<table id="meterChangeList'+i+'" class="table table-striped table-bordered table-hover dataTables-default" >'+
 				        	'<thead>'+
 				            '<tr>'+
 				            //'    <th>站点名称</th>'+
@@ -111,7 +111,7 @@ function createDetailInfo(){
 	var content='<div id="hour_list" class="tab-pane active">'+
 		        '<div class="panel-body">'+
 			        '<div class="table-responsive table-relative">'+
-				        '<table id="hour_record_list" class="table table-striped" >'+
+				        '<table id="hour_record_list" class="table table-striped table-bordered table-hover dataTables-default" >'+
 				        	'<thead>'+
 				            '<tr>'+
 				            '    <th>抄表时间</th>'+
@@ -141,10 +141,11 @@ function createDetailInfo(){
 function findMktList(url, data,i) {
 	$('#meterChangeList'+i).DataTable(
     {
+        dom: '<"html5buttons"B>lTfgtip',
         "bPaginate" : true,
-        "searching":false,
-        "bServerSide" : true,
-        "sScrollY" : "500px",
+        "searching":true,
+        "autoWidth" : false,
+        "sScrollY": "500px",  //表格内容部分高度设置为170像素
         "ajax" : {
             url : url,
             dataType : "json",
@@ -152,11 +153,11 @@ function findMktList(url, data,i) {
             async: false,
             data : data,
         },
-        aoColumns : [ /*{
+        aoColumns : [ {
             "mData" : "shortName"
-        }, */{
+        }, /*{
             "mData" : "companyName"
-        }, {
+        },*/ {
             "mData" : "iTime"
         }, {
             "mData" : "flow"
@@ -237,8 +238,8 @@ function findMktList(url, data,i) {
                 {
                     targets : [ 7 ],
                     mRender : function(a, b, c,d) {
-                        var html =returnFloat(a);
-                        return html;
+                        /*var html =returnFloat(a);
+                        return html;*/
                     }
                 },
                 {
@@ -258,11 +259,33 @@ function findMktList(url, data,i) {
 function createModalTable(url) {
 	$('#hour_record_list').DataTable(
     {
+        dom: '<"html5buttons"B>lTfgtip',
         "bAutoWidth":false,
-        "bPaginate" : false,
-        "searching":false,
-        "bServerSide" : true,
-        "lengthMenu": [ 20, 30, 40, 50, 100 ],
+        "bPaginate" : true,
+        "searching":true,
+        "bServerSide" : false,
+        lengthChange: true,
+        "lengthMenu": [ 10, 20, 50, 100 ],
+         buttons: [
+                { extend: 'copy'},
+                {extend: 'csv'},
+                {extend: 'excel', title: '仪表告警信息',
+                exportOptions: {
+                     modifier: {
+                         page:[0,1,2,3,4,5]
+                     }
+                 }},
+                {extend: 'print',
+                 customize: function (win){
+                        $(win.document.body).addClass('white-bg');
+                        $(win.document.body).css('font-size', '10px');
+
+                        $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                }
+                }
+            ],
         "ajax" : {
             url : url,
             dataType : "json",
@@ -296,12 +319,25 @@ function createModalTable(url) {
         aoColumnDefs : [
                 {
                     targets : [0],
-                     mRender : function(a, b, c,d) {
-                        if (a == null) {
-                            return "";
-                        }
-                        var date = new Date(a* 1000);
-                        return date.toLocaleString();
+                     mRender : function(data, b, c,d) {
+                       if(data){
+                               var date = new Date(data*1000);
+                               var year = date.getFullYear();
+                               var month = date.getMonth() + 1;
+                               (month <10) ? month="0" +month: month=month;
+                               var day = date.getDate();
+                               (date.getDate() <10) ? day="0" +date.getDate(): day=date.getDate();
+                               var hour = date.getHours();
+                               (date.getHours() <10) ? hour="0" +date.getHours(): hour=date.getHours();
+                               var minute = date.getMinutes();
+                               (date.getMinutes() <10) ? minute="0" +date.getMinutes(): minute=date.getMinutes();
+                               var second;
+                               (date.getSeconds() <10) ? second="0" +date.getSeconds(): second=date.getSeconds();
+
+                               return year + '-' + month + '-' + day+ ' ' + hour+':' + minute + ':' + second;
+                          }else{
+                               return "";
+                          }
                     }
                  },
                  {

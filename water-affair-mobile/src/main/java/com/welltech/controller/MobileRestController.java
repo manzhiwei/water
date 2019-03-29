@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.welltech.waterAffair.service.BasicManageService;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -49,6 +50,9 @@ public class MobileRestController {
 	@Resource
 	private MobileService mobileService;
 
+	@Resource
+	private BasicManageService basicManageService;
+
 	/**
 	 *手机首页数据
 	 */
@@ -72,6 +76,10 @@ public class MobileRestController {
 			try {
 				NdataVo tempData=meterService.findMeterLastestHourInfo(machineInfo.getNum());
 				tempData.setSubUserName(machineInfo.getShortName());
+				/*double increaseTotalflowMonth = basicManageService.queryIncreaseMonthTotalflow(machineInfo.getNum(),machineInfo.getiTime());
+				float increaseTotalflow = basicManageService.queryIncreaseTotalflow(machineInfo.getNum(),machineInfo.getiTime());
+				tempData.setIncreaseTotalflow(increaseTotalflow);
+				tempData.setIncreaseTotalflowMonth(increaseTotalflowMonth);*/
 				meterDataList.add(tempData);
 			}catch (Exception e){
 				e.printStackTrace();

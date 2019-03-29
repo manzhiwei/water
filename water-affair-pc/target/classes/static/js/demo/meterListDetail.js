@@ -222,7 +222,7 @@ function submitMeter() {
 	var outputSignalTypeId=$("#outputSignalTypeId").val();
 	var powerTypeId=$("#powerTypeId").val();
 	if(meterTypeId!=""){
-		$("#metertype").val($("#meterTypeId").find("option:selected").text());
+		$("#metertype").val();//$("#meterTypeId").find("option:selected").text()
 	}
 	if(outputSignalTypeId!=""){
 		$("#outputSignalType").val($("#outputSignalTypeId").find("option:selected").text());

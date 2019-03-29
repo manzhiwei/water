@@ -197,7 +197,11 @@ public class MobilePageController {
 		}
 		model.addAttribute("ndata", n);
 		model.addAttribute("machine", machineInfo);
-		model.addAttribute("installDate", dateFormat.format(machineInfo.getActiveTime()));
+		if(machineInfo.getActiveTime()!=null){
+			model.addAttribute("installDate", dateFormat.format(machineInfo.getActiveTime()));
+		}else{
+			model.addAttribute("installDate","无" );
+		}
 		model.addAttribute("backUrl", "/history?id="+id+"&type="+type+"&date="+date);
 		return "mobile/m-history_details";
 	}

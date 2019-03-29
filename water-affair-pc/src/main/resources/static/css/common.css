@@ -1,7 +1,6 @@
 /*
  * by wuchong
  */
-
 /* 阻止浏览器用户选中 */
 body{ -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; }
 
@@ -42,7 +41,7 @@ body { font-family: "Microsoft YaHei UI", "Helvetica Neue", "Helvetica", Helveti
 .nav-header .user { color: #DFE4ED; }
 .navbar-static-top { background-color: #ffffff; }
 .nav > li.active { border-color: #1C84C6; }
-nav.navbar-default { height: 100%; overflow: hidden; }
+nav.navbar-default { height: 100%; /*overflow: hidden;*/ }
 nav.navbar-default .sidebar-collapse { padding-bottom: 30px; }
 
 /* 扩充按钮颜色 */
@@ -94,7 +93,7 @@ input.help-block { margin-top: 0; }
 .excel-list .form-label .validate-tip span { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
 .excel-list .help-block { margin-top: 0; }
 /*chosen*/
-select { display: block!important; position: absolute; left: 99999px; bottom: 0; opacity: 0; }
+select { display: block/*!important*/; position: absolute; left: 99999px; bottom: 0; opacity: 0; }
 .chosen-container-single .chosen-single { padding: 4px 10px; border-color: #e5e6e7; border-radius: 1px; }
 .chosen-container-active.chosen-with-drop .chosen-single { background-image: none; }
 .chosen-container-single .chosen-single div b { background-position: 0 7px; }

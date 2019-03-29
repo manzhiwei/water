@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.welltech.waterAffair.common.util.ConstantsUtil;
 import com.welltech.waterAffair.repository.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,9 @@ public class MeterService {
 
 	@Autowired
 	private GprsDataFor4200Mapper gprsDataFor4200Mapper;
+
+	@Autowired
+	private BasicManageService basicManageService;
 	
 	//查询某个用户拥有的所有水表
     public List<MachineInfo> findUserMeterList(Integer userId){
@@ -189,11 +193,14 @@ public class MeterService {
     	}
 
     	if(ndata != null){
-            ndataVo = new NdataVo(ndata.getCurrenti(),ndata.getCurrentv(),ndata.getDepdata(),ndata.getEsignal(),ndata.getFlow()
-                        ,ndata.getFlowerror(),ndata.getFtotalflow(),ndata.getiTime(),ndata.getLastconnecting(),ndata.getMe()
-                        ,ndata.getNtotalflow(),ndata.getPress(),ndata.getPresserror(),ndata.getSignalStrength(),ndata.getTemp()
-                        ,ndata.getTotalflow());
+            ndataVo = new NdataVo(ndata.getCurrenti(),ndata.getCurrentv(),ndata.getDepdata(),ndata.getEsignal(), ConstantsUtil.formateNumber(ndata.getFlow())
+                        ,ndata.getFlowerror(),ConstantsUtil.formateNumber(ndata.getFtotalflow()),ndata.getiTime(),ndata.getLastconnecting(),ndata.getMe()
+                        ,ConstantsUtil.formateNumber(ndata.getNtotalflow()),ConstantsUtil.formateNumber(ndata.getPress()),ndata.getPresserror(),ndata.getSignalStrength(),ndata.getTemp()
+                        ,ConstantsUtil.formateNumber(ndata.getTotalflow()));
             ndataVo.setSubUserName(info.getSubUserName());
+			ndataVo.setIncreaseTotalflow(basicManageService.queryIncreaseTotalflow(meterId,ndata.getiTime()));
+
+			ndataVo.setIncreaseTotalflowMonth(basicManageService.queryIncreaseMonthTotalflow(meterId,ndata.getiTime()));
             ndataVo.setNum(meterId);
         } else{
         	ndataVo = new NdataVo();

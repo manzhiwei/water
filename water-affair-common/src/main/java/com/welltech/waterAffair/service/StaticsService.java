@@ -629,11 +629,11 @@ public class StaticsService {
 		List<Ndata> ndatas = null;
 		if(MeterUtils.isGprs4300(info)){
 			if(info.getMeterTypeId() != 3)
-				ndatas = gprsDataMapper.findPageNdataByWaterHourCriteria(criteria);
+				ndatas = gprsDataMapper.queryNdataByWaterHourCriteria(criteria);
 			else
-				ndatas = gprsDataFor4200Mapper.findPageNdataByWaterHourCriteria(criteria);
+				ndatas = gprsDataFor4200Mapper.queryNdataByWaterHourCriteria(criteria);
 		}else{
-			ndatas = ndataMapper.findPageByWaterHourCriteria(criteria);
+			ndatas = ndataMapper.queryByWaterHourCriteria(criteria);
 		}
 		
 		String company = meterService.getMeterCompany(info.getNum(), userId);
@@ -852,6 +852,7 @@ public class StaticsService {
 		Object[][] result=new Object[current.size()][4];
 		//初始化小时
 		List<Object> hours = new ArrayList<>();
+		c.add(Calendar.DATE, 2);
 		for(int i=0;i<current.size();i++){
 			Object[] object = current.get(i);
 			for(int j=0;j<4;j++){
@@ -860,7 +861,7 @@ public class StaticsService {
 			result[i][0]=sdf.format(c.getTime()) + " " + object[0] + ":00:00";
 			hours.add(object[0]);
 		}
-		
+		c.add(Calendar.DATE, -2);
 		int size = 0;
 		if(current!=null&&current.size()>0){
 			size = current.size();

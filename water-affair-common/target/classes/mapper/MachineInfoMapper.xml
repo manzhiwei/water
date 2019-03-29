@@ -188,7 +188,7 @@
       is_vip_account, link_people, link_way, 
       link_address, power_Type_Id, power_type, 
       output_signal_type_id, output_signal_type, meter_num, 
-      meter_manufacturer, well_number, activeTime
+      meter_manufacturer, well_number, activeTime,
 	  displayBoardRead,displayBoardWrite,R_ip,R_ipPort,ip,ipPort
   </sql>
   
@@ -1473,4 +1473,20 @@
 		</set>
 		where num = #{num}
 	</update>
+	<select id="getMaxNum" resultType="Integer">
+
+		select Max(num) from Machine_Info2
+
+	</select>
+	<select id="findOneByName" resultType="Integer" parameterType="String">
+
+		select count(*) from Machine_Info2 where shortName = #{name} OR subUserName = #{name}
+
+	</select>
+
+	<select id="findOneByCCID" resultType="Integer" parameterType="String">
+
+		select count(*) from Machine_Info2 where CCID=#{ccid}
+
+	</select>
 </mapper>

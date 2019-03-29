@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<link href="favicon.ico" rel="icon" type="image/x-icon"/>
+
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
+
+<!--<link href="css/jquery.dataTables.css" rel="stylesheet"/>-->
+<link href="css/bootstrapValidator.css" rel="stylesheet" />
+<link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"/>
+<link href="css/plugins/chosen/chosen.css" rel="stylesheet"/>
+<!--<link href="css/bootstrapValidator.css" rel="stylesheet"/>-->
+
+<link href="css/animate.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/common.css" rel="stylesheet"/>
+
+<body class="">
+<div id="wrapper">
+    <!--菜单模块-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse"  th:replace="menu :: side" />
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+
+        <!--header模块-->
+        <div class="row border-bottom" th:replace="menu :: meterbasichead1" />
+
+        <!--内容模块-->
+        <div class="row content-main">
+            <div class="slimScroll-default">
+                <!--这里是不同页面变更的部分-->
+                <div class="wrapper wrapper-content animated " style="margin-bottom: 50px;">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    添加新增水表
+                                </header>
+                                <div class="panel-body">
+                                    <form class="cmxform form-horizontal adminex-form" id="commentForm" method="post"
+                                          action="/addNewDianCiMeterOnPost" enctype="multipart/form-data">
+
+                                        <div class="form-group ">
+                                            <label for="ccid" class="control-label col-lg-2">仪表CCID:</label>
+                                            <div class="col-lg-8">
+                                                <input class=" form-control" id="ccid" name="ccid" type="text" autocomplete="off" />
+                                                <span class="help-block m-b-none">请确认CCID是从未使用过的，唯一的</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="shortName" class="control-label col-lg-2">仪表名称:</label>
+                                            <div class="col-lg-8">
+                                                <input class=" form-control" id="shortName" name="shortName" type="text" autocomplete="off" />
+                                                <span class="help-block m-b-none">请确认名称是从未使用过的，唯一的</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="meterTypeId" class="control-label col-lg-2">电磁流量计类型:</label>
+                                            <div class="col-lg-8">
+                                                <input class=" form-control" id="meterTypeId" name="meterTypeId" type="text" />
+                                                <span class="help-block m-b-none">请确认添加的电磁流量计类型，目前有电磁流量计，气体流量计，老4200电磁流量计等</span>
+                                            </div>
+                                        </div>
+                                        <!--<div class="form-group ">
+                                            <label for="meterType" class="control-label col-lg-2">电磁流量计类型名称:</label>
+                                            <div class="col-lg-8">
+                                                <input class=" form-control" id="meterType" name="meterType" type="text" />
+                                                <span class="help-block m-b-none">请确认添加的电磁流量计类型，目前有电磁流量计，气体流量计，老4200电磁流量计等</span>
+                                            </div>
+                                        </div>-->
+                                        <div class="form-group ">
+                                            <label class="control-label col-lg-2">电磁流量计类型名称:</label>
+                                            <div class="col-lg-8">
+                                                <select name="meterType" class="form-control chosen-select-normal"  >
+                                                    <option value="">请选择</option>
+                                                    <option value="电磁流量计">电磁流量计</option>
+                                                    <option value="4200电磁流量计">4200电磁流量计</option>
+                                                    <option value="气体流量计">气体流量计</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="sampleTime" class="control-label col-lg-2">采样间隔:</label>
+                                            <div class="col-lg-8">
+                                                <input class=" form-control" id="sampleTime" name="sampleTime" type="text" />
+                                                <span class="help-block m-b-none">采样间隔，默认是5分钟。一般电磁流量计的采样间隔设置为15分钟</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="instrNo" class="control-label col-lg-2">仪表编号:</label>
+                                            <div class="col-lg-8">
+                                                <input class=" form-control" id="instrNo" name="instrNo" type="text" autocomplete="off"/>
+                                                <span class="help-block m-b-none">电磁流量计识别信息</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="longitude" class="control-label col-lg-2">仪表经度:</label>
+                                            <div class="col-lg-8">
+                                                <input class=" form-control" id="longitude" name="longitude" type="text" />
+                                                <span class="help-block m-b-none">如果你不需要，可不必填写</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="latitude" class="control-label col-lg-2">仪表纬度:</label>
+                                            <div class="col-lg-8">
+                                                <input class=" form-control" id="latitude" name="latitude" type="text" />
+                                                <span class="help-block m-b-none">如果你不需要，可不必填写</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="activeTime" class="control-label col-lg-2">安装时间:</label>
+                                            <div class="col-lg-8">
+                                                <input name="activeTime" id="activeTime" placeholder="尚未输入"
+                                                       class="form-control layer-date input-todayM laydate-icon"
+                                                       autocomplete="off" />
+                                                <span class="help-block m-b-none">安装时间</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-offset-2 col-lg-8">
+                                                <button class="btn btn-primary" type="submit">保存</button>
+                                                <button class="btn btn-default" type="button">取消</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--footer模块-->
+        <div class="footer" th:replace="menu :: bottom" />
+    </div>
+
+</div>
+
+<!-- 全局 js -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="js/bootstrapValidator.js"></script>
+<script src="js/language/zh_CN.js"></script>
+
+<!-- 插件 js -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+<script src="js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+<script src="js/plugins/layer/laydate/laydate.js"></script>
+
+<!-- Jquery Validate -->
+<script src="js/plugins/validate/jquery.validate.min.js"></script>
+<script src="js/plugins/validate/messages_zh.min.js"></script>
+<script src="js/validate-setDefault.js"></script>
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+
+<!-- 自定义 js -->
+<script src="js/common.js"></script>
+<script src="js/tools/addNewDianCiMeter.js"></script>
+<script src="js/plugins/toastr/toastr.min.js"></script>
+<script>
+        $(document).ready(function(){
+            $("#commentForm").validate();
+        });
+
+</script>
+<script th:inline="javascript">
+    var message = [[${message}]];
+    var content = [[${content}]];
+    if(message === 'success'){
+        toastr.success(content,'')
+    }
+    if(message === 'fail'){
+        toastr.error(content,'')
+    }
+</script>
+</body>
+
+</html>

@@ -63,35 +63,36 @@ $(document).ready(function () {
     };
     var dataTableConfig = {
         '.dataTables-default': {
+            dom: '<"html5buttons"B>lTfgt<"pages"p>i',
             language:dataTableLanguage,
             buttons: ['excel'],
             lengthChange: false, // 是否允许用户定义每页的显示条目
             searching: false,
-            ordering: false
+            ordering: true
         },
         '.dataTables-meter': {
             dom: '<"excelButtons"B>lTfgt<"pages"p>i',
             language:dataTableLanguage,
             buttons: ['excel'],
-            lengthChange: false, // 是否允许用户定义每页的显示条目
-            searching: false,
-            ordering: false
+            lengthChange: true, // 是否允许用户定义每页的显示条目
+            searching: true,
+            ordering: true
         },
         '.dataTables-excel': {
             dom: '<"excelButtons"B>lTfgt<"pages"p>i',
             language:dataTableLanguage,
             buttons: ['excel'],
-            lengthChange: false, // 是否允许用户定义每页的显示条目
-            searching: false,
-            ordering: false
+            lengthChange: true, // 是否允许用户定义每页的显示条目
+            searching: true,
+            ordering: true
         },
         '.dataTables-scrollX': {
             dom: '<"excelButtons"B>lTfgt<"pages"p>i',
             language:dataTableLanguage,
             buttons: ['excel'],
-            lengthChange: false, // 是否允许用户定义每页的显示条目
-            searching: false,
-            ordering: false,
+            lengthChange: true, // 是否允许用户定义每页的显示条目
+            searching: true,
+            ordering: true,
             scrollX: true
         }
     };

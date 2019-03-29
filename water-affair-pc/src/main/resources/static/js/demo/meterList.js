@@ -102,7 +102,12 @@ function submitMeter() {
 	}
 //	$("#commentForm").submit();
 }
-
+function format ( d ) {
+    /*return 'Full name: '+d.first_name+' '+d.last_name+'<br>'+
+        'Salary: '+d.salary+'<br>'+
+        'The child row can contain any data you wish, including links, images, inner tables etc.';*/
+        return '内部编号: ' +d.num ;
+}
 /**
  * 请求仪表数据
  * 
@@ -110,18 +115,22 @@ function submitMeter() {
  * @param url
  */
 function findMktList(parameter) {
-	var columns=[ {
-		"mData" : "num"
-	},{
+	var columns=[
+	{
+        "class":          "details-control",
+        "orderable":      false,
+        "data":           null,
+        "defaultContent": ""
+    },{
+        "mData" : "shortName"
+    }, {
       	"mData" : "instrNo"
     },{
-		"mData" : "company"
-	}, {
+        "mData" : "ccid"
+    },{
 		"mData" : "metertype"
 	}, {
 		"mData" : "meterSizeStr"
-	}, {
-		"mData" : "shortName"
 	}, {
 		"mData" : "address"
 	}, {
@@ -131,15 +140,22 @@ function findMktList(parameter) {
 	} ];
 	if(isAdmin){
 		columns=[ {
-			"mData" : "num"
-		}, {
+          "class":          "details-control",
+          "orderable":      false,
+          "data":           null,
+          "defaultContent": ""
+        },{
+            "mData" : "subUserName"
+        },{
            	"mData" : "instrNo"
-        }, {
-			"mData" : "metertype"
+        },{
+            "mData" : "ccid"
+        },{
+            "mData" : "company"
+        },{
+            "mData" : "metertype"
 		}, {
 			"mData" : "meterSizeStr"
-		}, {
-			"mData" : "subUserName"
 		}, {
 			"mData" : "address"
 		}, {
@@ -148,18 +164,58 @@ function findMktList(parameter) {
 			"mData" : null
 		} ];
 	}
-	$('#meterListTable')
-			.DataTable(
-					{
+	var dt = $('#meterListTable').DataTable(
+	                {
+					    dom: '<"html5buttons"B>lTfgtip',
+//					    dom: 'Blfrtip',
 						"autoWidth" : false,
-						"searching":false,
+						"searching":true,
 						"ajax" : {
-							url : "/queryMeterInfo",
-							type : "post",
-							dataType : "json",
-							data : parameter,
-							dataSrc : "entity"
-						},
+                            url : "/queryMeterInfo",
+                            type : "post",
+                            dataType : "json",
+                            data : parameter,
+                            dataSrc : "entity"
+                        },
+                      "order": [[2, 'asc']],
+                        "language": {
+                            "search": "过滤：",
+                            "lengthMenu": "每页 _MENU_ 条记录",
+                            "loadingRecords": "请等待，数据正在加载中......",
+                            "zeroRecords": "没有找到记录",
+                            "info": "从 _START_ 到  _END_ 条记录 总记录数为 _TOTAL_ 条，第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
+                            "infoEmpty": "没有数据",
+                            "infoFiltered": "(从 _MAX_ 条数据中检索)",
+                       },
+						buttons: [
+                                     {
+                                         extend: 'excel',
+                                         title:'仪表实时数据信息',
+                                         exportOptions: {
+                                             modifier: {
+                                                 page:[0,1,2,3,4,5,6,7,8]
+                                             }
+                                         }
+                                     },
+                                     {
+                                          extend: 'print',
+                                          title:'仪表实时数据信息',
+                                          exportOptions: {
+                                              modifier: {
+                                                  page:[0,1,2,3,4,5,6,7,8]
+                                              }
+                                          }
+                                      },
+                                      {
+                                           extend: 'copy',
+                                           title:'仪表实时数据信息',
+                                           exportOptions: {
+                                               modifier: {
+                                                   page:[0,1,2,3,4,5,6,7,8]
+                                               }
+                                           }
+                                       }
+                                 ],
 						aoColumns : columns,
 						aoColumnDefs : [
 								{
@@ -168,7 +224,7 @@ function findMktList(parameter) {
 										return a;
 									}
 								},{
-									targets : [ isAdmin?6:7 ],
+									targets : [ isAdmin?8:7 ],
 									mRender : function(a, b, c, d) {
 										if (a.isVipAccount == 1) {
 											return "是";
@@ -178,7 +234,7 @@ function findMktList(parameter) {
 									}
 								},
 								{
-									targets : [ isAdmin?7:8 ],
+									targets : [ isAdmin?9:8 ],
 									mRender : function(a, b, c, d) {
 										var html = '<a href="#" onclick="onPost(\'/meterListDetail\',{num:\''
 												+ a.num
@@ -192,6 +248,39 @@ function findMktList(parameter) {
 									"targets" : "_all"
 								} ]
 					});
+
+					// Array to track the ids of the details displayed rows
+                                var detailRows = [];
+
+                                $('#meterListTable tbody').on( 'click', 'tr td.details-control', function () {
+                                    var tr = $(this).closest('tr');
+                                    var row = dt.row( tr );
+                                    var idx = $.inArray( tr.attr('id'), detailRows );
+
+                                    if ( row.child.isShown() ) {
+                                        tr.removeClass( 'details' );
+                                        row.child.hide();
+
+                                        // Remove from the 'open' array
+                                        detailRows.splice( idx, 1 );
+                                    }
+                                    else {
+                                        tr.addClass( 'details' );
+                                        row.child( format( row.data() ) ).show(); // here the function is used
+
+                                        // Add to the 'open' array
+                                        if ( idx === -1 ) {
+                                            detailRows.push( tr.attr('id') );
+                                        }
+                                    }
+                                } );
+
+                                // On each draw, loop over the `detailRows` array and show any child rows
+                                dt.on( 'draw', function () {
+                                    $.each( detailRows, function ( i, id ) {
+                                        $('#'+id+' td.details-control').trigger( 'click' );
+                                    } );
+                                } );
 }
 
 function onPost(url, data) {

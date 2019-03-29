@@ -6,6 +6,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.welltech.waterAffair.common.base.WelltechSessionContext;
+import com.welltech.waterAffair.common.util.SpringWebUtils;
+import com.welltech.waterAffair.service.AlarmService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +35,9 @@ public class RootController {
 	@Resource
 	private BasicManageService basicManageService;
 
+	@Autowired
+	private AlarmService alarmService;
+
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public String login() {
 		return "login";
@@ -40,9 +46,9 @@ public class RootController {
 	//登录成功后首页
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String dashboard(HttpServletRequest request, HttpServletResponse response,Model model) {
-		model.addAttribute("dashboard","active");
-		model.addAttribute("type","raw");
-		
+//		model.addAttribute("dashboard","active");
+//		model.addAttribute("type","raw");
+
 		Integer userId = UserUtils.getUserId();
 		User user = companyService.getUser(userId);
 		request.getSession().setAttribute("userName", user.getUserName());
@@ -57,7 +63,15 @@ public class RootController {
 	        model.addAttribute("meterSizes", ConstantsUtil.sbkjDic);
 			return "basic/meterBasicList";
 		}else{
-			return "dashboard/index";
+
+//			model.addAttribute("basic","active");
+//			model.addAttribute("todayMeterInfoList","active");
+			// model.addAttribute("meterDevicesMonitoring", result);
+			SpringWebUtils.getSession().setAttribute("totalAmount", alarmService.getTotalAlarmRecord(userId));
+			return "basic/todayMeterInfoList";
+
+//			return "basic/todayMeterInfoList";
+//			return "dashboard/index";
 		}
 	}
 

@@ -1,9 +1,12 @@
 package com.welltech.waterAffair.service;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.welltech.waterAffair.common.util.MeterUtils;
+import com.welltech.waterAffair.repository.MachineInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +36,9 @@ public class AlarmService {
 	
 	@Autowired
 	private MeterService meterService;
+
+	@Autowired
+    private MachineInfoMapper machineInfoMapper;
 	
 	/**
 	 * 根据水表号 水表类型 报警类型得到水表报警配置
@@ -319,9 +325,30 @@ public class AlarmService {
 		if(records == null){
 			records = new ArrayList<>();
 		}
-		
+
 		page = criteria.getPage();
 		return new PageVo<>(page.getCurrentPage(), page.getTotalRecord(), records.size(), records);
+	}
+    public PageVo<AlarmProcessRecord> queryProcessRecordByMessage(Date startTime, Date endTime, List<Integer> nums, String alarmType, List<String> alarmContent, boolean isAdmin) {
+        AlarmProcessRecordCriteria criteria = new AlarmProcessRecordCriteria();
+        criteria.setStartTime(startTime);
+        criteria.setEndTime(endTime);
+        criteria.setNums(nums);
+        criteria.setAlarmType(alarmType);
+
+        if(!isAdmin && alarmContent == null){
+            alarmContent = getAlarmContent();
+        }
+        criteria.setAlarmContents(alarmContent);
+
+        List<AlarmProcessRecord> records = alarmProcessRecordMapper.queryByCriteria(criteria);
+
+        if(records == null){
+            records = new ArrayList<>();
+        }
+
+        Page page = criteria.getPage();
+        return new PageVo<>(page.getCurrentPage(), page.getTotalRecord(), records.size(), records);
 	}
 
 	/**
@@ -355,7 +382,10 @@ public class AlarmService {
 		criteria.setStatus("2");
         List<String> alarmContents = getAlarmContent();
 		criteria.setAlarmContents(alarmContents);
-		List<AlarmProcessRecord> result = alarmProcessRecordMapper.listByCriteria(criteria);
+        List<AlarmProcessRecord> result = null;
+        if(!MeterUtils.isGprs4300(machineInfoMapper.findOneByNum(num))){
+           result = alarmProcessRecordMapper.listByCriteria(criteria);
+        }
 		if(result == null){
 			result = new ArrayList<>();
 		}
@@ -440,13 +470,34 @@ public class AlarmService {
 
 	/**
 	 * 保存报警删除
-	 * @param alarmMessage
+	 * @param
 	 */
 	public void deleteRecord(Long id) {
 		if(id != null){
 			alarmProcessRecordMapper.deleteByPrimaryKey(id);
 		}
 	}
+
+    public Integer getTotalAlarmRecord(Integer userId) {
+        List<MachineInfo> infos = meterService.findUserMeterList(userId);
+        Integer totalRecordAlarm = 0;
+        List<Integer> nums = new ArrayList<>();
+        if(infos != null && infos.size() > 0) {
+            for (MachineInfo info : infos) {
+                nums.add(info.getNum());
+            }
+            AlarmProcessRecordCriteria criteria = new AlarmProcessRecordCriteria();
+            criteria.setNums(nums);
+            criteria.setAlarmType("表端报警");
+            criteria.setStatus("2");
+            List<String> alarmContents = getAlarmContent();
+            criteria.setAlarmContents(alarmContents);
+            totalRecordAlarm = alarmProcessRecordMapper.queryTotalRecord(criteria);
+        }
+        return totalRecordAlarm;
+    }
+
+
 	/*public  Integer queryTotalRecordAlarm(){
 
     }*/

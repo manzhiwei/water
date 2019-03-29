@@ -64,7 +64,7 @@
                                             </div>
                                             <div class="col-sm-2">
                                                 <input name="date" id="startTime"
-                                                       class="form-control layer-date input-todayM laydate-icon"
+                                                       class="form-control layer-date input-todayM laydate-icon" autocomplete="off"
                                                        th:placeholder="${date}" th:value="${date}"/>
                                             </div>
                                             <div class="col-sm-1">
@@ -91,7 +91,7 @@
                                                 <th rowspan="2" class="mytablehead" style="width:60px;white-space: nowrap;">序号</th>
                                                 <th rowspan="2" class="mytablehead" style="width:60px; white-space: nowrap;">时间</th>
 
-                                                <th th:each="prod,iterStat:${title}" colspan="3" th:text="${prod.shortName}" style="width:60px; white-space: nowrap;"></th>
+                                                <th th:each="prod,iterStat:${title}" colspan="5" th:text="${prod.shortName}" style="width:60px; white-space: nowrap;"></th>
 
                                             </tr>
 
@@ -99,7 +99,9 @@
                                                 <l th:each="prod,iterStat:${title}">
                                                     <th style="width:60px; white-space: nowrap;" >压力（kPa）</th>
                                                     <th style="width:60px; white-space: nowrap;">瞬时流量（m³/h）</th>
-                                                    <th style="width:60px;white-space: nowrap;">累计流量（m³）</th>
+                                                    <th style="width:60px;white-space: nowrap;">正向累计流量（m³）</th>
+                                                    <th style="width:60px;white-space: nowrap;">净累计流量（m³）</th>
+                                                    <th style="width:60px;white-space: nowrap;">反向累计流量（m³）</th>
                                                 </l>
                                             </tr>
                                             </thead>

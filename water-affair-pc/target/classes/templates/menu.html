@@ -45,6 +45,28 @@
 
 </head>
 
+<head th:fragment="head1">
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>威尔泰智慧水务</title>
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
+
+    <link href="css/jquery.dataTables.css" rel="stylesheet"/>
+    <link href="css/plugins/chosen/chosen.css" rel="stylesheet"/>
+    <link href="css/plugins/iCheck/blue.css" rel="stylesheet"/>
+
+
+    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/common.css" rel="stylesheet"/>
+
+</head>
+
 <body class="index">
 <div id="wrapper">
     <!--菜单模块-->
@@ -69,12 +91,12 @@
                     <a href="/index"><i class="fa fa-home"></i> <span class="nav-label">仪表板</span></a>
                 </li>
 
-                <li th:classappend="${basic}">
+                <li th:classappend="${basic}" >
                     <a href="javascript:"><i class="fa fa-tint"></i>
                         <span class="nav-label">基础供水管理</span>
                         <span class="fa arrow"></span>
                     </a>
-                    <ul class="nav nav-second-level collapse">
+                    <ul class="nav nav-second-level collapse ">
                         <li th:classappend="${meterBasicList}"><a href="/meterBasicList">仪表基础信息</a></li>
                         <li th:classappend="${todayMeterInfoList}"  th:if="${session.userName ne 'admin'}" ><a href="/todayMeterInfoList">仪表实时信息</a></li>
                         <li th:classappend="${machineInfoList}"  th:if="${session.userName eq 'admin'}"><a href="/machineInfoList">系统信息</a></li>
@@ -137,9 +159,6 @@
                         <li ><a data-toggle="modal" data-target=".modify-password-modal">修改密码</a></li>
 
                     </ul>
-
-
-
                 </li>
                 <li th:classappend="${tools}" th:if="${session.userName eq 'admin'}">
                     <a href="javascript:" th:classappend="${tools}"><i class="fa fa-gears"></i> <span class="nav-label">管理员工具</span>
@@ -147,86 +166,32 @@
                     </a>
                     <ul class="nav nav-second-level collapse">
                         <li th:classappend="${changeIPAndPort}" th:if="${session.userName eq 'admin'}"><a href="/changeIPAndPort">修改IP和端口</a></li>
+                        <li th:classappend="${addNewCompany}" th:if="${session.userName eq 'admin'}"><a href="/addNewMeterCompany">新建水表公司</a></li>
+                        <li th:classappend="${addNewMeter}" th:if="${session.userName eq 'admin'}"><a href="/addNewMeter">添加水表</a></li>
+                        <li th:classappend="${addNewMeter}" th:if="${session.userName eq 'admin'}"><a href="/addNewDianCiMeter">添加电磁流量计</a></li>
                     </ul>
-
-
 
                 </li>
             </ul>
         </div>
     </nav>
 
+
     <div id="page-wrapper" class="gray-bg">
 
         <!--header模块-->
         <div class="row border-bottom" th:fragment="top">
-            <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+            <nav class="navbar navbar-static-top" role="navigation"
+                 style="margin-bottom: 0">
                 <div class="navbar-header">
-
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+                       href="#"><i class="fa fa-bars"></i> </a>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
-
-                    <li>
-                        <a href="/logout">
-                            <i class="fa fa-sign-out"></i> 退出
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        
-        <!--header模块-->
-        <div class="row border-bottom" th:fragment="meterbasichead">
-            <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
-					<div class="navbar-form-custom search-area">
-
-                        <div class="input-group-btn button">
-                            <button class="btn btn-sm btn-success" onclick="javascript:show();">
-                                查询
-                            </button>
-                        </div>
-
-                        <input type="text" placeholder="请输入仪表名称" id="search-content1"
-                               class="form-control input-lg button"/>
-
-                    </div>
-                </div>
-                <ul class="nav navbar-top-links navbar-right">
-
-                    <li>
-                        <a href="/logout">
-                            <i class="fa fa-sign-out"></i> 退出
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-
-        <!--header模块-->
-        <div class="row border-bottom" th:fragment="top4dashboard">
-            <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
-                    <div class="navbar-form-custom search-area">
-
-                        <div class="input-group-btn button">
-                            <button class="btn btn-sm btn-success" onclick="javascript:show();">
-                                查询
-                            </button>
-                        </div>
-
-                        <input type="text" placeholder="请输入仪表名称" id="search-content"
-                               class="form-control input-lg button"/>
-
-                    </div>
-                </div>
-                <ul class="nav navbar-top-links navbar-right">
-                    <!--message-->
-                    <a class="glyphicon glyphicon-camera" href="CMSClient://">摄像头</a>
                     <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <i class="fa fa-bell"></i><span id="unread_alarm_number" class="label label-primary">0</span>
+                        <a class="dropdown-toggle count-info" th:if="${session.userName ne 'admin'}" data-toggle="dropdown" href="#">
+                            <i class="fa fa-bell"></i>
+                            <span id="unread_alarm_number" class="label label-primary" th:text="${session.totalAmount}" ></span>
                         </a>
                         <ul id="alarms" class="dropdown-menu dropdown-alerts">
                             <li>
@@ -246,6 +211,187 @@
                     </li>
                 </ul>
             </nav>
+            <!--<nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">-->
+                <!--<div class="navbar-header">-->
+
+                <!--</div>-->
+                <!--<ul class="nav navbar-top-links navbar-right">-->
+
+                    <!--<li>-->
+                        <!--<a href="/logout">-->
+                            <!--<i class="fa fa-sign-out"></i> 退出-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</nav>-->
+        </div>
+        
+        <!--header模块-->
+        <div class="row border-bottom" th:fragment="meterbasichead">
+            <nav class="navbar navbar-static-top" role="navigation"
+                 style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+                       href="#"><i class="fa fa-bars"></i> </a>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-bell"></i>
+                            <span id="unread_alarm_number" class="label label-primary" th:text="${session.totalAmount}" ></span>
+                        </a>
+                        <ul id="alarms" class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="/alarmList">
+                                        <strong>显示全部告警</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/logout">
+                            <i class="fa fa-sign-out"></i> 退出
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!--<nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">-->
+                <!--<div class="navbar-header">-->
+					<!--<div class="navbar-form-custom search-area">-->
+
+                        <!--<div class="input-group-btn button">-->
+                            <!--<button class="btn btn-sm btn-success" onclick="javascript:show();">-->
+                                <!--查询-->
+                            <!--</button>-->
+                        <!--</div>-->
+
+                        <!--<input type="text" placeholder="请输入仪表名称" id="search-content1"-->
+                               <!--class="form-control input-lg button"/>-->
+
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<ul class="nav navbar-top-links navbar-right">-->
+
+                    <!--<li>-->
+                        <!--<a href="/logout">-->
+                            <!--<i class="fa fa-sign-out"></i> 退出-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</nav>-->
+        </div>
+
+        <!--header模块-->
+        <div class="row border-bottom" th:fragment="meterbasichead1">
+            <nav class="navbar navbar-static-top" role="navigation"
+                 style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+                       href="#"><i class="fa fa-bars"></i> </a>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <a class="glyphicon glyphicon-camera" href="CMSClient://">摄像头</a>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-bell"></i>
+                            <span id="unread_alarm_number" class="label label-primary" th:text="${session.totalAmount}">0</span>
+                        </a>
+                        <ul id="alarms" class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="/alarmList">
+                                        <strong>显示全部告警</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/logout">
+                            <i class="fa fa-sign-out"></i> 退出
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <!--header模块-->
+        <div class="row border-bottom" th:fragment="top4dashboard">
+            <nav class="navbar navbar-static-top" role="navigation"
+                 style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+                       href="#"><i class="fa fa-bars"></i> </a>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-bell"></i>
+                            <span id="unread_alarm_number" class="label label-primary" th:text="${session.totalAmount}">0</span>
+                        </a>
+                        <ul id="alarms" class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="/alarmList">
+                                        <strong>显示全部告警</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/logout">
+                            <i class="fa fa-sign-out"></i> 退出
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!--<nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">-->
+                <!--<div class="navbar-header">-->
+                    <!--<div class="navbar-form-custom search-area">-->
+
+                        <!--<div class="input-group-btn button">-->
+                            <!--<button class="btn btn-sm btn-success" onclick="javascript:show();">-->
+                                <!--查询-->
+                            <!--</button>-->
+                        <!--</div>-->
+
+                        <!--<input type="text" placeholder="请输入仪表名称" id="search-content"-->
+                               <!--class="form-control input-lg button"/>-->
+
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<ul class="nav navbar-top-links navbar-right">-->
+                    <!--&lt;!&ndash;message&ndash;&gt;-->
+                    <!--<a class="glyphicon glyphicon-camera" href="CMSClient://">摄像头</a>-->
+                    <!--<li class="dropdown">-->
+                        <!--<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">-->
+                            <!--<i class="fa fa-bell"></i><span id="unread_alarm_number" class="label label-primary">0</span>-->
+                        <!--</a>-->
+                        <!--<ul id="alarms" class="dropdown-menu dropdown-alerts">-->
+                            <!--<li>-->
+                                <!--<div class="text-center link-block">-->
+                                    <!--<a href="/alarmList">-->
+                                        <!--<strong>显示全部告警</strong>-->
+                                        <!--<i class="fa fa-angle-right"></i>-->
+                                    <!--</a>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="/logout">-->
+                            <!--<i class="fa fa-sign-out"></i> 退出-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</nav>-->
         </div>
 
 
@@ -344,7 +490,7 @@
         <!--footer模块-->
         <div class="footer" th:fragment="bottom">
             <div>
-                <strong>版权所有</strong> 2018-2019 © 威尔泰WELLTECH
+                <strong>版权所有</strong> 2005-2022 © 威尔泰WELLTECH
             </div>
 
             <!--新增仪表档案弹出层-->

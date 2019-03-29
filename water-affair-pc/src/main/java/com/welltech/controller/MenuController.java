@@ -240,6 +240,41 @@ public class MenuController {
         return "statics/dataStatisticsByHour";
     }
 
+    //从仪表实时信息跳转到时用水信息
+    @RequestMapping(value = "/dataStatisticsHourByIdAndName")
+    public String dataStatisticsByHour2(HttpServletRequest request, Model model){
+        model.addAttribute("statics","active");
+        model.addAttribute("dataStatisticsByHour","active");
+
+        //1.判断当前用户的登录信息
+        Integer userId = UserUtils.getUserId();
+        //2.若用户登录，则进行查找，否则，返回登录首页
+        //3.根据name 进行查找，此处暂时不进行直接查找
+        //3.是根据name 查找，还是根据ID 查找  根据id 查找 有索引，快 根据name 无 索引 慢
+        // Integer id   = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+
+        //默认选3条
+        List<String> stationList = meterService.getStationList(userId);
+        List<MeterList4DmaMicroFlowVo> stations = new ArrayList<MeterList4DmaMicroFlowVo>();
+        if(stationList != null && stationList.size()>0){
+            for(int i =0 ; i < stationList.size(); i++){
+                MeterList4DmaMicroFlowVo flowVo = new MeterList4DmaMicroFlowVo();
+                flowVo.setName(stationList.get(i));
+                if(!name.equals("")&&!stationList.get(i).equals("")&&name.equals(stationList.get(i))){
+                    flowVo.setSelect("selected");
+                }
+                /*if(i <= 2){
+                    flowVo.setSelect("selected");
+                }*/
+                stations.add(flowVo);
+            }
+        }
+        model.addAttribute("stations", stations);
+
+        return "statics/dataStatisticsByHour";
+    }
+
     //统计－趋势图
     @RequestMapping(value = { "/trendChart" }, method = RequestMethod.GET)
     public String trendChart(HttpServletRequest request,Model model) throws ParseException {
@@ -669,7 +704,7 @@ public class MenuController {
                 selectedMeterList.put(station,station);
             }
         }catch (Exception e){
-
+                e.printStackTrace();//TODO 异常处理计划 在登录状态下，点击日报表
         }
         for(MachineInfo meter:machines){
             MeterList4DmaMicroFlowVo meterList4DmaMicroFlowVo = new MeterList4DmaMicroFlowVo();
@@ -751,7 +786,11 @@ public class MenuController {
         model.addAttribute("seasonReport","active");
         Integer userId=UserUtils.getUserId();
         String[] stationList= request.getParameterValues("staions");  //查询水表列表
-
+        String date = request.getParameter("date");  //查询日期
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy");
+        if (date == null || date.length() == 0) {
+            date = sdf1.format(new Date());
+        }
         //人所对应的所有水表
         List<MachineInfo> machines = meterService.findUserMeterList(userId);
         
@@ -781,11 +820,12 @@ public class MenuController {
 
         if(condition==null||condition.size()==0){//初始化时condition最多选择0条显示
         }else{
-        	String[][] result =reportService.reportSeason(userId,condition);
+        	String[][] result =reportService.reportSeason(userId,condition,date);
             model.addAttribute("result", result);
         }
         model.addAttribute("title", condition);
         model.addAttribute("stationList",allMeterList);
+        model.addAttribute("date",date);
         return "report/seasonReport";
     }
 
@@ -834,7 +874,7 @@ public class MenuController {
             model.addAttribute("result", result);
         }
         model.addAttribute("title", condition);
-
+        model.addAttribute("date",date);
         model.addAttribute("stationList",allMeterList);
         return "report/yearReport";
     }

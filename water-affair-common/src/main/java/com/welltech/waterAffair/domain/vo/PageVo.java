@@ -21,8 +21,10 @@ public class PageVo<T> {
 	/** 具体记录 */
 	private List<T> entity;
 
+
+
 	public PageVo(int currentPage, int countSize, int currentSize,
-			List<T> entity) {
+				  List<T> entity) {
 		this.currentPage = currentPage;
 		this.countSize = countSize;
 		this.currentSize = currentSize;
