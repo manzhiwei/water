@@ -295,4 +295,21 @@
 		FROM wt4300GprsData WHERE flowId = ${num} ORDER BY TIME DESC LIMIT 1
 		) t
 	</select>
+	<select id="findHourTotalFlowDiff" resultType="float">
+		SELECT end.totalflow - start.totalflow FROM
+		(SELECT ftotal-rtotal totalflow FROM wt4300gprsdata WHERE flowId = ${num} AND TIME &gt; ${startDate} AND TIME  &lt; ${endDate} ORDER BY TIME ASC LIMIT 1) START,
+		(SELECT ftotal-rtotal totalflow FROM wt4300gprsdata WHERE flowId = ${num} AND TIME &gt; ${startDate} AND TIME  &lt;  ${endDate} ORDER BY TIME DESC LIMIT 1) END;
+	</select>
+
+	<select id="queryTotalNumber" resultType="int">
+		select count(*) from wt4300gprsdata
+		<where>
+			<if test="criteria.startDate != null">
+				and time  &gt; #{criteria.startDate}
+			</if>
+			<if test="criteria.endDate != null">
+				and time &lt; #{criteria.endDate}
+			</if>
+		</where>
+	</select>
 </mapper>

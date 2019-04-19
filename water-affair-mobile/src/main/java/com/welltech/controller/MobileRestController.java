@@ -92,7 +92,44 @@ public class MobileRestController {
 
 	//为手机history页面曲线提供数据
 	@RequestMapping("/queryMeterFlowByMinute2")
-	public List<List<Double>> queryMeterHistoryMinuteFlow(Integer num, String timer,String type) throws ParseException {
+	public List<List<Double>> queryMeterHistoryMinute2(Integer num, String timer,String type) throws ParseException {
+		List<List<Double>> result = new ArrayList<List<Double>>();
+		String date = timer;
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		Date now=dateFormat.parse(timer+" 00:00:00");
+		for(NdataSs data:mobileService.findMeterMinuteDataByDate(num,dateFormat.parse(timer+" 00:00:00"),dateFormat.parse(timer+" 24:00:00"))){
+			List<Double> oneMeterData= new ArrayList<Double>();
+			oneMeterData.add((double)data.getTime().getTime());
+			String tmp=null;
+			try {
+				NdatassVo vo =new NdatassVo();
+				vo.setFlow(data.getFlow()+"");
+				vo.setFtotalflow(data.getFtotalflow()+"");
+				vo.setI_time(data.getiTime());
+				vo.setNtotalflow(data.getTotalflown()+"");
+				vo.setPress(data.getPress()+"");
+				vo.setTime(data.getTime().getTime());
+				vo.setTotalflow(data.getTotalflow()+"");
+				if("signal_strength".equals(type)){//信号强度去掉，因为没有
+					break;
+				}
+				tmp=BeanUtils.getProperty(vo, type);
+			} catch (Exception e) {
+				e.printStackTrace();
+				tmp="0";
+			}
+
+			oneMeterData.add(Double.valueOf(this.formatNumber(tmp)));
+			result.add(oneMeterData);
+		}
+
+
+		return result;
+	}
+	//为手机history页面曲线提供数据
+	@RequestMapping("/queryMeterFlowByMinute4")
+	public List<List<Double>> queryMeterHistoryMinute4(Integer num, String timer,String type) throws ParseException {
 		List<List<Double>> result = new ArrayList<List<Double>>();
 		String date = timer;
 

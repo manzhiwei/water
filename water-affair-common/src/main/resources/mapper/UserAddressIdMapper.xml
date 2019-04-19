@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.welltech.waterAffair.repository.UserAddressIdMapper">
+    <resultMap id="BaseResultMap" type="com.welltech.waterAffair.domain.entity.UserAddressId">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="addressName" jdbcType="VARCHAR" property="addressName" />
+    </resultMap>
+    <insert id="save" parameterType="com.welltech.waterAffair.domain.entity.UserAddressId">
+        insert into userAddressId (id, addressName)
+        values (#{id}, #{addressName})
+    </insert>
+    <select id="findOneById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        *
+        from
+        userAddressId
+        where
+        id = #{id}
+        limit 1
+    </select>
+
+    <select id="findAll" resultMap="BaseResultMap" >
+        select * from userAddressId
+
+    </select>
+</mapper>

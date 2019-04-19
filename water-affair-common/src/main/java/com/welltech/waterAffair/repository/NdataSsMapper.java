@@ -1,5 +1,6 @@
 package com.welltech.waterAffair.repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -77,4 +78,15 @@ public interface NdataSsMapper {
 	 * @return
 	 */
 	float findDayTotalFlowDiff(@Param("num") int num);
+
+	/**
+	* @Author  Man Zhiwei
+	* @Comment 查询当前时间历史数据条数
+	* @Param
+	* @Date        2019-04-01 15:13
+	*/
+	int queryTotalNumber(@Param("criteria") NdataCriteria criteria);
+
+	//添加
+	float findHourTotalFlowDiff(@Param("num") int num,@Param("start") Date start,@Param("end") Date end);
 }

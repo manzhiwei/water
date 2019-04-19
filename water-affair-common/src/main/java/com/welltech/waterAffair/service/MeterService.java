@@ -200,7 +200,7 @@ public class MeterService {
             ndataVo.setSubUserName(info.getSubUserName());
 			ndataVo.setIncreaseTotalflow(basicManageService.queryIncreaseTotalflow(meterId,ndata.getiTime()));
 
-			ndataVo.setIncreaseTotalflowMonth(basicManageService.queryIncreaseMonthTotalflow(meterId,ndata.getiTime()));
+			ndataVo.setIncreaseTotalflowMonth(basicManageService.queryIncreaseMonthTotalflow1(meterId,ndata.getiTime()));
             ndataVo.setNum(meterId);
         } else{
         	ndataVo = new NdataVo();

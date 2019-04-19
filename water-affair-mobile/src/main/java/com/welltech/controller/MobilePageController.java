@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.welltech.waterAffair.common.base.Properties;
+import com.welltech.waterAffair.common.util.ConstantsUtil;
 import com.welltech.waterAffair.common.util.UserUtils;
 import com.welltech.waterAffair.domain.entity.MachineInfo;
 import com.welltech.waterAffair.domain.entity.Ndata;
@@ -122,6 +123,7 @@ public class MobilePageController {
 	 * 查看手机一个小时内的历史数据页面
 	 * @param id	水表号
 	 * @param type	需要查看的类型——瞬时流量:flow,净累计:ntotalflow,正向累计总量:totalflow,反向累计总量:ftotalflow,瞬时压力:press,信号强度:signal_strength
+	 *
 	 * @param time	时间是哪一个小时:2017020110
 	 * @param model
 	 * @return
@@ -197,6 +199,7 @@ public class MobilePageController {
 		}
 		model.addAttribute("ndata", n);
 		model.addAttribute("machine", machineInfo);
+		model.addAttribute("meterSizeStr",ConstantsUtil.sbkjDic.get(machineInfo.getMeterSize()));
 		if(machineInfo.getActiveTime()!=null){
 			model.addAttribute("installDate", dateFormat.format(machineInfo.getActiveTime()));
 		}else{

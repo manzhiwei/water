@@ -2,15 +2,19 @@ package com.welltech.waterAffair.service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import com.welltech.waterAffair.common.util.ConstantsUtil;
 import com.welltech.waterAffair.repository.*;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import com.welltech.waterAffair.common.enums.CompanyLevelEnum;
@@ -169,10 +173,12 @@ public class MobileService {
 		criteria.setEndDate(endDate);
 
 		if(MeterUtils.isGprs4300(info)){
-			if(info.getMeterTypeId() !=3)
+			//非电磁水表，没有上传连接持续时间
+			return null;
+			/*if(info.getMeterTypeId() !=3)
 				ndatas = gprsDataMapper.findNdataByCriteriaLastConnecting(criteria);
 			else
-				ndatas = gprsDataFor4200Mapper.findNdataByCriteriaLastConnecting(criteria);
+				ndatas = gprsDataFor4200Mapper.findNdataByCriteriaLastConnecting(criteria);*/
 		} else{
 			ndatas = ndataMapper.findNdataByCriteriaLastConnecting(criteria);
 		}
@@ -246,7 +252,133 @@ public class MobileService {
 		}
 		return ndataSs;
 	}
+	//6、查询今日及本月累积量数据
+	public List<Double> findMeterTotalFlowDataByDate(Integer meterId, Date startDate, Date endDate){
+		List<Double> oneMeterData = null;
+		MachineInfo info = machineInfoMapper.findOneByNum(meterId);
 
+		NdataCriteria criteria = new NdataCriteria();
+		criteria.setMeterId(meterId);
+		criteria.setStartDate(startDate);
+		criteria.setEndDate(endDate);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		if(MeterUtils.isGprs4300(info)){
+			if(info.getMeterTypeId()==2){
+				//2.如果是电磁流量计，或者电表，气体流量计等，有可靠的数据来源，15分钟间隔
+					int hisortyNum = gprsDataMapper.queryTotalNumber(criteria);
+
+					if( hisortyNum >0){
+						if(!DateUtils.isSameDay(startDate,new Date())){
+							//2.1不是今天
+							Date startHourTime = startDate;
+							Calendar calendar = Calendar.getInstance();
+							for (int i = 0; i < 24; i++) {
+								oneMeterData.add((double)startHourTime.getTime());
+								calendar.setTime(startHourTime);
+								calendar.add(Calendar.HOUR_OF_DAY,1);
+								Date endHourTime = calendar.getTime();
+								//TODO 查询为空怎么办
+								float hourTotalFlow = gprsDataMapper.findHourTotalFlowDiff(criteria.getMeterId(),startHourTime,endHourTime);
+								startHourTime = endHourTime;
+								oneMeterData.add(Double.valueOf(ConstantsUtil.formateNumber(hourTotalFlow)));
+							}
+
+						}else{
+							//2.2 是今天
+							Date startHourTime = startDate;
+							Calendar calendar = Calendar.getInstance();
+							calendar.setTime(new Date());
+							int hour = calendar.get(Calendar.HOUR_OF_DAY);
+							for (int i = 0; i < hour; i++) {
+								oneMeterData.add((double)startHourTime.getTime());
+								calendar.setTime(startHourTime);
+								calendar.add(Calendar.HOUR_OF_DAY,1);
+								Date endHourTime = calendar.getTime();
+								//TODO 查询为空怎么办
+								float hourTotalFlow = gprsDataMapper.findHourTotalFlowDiff(criteria.getMeterId(),startHourTime,endHourTime);
+								startHourTime = endHourTime;
+								oneMeterData.add(Double.valueOf(ConstantsUtil.formateNumber(hourTotalFlow)));
+							}
+						}
+					}else{
+						return oneMeterData;
+					}
+			}else{
+				//TODO 3.如果是老水表，或者以后其他类型的电磁流量计，另外做
+				return oneMeterData;
+			}
+
+		} else{
+			//1.判断当前时间是否是今天
+			//1.1 不是今天
+			if(!DateUtils.isSameDay(startDate,new Date())){
+				//1.2查询当前时间有无历史数据, 有历史数据，且条数未缺失,不为零
+				int hisortyNum = ndataSsMapper.queryTotalNumber(criteria);
+				if(hisortyNum>=287) { //说明当前时间段内的历史数据条数是全的，从当天0点取第一条历史数据，1点取第二条
+					Date startHourTime = startDate;
+					Calendar calendar = Calendar.getInstance();
+					for (int i = 0; i < 24; i++) {
+						oneMeterData.add((double)startHourTime.getTime());
+						calendar.setTime(startHourTime);
+						calendar.add(Calendar.HOUR_OF_DAY,1);
+						Date endHourTime = calendar.getTime();
+						//TODO 查询为空怎么办
+						float hourTotalFlow = ndataSsMapper.findHourTotalFlowDiff(criteria.getMeterId(),startHourTime,endHourTime);
+						startHourTime = endHourTime;
+						oneMeterData.add(Double.valueOf(ConstantsUtil.formateNumber(hourTotalFlow)));
+					}
+				}else{
+					//1.3 有历史数据，条数缺失，或无数据，条数为零
+					//1.3.1 ，先查询当前有无数据信息，有，查询当前仪表间隔
+					List<Ndata> ndataList = ndataMapper.findByCriteria(criteria);
+					if(ndataList.size()>0){
+						for (int i = 0; i < ndataList.size(); i++) {
+							oneMeterData.add((double)ndataList.get(i).getiTime().getTime());
+							if(i==0){
+								oneMeterData.add(0.0);
+							}else{
+								oneMeterData.add(Double.valueOf(ConstantsUtil.formateNumber(ndataList.get(i).getTotalflow()-ndataList.get(i-1).getTotalflow())));
+							}
+						}
+					}
+				}
+			}else{
+				//2.时间是今天
+				int hisortyNum = ndataSsMapper.queryTotalNumber(criteria);
+				List<Ndata> ndataList = ndataMapper.findByCriteria(criteria);
+				if(ndataList.size()>0){
+					Date endTime = ndataList.get(ndataList.size()-1).getiTime();
+					Calendar calendar = Calendar.getInstance();
+					calendar.setTime(endTime);
+					int hour = calendar.get(Calendar.HOUR_OF_DAY);
+					if(hisortyNum>=hour*12){
+						Date startHourTime = startDate;
+						for (int i = 0; i < hour; i++) {
+							oneMeterData.add((double)startHourTime.getTime());
+							calendar.setTime(startHourTime);
+							calendar.add(Calendar.HOUR_OF_DAY,1);
+							Date endHourTime = calendar.getTime();
+							float hourTotalFlow = ndataSsMapper.findHourTotalFlowDiff(criteria.getMeterId(),startHourTime,endHourTime);
+							startHourTime = endHourTime;
+							oneMeterData.add(Double.valueOf(ConstantsUtil.formateNumber(hourTotalFlow)));
+						}
+					}else{
+						for (int i = 0; i < ndataList.size(); i++) {
+							oneMeterData.add((double)ndataList.get(i).getiTime().getTime());
+							if(i==0){
+								oneMeterData.add(0.0);
+							}else{
+								oneMeterData.add(Double.valueOf(ConstantsUtil.formateNumber(ndataList.get(i).getTotalflow()-ndataList.get(i-1).getTotalflow())));
+							}
+						}
+					}
+				}
+			}
+
+		}
+		return oneMeterData;
+	}
 
 	//5、通过水表ID查询仪表详情
 	public MachineInfo findMeterInfo(Integer meterId){

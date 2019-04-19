@@ -127,4 +127,28 @@
 		(select totalflow from ndatass${num} where date(from_unixtime(time+unix_timestamp('2010-01-01 00:00:00'))) = date(now()) order by from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) desc limit 1) end
   </select>
 
+	<select id="findHourTotalFlowDiff" resultType="float">
+		SELECT end.totalflow - start.totalflow FROM
+		(SELECT totalflow FROM ndatass${num}
+		WHERE FROM_UNIXTIME(TIME+UNIX_TIMESTAMP('2010-01-01 00:00:00')) &gt; ${start} AND FROM_UNIXTIME(TIME+UNIX_TIMESTAMP('2010-01-01 00:00:00')) &lt; ${end} ORDER BY TIME ASC LIMIT 1) START,
+		(SELECT totalflow FROM ndatass${num}
+		WHERE FROM_UNIXTIME(TIME+UNIX_TIMESTAMP('2010-01-01 00:00:00')) &gt; ${start} AND FROM_UNIXTIME(TIME+UNIX_TIMESTAMP('2010-01-01 00:00:00')) &lt; ${end} ORDER BY TIME DESC LIMIT 1) END
+	</select>
+
+	<select id="queryTotalNumber" resultType="int">
+		select
+		count(*)
+		from
+		ndatass${criteria.meterId}
+		<where>
+			<if test="criteria.startDate != null">
+				and from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) &gt;= #{criteria.startDate}
+			</if>
+			<if test="criteria.endDate != null">
+				and from_unixtime(time+unix_timestamp('2010-01-01 00:00:00')) &lt; #{criteria.endDate}
+			</if>
+		</where>
+		order by time desc
+	</select>
+
 </mapper>

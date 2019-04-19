@@ -85,6 +85,9 @@
 					<span th:class="(${type} eq 'ftotalflow')?'para-list active':'para-list'" data-type="ftotalflow">反向累计用水量(m³)</span>
 					<span th:class="(${type} eq 'press')?'para-list active':'para-list'" data-type="press">瞬时压力(kPa)</span>
 					<span th:class="(${type} eq 'signal_strength')?'para-list active':'para-list'" data-type="signal_strength">信号强度</span>
+					<span th:class="(${type} eq 'increaseTotalflow')?'para-list active':'para-list'" data-type="increaseTotalflow">今日累计</span>
+					<span th:class="(${type} eq 'increaseTotalflowMonth')?'para-list active':'para-list'" data-type="increaseTotalflowMonth">本月累计</span>
+
 				</div>
 				<input id="num" type="hidden" name="num" th:value="${num}"/>
 			</span>

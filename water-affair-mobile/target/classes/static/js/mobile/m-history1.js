@@ -12,7 +12,7 @@ $(function(){
 	console.log(id+'-------'+$(".para-list").attr("data-type"));
 	console.log(type+'-------');
 
-
+    //详情
 	$(".header-para").on("tap",function(){
 		window.location.href = "/detail?id="+meterid+"&&type="+testType+"&&date="+$("#sheet-date").html();
 	});
@@ -56,8 +56,8 @@ $(function(){
     var xAxisdata = [];
     //判断时间是否是今天
     function isTody(){
-        console.log('------------'+$("#sheet-date").html());
-        console.log('------------'+getTodyDate());
+        //console.log('------------'+$("#sheet-date").html());
+        //console.log('------------'+getTodyDate());
 
         var d1=$("#sheet-date").html();
         var d2=getTodyDate();
@@ -110,7 +110,7 @@ $(function(){
     	// console.log(xAxisdata);
     }
 
-    //ajax 获取数据的通道
+    //ajax 获取图表的数据的通道
     function ajaxDate(timer,type,callback,num){
     	var mydata = {
     		timer: timer || '',
@@ -131,7 +131,7 @@ $(function(){
 
     }
 
-    //ajax 获取数据的通道
+    //ajax 获取历史报表数据的通道
         function ajaxDate2(timer,type,callback,num){
         	var mydata = {
         		timer: timer || '',
@@ -151,8 +151,43 @@ $(function(){
         })
 
         }
-
-    //html template
+        function ajaxDate3(timer,type,callback,num){
+            var mydata = {
+                    timer: timer || '',
+                    type: type || '',
+                    num: num || ''
+                }
+            $.ajax({
+                        type:'POST',
+                        url:"/queryMeterFlowByMinute4",
+                        data:mydata,
+                        dataType:"json",
+                        success: function(msg){
+                        	//格式化数据，将msg格式化成数组
+                            //console.log(msg);
+                            callback && callback(msg);
+                        }
+                    })
+        }
+         function ajaxDate4(timer,type,callback,num){
+            var mydata = {
+                    timer: timer || '',
+                    type: type || '',
+                    num: num || ''
+                }
+            $.ajax({
+                        type:'POST',
+                        url:"/queryMeterFlowByMinute5",
+                        data:mydata,
+                        dataType:"json",
+                        success: function(msg){
+                            //格式化数据，将msg格式化成数组
+                            //console.log(msg);
+                            callback && callback(msg);
+                        }
+                    })
+        }
+    //html template  历史报表
     function htmlTemplate(date,arr,callback){
     	var html = '';
         var id=$("#num").val();
@@ -226,19 +261,38 @@ $(function(){
     	//判断加载时间价格次数 类型之后 开始获取时间列表 和数据列表
     	var _type = type || '';
     	var _num = num || '';
-    	 dateT(count,date,function(datalist){
-    	 	ajaxDate($("#sheet-date").html(),_type,function(data){
-    	 		//htmlTemplate(datalist,data);//渲染数据
-    	 		//渲染图表
-    	 		historySheet(data);
-    	 	},_num)
 
-    	 	ajaxDate2($("#sheet-date").html(),_type,function(data){
-                	 		htmlTemplate(datalist,data);//渲染数据
-                	 		//渲染图表
-                	 		//historySheet(data);
-                	 	},_num)
-    	 })
+    	 if(_type ==='increaseTotalflow' || _type==='increaseTotalflowMonth'){
+    	    dateT(count,date,function(datalist){
+                    ajaxDate3($("#sheet-date").html(),_type,function(data){
+                        //htmlTemplate(datalist,data);//渲染数据
+                        //渲染图表
+                        historySheet(data);
+                    },_num)
+
+                    ajaxDate4($("#sheet-date").html(),_type,function(data){
+                                                        htmlTemplate(datalist,data);//渲染数据
+                                                        //渲染图表
+                                                        //historySheet(data);
+                                                    },_num)
+             })
+    	 }else{
+    	  dateT(count,date,function(datalist){
+             	 	ajaxDate($("#sheet-date").html(),_type,function(data){
+             	 		//htmlTemplate(datalist,data);//渲染数据
+             	 		//渲染图表
+             	 		historySheet(data);
+             	 	},_num)
+
+             	 	ajaxDate2($("#sheet-date").html(),_type,function(data){
+                         	 		htmlTemplate(datalist,data);//渲染数据
+                         	 		//渲染图表
+                         	 		//historySheet(data);
+                         	 	},_num)
+             	 })
+
+    	 }
+
     });//历史报表数据
 
     //加载页面时候 加载一次表格 这个是通过首页点击进来时候 我们这里默认选择一个参数  后面可以自己切换参数
@@ -252,11 +306,12 @@ $(function(){
 		        trigger: 'axis'
 		    },
 		    legend: {
+		        data:typeName
 		        //data:_data.legendata
 		    },
 		    animation:false,
 		    toolbox: {
-		        show: false,
+		        show: true,
 		        feature: {
 		            dataZoom: {
 		                yAxisIndex: 'none'
@@ -366,7 +421,12 @@ $(function(){
 
         if(tempTypeName==='瞬时流量'){
             tempTypeName='瞬时流量(m³/h)';
+        }else if(tempTypeName==='今日累计'){
+            tempTypeName='今日累计(m³)';
+        }else if(tempTypeName==='本月累计'){
+            tempTypeName='本月累计(m³)';
         }
+
 
 
 		var _data = {

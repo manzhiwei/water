@@ -1,5 +1,6 @@
 package com.welltech.waterAffair.repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -180,4 +181,8 @@ public interface GprsDataMapper {
 	 * @return
 	 */
 	Map<String,Object> find4300MonthTotalflowData(@Param(value = "num") Integer num,@Param(value = "year") String year,@Param(value = "month") String month,@Param(value = "lastmonth") String lastmonth);
+
+	int queryTotalNumber(@Param("criteria") NdataCriteria criteria);
+
+	float findHourTotalFlowDiff(@Param(value = "num") Integer num, @Param(value = "startDate")Date startDate,@Param(value = "endDate")Date endDate);
 }
